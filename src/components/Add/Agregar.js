@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Sidebar } from '../Sidebar/Sidebar';
 import Formulario from "./Formulario";
 
 const Agregar = () => {
     return(
-        <Formulario />
+        <Fragment>
+            <div className="container">
+                <Formulario />
+                <Sidebar className="sidebar"/>
+            </div>
+        </Fragment>
     )
 }
 

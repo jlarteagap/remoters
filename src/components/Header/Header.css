@@ -1,0 +1,10 @@
+.header{
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--LigthGreen);
+    display: flex;
+    height: 4rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}

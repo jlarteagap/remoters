@@ -1,0 +1,1 @@
+export const Sidebar =() => <p className="sidebar">Desde Sidebar</p>
