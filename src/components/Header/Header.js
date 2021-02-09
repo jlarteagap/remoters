@@ -1,14 +1,19 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
+// import CSS
+import './Header.css'
 
 const Header = () => {
     return(
-       <header>
+       <header className="header">
             <Link to="/"><h1>Tembiapo</h1></Link>
             <navbar>
                 <menu>
-                    <Link to="/agregar">Agregar</Link>
+                    <Link
+                    to="/agregar"
+                    className="btn"
+                    >Agregar</Link>
                 </menu>
             </navbar>
        </header>
