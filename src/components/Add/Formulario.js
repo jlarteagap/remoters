@@ -1,23 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Forms.css'
 
+const Formulario = ({sendDataForm}) => {
+    const [data, setData] = useState([])
 
-const Formulario = () => {
+    const inputData = e => {
+        setData({
+            ...data,
+            [e.target.name] : e.target.value
+        })
+    }
+
+
+    const sendData = (e) => {
+        e.preventDefault()
+        let datos = data
+        sendDataForm(datos)
+    }
+
     return(
 
         <div className="content">
-            <form className="form">
+            <form className="form" onSubmit={sendData}>
                 <div className="form__group">
                     <label>Nombre de la Empresa</label>
-                    <input type="text" placeholder="Ej: Acme Corp" name="company" />
+                    <input type="text" placeholder="Ej: Acme Corp" name="company" onChange={inputData}/>
                 </div>
                 <div className="form__group">
                     <label>Titulo del puesto vacante</label>
-                    <input type="text" placeholder="Ej: Product Manager" name="jobTittle" />
+                    <input type="text" placeholder="Ej: Product Manager" name="jobTittle" onChange={inputData} />
                 </div>
                 <div className="form__group">
                     <label>Categoria</label>
-                    <select>
+                    <select name="category" onChange={inputData}>
                         <option value="">Elegir...</option>
                         <option value="Programacion">Programación</option>
                         <option value="Diseño">Diseño</option>
@@ -27,7 +42,7 @@ const Formulario = () => {
                 </div>
                 <div className="form__group">
                     <label>Ciudad</label>
-                    <select>
+                    <select name="city" onChange={inputData}>
                         <option value="">Elegir...</option>
                         <option value="Santa Cruz">Santa Cruz</option>
                         <option value="La Paz">La Paz</option>
@@ -42,11 +57,11 @@ const Formulario = () => {
                 </div>
                 <div className="form__group">
                     <label>Enlace para postular</label>
-                    <input type="text" placeholder="http://" name="link" />
+                    <input type="text" placeholder="http://" name="link" onChange={inputData} />
                 </div>
                 <div className="form__group">
                     <label>Email de contacto</label>
-                    <input type="text" placeholder="" name="contactEmail" />
+                    <input type="text" placeholder="" name="contactEmail" onChange={inputData} />
                 </div>
 
                 <button type="submit" className="btn">Enviar publicación</button>
