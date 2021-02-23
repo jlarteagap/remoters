@@ -28,7 +28,7 @@ const Formulario = ({sendDataForm}) => {
                 </div>
                 <div className="form__group">
                     <label>Titulo del puesto vacante</label>
-                    <input type="text" placeholder="Ej: Product Manager" name="jobTittle" onChange={inputData} />
+                    <input type="text" placeholder="Ej: Product Manager" name="jobTitle" onChange={inputData} />
                 </div>
                 <div className="form__group">
                     <label>Categoria</label>
