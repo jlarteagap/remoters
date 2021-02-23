@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { Query } from 'react-apollo'
 import { JOBS_QUERY } from '../../query'
 
+import './Jobs.css'
 
 class Jobs extends Component {
     render(){
@@ -13,12 +14,28 @@ class Jobs extends Component {
                     
                     
                     return(
-                        <div>
-                            {data.getJobs.map(job => {
-                                console.log(job)
-                                return(
-                                    <li key = {job.id}>{job.jobtitle}</li>)
-                            })}
+                        <div className="container">
+                            <div className="content">
+                                {data.getJobs.map(job => {
+                                    return(
+                                        <div className="card" key = {job.id}>
+                                            <div className="card__header">
+                                                <h2 className="card__header--title">{job.jobtitle}</h2>
+                                                <div className="card__header--sub">{job.company}</div>
+                                                <span className="job__city">{job.city.replace("_", " ")}</span>
+                                            </div>
+                                            <div className="card__body">
+                                                <div className="job__info">
+                                                    <div>{job.category}</div>
+                                                    <div>
+                                                        <a className="job__button job__button--shareButton" href="#link">Compartir</a>
+                                                        <a className="job__button" href={job.link}>Aplicar</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>)
+                                })}
+                            </div>
                         </div>
                     )
                 }}

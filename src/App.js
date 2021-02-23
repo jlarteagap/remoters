@@ -24,15 +24,16 @@ const App = () => {
 
   return(
     <ApolloProvider client = {client}>
-      <main className="main">
         <Router>
           <Header />
+          <main className="main">
           <Switch>
             <Route exact path="/"><Jobs /></Route>
             <Route exact path="/agregar"><Agregar /> </Route>
           </Switch>
+          </main>
         </Router>
-      </main>
+      
     </ApolloProvider>
   )
 }

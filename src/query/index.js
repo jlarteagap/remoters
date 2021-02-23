@@ -5,6 +5,10 @@ export const JOBS_QUERY = gql`
             getJobs{
                 jobtitle
                 company
+                city
+                category
+                link
+                email
             }
         }
 `
