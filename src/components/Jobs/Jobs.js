@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { Query } from 'react-apollo'
 import { JOBS_QUERY } from '../../query'
-
+import icons from '../../img/icons.png'
 import './Jobs.css'
 
 class Jobs extends Component {
@@ -26,9 +26,12 @@ class Jobs extends Component {
                                             </div>
                                             <div className="card__body">
                                                 <div className="job__info">
-                                                    <div>{job.category}</div>
+                                                    <div className={"job__icon " + job.category} 
+                                                        style={{backgroundImage: `url(${icons})`}}>
+                                                        <a href={job.link} title={job.jobtitle}><i></i></a>
+                                                    </div>
                                                     <div>
-                                                        <a className="job__button job__button--shareButton" href="#link">Compartir</a>
+                                                        <a className="job__button job__button-shareButton" href="#link">Compartir</a>
                                                         <a className="job__button" href={job.link}>Aplicar</a>
                                                     </div>
                                                 </div>
