@@ -9,6 +9,7 @@ export const JOBS_QUERY = gql`
                 category
                 link
                 email
+                remote
             }
         }
 `
