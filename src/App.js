@@ -4,8 +4,9 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
 
-import Agregar from "./components/Add/Agregar";
+// import Agregar from "./components/Add/Agregar";
 import Jobs from "./components/Jobs/Jobs";
+import NuevoTrabajo from "./components/Add/NuevoTrabajo";
 
 import './Style.css'
 
@@ -29,7 +30,7 @@ const App = () => {
           <main className="main">
           <Switch>
             <Route exact path="/"><Jobs /></Route>
-            <Route exact path="/agregar"><Agregar /> </Route>
+            <Route exact path="/agregar"><NuevoTrabajo /> </Route>
           </Switch>
           </main>
         </Router>
