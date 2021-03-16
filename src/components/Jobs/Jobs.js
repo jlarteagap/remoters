@@ -22,7 +22,8 @@ class Jobs extends Component {
                                             job = {job}
                                         />
                                         ) 
-                                })}
+                                }).reverse()}
+                                {/* ADD ASC List */}
                             </div>
                         </div>
                     )

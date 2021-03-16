@@ -35,10 +35,10 @@ const NuevoTrabajo = (props) => {
                     <form className="form"
                         onSubmit={e => {
                             e.preventDefault();
-                            const { company, jobtitle, category, city, link, remote, email } = data
+                            const { company, position, category, city, link, remote, email } = data
                             const input = {
                                 company,
-                                jobtitle,
+                                position,
                                 category,
                                 city,
                                 link,
@@ -68,17 +68,16 @@ const NuevoTrabajo = (props) => {
                         </div>
                         <div className="form__group">
                             <label>Titulo del puesto vacante</label>
-                            <input type="text" placeholder="Ej: Product Manager" name="jobtitle" onChange={inputData} />
+                            <input type="text" placeholder="Ej: Product Manager" name="position" onChange={inputData} />
                         </div>
                         <div className="form__group">
                             <label>Categoria</label>
                             <select name="category" onChange={inputData}>
                                 <option value="">Elegir...</option>
-                                <option value="BACKEND">Backend</option>
-                                <option value="FRONTEND">Frontend</option>
+                                <option value="SOFTWARE_DEVELOP">Software Develop</option>
                                 <option value="SOCIAL_MEDIA">Social Media</option>
-                                <option value="UI_UX">Diseño</option>
-                                <option value="Ventas">Ventas</option>
+                                <option value="DESIGNER">Diseño</option>
+                                <option value="SALES">Comercial</option>
                             </select>
                         </div>
                         <div className="form__group">
