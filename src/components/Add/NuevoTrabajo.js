@@ -7,14 +7,12 @@ import './Forms.css'
 
 const NuevoTrabajo = (props) => {
 
-
     const [data, setData] = useState([])
     const [isRemote, setRemote] = useState(false)
 
     const changeHandler = () => {
         setRemote(!isRemote);
     };
-
 
     const inputData = e => {
         setData({
@@ -30,8 +28,6 @@ const NuevoTrabajo = (props) => {
         >
             {newJob => (
                 <div className="content">
-
-
                     <form className="form"
                         onSubmit={e => {
                             e.preventDefault();
@@ -50,12 +46,7 @@ const NuevoTrabajo = (props) => {
                                 variables: { input }
                             })
                         }
-
-
                         }
-
-
-
                     >
                         <div className="form__group">
                             <label>Nombre de la Empresa</label>
@@ -64,15 +55,21 @@ const NuevoTrabajo = (props) => {
                                 placeholder="Ej: Acme Corp"
                                 name="company"
                                 onChange={inputData}
+                                required
                             />
                         </div>
                         <div className="form__group">
                             <label>Titulo del puesto vacante</label>
-                            <input type="text" placeholder="Ej: Product Manager" name="position" onChange={inputData} />
+                            <input 
+                            type="text" 
+                            placeholder="Ej: Product Manager" 
+                            name="position" onChange={inputData}
+                            required
+                            />
                         </div>
                         <div className="form__group">
                             <label>Categoria</label>
-                            <select name="category" onChange={inputData}>
+                            <select name="category" onChange={inputData} required>
                                 <option value="">Elegir...</option>
                                 <option value="SOFTWARE_DEVELOP">Software Develop</option>
                                 <option value="SOCIAL_MEDIA">Social Media</option>
@@ -82,7 +79,7 @@ const NuevoTrabajo = (props) => {
                         </div>
                         <div className="form__group">
                             <label>Ciudad</label>
-                            <select name="city" onChange={inputData}>
+                            <select name="city" onChange={inputData} required>
                                 <option value="">Elegir...</option>
                                 <option value="SANTA_CRUZ">Santa Cruz</option>
                                 <option value="LA_PAZ">La Paz</option>
@@ -97,16 +94,22 @@ const NuevoTrabajo = (props) => {
                         </div>
                         <div className="form__group">
                             <label>Enlace para postular</label>
-                            <input type="text" placeholder="http://" name="link" onChange={inputData} />
+                            <input type="text" placeholder="http://" name="link" onChange={inputData} required/>
                         </div>
                         <div className="form__group">
-                            <label>Trabajo Remoto?</label>
-                            <input
-                                name="remote"
-                                type="checkbox"
-                                checked={isRemote}
-                                onChange={changeHandler}
-                            />
+                            <label className="remote">
+                                <span className="">Trabajo Remoto?</span>
+                                <input
+                                    className=""
+                                    name="remote"
+                                    type="checkbox"
+                                    checked={isRemote}
+                                    onChange={changeHandler}
+                                />
+                                <span className={isRemote ? "btn remote-btn btn-blue" : "btn remote-btn false"}>{isRemote ? "SI" : "NO"}</span>
+                            </label>
+                           
+                                
                         </div>
                         <div className="form__group">
                             <label>Email de contacto</label>

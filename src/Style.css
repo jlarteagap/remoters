@@ -1,3 +1,5 @@
+@import './assets/css/fonts.css';
+
 :root{
     --Orange: #F7B267;
     --Blue: #1B9AAA;
@@ -7,6 +9,7 @@
     --Dark: #5E6472;
 }
 body{
+    font-family: 'Montserrat';
     color: var(--Dark);
     font-size: 16px;
     margin: 0;
@@ -39,6 +42,10 @@ a{
     .btn:hover{
         color:  var(--Dark);
         background: var(--Yellow);
+    }
+    .btn-blue{
+        color: white;
+        background: var(--Blue);
     }
 
 /* Container  */
