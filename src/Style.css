@@ -67,3 +67,14 @@ a{
         grid-template-columns: 1fr;
     }
 }
+
+/* ERROR  */
+.error{
+    border-radius: .5rem;
+    border: solid 1px var(--Red);
+    color: var(--Red);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding: .6rem;
+    text-align: center;
+}
