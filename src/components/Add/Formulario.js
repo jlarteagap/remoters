@@ -3,15 +3,22 @@ import './Forms.css'
 
 const Formulario = ({sendDataForm}) => {
     const [data, setData] = useState([])
+    const [isRemote, setRemote] = useState(false)
 
+    const changeHandler = () => {
+        setRemote(!isRemote);
+    
+       
+      };
     const inputData = e => {
         setData({
             ...data,
+            remote: isRemote,
             [e.target.name] : e.target.value
         })
     }
 
-
+    
     const sendData = (e) => {
         e.preventDefault()
         let datos = data
@@ -28,7 +35,7 @@ const Formulario = ({sendDataForm}) => {
                 </div>
                 <div className="form__group">
                     <label>Titulo del puesto vacante</label>
-                    <input type="text" placeholder="Ej: Product Manager" name="jobTitle" onChange={inputData} />
+                    <input type="text" placeholder="Ej: Product Manager" name="jobtitle" onChange={inputData} />
                 </div>
                 <div className="form__group">
                     <label>Categoria</label>
@@ -60,8 +67,16 @@ const Formulario = ({sendDataForm}) => {
                     <input type="text" placeholder="http://" name="link" onChange={inputData} />
                 </div>
                 <div className="form__group">
+                    <label>Trabajo Remoto?</label> 
+                    <input 
+                        name="remote" 
+                        type="checkbox"
+                        checked={isRemote}
+                        onChange={changeHandler} />
+                </div>
+                <div className="form__group">
                     <label>Email de contacto</label>
-                    <input type="text" placeholder="" name="contactEmail" onChange={inputData} />
+                    <input type="text" placeholder="" name="email" onChange={inputData} />
                 </div>
 
                 <button type="submit" className="btn">Enviar publicación</button>

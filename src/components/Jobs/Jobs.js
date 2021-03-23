@@ -11,8 +11,7 @@ class Jobs extends Component {
                 {({ loading, error, data, startPolling, stopPolling}) =>{
                     if(loading) return "cargando...";
                     if(error) return `Error ${error.message}`
-                    
-                    
+
                     return(
                         <div className="container">
                             <div className="content">
@@ -23,7 +22,8 @@ class Jobs extends Component {
                                             job = {job}
                                         />
                                         ) 
-                                })}
+                                }).reverse()}
+                                {/* ADD ASC List */}
                             </div>
                         </div>
                     )
