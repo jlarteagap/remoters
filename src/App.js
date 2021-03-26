@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer"
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
@@ -8,6 +9,7 @@ import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import Jobs from "./components/Jobs/Jobs";
 import NuevoTrabajo from "./components/Add/NuevoTrabajo";
 import Categories from "./components/Jobs/Categories"
+
 
 import './Style.css'
 
@@ -37,6 +39,7 @@ const App = () => {
               </Switch>
             </div>
           </main>
+          <Footer />
         </Router>
       
     </ApolloProvider>
