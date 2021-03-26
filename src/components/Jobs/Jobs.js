@@ -28,7 +28,8 @@ const Jobs = (props) => {
                                                 job={job}
                                             />
                                         )
-                                    }).reverse()}
+                                    })
+                                    }
                                     {/* ADD ASC List */}
 
                                     <Paginator
