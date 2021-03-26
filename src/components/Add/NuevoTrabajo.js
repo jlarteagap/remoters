@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Mutation } from 'react-apollo'
 import { ADD_JOB } from '../../mutation'
 import { withRouter } from 'react-router-dom'
@@ -33,8 +33,8 @@ const NuevoTrabajo = (props) => {
         })
     }
     return (
-        <div className="container">
-        <Mutation mutation={ADD_JOB}
+        <Fragment>
+            <Mutation mutation={ADD_JOB}
             onCompleted={() => props.history.push('/')}
         >
             {newJob => (
@@ -148,8 +148,8 @@ const NuevoTrabajo = (props) => {
                 </div>
             )}
         </Mutation>
-        <Sidebar className="sidebar"/>
-        </div>
+            <Sidebar className="sidebar"/>
+        </Fragment>
     )
 }
 

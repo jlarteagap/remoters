@@ -1,34 +1,38 @@
-import { Component } from 'react'
+import { Component, Fragment } from 'react'
 import { Query } from 'react-apollo'
 import { JOBS_QUERY } from '../../query'
 import './Jobs.css'
 import JobList from './JobList'
+import Sidebar from '../Sidebar/Sidebar'
 
 class Jobs extends Component {
-    render(){
-        return(
-            <Query query = { JOBS_QUERY } pollInterval = {1000}>
-                {({ loading, error, data, startPolling, stopPolling}) =>{
-                    if(loading) return "cargando...";
-                    if(error) return `Error ${error.message}`
+    render() {
+        return (
+            <Fragment>
+                <Query query={JOBS_QUERY} pollInterval={1000}>
+                    {({ loading, error, data, startPolling, stopPolling }) => {
+                        if (loading) return "cargando...";
+                        if (error) return `Error ${error.message}`
 
-                    return(
-                        <div className="container">
+                        return (
+
                             <div className="content">
                                 {data.getJobs.map(job => {
-                                    return(
+                                    return (
                                         <JobList
-                                            key = {job.id}
-                                            job = {job}
+                                            key={job.id}
+                                            job={job}
                                         />
-                                        ) 
+                                    )
                                 }).reverse()}
                                 {/* ADD ASC List */}
                             </div>
-                        </div>
-                    )
-                }}
-            </Query>
+
+                        )
+                    }}
+                </Query>
+                <Sidebar />
+            </Fragment>
         )
     }
 }
