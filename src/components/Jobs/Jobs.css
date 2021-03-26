@@ -36,6 +36,7 @@
     justify-content: space-between;
     width: 100%;
 }
+
 .job__button {
     box-sizing: border-box;
     border-radius: .25rem;
@@ -75,4 +76,8 @@
         width: 25px;
         height: 25px;
         cursor: pointer;
+    }
+    .icons-info{
+        display: flex;
+        flex-direction: row;
     }

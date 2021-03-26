@@ -7,6 +7,7 @@ import ApolloClient, { InMemoryCache } from 'apollo-boost';
 // import Agregar from "./components/Add/Agregar";
 import Jobs from "./components/Jobs/Jobs";
 import NuevoTrabajo from "./components/Add/NuevoTrabajo";
+import Categories from "./components/Jobs/Categories"
 
 import './Style.css'
 
@@ -28,10 +29,13 @@ const App = () => {
         <Router>
           <Header />
           <main className="main">
-          <Switch>
-            <Route exact path="/"><Jobs /></Route>
-            <Route exact path="/agregar"><NuevoTrabajo /> </Route>
-          </Switch>
+            <div className="container add">
+              <Switch>
+                <Route exact path="/"><Jobs /></Route>
+                <Route exact path="/agregar"><NuevoTrabajo /> </Route>
+                <Route exact path="/:category"><Categories /></Route>
+              </Switch>
+            </div>
           </main>
         </Router>
       
