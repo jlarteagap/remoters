@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react'
-
-import { GET_CATEGORIES } from '../../query'
-import './Jobs.css'
-import JobList from './JobList'
-import Sidebar from '../Sidebar/Sidebar'
-import { withRouter } from 'react-router-dom'
 import { Query } from 'react-apollo'
+import { GET_CATEGORIES } from '../../query'
+import { withRouter } from 'react-router-dom'
+
+import './Jobs.css'
+
+import Sidebar from '../Sidebar/Sidebar'
+import JobList from './JobList'
+import Paginator from '../General/Paginator'
 
 
 const Categories = (props) => {
@@ -15,12 +17,16 @@ const Categories = (props) => {
     return (
         <Fragment>
 
-            <Query query={GET_CATEGORIES} variables={{ category }}>
+            <Query
+                query={GET_CATEGORIES}
+                variables={{ category, limit: props.limit, offset: props.page.offset }}>
 
                 {({ loading, error, data, startPolling, stopPolling }) => {
                     if (loading) return "cargando...";
                     if (error) return `Error ${error.message}`
+                    const total = data.byCategories.length
 
+                    console.log(total)
                     return (
                         <div className="content">
                             {data.byCategories.map(job => {
@@ -34,6 +40,14 @@ const Categories = (props) => {
                                 )
                             }).reverse()}
                             {/* ADD ASC List */}
+
+                            <Paginator
+                                actual={props.page.actual}
+                                total = {total}
+                                limit={props.limit}
+                                prevPage={props.prevPage}
+                                nextPage={props.nextPage}
+                            />
                         </div>
                     )
                 }}

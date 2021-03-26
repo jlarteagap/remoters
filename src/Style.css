@@ -32,7 +32,6 @@ a{
 /* Botones */
 .btn{
     display: block;
-    border: 0 solid var(--Red);
     border-radius: .25rem;
     background: var(--Red);
     color: white;
@@ -46,6 +45,12 @@ a{
     .btn-blue{
         color: white;
         background: var(--Blue);
+    }
+    .btn-outline-red{
+        background: none;
+        border: 1px solid var(--Red);
+        color: var(--Red);
+        font-weight: 600;
     }
 
 /* Container  */
@@ -77,4 +82,10 @@ a{
     margin-bottom: 1rem;
     padding: .6rem;
     text-align: center;
+}
+
+/* PAGINADOR */
+.paginator{
+    display: flex;
+    justify-content: space-between;
 }
