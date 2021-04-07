@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 // import CSS
 import './Header.css'
 
-const Header = () => {
+const Header = (props) => {
     return(
        <div className="header">
-                <Link to="/"><h1>Tembiapo</h1></Link>
+                <Link to="/" onClick={props.reset}><h1>Tembiapo</h1></Link>
                 <div>
                     <div>
                         <Link

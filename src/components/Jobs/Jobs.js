@@ -45,7 +45,7 @@ const Jobs = (props) => {
                     </Query>
                     
                 </div>
-                <Sidebar />
+                <Sidebar reset = {props.reset} />
             </Fragment>
         )
     }

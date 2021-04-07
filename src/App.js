@@ -20,6 +20,13 @@ const App = () => {
       actual: 1
   })
 
+  const resetState = () => {
+    console.log("Click")
+    setPage({
+      offset: 0,
+      actual: 1
+    })
+  }
   const nextPage = () => {
     setPage({
       offset: page.offset + limit,
@@ -47,7 +54,7 @@ const App = () => {
   return(
     <ApolloProvider client = {client}>
         <Router>
-          <Header />
+          <Header reset = { resetState }/>
           <main className="main">
             <div className="container add">
               <Switch>
@@ -56,7 +63,9 @@ const App = () => {
                     limit = {limit} 
                     nextPage = {nextPage} 
                     prevPage={prevPage} 
-                    page = {page}/>
+                    page = {page}
+                    reset = { resetState }/>
+                    
                   </Route>
                 <Route exact path="/agregar">
                   <NuevoTrabajo />
@@ -66,7 +75,9 @@ const App = () => {
                   limit = {limit} 
                   nextPage = {nextPage} 
                   prevPage={prevPage} 
-                  page = {page}/>
+                  page = {page}
+                  reset = { resetState }
+                  />
                 </Route>
               </Switch>
             </div>
