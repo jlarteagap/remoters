@@ -26,7 +26,6 @@ const Categories = (props) => {
                     
                     if (loading) return "cargando...";
                     if (error) return `Error ${error.message}`
-                    const total = data.byCategories.length
 
                     return (
                         <div className="content">
@@ -39,12 +38,12 @@ const Categories = (props) => {
                                     />
 
                                 )
-                            }).reverse()}
+                            })}
                             {/* ADD ASC List */}
 
                             <Paginator
                                 actual={props.page.actual}
-                                total = {total.toString()}
+                                total = {props.totalCategories}
                                 limit={props.limit}
                                 prevPage={props.prevPage}
                                 nextPage={props.nextPage}

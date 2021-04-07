@@ -34,6 +34,7 @@ a{
     display: block;
     border-radius: .25rem;
     background: var(--Red);
+    cursor: pointer;
     color: white;
     padding: .5rem 1rem;
     transition: all .3s;
@@ -52,6 +53,15 @@ a{
         color: var(--Red);
         font-weight: 600;
     }
+    .btn-disabled{
+        background: none;
+        border: 1px solid var(--Dark);
+        color: var(--Dark);
+        cursor: not-allowed;
+    }
+        .btn-disabled:hover{
+            background: none;
+        }
 
 /* Container  */
 .container{

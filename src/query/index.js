@@ -28,5 +28,6 @@ export const GET_CATEGORIES = gql`
             email
             remote
     },
+    totalCategories(category: $category)
 }
 `
