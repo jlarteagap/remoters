@@ -3,21 +3,22 @@ import CategoryMenu from './CategoryMenu'
 import AddNewJob from './AddNewJob'
 
 import './sidebar.css'
-import { render } from '@testing-library/react'
+
 const Sidebar = (props) => {
     const path = props.match.path
-    const renderSidebar = ''
+    console.log("🚀 ~ file: Sidebar.js ~ line 9 ~ Sidebar ~ path", path)
     
-    // if(path  === '/agregar') {
-    //     return(
-    //         renderSidebar = <p>hola</p>
-    //     )
-    // }
+    const renderSidebar = () => {
+        if (path === '/agregar') {
+            return( <AddNewJob />)
+        } else{
+            return( <CategoryMenu reset = {props.reset} />)
+        }
+    }
 
     return(
         <div className="sidebar">
-            <AddNewJob />
-            <CategoryMenu />
+            {renderSidebar()}
         </div>
     )
 }

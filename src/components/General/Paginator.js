@@ -14,7 +14,7 @@ class Paginator extends Component {
         
         /* sacamos la cantidad de paginas que hay en el statge*/
         const {pages} = this.state.paginator
-        const btnNext = (actual !== pages) ? <button className="btn btn-outline-red" onClick={this.props.nextPage}>Siguiente &raquo;</button> : '';
+        const btnNext = (actual !== pages) ? <button className="btn btn-outline-red" onClick={this.props.nextPage}>Siguiente &raquo;</button> : <button className="btn btn-disabled" onClick={this.props.nextPage}>Siguiente &raquo;</button>;
         return(
             <div className="paginator">
                 {btnPrev}

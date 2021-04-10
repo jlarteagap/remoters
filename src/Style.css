@@ -58,6 +58,7 @@ a{
         border: 1px solid var(--Dark);
         color: var(--Dark);
         cursor: not-allowed;
+        opacity: .5;
     }
         .btn-disabled:hover{
             background: none;

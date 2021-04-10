@@ -1,4 +1,4 @@
-.categories{
+.categories, .newJob{
     display: block;
 }
 .categories-link{
@@ -6,4 +6,12 @@
     display: inline-flex;
     padding: .25rem 0;
     width: 100%;
+}
+
+.newJob{
+    background: var(--Red);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: white;
 }
