@@ -20,7 +20,7 @@ const Categories = (props) => {
             <Query
                 query={GET_CATEGORIES}
                 
-                variables={{ category, limit: props.limit, offset: props.page.offset }}>
+                variables={{ category, limit: props.page.limit, offset: props.page.offset }}>
                 
                 {({ loading, error, data, startPolling, stopPolling }) => {
                     
@@ -44,7 +44,7 @@ const Categories = (props) => {
                             <Paginator
                                 actual={props.page.actual}
                                 total = {props.totalCategories}
-                                limit={props.limit}
+                                limit={props.page.limit}
                                 prevPage={props.prevPage}
                                 nextPage={props.nextPage}
                             />
@@ -52,7 +52,7 @@ const Categories = (props) => {
                     )
                 }}
             </Query>
-            <Sidebar />
+            <Sidebar reset = {props.reset} />
         </Fragment>
     )
 }
