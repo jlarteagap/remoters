@@ -4,7 +4,7 @@ import { JOBS_QUERY } from '../../query'
 import './Jobs.css'
 import JobList from './JobList'
 import Sidebar from '../Sidebar/Sidebar'
-import Paginator from '../General/Paginator'
+import Paginator from '../utils/Paginator'
 
 const Jobs = (props) => {
         return (

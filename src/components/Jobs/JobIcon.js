@@ -1,4 +1,4 @@
-import icons from '../../img/icons.png'
+import icons from '../../assets/img/icons.png'
 
 const JobIcon = (props) => {
     return (

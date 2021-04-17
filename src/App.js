@@ -1,11 +1,13 @@
 import Layout from './components/Layout/Layout'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Jobs from "./components/Jobs/Jobs";
-import NuevoTrabajo from "./components/Add/NuevoTrabajo";
-import Categories from "./components/Jobs/Categories"
 
-import './Style.css'
+import Home from "./container/Home"
+import NewJob from './container/NewJob';
+
+import CategoriesList from "./container/CategoriesList"
+
+import './assets/css/Style.css'
 
 import { usePagination } from './hooks/usePagination' 
 
@@ -19,18 +21,17 @@ const App = () => {
           <div className="container add">
             <Switch>
               <Route exact path="/">
-                <Jobs
+                <Home
                   nextPage={nextPage}
                   prevPage={prevPage}
                   page={page}
                   reset={resetState} />
-
               </Route>
               <Route exact path="/agregar">
-                <NuevoTrabajo />
+                <NewJob />
               </Route>
               <Route exact path="/:category">
-                <Categories
+                <CategoriesList
                   nextPage={nextPage}
                   prevPage={prevPage}
                   page={page}

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import Sidebar from '../Sidebar/Sidebar'
 import './Forms.css'
 
-import Error from '../General/Error'
+import Error from '../utils/Error'
 
 const NuevoTrabajo = (props) => {
 

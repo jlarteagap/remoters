@@ -7,7 +7,7 @@ import './Jobs.css'
 
 import Sidebar from '../Sidebar/Sidebar'
 import JobList from './JobList'
-import Paginator from '../General/Paginator'
+import Paginator from '../utils/Paginator'
 
 
 const Categories = (props) => {

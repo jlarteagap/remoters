@@ -1,5 +1,5 @@
 import { withRouter } from 'react-router-dom'
-import bg from '../../img/bgHero.png'
+import bg from '../../assets/img/bgHero.png'
 
 import './Hero.css'
 const Hero = (props) => {
