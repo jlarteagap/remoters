@@ -12,7 +12,7 @@ const JobList = (props) => {
     return (
         <div className="card">
             <div className="card__header">
-                <h2 className="card__header--title">{position}</h2>
+                <h2 className="card__header--title"><a href={link} target="_blank" rel="noreferrer">{position}</a></h2>
                 <div className="card__header--sub">{company}</div>
                 <span className="job__city">{city.replace("_", " ")}</span>
             </div>

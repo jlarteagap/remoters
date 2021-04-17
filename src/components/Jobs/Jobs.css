@@ -18,6 +18,12 @@
 .card__header--title {
     margin: 0
 }
+.card__header--title a{
+    color: var(--Gray);
+}
+.card__header--title a:hover{
+    color: var(--Green);
+}
 .job__city{
     display: block;
     margin-top: .5rem;

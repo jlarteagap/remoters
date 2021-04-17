@@ -1,4 +1,4 @@
-import circles from '../../img/circles.png'
+import circles from '../../assets/img/circles.png'
 
 const AddNewJob = () => (
     <div className="newJob card" style={{ backgroundImage: `url(${circles})` }}>
