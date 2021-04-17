@@ -25,7 +25,7 @@ const JobList = (props) => {
                     <div>
 
                         <a className="job__button job__button-shareButton" href="#link" >Compartir</a>
-                        <a className="job__button" href={link}>Aplicar</a>
+                        <a className="job__button" href={link} target="_blank" rel="noreferrer">Aplicar</a>
                     </div>
                 </div>
             </div>

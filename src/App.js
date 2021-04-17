@@ -1,5 +1,4 @@
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer"
+import Layout from './components/Layout/Layout'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Jobs from "./components/Jobs/Jobs";
@@ -15,33 +14,33 @@ const App = () => {
   
   return (
     <Router>
-      <Header reset={resetState} />
-      <main className="main">
-        <div className="container add">
-          <Switch>
-            <Route exact path="/">
-              <Jobs
-                nextPage={nextPage}
-                prevPage={prevPage}
-                page={page}
-                reset={resetState} />
+      <Layout reset = {resetState}>
+        <main className="main">
+          <div className="container add">
+            <Switch>
+              <Route exact path="/">
+                <Jobs
+                  nextPage={nextPage}
+                  prevPage={prevPage}
+                  page={page}
+                  reset={resetState} />
 
-            </Route>
-            <Route exact path="/agregar">
-              <NuevoTrabajo />
-            </Route>
-            <Route exact path="/:category">
-              <Categories
-                nextPage={nextPage}
-                prevPage={prevPage}
-                page={page}
-                reset={resetState}
-              />
-            </Route>
-          </Switch>
-        </div>
-      </main>
-      <Footer />
+              </Route>
+              <Route exact path="/agregar">
+                <NuevoTrabajo />
+              </Route>
+              <Route exact path="/:category">
+                <Categories
+                  nextPage={nextPage}
+                  prevPage={prevPage}
+                  page={page}
+                  reset={resetState}
+                />
+              </Route>
+            </Switch>
+          </div>
+        </main>
+      </Layout>
     </Router>
   )
 }

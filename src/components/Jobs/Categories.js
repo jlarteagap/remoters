@@ -21,7 +21,7 @@ const Categories = (props) => {
                 query={GET_CATEGORIES}
                 
                 variables={{ category, limit: props.page.limit, offset: props.page.offset }}>
-                
+
                 {({ loading, error, data, startPolling, stopPolling }) => {
                     
                     if (loading) return "cargando...";
@@ -43,7 +43,7 @@ const Categories = (props) => {
 
                             <Paginator
                                 actual={props.page.actual}
-                                total = {props.totalCategories}
+                                total = {data.totalCategories}
                                 limit={props.page.limit}
                                 prevPage={props.prevPage}
                                 nextPage={props.nextPage}
