@@ -5,6 +5,7 @@ import './Jobs.css'
 import JobList from './JobList'
 import Sidebar from '../Sidebar/Sidebar'
 import Paginator from '../utils/Paginator'
+import Loading from '../utils/Loading'
 
 const Jobs = (props) => {
         return (
@@ -17,7 +18,7 @@ const Jobs = (props) => {
                         >
                             
                         {({ loading, error, data, startPolling, stopPolling }) => {
-                            if (loading) return "cargando...";
+                            if (loading) return <Loading />;
                             if (error) return `Error ${error.message}`
                             
                             return (                                

@@ -8,6 +8,7 @@ import './Jobs.css'
 import Sidebar from '../Sidebar/Sidebar'
 import JobList from './JobList'
 import Paginator from '../utils/Paginator'
+import Loading from '../utils/Loading'
 
 
 const Categories = (props) => {
@@ -24,7 +25,7 @@ const Categories = (props) => {
 
                 {({ loading, error, data, startPolling, stopPolling }) => {
                     
-                    if (loading) return "cargando...";
+                    if (loading) return <Loading />;
                     if (error) return `Error ${error.message}`
 
                     return (
