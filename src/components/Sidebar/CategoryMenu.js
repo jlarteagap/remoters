@@ -20,9 +20,9 @@ const CategoryMenu = (props) => {
                         <JobIcon category="DESIGNER" />
                         Designer
                     </Link>
-                    <Link to="/BUSINESS_INTELLIGENCE" className="categories-link" onClick={props.reset}>
-                        <JobIcon category="BUSINESS_INTELLIGENCE" />
-                        Business Intelligence
+                    <Link to="/SALES" className="categories-link" onClick={props.reset}>
+                        <JobIcon category="SALES" />
+                        Ventas
                     </Link>
                 </div>
         </Fragment>

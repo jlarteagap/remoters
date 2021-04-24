@@ -17,7 +17,7 @@ const Hero = (props) => {
         case "/DESIGNER":
             categoryName = "Diseño web o de Interfaces "
             break
-        case "/BUSINESS_INTELLIGENCE":
+        case "/SALES":
             categoryName = "Business Intelligence o Ventas"
             break
         default: 
