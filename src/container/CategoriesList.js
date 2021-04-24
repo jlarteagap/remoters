@@ -6,7 +6,7 @@ const CategoriesList = (props) => (
             nextPage={props.nextPage}
             prevPage={props.prevPage}
             page={props.page}
-            reset={props.resetState}
+            reset={props.reset}
         />
 
 )

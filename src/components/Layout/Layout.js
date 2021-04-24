@@ -6,7 +6,7 @@ import Hero from '../Hero/Hero'
 
 const Layout = (props) => (
         <Fragment>
-            <Header reset = {props.reset} />
+            <Header reset = {props.reset} title="CRUITS" />
             <Hero />
                 {props.children}
             <Footer />

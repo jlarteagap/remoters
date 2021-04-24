@@ -1,6 +1,6 @@
 {
-  "name": "tembiapo",
-  "version": "0.1.0",
+  "name": "cruits",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",

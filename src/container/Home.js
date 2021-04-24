@@ -5,7 +5,7 @@ const Home = (props ) => (
     <> 
         <Helmet>
             <meta charSet="utf-8" />
-            <title>Trabajos en Bolivia en tecnología | </title>
+            <title>Trabajos en Bolivia en tecnología | cruits</title>
             <meta name="description" content="Encuentra las mejores ofertas laborales en tecnología en Bolivia"/>
             <meta name="author" content="Jorge Luis Arteaga" />
             <meta name="copyright" content="Jorge Luis Arteaga" />
@@ -21,7 +21,7 @@ const Home = (props ) => (
             nextPage={props.nextPage}
             prevPage={props.prevPage}
             page={props.page}
-            reset={props.resetState} />
+            reset={props.reset} />
     </>
 )
 
