@@ -9,6 +9,7 @@
 /coverage
 
 # production
+/src/hoc/ApolloConect.js
 /build
 .eslintcache
 
