@@ -20,7 +20,7 @@ const Categories = (props) => {
 
             <Query
                 query={GET_CATEGORIES}
-                
+                pollInterval={5000} 
                 variables={{ category, limit: props.page.limit, offset: props.page.offset }}>
 
                 {({ loading, error, data, startPolling, stopPolling }) => {
