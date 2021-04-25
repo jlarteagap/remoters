@@ -23,3 +23,12 @@
         font-weight: 700;
         color: var(--Yellow);
     }
+@media screen and (max-width: 720px) {
+    .hero{
+        height: auto;
+    }
+    .hero h3 {
+        font-size: 1.5rem;
+        line-height: 1.5;
+    }
+}

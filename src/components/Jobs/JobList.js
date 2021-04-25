@@ -22,8 +22,7 @@ const JobList = (props) => {
                         {iconRemote}
                         <JobIcon category = {category} />
                     </div>
-                    <div>
-
+                    <div className="job__button-position">
                         <a className="job__button job__button-shareButton" href="#link" >Compartir</a>
                         <a className="job__button" href={link} target="_blank" rel="noreferrer">Aplicar</a>
                     </div>

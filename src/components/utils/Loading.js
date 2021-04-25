@@ -1,22 +1,22 @@
 import './loading.css'
 const Loading = () => (
-    <div class="loading">
-        <div class="loading-post">
-            <div class="loading-avatar"></div>
-            <div class="loading-line"></div>
-            <div class="loading-line"></div>
+    <div className="loading">
+        <div className="loading-post">
+            <div className="loading-avatar"></div>
+            <div className="loading-line"></div>
+            <div className="loading-line"></div>
         </div>
 
-        <div class="loading-post">
-            <div class="loading-avatar"></div>
-            <div class="loading-line"></div>
-            <div class="loading-line"></div>
+        <div className="loading-post">
+            <div className="loading-avatar"></div>
+            <div className="loading-line"></div>
+            <div className="loading-line"></div>
         </div>
 
-        <div class="loading-post">
-            <div class="loading-avatar"></div>
-            <div class="loading-line"></div>
-            <div class="loading-line"></div>
+        <div className="loading-post">
+            <div className="loading-avatar"></div>
+            <div className="loading-line"></div>
+            <div className="loading-line"></div>
         </div>
     </div>
 )

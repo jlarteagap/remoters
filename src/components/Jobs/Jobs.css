@@ -15,8 +15,9 @@
     width: 50%;
 }
 
-.card__header--title {
-    margin: 0
+.card__header--title{
+    margin: 0;
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
 }
 .card__header--title a{
     color: var(--Gray);
@@ -88,3 +89,22 @@
         display: flex;
         flex-direction: row;
     }
+
+.job__button-position{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+@media screen and (max-width: 720px){
+    .card{
+        display: block;
+    }
+    
+    .job__info{
+        align-items: flex-start;
+    }
+    .card__header, .card__body{
+        width: 100%;
+    }
+}
