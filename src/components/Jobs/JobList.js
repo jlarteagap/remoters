@@ -1,5 +1,6 @@
 import React from 'react'
 import JobIcon from './JobIcon'
+import DEFAULT_IMAGES from '../../assets/img/default.jpeg'
 
 const JobList = (props) => {
     const {company, position, city, link, category, remote} = props.job
@@ -11,6 +12,9 @@ const JobList = (props) => {
 
     return (
         <div className="card">
+            <div className="card__img">
+                <img src={DEFAULT_IMAGES} alt="DEFAUL IMAGES" />
+            </div>
             <div className="card__header">
                 <h2 className="card__header--title"><a href={link} target="_blank" rel="noreferrer">{position}</a></h2>
                 <div className="card__header--sub">{company}</div>
