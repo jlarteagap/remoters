@@ -9,10 +9,6 @@ const JobsList = () => {
     if(loading) return "Loading"
     if(error) return "Error: "
 
-    // return data.getJobs.map(({ company, id}) => (
-    //     <p key={id}>{company}</p>
-    // )
-    // )
     return(
         <div>
             {data.getJobs.map(job => {

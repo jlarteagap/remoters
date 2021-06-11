@@ -1,0 +1,127 @@
+@import './fonts.css';
+
+:root{
+    --Orange: #F7B267;
+    --Blue: #1B9AAA;
+    --Yellow: #FFC43D;
+    --Green: #06D6A0;
+    --Red: #EF476F;
+    --Dark: #5E6472;
+}
+body{
+    font-family: 'Montserrat';
+    color: var(--Dark);
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: var(--Blue);
+    text-decoration: none;
+    transition: all 0.3s;
+    text-shadow: 1px 1px var(--LigthGreen);
+}
+    a:hover{
+        color: var(--Dark);
+        }
+.main{
+    background: #f9f9f9;
+    box-sizing: border-box;
+}
+/* Botones */
+.btn{
+    display: block;
+    border-radius: .25rem;
+    background: var(--Red);
+    cursor: pointer;
+    color: white;
+    padding: .5rem 1rem;
+    transition: all .3s;
+    border: transparent;
+}
+    .btn:hover{
+        color:  var(--Dark);
+        background: var(--Yellow);
+    }
+    .btn-blue{
+        color: white;
+        background: var(--Blue);
+    }
+    .btn-outline-red{
+        background: none;
+        border: 1px solid var(--Red);
+        color: var(--Red);
+        font-weight: 600;
+    }
+    .btn-disabled{
+        background: none;
+        border: 1px solid var(--Dark);
+        color: var(--Dark);
+        cursor: not-allowed;
+        opacity: .5;
+    }
+        .btn-disabled:hover{
+            background: none;
+        }
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Container  */
+.container{
+    display: grid;
+    grid-template-columns: 1fr 25%;
+    grid-gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content, .sidebar{
+    box-sizing: border-box;
+    padding: 2rem 1rem;
+}
+
+
+/* ERROR  */
+.error{
+    border-radius: .5rem;
+    border: solid 1px var(--Red);
+    color: var(--Red);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding: .6rem;
+    text-align: center;
+}
+
+/* PAGINADOR */
+.paginator{
+    display: flex;
+    justify-content: space-between;
+}
+.displayNone{
+    display: none;
+}
+
+.card {
+    background: white;
+    border-radius: .5rem;
+    border: 1px #f9f9f9 solid;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+
+}
+@media screen and (max-width: 720px) {
+    .container{
+        grid-template-columns: 1fr;
+    }
+    .content{
+        order: 1;
+    }
+    .sidebar{
+        padding: 1rem 1rem 0;
+        order: 0;
+    }
+}
