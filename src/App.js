@@ -7,6 +7,7 @@ import { usePagination } from './hooks/usePagination'
 
 import Home from './containers/Home'
 import RegisterView from './containers/RegisterView';
+import LoginView from './containers/LoginView';
 
 const App = () => {
   const { nextPage, prevPage, resetState, page} = usePagination()
@@ -27,6 +28,10 @@ const App = () => {
               <Route exact path="/registro">
                 <RegisterView />
               </Route>
+              <Route exact path="/login">
+                <LoginView />
+              </Route>
+
             </Switch>
           </div>
         </main>

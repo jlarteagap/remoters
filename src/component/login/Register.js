@@ -1,13 +1,13 @@
 import React, { Fragment, useState } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { CREATE_USER_MUTATION } from '../../Graphql/Mutation'
 import { useMutation } from '@apollo/client'
 
-const Register = (props) => {
+const Register = () => {
+    const history = useHistory()
     const [data, setData] = useState({
         email: '',
         password: '',
-        role: 'User'
     })
 
     const [createUser, { error }] = useMutation(CREATE_USER_MUTATION)
@@ -30,15 +30,14 @@ const Register = (props) => {
             variables: {
                 email: data.email,
                 password: data.password,
-                role: data.role,
+                role: 'User',
                 name: '',
                 lastname: '',
                 company: '',
             }
         })
 
-
-        props.history.push('./login')
+        history.push('/')
     }
 
     const validateForm = () => {
@@ -83,4 +82,4 @@ const Register = (props) => {
     )
 }
 
-export default withRouter(Register)
+export default Register

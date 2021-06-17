@@ -2,7 +2,7 @@ import React from 'react'
 import './Jobs.css'
 import Job from './Job'
 import { useQuery } from "@apollo/client"
-import { GET_JOBS } from '../../Graphql/query'
+import { GET_JOBS } from '../../Graphql/Query'
 
 const JobsList = () => {
     const { loading, error, data } = useQuery(GET_JOBS)

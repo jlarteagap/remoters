@@ -17,3 +17,17 @@ export const CREATE_USER_MUTATION = gql`
             role: $role)
     }
 `
+
+export const AUTENTICATE_USER = gql`
+    mutation autenticateUser(
+        $email: String!, 
+        $password: String!) {
+        autenticateUser(
+            email: $email,
+            password: $password)
+            {
+                token
+            }
+    }
+
+`
