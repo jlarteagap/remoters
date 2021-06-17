@@ -1,15 +1,15 @@
 import React, { Fragment, useState } from 'react'
-import { Link, withRouter } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { useMutation } from "@apollo/client"
 import { AUTENTICATE_USER } from '../../Graphql/Mutation'
 
 const Login = () => {
-
+    const history = useHistory()
     const[user, setUser] = useState({
         email: '',
         password: ''
     })
-
+    
     const UpdateState = (e) => {
         setUser({
             ...user,
@@ -17,21 +17,21 @@ const Login = () => {
         })
     }
     const[autenticateUser, {error, data}] = useMutation( AUTENTICATE_USER )
-
+    
     const loginUser = (e) => {
         e.preventDefault()
+
 
         autenticateUser({
             variables: {
                 email: user.email,
                 password: user.password
             }
+        }).then(async({data})=> {
+            localStorage.setItem('token', data.autenticateUser.token)
         })
 
-        return(
-            console.log(data.autenticateUser.token)
-            // localStorage.setItem('token', data.autenticateUser.token)
-        )
+        history.push('/')
     }
 
     return (
@@ -71,4 +71,4 @@ const Login = () => {
     )
 }
 
-export default withRouter(Login)
+export default Login
