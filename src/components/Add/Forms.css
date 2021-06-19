@@ -1,0 +1,43 @@
+.form{
+    width: 80%;
+    margin: 0 auto;
+}
+
+input, select{
+    border: 1px solid var(--Dark);
+    border-radius: .25rem;
+    box-sizing: border-box;
+    display: block;
+    padding: .85rem 1.8rem;
+    transition: all .5s;
+    width: 100%;
+}
+input:focus, input:active{
+    padding-left: .5rem;
+    border: 1px solid var(--Green);
+}
+
+.form__group{
+    position: relative;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.remote {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+.remote input{
+    display: none;
+}
+.remote-btn{
+    text-align: center;
+    width: 100%;
+    border: solid 1px var(--Blue) !important;
+}
+    .false{
+        color: var(--Dark) !important;
+        
+        background: #f9f9f9 !important;
+    }

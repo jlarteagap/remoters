@@ -1,0 +1,11 @@
+.header{
+    align-items: center;
+    border-bottom: 1px solid var(--LigthGreen);
+    box-sizing: border-box;
+    display: flex;
+    height: 4rem;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 1rem;
+}
