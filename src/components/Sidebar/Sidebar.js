@@ -1,3 +1,4 @@
+import React from 'react'
 import {withRouter} from 'react-router-dom'
 import CategoryMenu from './CategoryMenu'
 import AddNewJob from './AddNewJob'

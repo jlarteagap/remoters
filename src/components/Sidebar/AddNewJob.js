@@ -1,3 +1,5 @@
+import React from 'react'
+
 import circles from '../../assets/img/circles.png'
 
 const AddNewJob = () => (

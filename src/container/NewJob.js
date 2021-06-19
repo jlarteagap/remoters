@@ -1,8 +1,9 @@
+import React, { Fragment } from 'react'
 import { Helmet } from "react-helmet"
 import NuevoTrabajo from "../components/Add/NuevoTrabajo"
 
 const NewJob = (props) => (
-    <>
+    <Fragment>
     <Helmet>
         <meta charSet="utf-8" />
         <title>Agrega un nuevo empleo | </title>
@@ -18,7 +19,7 @@ const NewJob = (props) => (
         <meta property="og:image" content="" />
     </Helmet>
     <NuevoTrabajo />
-</>
+</Fragment>
 )
 
 export default NewJob

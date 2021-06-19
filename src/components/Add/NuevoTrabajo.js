@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import { Mutation } from 'react-apollo'
+import { Mutation } from '@apollo/client'
 import { ADD_JOB } from '../../mutation'
 import { withRouter } from 'react-router-dom'
 import Sidebar from '../Sidebar/Sidebar'

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Query } from 'react-apollo'
+import { Query } from '@apollo/client'
 import { GET_CATEGORIES } from '../../query'
 import { withRouter } from 'react-router-dom'
 

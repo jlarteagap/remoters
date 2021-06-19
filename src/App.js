@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Layout from './component/layout/Layout'
-import './assets/css/style.css'
 import { usePagination } from './hooks/usePagination' 
 
 import Home from './containers/Home'
@@ -10,7 +9,7 @@ import RegisterView from './containers/RegisterView';
 import LoginView from './containers/LoginView';
 import NewJob from './container/NewJob';
 import CategoriesList from "./container/CategoriesList"
-import { usePagination } from './hooks/usePagination' 
+
 
 import './assets/css/Style.css'
 

@@ -1,3 +1,4 @@
+import React from 'react'
 import Categories from '../components/Jobs/Categories'
 
 const CategoriesList = (props) => (

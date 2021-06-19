@@ -1,3 +1,4 @@
+import React from 'react'
 import icons from '../../assets/img/icons.png'
 
 const JobIcon = (props) => {
