@@ -1,6 +1,6 @@
 import React from 'react'
-import JobIcon from './JobIcon'
-import DEFAULT_IMAGES from '../../assets/img/default.jpeg'
+// import JobIcon from '../../component/jobs/JobIcon'
+// import DEFAULT_IMAGES from '../../assets/img/default.jpeg'
 
 const JobList = (props) => {
     const {company, position, city, link, category, remote} = props.job

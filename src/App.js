@@ -7,8 +7,8 @@ import { usePagination } from './hooks/usePagination'
 import Home from './containers/Home'
 import RegisterView from './containers/RegisterView';
 import LoginView from './containers/LoginView';
-import NewJob from './container/NewJob';
-import CategoriesList from "./container/CategoriesList"
+// import NewJob from './container/NewJob';
+// import CategoriesList from "./container/CategoriesList"
 
 
 import './assets/css/Style.css'
@@ -35,17 +35,17 @@ const App = () => {
               <Route exact path="/login">
                 <LoginView />
               </Route>
-              <Route exact path="/agregar">
+              {/* <Route exact path="/agregar">
                 <NewJob />
-              </Route>
-              <Route exact path="/:category">
+              </Route> */}
+              {/* <Route exact path="/:category">
                 <CategoriesList
                   nextPage={nextPage}
                   prevPage={prevPage}
                   page={page}
                   reset={resetState}
                 />
-              </Route>
+              </Route> */}
             </Switch>
           </div>
         </main>

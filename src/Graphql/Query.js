@@ -11,5 +11,6 @@ export const GET_JOBS = gql`
           category
           remote
         }
+        totalJobs
       }
 `;
