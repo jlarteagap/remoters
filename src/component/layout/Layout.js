@@ -1,12 +1,13 @@
-
-import React, { Fragment } from 'react'
+import React from 'react'
+import { Fragment } from 'react'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 
-const Layout = ({reset, children}) => (
+
+const Layout = (props) => (
         <Fragment>
-            <Header reset = {reset} title="nEmpleos" />
-                {children}
+            <Header reset = {props.reset} title="nEmpleos..." />
+                {props.children}
             <Footer />
         </Fragment>
 )

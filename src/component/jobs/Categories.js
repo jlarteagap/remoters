@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 import './Jobs.css'
 
 import Sidebar from '../Sidebar/Sidebar'
-import JobList from './JobList'
+import JobList from '../../components/Jobs/JobList'
 import Paginator from '../utils/Paginator'
 import Loading from '../utils/Loading'
 

@@ -4,9 +4,9 @@ import Job from './Job'
 import { useQuery } from "@apollo/client"
 import { GET_JOBS } from '../../Graphql/Query'
 
-import Sidebar from '../../components/Sidebar/Sidebar'
-import Paginator from '../../components/utils/Paginator'
-import Loading from '../../components/utils/Loading'
+import Sidebar from '../sidebar/Sidebar'
+import Paginator from '../utils/Paginator'
+import Loading from '../utils/Loading'
 
 const JobsList = (props) => {
     const { loading, error, data } = useQuery(GET_JOBS, {
@@ -20,24 +20,27 @@ const JobsList = (props) => {
     if(error) return "Error: "
     console.log(data)
     return(
-        <div className="content">
-            {data.getJobs.map(job => {
-                return(
-                        <Job
-                            key={job.id}
-                            job={job}
-                        />
-                )
-            })}
+        <Fragment>
+            <div className="content">
+                {data.getJobs.map(job => {
+                    return(
+                            <Job
+                                key={job.id}
+                                job={job}
+                            />
+                    )
+                })}
 
-            <Paginator
-                actual = {props.page.actual}
-                total = {data.totalJobs}
-                limit = {props.page.limit}
-                prevPage = {props.prevPage}
-                nextPage = {props.nextPage}
-            />
-        </div>
+                <Paginator
+                    actual = {props.page.actual}
+                    total = {data.totalJobs}
+                    limit = {props.page.limit}
+                    prevPage = {props.prevPage}
+                    nextPage = {props.nextPage}
+                />
+            </div>
+            <Sidebar reset = {props.reset} />
+        </Fragment>
     )
 }
 
