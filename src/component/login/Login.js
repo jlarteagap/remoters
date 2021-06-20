@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom"
 import { useMutation } from "@apollo/client"
 import { AUTENTICATE_USER } from '../../Graphql/Mutation'
 
-const Login = () => {
+const Login = (props) => {
     const history = useHistory()
     const[user, setUser] = useState({
         email: '',
@@ -29,6 +29,8 @@ const Login = () => {
             }
         }).then(async({data})=> {
             localStorage.setItem('token', data.autenticateUser.token)
+
+            await props.refetch
         })
 
         history.push('/')

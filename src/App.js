@@ -7,14 +7,17 @@ import { usePagination } from './hooks/usePagination'
 import Home from './containers/Home'
 import RegisterView from './containers/RegisterView';
 import LoginView from './containers/LoginView';
+
+import Session from './hoc/Session'
 // import NewJob from './container/NewJob';
 // import CategoriesList from "./container/CategoriesList"
 
 
 import './assets/css/Style.css'
 
-const App = () => {
+const App = ({refetch, session}) => {
   const { nextPage, prevPage, resetState, page} = usePagination()
+  console.log("🚀 ~ file: App.js ~ line 19 ~ App ~ session", session)
   
   return (
     <Router>
@@ -33,7 +36,7 @@ const App = () => {
                 <RegisterView />
               </Route>
               <Route exact path="/login">
-                <LoginView />
+                <LoginView refetch={refetch}/>
               </Route>
               {/* <Route exact path="/agregar">
                 <NewJob />
@@ -54,4 +57,6 @@ const App = () => {
   )
 }
 
-export default App;
+const RootSession = Session(App)
+
+export { RootSession }

@@ -30,3 +30,11 @@ export const GET_CATEGORIES = gql`
     totalCategories(category: $category)
 }
 `
+
+export const USER_ACTUAL = gql`
+  query getUser{
+    getUser{
+      email
+    }
+  }
+`

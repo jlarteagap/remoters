@@ -18,7 +18,6 @@ const JobsList = (props) => {
     })
     if(loading) return <Loading />
     if(error) return "Error: "
-    console.log(data)
     return(
         <Fragment>
             <div className="content">
