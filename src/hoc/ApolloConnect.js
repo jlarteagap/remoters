@@ -1,6 +1,7 @@
-import { ApolloClient, InMemoryCache, createHttpLink} from "@apollo/client";
+import { ApolloClient, InMemoryCache, createHttpLink, HttpLink} from "@apollo/client";
 import { onError} from '@apollo/client/link/error'
 import { setContext } from '@apollo/client/link/context';
+import { addTypenameToDocument } from "@apollo/client/utilities";
 
 const errorLink = onError(({graphqlErrors, networkError}) => {
     if(graphqlErrors){
@@ -10,8 +11,11 @@ const errorLink = onError(({graphqlErrors, networkError}) => {
     }
 })
 
-const httpLink = createHttpLink({
+const httpLink = new HttpLink({
     uri: 'http://localhost:4000/graphql',
+    fetchOptions: {
+        credentials: 'include'
+    }
   });
   
 const authLink = setContext((_, { headers })=> {
@@ -20,12 +24,15 @@ const authLink = setContext((_, { headers })=> {
     return {
         headers: {
             ...headers, 
-            authorization: token ? token : ''
+            authorization: token ? token : null
         }
     }
 })
 
 export const client = new ApolloClient({
-    link: authLink.concat(httpLink, errorLink),
-    cache: new InMemoryCache(),
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache({
+        addTypename: false
+    }
+    ),
   });

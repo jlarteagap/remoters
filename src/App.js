@@ -35,9 +35,7 @@ const App = ({refetch, session}) => {
               <Route exact path="/registro">
                 <RegisterView />
               </Route>
-              <Route exact path="/login">
-                <LoginView refetch={refetch}/>
-              </Route>
+              <Route exact path="/login" render={() => <LoginView refetch={refetch} /> } />
               {/* <Route exact path="/agregar">
                 <NewJob />
               </Route> */}

@@ -30,7 +30,7 @@ const Login = (props) => {
         }).then(async({data})=> {
             localStorage.setItem('token', data.autenticateUser.token)
 
-            await props.refetch
+            await props.refetch()
         })
 
         history.push('/')

@@ -36,5 +36,5 @@ export const USER_ACTUAL = gql`
     getUser{
       email
     }
-  }
+}
 `
