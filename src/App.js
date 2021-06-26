@@ -13,7 +13,7 @@ import Session from './hoc/Session'
 // import CategoriesList from "./container/CategoriesList"
 
 
-import './assets/css/Style.css'
+import './assets/css/style.css'
 
 const App = ({refetch, session}) => {
   const { nextPage, prevPage, resetState, page} = usePagination()
