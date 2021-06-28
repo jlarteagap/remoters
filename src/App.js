@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Layout from './component/layout/Layout'
-import AppContext from './context/AppContext';
+import AppContext from './context/AppContext'
 import { usePagination } from './hooks/usePagination' 
 
 import Home from './containers/Home'
@@ -18,8 +18,6 @@ import './assets/css/stl.css'
 
 const App = ({refetch, session}) => {
   const pagination = usePagination()
-
-  console.log("🚀 ~ file: App.js ~ line 19 ~ App ~ session", session)
   
   return (
     <AppContext.Provider value={pagination}>
