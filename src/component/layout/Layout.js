@@ -6,7 +6,7 @@ import Footer from '../footer/Footer'
 
 const Layout = (props) => (
         <Fragment>
-            <Header reset = {props.reset} title="nEmpleos..." />
+            <Header title="nEmpleos..." />
                 {props.children}
             <Footer />
         </Fragment>

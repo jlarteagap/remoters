@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Layout from './component/layout/Layout'
+import AppContext from './context/AppContext';
 import { usePagination } from './hooks/usePagination' 
 
 import Home from './containers/Home'
@@ -13,46 +14,45 @@ import Session from './hoc/Session'
 // import CategoriesList from "./container/CategoriesList"
 
 
-import './assets/css/style.css'
+import './assets/css/stl.css'
 
 const App = ({refetch, session}) => {
-  const { nextPage, prevPage, resetState, page} = usePagination()
+  const pagination = usePagination()
+
   console.log("🚀 ~ file: App.js ~ line 19 ~ App ~ session", session)
   
   return (
-    <Router>
-      <Layout reset = {resetState}>
-        <main className="main">
-          <div className="container add">
-            <Switch>
-              <Route exact path="/">
-                <Home
-                  nextPage={nextPage}
-                  prevPage={prevPage}
-                  page={page}
-                  reset={resetState} />
-              </Route>
-              <Route exact path="/registro">
-                <RegisterView />
-              </Route>
-              <Route exact path="/login" render={() => <LoginView refetch={refetch} /> } />
-              {/* <Route exact path="/agregar">
-                <NewJob />
-              </Route> */}
-              {/* <Route exact path="/:category">
-                <CategoriesList
-                  nextPage={nextPage}
-                  prevPage={prevPage}
-                  page={page}
-                  reset={resetState}
-                />
-              </Route> */}
-            </Switch>
-          </div>
-        </main>
-      </Layout>
-    </Router>
-  )
+    <AppContext.Provider value={pagination}>
+      <Router>
+        <Layout>
+          <main className="main">
+            <div className="container add">
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route exact path="/registro">
+                  <RegisterView />
+                </Route>
+                <Route exact path="/login" render={() => <LoginView refetch={refetch} /> } />
+                {/* <Route exact path="/agregar">
+                  <NewJob />
+                </Route> */}
+                {/* <Route exact path="/:category">
+                  <CategoriesList
+                    nextPage={nextPage}
+                    prevPage={prevPage}
+                    page={page}
+                    reset={resetState}
+                  />
+                </Route> */}
+              </Switch>
+            </div>
+          </main>
+        </Layout>
+      </Router>
+    </AppContext.Provider>
+    )
 }
 
 const RootSession = Session(App)
