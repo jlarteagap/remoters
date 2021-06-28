@@ -18,11 +18,7 @@ const Home = (props ) => (
             <meta property="og:url" content="" />
             <meta property="og:image" content="" />
         </Helmet>
-        <JobsList
-            nextPage={props.nextPage}
-            prevPage={props.prevPage}
-            page={props.page}
-            reset={props.reset} />
+        <JobsList />
     </Fragment>
 )
 

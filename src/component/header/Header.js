@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from "react-router-dom";
 
+import AppContext from '../../context/AppContext'
 // import CSS
 import './Header.css'
 
-const Header = ({reset, title}) => {
+const Header = ({title}) => {
+    const { resetState } = useContext(AppContext)
     return(
        <div className="header">
-                <Link to="/" onClick={reset}><h1>{title}</h1></Link>
+                <Link to="/" onClick={resetState}><h1>{title}</h1></Link>
                 <div>
                     <div>
                         <Link
