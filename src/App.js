@@ -18,6 +18,14 @@ import './assets/css/stl.css'
 
 const App = ({refetch, session}) => {
   const pagination = usePagination()
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+  console.log("🚀 ~ file: App.js ~ line 19 ~ App ~ session", session)
+=======
+>>>>>>> useContext
+>>>>>>> fb96be5d8a069720cbf90fb0b51c5be36f639924
   
   return (
     <AppContext.Provider value={pagination}>
