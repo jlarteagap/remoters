@@ -1,6 +1,10 @@
 import { ApolloClient, InMemoryCache, HttpLink} from "@apollo/client";
 import { onError} from '@apollo/client/link/error'
 import { setContext } from '@apollo/client/link/context';
+<<<<<<< HEAD
+=======
+
+>>>>>>> useContext
 
 const errorLink = onError(({graphqlErrors, networkError}) => {
     if(graphqlErrors){

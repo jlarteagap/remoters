@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import JobsList from '../component/jobs/JobsList'
 
-const Home = (props ) => (
+const Home = () => (
     <Fragment> 
         <Helmet>
             <meta charSet="utf-8" />

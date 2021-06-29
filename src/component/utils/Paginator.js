@@ -3,7 +3,7 @@ import { useState } from "react"
 
 const Paginator = (props) => {
     const {actual, total, limit} = props
-    const [pages, setPages] = useState(Math.ceil(total / limit))
+    const pages = useState(Math.ceil(total / limit))
     
     const btnPrev = (actual !== 1 ) ? 
         <button className="btn btn-outline-red" onClick={props.prevPage}>&laquo; Anterior</button> :

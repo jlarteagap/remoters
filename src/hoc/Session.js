@@ -8,7 +8,7 @@ const Session = Component => ( props ) => {
     const { loading, error, data, refetch} = useQuery( USER_ACTUAL )
     if(loading) return null
     if(error) return `Error ${error.message}`
-    console.log(data)
+
     return <Component {...props} refetch={refetch} session={data} />
 }
 
