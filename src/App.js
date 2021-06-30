@@ -17,6 +17,7 @@ import Session from './hoc/Session'
 import './assets/css/stl.css'
 import Dashboard from './component/dashboard/Dashboard';
 import Profile from './component/profile/Profile';
+import Company from './component/company/Company'
 
 const App = ({refetch, session}) => {
   const pagination = usePagination()
@@ -26,7 +27,7 @@ const App = ({refetch, session}) => {
       <Router>
         <Layout>
           <main className="main">
-            <div className="container add">
+            <div className="container">
               <Switch>
                 <Route exact path="/">
                   <Home />
@@ -37,6 +38,7 @@ const App = ({refetch, session}) => {
                 <Route exact path="/login" render={() => <LoginView refetch={refetch} /> } />
                 <Route exact path="/panel"><Dashboard /></Route>
                 <Route exact path="/profile"><Profile /></Route>
+                <Route exact path="/empresas"><Company /></Route>
                 {/* <Route exact path="/agregar">
                   <NewJob />
                 </Route> */}
