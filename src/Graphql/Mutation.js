@@ -45,3 +45,15 @@ export const AUTENTICATE_USER = gql`
     }
 
 `
+
+export const CREATE_COMPANY = gql`
+    mutation createCompany($input: CompanyInput){
+        createCompany(input: $input){
+            name
+            site
+            description
+            logo
+            user
+        }
+    }
+`
