@@ -21,18 +21,18 @@ const Company = () => {
     const formCompany = (e) => {
         e.preventDefault()
 
-        console.log(company)
-
         if (error) {
             console.log(error)
         }
         createCompany({
             variables: {
-                name: company.name,
-                site: company.site,
-                description: company.description,
-                logo: '',
-                user: ''
+                input: {
+                    name: company.name,
+                    site: company.site,
+                    description: company.description,
+                    logo: '',
+                    user: ''
+                }
             }
         }) 
     }
