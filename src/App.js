@@ -15,18 +15,11 @@ import Session from './hoc/Session'
 
 
 import './assets/css/stl.css'
+import Company from './component/company/Company';
 
 const App = ({refetch, session}) => {
   const pagination = usePagination()
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-  console.log("🚀 ~ file: App.js ~ line 19 ~ App ~ session", session)
-=======
->>>>>>> useContext
->>>>>>> fb96be5d8a069720cbf90fb0b51c5be36f639924
-  
   return (
     <AppContext.Provider value={pagination}>
       <Router>
@@ -41,6 +34,7 @@ const App = ({refetch, session}) => {
                   <RegisterView />
                 </Route>
                 <Route exact path="/login" render={() => <LoginView refetch={refetch} /> } />
+                <Route exact path="/empresas"><Company /></Route>
                 {/* <Route exact path="/agregar">
                   <NewJob />
                 </Route> */}
