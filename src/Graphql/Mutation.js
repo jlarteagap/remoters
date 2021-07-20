@@ -3,7 +3,6 @@ import { gql } from "@apollo/client";
 export const ADD_JOB = gql`
 mutation addjob ($input: JobInput){
     addJob(input: $input){
-        company
         position
         category
         city
@@ -54,6 +53,14 @@ export const CREATE_COMPANY = gql`
             description
             logo
             user
+        }
+    }
+`
+
+export const UPLOAD_IMAGE = gql`
+    mutation singleUpload($file: Upload!){
+        singleUpload(file: $file){
+            url
         }
     }
 `

@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { CREATE_COMPANY } from '../../Graphql/Mutation'
 
+import UploadLogo from './UploadLogo'
 
 const Company = () => {
     const [company, setCompany] = useState({
         name: '',
         site: '',
         description: '',
+        logo: ''
     })
 
     const [createCompany, {error}] =useMutation(CREATE_COMPANY)
@@ -41,6 +43,9 @@ const Company = () => {
         <div className="card">
             <h3>Registro de empresas</h3>
             <form className="form" onSubmit={e => formCompany(e)}>
+                <div className="form__group">
+                   <UploadLogo />
+                </div>
                 <div className="form__group">
                     <label>Nombre de la empresa</label>
                     <input

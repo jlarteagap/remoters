@@ -20,7 +20,7 @@ const JobsList = () => {
         }
     })
     if(loading) return <Loading />
-    if(error) return "Error: "
+    if(error) return "Error: No se pude conectar con el servidor"
     return(
         <Fragment>
             <div className="content">
