@@ -18,7 +18,7 @@ import './assets/css/stl.css'
 
 const App = ({refetch, session}) => {
   const pagination = usePagination()
-
+  
   console.log("🚀 ~ file: App.js ~ line 19 ~ App ~ session", session)
 
   return (
