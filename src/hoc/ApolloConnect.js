@@ -1,14 +1,14 @@
-import { ApolloClient, InMemoryCache, HttpLink, createHttpLink} from "@apollo/client";
+import { ApolloClient, InMemoryCache, createHttpLink} from "@apollo/client";
 import { onError} from '@apollo/client/link/error'
 import { setContext } from '@apollo/client/link/context';
 
-const errorLink = onError(({graphqlErrors, networkError}) => {
-    if(graphqlErrors){
-        graphqlErrors.map(({message, location, path}) => {
-            alert(`GraphQL error ${message}`)
-        })
-    }
-})
+// const errorLink = onError(({graphqlErrors, networkError}) => {
+//     if(graphqlErrors){
+//         graphqlErrors.map(({message, location, path}) => {
+//             alert(`GraphQL error ${message}`)
+//         })
+//     }
+// })
 
 const httpLink = createHttpLink({
     uri: 'http://localhost:4000/graphql',

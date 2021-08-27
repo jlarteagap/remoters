@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Layout from './component/layout/Layout'
 import AppContext from './context/AppContext'
 import { usePagination } from './hooks/usePagination' 
-
+import { AuthProvider } from './context/auth'
 import Home from './containers/Home'
 import RegisterView from './containers/RegisterView';
 import LoginView from './containers/LoginView';
@@ -13,16 +13,14 @@ import Session from './hoc/Session'
 // import NewJob from './container/NewJob';
 // import CategoriesList from "./container/CategoriesList"
 
-
 import './assets/css/stl.css'
 
 const App = ({refetch, session}) => {
   const pagination = usePagination()
-  
-  console.log("🚀 ~ file: App.js ~ line 19 ~ App ~ session", session)
 
   return (
-    <AppContext.Provider value={pagination}>
+    <AuthProvider>
+      <AppContext.Provider value={pagination}>
       <Router>
         <Layout>
           <main className="main">
@@ -52,7 +50,8 @@ const App = ({refetch, session}) => {
         </Layout>
       </Router>
     </AppContext.Provider>
-    )
+    </AuthProvider>
+  )
 }
 
 const RootSession = Session(App)

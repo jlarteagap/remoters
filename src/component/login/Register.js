@@ -1,51 +1,51 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { CREATE_USER_MUTATION } from '../../Graphql/Mutation'
 import { useMutation } from '@apollo/client'
 
-const Register = () => {
+import { AuthContext } from '../../context/auth'
+
+const Register = (props) => {
+
     const history = useHistory()
-    const [data, setData] = useState({
+    const context = useContext(AuthContext)
+    const [user, setUser] = useState({
         email: '',
         password: '',
+        confirmPassword: ''
     })
 
-    const [createUser, { error }] = useMutation(CREATE_USER_MUTATION)
+    const [register, { error, loading, data}] = useMutation(CREATE_USER_MUTATION)
 
-    const UpdateState = (e) => {
-        setData({
-            ...data,
+    const updateState = (e) => {
+        setUser({
+            ...user,
             [e.target.name]: e.target.value
         })
     }
 
     const addUser = (e) => {
         e.preventDefault()
- 
-        if (error) {
+
+        if(error){
             console.log(error)
         }
 
-        createUser({
+        register({
             variables: {
-                email: data.email,
-                password: data.password,
-                role: 'User',
-                name: '',
-                lastname: '',
-                company: '',
+                input : {
+                    email: user.email,
+                    password: user.password,
+                    confirmPassword: user.confirmPassword
+                }
             }
+        }).then(async({data})=> {
+            console.log({data})
+            context.login(data.register)
         })
 
         history.push('/')
     }
-
-    const validateForm = () => {
-        const {email, password} = data
-        const notValidate = !email || !password || password.length <= 1
-        return notValidate
-    }
-
     return (
         <Fragment>
             <div className="login__titles">
@@ -56,7 +56,7 @@ const Register = () => {
                 <form onSubmit={e => addUser(e)}>
                     <div className="form__group">
                         <input
-                            onChange={UpdateState}
+                            onChange={updateState}
                             type="email"
                             name="email"
                             placeholder="Correo electrónico"
@@ -64,15 +64,23 @@ const Register = () => {
                     </div>
                     <div className="form__group">
                         <input
-                            onChange={UpdateState}
+                            onChange={updateState}
                             type="password"
                             name="password"
                             required
                             placeholder="Contraseña" />
                     </div>
+                    <div className="form__group">
+                        <input
+                            onChange={updateState}
+                            type="password"
+                            name="confirmPassword"
+                            required
+                            placeholder="Contraseña" />
+                    </div>
                     <div className="center">
                         <button
-                            disabled={ validateForm() }
+                            // disabled={ validateForm() }
                             className="btn">Registrarme</button>
                     </div>
                     <small className="center">Ya estas registrado? <Link to="/registro">Ingresa por aquí</Link></small>
