@@ -2,11 +2,12 @@ import React, { Fragment, useContext, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { CREATE_USER_MUTATION } from '../../Graphql/Mutation'
 import { useMutation } from '@apollo/client'
-
+import Error from '../utils/Error'
 import { AuthContext } from '../../context/auth'
 
-const Register = (props) => {
+const Register = () => {
 
+    const [errors, setErrors] = useState({message: ''})
     const history = useHistory()
     const context = useContext(AuthContext)
     const [user, setUser] = useState({
@@ -15,7 +16,7 @@ const Register = (props) => {
         confirmPassword: ''
     })
 
-    const [register, { error, loading, data}] = useMutation(CREATE_USER_MUTATION)
+    const [register ] = useMutation(CREATE_USER_MUTATION)
 
     const updateState = (e) => {
         setUser({
@@ -24,13 +25,8 @@ const Register = (props) => {
         })
     }
 
-    const addUser = (e) => {
+    const addUser = async (e) => {
         e.preventDefault()
-
-        if(error){
-            console.log(error)
-        }
-
         register({
             variables: {
                 input : {
@@ -40,11 +36,13 @@ const Register = (props) => {
                 }
             }
         }).then(async({data})=> {
-            console.log({data})
             context.login(data.register)
-        })
-
-        history.push('/')
+            history.push('/')
+        }).catch((err) => {
+            setErrors({
+                message: err.message
+            })
+        })   
     }
     return (
         <Fragment>
@@ -83,6 +81,7 @@ const Register = (props) => {
                             // disabled={ validateForm() }
                             className="btn">Registrarme</button>
                     </div>
+                    { errors.message ? <Error message={errors.message} /> : ''}
                     <small className="center">Ya estas registrado? <Link to="/registro">Ingresa por aquí</Link></small>
                 </form>
             </div>
