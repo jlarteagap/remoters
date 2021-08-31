@@ -9,13 +9,12 @@ import Home from './containers/Home'
 import RegisterView from './containers/RegisterView';
 import LoginView from './containers/LoginView';
 
-import Session from './hoc/Session'
 // import NewJob from './container/NewJob';
 // import CategoriesList from "./container/CategoriesList"
 
 import './assets/css/stl.css'
 
-const App = ({refetch, session}) => {
+const App = () => {
   const pagination = usePagination()
 
   return (
@@ -32,7 +31,7 @@ const App = ({refetch, session}) => {
                 <Route exact path="/registro">
                   <RegisterView />
                 </Route>
-                <Route exact path="/login" render={() => <LoginView refetch={refetch} /> } />
+                <Route exact path="/login" render={() => <LoginView /> } />
                 {/* <Route exact path="/agregar">
                   <NewJob />
                 </Route> */}
@@ -54,6 +53,4 @@ const App = ({refetch, session}) => {
   )
 }
 
-const RootSession = Session(App)
-
-export { RootSession }
+export default App;
