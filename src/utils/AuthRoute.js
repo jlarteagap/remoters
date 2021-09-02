@@ -2,17 +2,26 @@ import React, { Component, useContext } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { AuthContext } from "../context/auth";
 
-const AuthRoute = ({ component: Component, ...rest}) => {
-    const { user } = useContext(AuthContext)
 
-    return(
-        <Route
-            {...rest}
-            render = {(props) =>
-                user ? <Redirect to='/' /> : <Component {...props} />
-            }
-        />
-    )
+export const AuthRoute = ({ component: Component, ...rest}) => {
+    const { user } = useContext(AuthContext)
+    
+    const render = props => {
+        if(user && rest.restricted) {
+            return <Redirect to='/dashboard' />
+        }
+        return<Component {...props} />
+    }
+    return <Route {...rest} render={render} />
 }
 
-export default AuthRoute
+export const PrivateRoute = ({component: Component, ...rest}) => {
+    const { user } = useContext(AuthContext)
+    const render = props => {
+        if(!user) {
+            return <Redirect to='/login' />
+        }
+        return<Component {...props} />
+    }
+    return <Route {...rest} render={render} />
+}
