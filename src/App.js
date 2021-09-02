@@ -1,4 +1,4 @@
-import React, { useContext }from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Layout from './component/layout/Layout'
 import AppContext from './context/AppContext'
@@ -26,8 +26,8 @@ const App = () => {
             <div className="container add">
               <Switch>
                 <AuthRoute exact path="/" component={Home} />
-                <AuthRoute exact path="/registro" restricted={true} component={RegisterView} />
-                <AuthRoute exact path="/login" restricted={true} component={LoginView} />
+                <AuthRoute exact path="/registro" restricted component={RegisterView} />
+                <AuthRoute exact path="/login" restricted component={LoginView} />
                 <PrivateRoute exact path="/agregar" component={NewJob} />
               </Switch>
             </div>
