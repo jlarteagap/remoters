@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
 import { Helmet } from "react-helmet"
-import NuevoTrabajo from "../components/Add/NuevoTrabajo"
+import Agregar from '../component/add/Agregar'
 
-const NewJob = (props) => (
+
+const NewJob = () => (
     <Fragment>
     <Helmet>
         <meta charSet="utf-8" />
@@ -18,7 +19,7 @@ const NewJob = (props) => (
         <meta property="og:url" content="" />
         <meta property="og:image" content="" />
     </Helmet>
-    <NuevoTrabajo />
+    <Agregar />
 </Fragment>
 )
 

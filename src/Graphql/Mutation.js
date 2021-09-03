@@ -15,33 +15,32 @@ mutation addjob ($input: JobInput){
   }`
 
 export const CREATE_USER_MUTATION = gql`
-    mutation createUser(
-            $email: String!, 
-            $password: String!, 
-            $name: String, 
-            $lastname: String, 
-            $company: String, 
-            $role: String){
-        createUser(
-            email: $email, 
-            password:$password, 
-            name:$name, 
-            lastname: $lastname, 
-            company: $company, 
-            role: $role)
+    mutation register($input: RegisterInput){
+        register(input: $input){
+            id
+            name
+            lastname
+            email
+            password
+            role
+            token
+            createdAt
+        }
     }
 `
 
-export const AUTENTICATE_USER = gql`
-    mutation autenticateUser(
-        $email: String!, 
-        $password: String!) {
-        autenticateUser(
-            email: $email,
-            password: $password)
-            {
-                token
-            }
+export const LOGIN_USER = gql`
+    mutation login($email: String!, $password: String!){
+        login(email:$email, password: $password){
+            id
+            name
+            lastname
+            email
+            password
+            role
+            token
+            createdAt
+        }
     }
 
 `

@@ -1,39 +1,44 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useContext } from 'react'
 import { Link, useHistory } from "react-router-dom"
 import { useMutation } from "@apollo/client"
-import { AUTENTICATE_USER } from '../../Graphql/Mutation'
+import { LOGIN_USER } from '../../Graphql/Mutation'
+import Error from '../utils/Error'
+import { AuthContext } from '../../context/auth'
 
-const Login = (props) => {
+const Login = () => {
+    const [errors, setErrors] = useState({message: ''})
     const history = useHistory()
+    const context = useContext(AuthContext)
+
     const[user, setUser] = useState({
         email: '',
         password: ''
     })
     
-    const UpdateState = (e) => {
+    const updateState = (e) => {
         setUser({
             ...user,
             [e.target.name]: e.target.value
         })
     }
-    const[autenticateUser, {error, data}] = useMutation( AUTENTICATE_USER )
+    const[login] = useMutation( LOGIN_USER )
     
     const loginUser = (e) => {
         e.preventDefault()
 
-
-        autenticateUser({
+        login({
             variables: {
                 email: user.email,
                 password: user.password
             }
         }).then(async({data})=> {
-            localStorage.setItem('token', data.autenticateUser.token)
-
-            await props.refetch()
+            context.login(data.login)
+            history.push('/')
+        }).catch((err) => {
+            setErrors({
+                message: err.message
+            })
         })
-
-        history.push('/')
     }
 
     return (
@@ -43,11 +48,10 @@ const Login = (props) => {
                 <p>Ingresa al panel de administracion para publicar tu anuncio</p>
             </div>
             <div className="card card--login">
-
                 <form onSubmit={e => loginUser(e)}>
                     <div className="form__group">
                         <input
-                            onChange={UpdateState}
+                            onChange={updateState}
                             type="email"
                             name="email"
                             placeholder="Correo electrónico..."
@@ -55,16 +59,16 @@ const Login = (props) => {
                     </div>
                     <div className="form__group">
                         <input
-                            onChange={UpdateState}
+                            onChange={updateState}
                             type="password"
                             name="password"
                             placeholder="Contraseña" />
                     </div>
                     <div className="center">
                         <button
-                            // disabled={validateForm}
                             className="btn">Iniciar sesión</button>
                     </div>
+                    { errors.message ? <Error message={errors.message} /> : ''}
                     <small>No estas registrado? <Link to="/registro">Registrarse aquí</Link></small>
                 </form>
             </div>
