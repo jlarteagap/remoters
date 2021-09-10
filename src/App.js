@@ -1,10 +1,10 @@
-import React from 'react'
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import React, { useContext } from 'react'
+import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
 import Layout from './component/layout/Layout'
 import AppContext from './context/AppContext'
 import {AuthRoute, PrivateRoute} from './utils/AuthRoute'
 import { usePagination } from './hooks/usePagination' 
-import { AuthProvider } from './context/auth'
+import { AuthProvider, AuthContext } from './context/auth'
 import Home from './containers/Home'
 import RegisterView from './containers/RegisterView';
 import LoginView from './containers/LoginView';
@@ -19,7 +19,6 @@ import Company from './component/company/Company'
 
 const App = () => {
   const pagination = usePagination()
-
   return (
     <AuthProvider>
       <AppContext.Provider value={pagination}>

@@ -42,3 +42,7 @@
 .header__right--plus{
     margin-right: .5rem;
 }
+
+.header--log{
+    color: var(--Blue);
+}

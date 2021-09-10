@@ -7,7 +7,6 @@ export const AuthRoute = ({ component: Component, ...rest}) => {
     const { user } = useContext(AuthContext)
     
     const render = props => {
-        console.log(rest.restricted)
         if(user && rest.restricted) {
             return <Redirect to='/dashboard' />
         }
