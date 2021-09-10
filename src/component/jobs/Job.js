@@ -1,7 +1,7 @@
 import React from 'react'
 import JobIcon from './JobIcon'
 import DEFAULT_IMAGES from '../../assets/img/default.jpeg'
-
+import { FaMapMarkerAlt } from 'react-icons/fa'
 
 const Job = ({job}) => {
     const {company, position, city, link, category, remote} = job
@@ -18,7 +18,7 @@ const Job = ({job}) => {
             <div className="card__header">
                 <h2 className="card__header--title"><a href={link} target="_blank" rel="noreferrer">{position}</a></h2>
                 <div className="card__header--sub">{company}</div>
-                <span className="job__city">{city.replace("_", " ")}</span>
+                <span className="job__city"><FaMapMarkerAlt /> {city.replace("_", " ")}</span>
             </div>
             <div className="card__body">
                 <div className="job__info">

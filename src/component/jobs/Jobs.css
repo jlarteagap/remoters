@@ -32,8 +32,8 @@
 }
 .job__city{
     display: block;
-    margin-top: .5rem;
     font-size: .8rem;
+    margin-top: .5rem;
     text-transform: lowercase;
 }
     .job__city::first-letter, .job__city::first-line{
