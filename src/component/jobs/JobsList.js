@@ -20,7 +20,7 @@ const JobsList = () => {
         }
     })
     if(loading) return <Loading />
-    if(error) return "Error: "
+    if(error) return `Error: ${error.message}`
     return(
         <Fragment>
             <div className="content">

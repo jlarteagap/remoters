@@ -1,59 +1,51 @@
-import React, { Fragment } from 'react'
-import { Query } from '@apollo/client'
-import { GET_CATEGORIES } from '../../query'
+import React, { Fragment, useContext} from 'react'
+import { useQuery } from '@apollo/client'
 import { withRouter } from 'react-router-dom'
+import { GET_JOBS } from '../../Graphql/Query'
 
 import './Jobs.css'
 
-import Sidebar from '../Sidebar/Sidebar'
-import JobList from '../../components/Jobs/JobList'
+import Sidebar from '../sidebar/Sidebar'
+import Job from './Job'
 import Paginator from '../utils/Paginator'
 import Loading from '../utils/Loading'
+import AppContext from '../../context/AppContext'
 
 
 const Categories = (props) => {
-
     const category = props.match.params.category
-
-    return (
+    const { resetState, nextPage, prevPage, page } = useContext(AppContext)
+    const {loading, error, data} = useQuery(GET_JOBS, {
+        pollInterval: 5000,
+        variables: {
+            category,
+            limit: page.limit,
+            offset: page.offset
+        }
+    })
+    if(loading) return <Loading />
+    if(error) return `Error: ${error.message}`
+    return(
         <Fragment>
-
-            <Query
-                query={GET_CATEGORIES}
-                pollInterval={5000} 
-                variables={{ category, limit: props.page.limit, offset: props.page.offset }}>
-
-                {({ loading, error, data, startPolling, stopPolling }) => {
-                    
-                    if (loading) return <Loading />;
-                    if (error) return `Error ${error.message}`
-
-                    return (
-                        <div className="content">
-                            {data.byCategories.map(job => {
-                                return (
-
-                                    <JobList
-                                        key={job.id}
-                                        job={job}
-                                    />
-
-                                )
-                            })}
-                            {/* ADD ASC List */}
-
-                            <Paginator
-                                actual={props.page.actual}
-                                total = {data.totalCategories}
-                                limit={props.page.limit}
-                                prevPage={props.prevPage}
-                                nextPage={props.nextPage}
-                            />
-                        </div>
+            <div className="content">
+                {data.getJobs.map(job => {
+                    return(
+                        <Job
+                            key={job.id}
+                            job={job} />
                     )
-                }}
-            </Query>
-            <Sidebar reset = {props.reset} />
+                })}
+
+                <Paginator
+                    actual = {page.actual}
+                    total = {data.totalJobs}
+                    limit = {page.limit}
+                    prevPage = {prevPage}
+                    nextPage = {nextPage}
+                />
+            </div>
+
+            <Sidebar reset = {resetState} />
         </Fragment>
     )
 }
