@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from '../component/login/Login'
 
-const LoginView = ({refetch}) => <Login refetch = {refetch} />
+const LoginView = () => <Login />
 
 export default LoginView

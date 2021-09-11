@@ -30,11 +30,14 @@ a{
 }
 /* Botones */
 .btn{
-    display: block;
-    border-radius: .25rem;
+    align-items: center;
     background: var(--Red);
-    cursor: pointer;
+    border-radius: .25rem;
     color: white;
+    cursor: pointer;
+    display: flex;
+    font-weight: 500;
+    justify-content: center;
     padding: .5rem 1rem;
     transition: all .3s;
     border: none;
@@ -119,6 +122,10 @@ a{
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
     margin-bottom: 1rem;
     padding: 1rem 1.5rem;
+}
+
+.mr-1{
+    margin-right: .5rem;
 }
 
 /* Forms  */

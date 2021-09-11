@@ -1,5 +1,5 @@
 import React from 'react'
-import Categories from '../components/Jobs/Categories'
+import Categories from '../component/jobs/Categories'
 
 const CategoriesList = (props) => (
     
