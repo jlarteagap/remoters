@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { CREATE_COMPANY } from '../../Graphql/Mutation'
-
+// import { useHistory } from 'react-router-dom'
 import UploadLogo from './UploadLogo'
 
 const Company = () => {
-    const [company, setCompany] = useState({
+    // const history = useHistory()
+    const initialState = {
         name: '',
         site: '',
         description: '',
         logo: ''
-    })
+    }
+    const [company, setCompany] = useState(initialState)
 
-    const [createCompany, {error}] =useMutation(CREATE_COMPANY)
+    const [createCompany, {error}] = useMutation(CREATE_COMPANY)
+    const clearState = () => {
+        setCompany({ ...initialState });
+      };
 
     const updateState = (e) => {
         setCompany({
@@ -36,7 +41,8 @@ const Company = () => {
                     user: ''
                 }
             }
-        }) 
+        }).then(clearState)
+
     }
 
     return(
@@ -53,6 +59,7 @@ const Company = () => {
                         name="name"
                         type="text" 
                         placeholder="Nombre de la empresa"
+                        value={company.name}
                         required />
                 </div>
                 <div className="form__group">
@@ -62,6 +69,7 @@ const Company = () => {
                         name="site"
                         type="text" 
                         placeholder="Nombre de la empresa"
+                        value={company.site}
                         required />
                 </div>
                 <div className="form__group">
@@ -69,7 +77,8 @@ const Company = () => {
                     <textarea
                         onChange={updateState}
                         name="description"
-                        type="text" 
+                        type="text"
+                        value={company.description}
                         placeholder="Nombre de la empresa" />
                 </div>
                 <button className="btn">Agregar empresa</button>
