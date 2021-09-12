@@ -18,3 +18,19 @@ export const GET_JOBS = gql`
         totalJobs
       }
 `;
+
+export const GET_COMPANIES = gql`
+  query allCompanies($user: String, $limit:Int, $offset:Int){
+    allCompanies(user: $user, limit: $limit, offset: $offset){
+      id
+      name
+      site
+      description
+      logo
+      createdAt
+      user{
+        email
+      }
+    }
+  }
+`
