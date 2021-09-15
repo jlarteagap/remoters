@@ -28,9 +28,7 @@ export const GET_COMPANIES = gql`
       description
       logo
       createdAt
-      user{
-        email
-      }
+      username
     }
   }
 `

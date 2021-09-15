@@ -52,13 +52,8 @@ export const CREATE_COMPANY = gql`
             site
             description
             logo
-            user{
-                email,
-                name,
-                lastname,
-                id
-            }
             createdAt
+            username
         }
     }
 `
