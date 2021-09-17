@@ -6,7 +6,7 @@ import Company from './Company'
 import AppContext from '../../context/AppContext';
 import Paginator from '../utils/Paginator';
 import Loading from '../utils/Loading';
-import Job from '../jobs/Job';
+
 const CompaniesList = () => {
     const { nextPage, prevPage, page } = useContext(AppContext)
     const {loading, error, data} = useQuery(GET_COMPANIES, {

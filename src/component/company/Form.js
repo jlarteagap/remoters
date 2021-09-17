@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { CREATE_COMPANY } from '../../Graphql/Mutation'
 // import { useHistory } from 'react-router-dom'
+import { AuthContext } from '../../context/auth'
+
 import UploadLogo from './UploadLogo'
 
 const Form = () => {
+    const { user } = useContext(AuthContext)
     // const history = useHistory()
     const initialState = {
         name: '',
@@ -38,7 +41,7 @@ const Form = () => {
                     site: company.site,
                     description: company.description,
                     logo: '',
-                    user: ''
+                    username: user.email
                 }
             }
         }).then(clearState)
