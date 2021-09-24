@@ -58,6 +58,12 @@ export const CREATE_COMPANY = gql`
     }
 `
 
+export const DELETE_COMPANY = gql`
+    mutation deleteCompany($companyId: ID){
+        deleteCompany(companyId: $companyId)
+    }
+`
+
 export const UPLOAD_IMAGE = gql`
     mutation singleUpload($file: Upload!){
         singleUpload(file: $file){

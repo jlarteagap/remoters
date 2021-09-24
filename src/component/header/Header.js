@@ -25,13 +25,14 @@ const Header = ({title}) => {
                         ><FaPlus className="header__right--plus"/>AGREGAR
                     </Link>
                         { user ?
-                            <Link
+                            <div
                                 className="header--log"
-                                onClick={logout} 
+                                onClick={logout}
+                                as={Link}
                             >
                                 <FaSignOutAlt
                                 /> Salir
-                            </Link>
+                            </div>
                             : 
                             <Link
                                 className="header--log"

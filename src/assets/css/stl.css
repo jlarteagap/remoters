@@ -50,6 +50,10 @@ a{
         color: white;
         background: var(--Blue);
     }
+    .btn-orange{
+        color: white;
+        background: var(--Orange);
+    }
     .btn-outline-red{
         background: none;
         border: 1px solid var(--Red);

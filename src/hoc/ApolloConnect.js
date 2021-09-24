@@ -12,6 +12,9 @@ const errorLink = onError(({graphqlErrors, networkError}) => {
 
 const httpLink = createHttpLink({
     uri: 'http://localhost:4000/graphql',
+    fetchOptions: {
+        credentials: 'include'
+    }
 })
   
 const authLink = setContext((_, { headers })=> {
@@ -20,7 +23,7 @@ const authLink = setContext((_, { headers })=> {
     return {
         headers: {
             ...headers, 
-            authorization: token ? token : ""
+            authorization: token ? `Bearer ${token}`: ""
         }
     }
 })

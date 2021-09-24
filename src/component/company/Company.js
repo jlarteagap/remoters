@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import DEFAULT_IMAGES from '../../assets/img/default.jpeg'
 import DeleteButton from '../../utils/DeleteButton'
 
-const Company = ({company}) => {
-    const { name, site, description, logo } = company
+import { AuthContext } from '../../context/auth'
+import EditButton from '../../utils/Editbutton'
 
+const Company = ({company}) => {
+    const { user } = useContext(AuthContext)
+    const { id, name, site, description, username } = company
+
+    console.log(id)
     return(
         <div className="card card--job">
             <div className="card__img">
@@ -16,7 +21,14 @@ const Company = ({company}) => {
                 <p>{description}</p>
             </div>
 
-            {/* <DeleteButton /> */}
+            <div>
+                {user && user.email === username &&(
+                    <div>
+                        <EditButton companyId={id} />
+                        <DeleteButton companyId={id}/>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
