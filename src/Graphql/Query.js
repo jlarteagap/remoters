@@ -20,8 +20,8 @@ export const GET_JOBS = gql`
 `;
 
 export const GET_COMPANIES = gql`
-  query allCompanies($user: String, $limit:Int, $offset:Int){
-    allCompanies(user: $user, limit: $limit, offset: $offset){
+  query allCompanies($username: String, $limit:Int, $offset:Int){
+    allCompanies(username: $username, limit: $limit, offset: $offset){
       id
       name
       site

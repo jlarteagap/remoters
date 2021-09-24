@@ -85,7 +85,6 @@ a{
     padding: 2rem 1rem;
 }
 
-
 /* ERROR  */
 .error{
     border-radius: .5rem;
@@ -157,3 +156,7 @@ input:focus, input:active{
     border: 1px solid var(--Green);
 }
 
+.button--inline{
+    display: flex;
+    justify-content: space-around;
+}

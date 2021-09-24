@@ -9,7 +9,6 @@ const Company = ({company}) => {
     const { user } = useContext(AuthContext)
     const { id, name, site, description, username } = company
 
-    console.log(id)
     return(
         <div className="card card--job">
             <div className="card__img">
@@ -23,7 +22,7 @@ const Company = ({company}) => {
 
             <div>
                 {user && user.email === username &&(
-                    <div>
+                    <div className="button--inline">
                         <EditButton companyId={id} />
                         <DeleteButton companyId={id}/>
                     </div>
