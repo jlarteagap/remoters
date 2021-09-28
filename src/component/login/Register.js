@@ -37,7 +37,7 @@ const Register = () => {
             }
         }).then(async({data})=> {
             context.login(data.register)
-            history.push('/')
+            history.push('/dashboard')
         }).catch((err) => {
             setErrors({
                 message: err.message

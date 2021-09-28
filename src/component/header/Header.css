@@ -45,4 +45,5 @@
 
 .header--log{
     color: var(--Blue);
+    cursor: pointer;
 }

@@ -10,7 +10,6 @@ import Loading from '../utils/Loading';
 
 const CompaniesList = () => {
     const { user } = useContext(AuthContext)
-    console.log(user)
     const { nextPage, prevPage, page } = useContext(AppContext)
     const {loading, error, data} = useQuery(GET_COMPANIES, {
         pollInterval: 3000,

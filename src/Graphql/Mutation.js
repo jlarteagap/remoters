@@ -66,8 +66,6 @@ export const DELETE_COMPANY = gql`
 
 export const UPLOAD_IMAGE = gql`
     mutation singleUpload($file: Upload!){
-        singleUpload(file: $file){
-            url
-        }
+        singleUpload(file: $file)
     }
 `
