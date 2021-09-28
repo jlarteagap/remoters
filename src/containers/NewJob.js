@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Helmet } from "react-helmet"
-import Agregar from '../component/add/Agregar'
+import Agregar from '../component/Add/Agregar'
 
 
 const NewJob = () => (

@@ -7,12 +7,16 @@ import EditButton from '../../utils/Editbutton'
 
 const Company = ({company}) => {
     const { user } = useContext(AuthContext)
-    const { id, name, site, description, username } = company
+    const { id, name, site, description, username, logo } = company
+
+    let logoImage
+
+    logo ? logoImage=logo : logoImage = DEFAULT_IMAGES
 
     return(
         <div className="card card--job">
             <div className="card__img">
-                <img src={DEFAULT_IMAGES} alt="DEFAUL IMAGES" />
+                <img src={logoImage} alt="DEFAUL IMAGES" />
             </div>
             <div className="card__header">
                 <h2 className="card__header--title">{name}</h2>

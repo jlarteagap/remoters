@@ -6,16 +6,16 @@ import { AuthContext } from '../../context/auth'
 
 import UploadLogo from './UploadLogo'
 
+const initialState = {
+    name: '',
+    site: '',
+    description: '',
+    logo: ''
+}
 const Form = () => {
+    const [company, setCompany] = useState(initialState)
     const { user } = useContext(AuthContext)
     // const history = useHistory()
-    const initialState = {
-        name: '',
-        site: '',
-        description: '',
-        logo: ''
-    }
-    const [company, setCompany] = useState(initialState)
 
     const [createCompany, {error}] = useMutation(CREATE_COMPANY)
     const clearState = () => {
