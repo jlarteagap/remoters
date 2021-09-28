@@ -1,0 +1,11 @@
+.dashboard{
+    grid-column: span 2;
+    padding: 2rem 0;
+    display: grid;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+}
+
+.dashboard__container{
+    grid-column: span 2;
+}

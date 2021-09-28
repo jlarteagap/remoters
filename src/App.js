@@ -1,48 +1,51 @@
-import Layout from './components/Layout/Layout'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-
-import Home from "./container/Home"
-import NewJob from './container/NewJob';
-
-import CategoriesList from "./container/CategoriesList"
-
-import './assets/css/Style.css'
-
+import React from 'react'
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import Layout from './component/layout/Layout'
+import AppContext from './context/AppContext'
+import {AuthRoute, PrivateRoute} from './utils/AuthRoute'
 import { usePagination } from './hooks/usePagination' 
+import { AuthProvider } from './context/auth'
+import Home from './containers/Home'
+import RegisterView from './containers/RegisterView';
+import LoginView from './containers/LoginView';
+
+import NewJob from './containers/NewJob';
+// import CategoriesList from "./container/CategoriesList"
+
+import './assets/css/stl.css'
+import CategoriesList from './containers/CategoriesList';
+// import Dashboard from './component/dashboard/Dashboard';
+// import Profile from './component/profile/Profile';
+
+import Companies from './containers/Companies';
 
 const App = () => {
-  const { nextPage, prevPage, resetState, page} = usePagination()
-  
+  const pagination = usePagination()
   return (
-    <Router>
-      <Layout reset = {resetState}>
-        <main className="main">
-          <div className="container add">
-            <Switch>
-              <Route exact path="/">
-                <Home
-                  nextPage={nextPage}
-                  prevPage={prevPage}
-                  page={page}
-                  reset={resetState} />
-              </Route>
-              <Route exact path="/agregar">
-                <NewJob />
-              </Route>
-              <Route exact path="/:category">
-                <CategoriesList
-                  nextPage={nextPage}
-                  prevPage={prevPage}
-                  page={page}
-                  reset={resetState}
-                />
-              </Route>
-            </Switch>
-          </div>
-        </main>
-      </Layout>
-    </Router>
+    <AuthProvider>
+      <AppContext.Provider value={pagination}>
+      <Router>
+        <Layout>
+          <main className="main">
+            <div className="container">
+              <Switch>
+                <AuthRoute exact path="/" component={Home} />
+                <AuthRoute exact path="/registro" restricted component={RegisterView} />
+                <AuthRoute exact path="/login" restricted component={LoginView} />
+                <PrivateRoute exact path="/agregar" component={NewJob} />
+                <PrivateRoute exact path="/dashboard/empresas" component={Companies} />
+                <AuthRoute exact path="/:category" component={CategoriesList} />
+              </Switch>
+            </div>
+          </main>
+        </Layout>
+
+        <Switch>
+        
+        </Switch>
+      </Router>
+    </AppContext.Provider>
+    </AuthProvider>
   )
 }
 

@@ -28,6 +28,7 @@ export const usePagination = () => {
         actual: 1,
         limit: page.limit
       })
+
     }
     return{nextPage, prevPage, resetState, page}
   }

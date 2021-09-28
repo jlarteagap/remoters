@@ -4,14 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
-.eslintcache
 # testing
 /coverage
 
 # production
-/src/hoc/ApolloConnect.js
 /build
-.eslintcache
 
 # misc
 .DS_Store
@@ -19,7 +16,6 @@
 .env.development.local
 .env.test.local
 .env.production.local
-.eslintcache
 
 npm-debug.log*
 yarn-debug.log*
