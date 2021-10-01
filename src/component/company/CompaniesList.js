@@ -9,8 +9,10 @@ import Paginator from '../utils/Paginator';
 import Loading from '../utils/Loading';
 
 const CompaniesList = () => {
+
     const { user } = useContext(AuthContext)
     const { nextPage, prevPage, page } = useContext(AppContext)
+
     const {loading, error, data} = useQuery(GET_COMPANIES, {
         pollInterval: 3000,
         variables: {

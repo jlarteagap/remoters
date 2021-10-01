@@ -1,26 +1,65 @@
-import React from 'react'
-import { useMutation } from '@apollo/client'
-import { UPLOAD_IMAGE } from '../../Graphql/Mutation'
+import React, { useEffect, useRef, useState } from 'react'
 
-const UploadLogo = () => {
-    const [singleUpload, {data}] = useMutation(UPLOAD_IMAGE)
+const UploadLogo = (props) => {
+    const [file, setFile] = useState()
+    const [previewUrl, setPreviewUrl] = useState()
+    const filePickerRef = useRef()
 
-    const uploadLogoFile = e => {
-        const file = e.target.files[0]
-        if(!file) return
+    useEffect(() => {
+        if(!file){
+            return
+        }
+        const fileReader = new FileReader()
+        fileReader.onload = () => {
+            setPreviewUrl(fileReader.result)
+        }
+        fileReader.readAsDataURL(file)
+    },[file])
 
-        singleUpload({
-            variables: {file}
-        })
+    const pickedHandler = (e) => {
+        let pickedFile
+        if(e.target.files && e.target.files.length === 1) {
+            pickedFile = e.target.files[0]
+            setFile(pickedFile)
+
+            props.setDataImage((prev) => {
+                return{ ...prev, image: pickedFile}
+            })
+        }
     }
 
+    const pickedImage = () => {
+        filePickerRef.current.click()
+    }
     return(
-        <input
-            onChange={uploadLogoFile}
-            type="file"
-            id="avatar"
-            name="avatar"
-            accept="image/png, image/jpeg" />
+        <div>
+            <input
+                ref={filePickerRef}
+                type="file"
+                accept=".jpg, .png, .jpeg"
+                onChange={pickedHandler}
+            />
+            <div>
+                {previewUrl && <img src={previewUrl} alt="Logo previo" />}
+                {!previewUrl && (
+                    <div>
+                        <button 
+                            type="button"
+                            onClick={pickedImage}>+
+                        </button>
+                    </div>
+                )}
+            </div>
+
+            {previewUrl && (
+                <div>
+                    <button 
+                        type="button"
+                        onClick={pickedImage}>Edit
+                    </button>
+                </div>
+            )}
+        </div>
     )
 }
 
