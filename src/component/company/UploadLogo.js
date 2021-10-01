@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
+import './companies.css'
+
+import storage from '../../firebase'
 
 const UploadLogo = (props) => {
+    const [image, setImage] = useState('')
     const [file, setFile] = useState()
     const [previewUrl, setPreviewUrl] = useState()
     const filePickerRef = useRef()
@@ -18,22 +22,26 @@ const UploadLogo = (props) => {
 
     const pickedHandler = (e) => {
         let pickedFile
+
+        
         if(e.target.files && e.target.files.length === 1) {
             pickedFile = e.target.files[0]
+            setImage(pickedFile)
             setFile(pickedFile)
 
-            props.setDataImage((prev) => {
-                return{ ...prev, image: pickedFile}
-            })
+            storage.ref(`/companies/logos-${image.name}`).put(image)
+            .on("state_changed", alert("success"), alert)
         }
+
     }
 
     const pickedImage = () => {
         filePickerRef.current.click()
     }
     return(
-        <div>
+        <div className="center__logo">
             <input
+                style={{display: "none"}}
                 ref={filePickerRef}
                 type="file"
                 accept=".jpg, .png, .jpeg"
@@ -42,20 +50,23 @@ const UploadLogo = (props) => {
             <div>
                 {previewUrl && <img src={previewUrl} alt="Logo previo" />}
                 {!previewUrl && (
-                    <div>
-                        <button 
+                    <div className="upload__logo">
+                        <button
+                            className="btn btn-green"
                             type="button"
                             onClick={pickedImage}>+
                         </button>
+                        Agregar logo
                     </div>
                 )}
             </div>
 
             {previewUrl && (
                 <div>
-                    <button 
+                    <button
+                        className="btn" 
                         type="button"
-                        onClick={pickedImage}>Edit
+                        onClick={pickedImage}>Cambiar imagen
                     </button>
                 </div>
             )}

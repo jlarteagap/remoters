@@ -50,6 +50,10 @@ a{
         color: white;
         background: var(--Blue);
     }
+    .btn-green{
+        color: white;
+        background: var(--Green);
+    }
     .btn-orange{
         color: white;
         background: var(--Orange);

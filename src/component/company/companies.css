@@ -1,0 +1,23 @@
+.center__logo{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+    .center__logo img{
+        border-radius: 5px;
+        height: 150px;
+        object-fit: cover;
+        width: 150px;
+    }
+.upload__logo{
+    align-items: center;
+    background: #ddfff6;
+    border-radius: 5px;
+    border: 1px dotted ;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: center;
+    width: 150px;
+}
