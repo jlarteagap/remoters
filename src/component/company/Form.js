@@ -28,6 +28,13 @@ const Form = () => {
             [e.target.name]: e.target.value
         })
     }
+
+    const logoUpdate = (url) => {
+        setCompany({
+            ...company,
+            logo: url
+        })
+    }
     const formCompany = (e) => {
         e.preventDefault()
 
@@ -40,7 +47,7 @@ const Form = () => {
                     name: company.name,
                     site: company.site,
                     description: company.description,
-                    logo: '',
+                    logo: company.logo,
                     username: user.email
                 }
             }
@@ -53,7 +60,7 @@ const Form = () => {
             <h3>Registro de empresas</h3>
             <form className="form" onSubmit={e => formCompany(e)}>
                 <div className="form__group">
-                   <UploadLogo />
+                   <UploadLogo logoUrl = {logoUpdate}  />
                 </div>
                 <div className="form__group">
                     <label>Nombre de la empresa</label>

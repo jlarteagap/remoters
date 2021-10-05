@@ -1,36 +1,58 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './companies.css'
 
 import storage from '../../firebase'
+const storageRef = storage.ref()
 
-const UploadLogo = (props) => {
-    const [imageLogo, setImageLogo] = useState('')
-    const [file, setFile] = useState()
-    const [previewUrl, setPreviewUrl] = useState()
-    const filePickerRef = useRef()
+  const UploadLogo = ({logoUrl}) => {
+  const [file, setFile] = useState()
+  const [previewUrl, setPreviewUrl] = useState()
+  const filePickerRef = useRef()
+  const [url, setUrl] = useState('')
+  const [progess, setProgress] = useState(0)
 
-    useEffect(() => {
-        if(!file){
-            return
-        }
-        const fileReader = new FileReader()
-        fileReader.onload = () => {
-            setPreviewUrl(fileReader.result)
-        }
-        fileReader.readAsDataURL(file)
-    },[file])
-
-    const pickedHandler = (e) => {
+    const uploadLogo = (e) => {
         let pickedFile
 
         if(e.target.files && e.target.files.length === 1) {
             pickedFile = e.target.files[0]
             setFile(pickedFile)
 
-            storage.ref(`/companies/logos-${pickedFile.name}`).put(pickedFile)
-            .on("state_changed", alert("success"), alert)
+            const uploadTask = storage.ref(`/companies/${pickedFile.name}`).put(pickedFile)
+            uploadTask.on(
+              "state_change",
+              snapshot => {
+                const progress = Math.round(
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                )
+                setProgress(progress)
+              },
+              error => {
+                console.log(error)
+              },
+              () => {
+                storage
+                .ref("companies")
+                .child(pickedFile.name)
+                .getDownloadURL()
+                .then(url => {
+                  setUrl(url)
+                  logoUrl(url)
+                })
+              }
+            )
         }
 
+    }
+
+    const deleteImage = (e) => {
+      const desertRef = storageRef.child(`/companies/${file.name}`)
+      desertRef.delete().then(() =>{
+        console.log(previewUrl)
+        setPreviewUrl("")
+      }).catch((error)=>{
+        console.log(error)
+      })
     }
 
     const pickedImage = () => {
@@ -43,11 +65,11 @@ const UploadLogo = (props) => {
                 ref={filePickerRef}
                 type="file"
                 accept=".jpg, .png, .jpeg"
-                onChange={pickedHandler}
+                onChange={uploadLogo}
             />
             <div>
-                {previewUrl && <img src={previewUrl} alt="Logo previo" />}
-                {!previewUrl && (
+                {url && <img src={url} alt="Logo previo" />}
+                {!url && (
                     <div className="upload__logo">
                         <button
                             className="btn btn-green"
@@ -59,12 +81,12 @@ const UploadLogo = (props) => {
                 )}
             </div>
 
-            {previewUrl && (
+            {url && (
                 <div>
                     <button
                         className="btn" 
                         type="button"
-                        onClick={pickedImage}>Cambiar imagen
+                        onClick={deleteImage}>Eliminar imagen
                     </button>
                 </div>
             )}
