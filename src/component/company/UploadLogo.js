@@ -4,7 +4,7 @@ import './companies.css'
 import storage from '../../firebase'
 
 const UploadLogo = (props) => {
-    const [image, setImage] = useState('')
+    const [imageLogo, setImageLogo] = useState('')
     const [file, setFile] = useState()
     const [previewUrl, setPreviewUrl] = useState()
     const filePickerRef = useRef()
@@ -23,13 +23,11 @@ const UploadLogo = (props) => {
     const pickedHandler = (e) => {
         let pickedFile
 
-        
         if(e.target.files && e.target.files.length === 1) {
             pickedFile = e.target.files[0]
-            setImage(pickedFile)
             setFile(pickedFile)
 
-            storage.ref(`/companies/logos-${image.name}`).put(image)
+            storage.ref(`/companies/logos-${pickedFile.name}`).put(pickedFile)
             .on("state_changed", alert("success"), alert)
         }
 
