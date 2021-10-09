@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import './companies.css'
 
 import storage from '../../firebase'
-const storageRef = storage.ref()
+  const storageRef = storage.ref()
 
   const UploadLogo = ({logoUrl}) => {
   const [file, setFile] = useState()
