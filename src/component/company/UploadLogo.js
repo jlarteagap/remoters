@@ -1,26 +1,95 @@
-import React from 'react'
-import { useMutation } from '@apollo/client'
-import { UPLOAD_IMAGE } from '../../Graphql/Mutation'
+import React, { useRef, useState } from 'react'
+import './companies.css'
 
-const UploadLogo = () => {
-    const [singleUpload, {data}] = useMutation(UPLOAD_IMAGE)
+import storage from '../../firebase'
+  const storageRef = storage.ref()
 
-    const uploadLogoFile = e => {
-        const file = e.target.files[0]
-        if(!file) return
+  const UploadLogo = ({logoUrl}) => {
+  const [file, setFile] = useState()
+  const [previewUrl, setPreviewUrl] = useState()
+  const filePickerRef = useRef()
+  const [url, setUrl] = useState('')
+  const [progess, setProgress] = useState(0)
 
-        singleUpload({
-            variables: {file}
-        })
+    const uploadLogo = (e) => {
+        let pickedFile
+
+        if(e.target.files && e.target.files.length === 1) {
+            pickedFile = e.target.files[0]
+            setFile(pickedFile)
+
+            const uploadTask = storage.ref(`/companies/${pickedFile.name}`).put(pickedFile)
+            uploadTask.on(
+              "state_change",
+              snapshot => {
+                const progress = Math.round(
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                )
+                setProgress(progress)
+              },
+              error => {
+                console.log(error)
+              },
+              () => {
+                storage
+                .ref("companies")
+                .child(pickedFile.name)
+                .getDownloadURL()
+                .then(url => {
+                  setUrl(url)
+                  logoUrl(url)
+                })
+              }
+            )
+        }
+
     }
 
+    const deleteImage = (e) => {
+      const desertRef = storageRef.child(`/companies/${file.name}`)
+      desertRef.delete().then(() =>{
+        console.log(previewUrl)
+        setPreviewUrl("")
+      }).catch((error)=>{
+        console.log(error)
+      })
+    }
+
+    const pickedImage = () => {
+        filePickerRef.current.click()
+    }
     return(
-        <input
-            onChange={uploadLogoFile}
-            type="file"
-            id="avatar"
-            name="avatar"
-            accept="image/png, image/jpeg" />
+        <div className="center__logo">
+            <input
+                style={{display: "none"}}
+                type="file"
+                accept=".jpg, .png, .jpeg"
+                onChange={uploadLogo}
+            />
+            <div>
+                {url && <img src={url} alt="Logo previo" />}
+                {!url && (
+                    <div className="upload__logo">
+                        <button
+                            className="btn btn-green"
+                            type="button"
+                            onClick={pickedImage}>+
+                        </button>
+                        Agregar logo
+                    </div>
+                )}
+            </div>
+
+            {url && (
+                <div>
+                    <button
+                        className="btn" 
+                        type="button"
+                        onClick={deleteImage}>Eliminar imagen
+                    </button>
+                </div>
+            )}
+        </div>
     )
 }
 

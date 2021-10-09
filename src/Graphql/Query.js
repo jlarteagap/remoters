@@ -12,11 +12,14 @@ export const GET_JOBS = gql`
           remote
           company{
             name
+            logo
           }
-          startDate
-        }
-        totalJobs
+          createdAt
+          username{
+            email
+          }
       }
+    }
 `;
 
 export const GET_COMPANIES = gql`
