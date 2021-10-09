@@ -62,7 +62,6 @@ const storageRef = storage.ref()
         <div className="center__logo">
             <input
                 style={{display: "none"}}
-                ref={filePickerRef}
                 type="file"
                 accept=".jpg, .png, .jpeg"
                 onChange={uploadLogo}

@@ -6,6 +6,9 @@ import { FaMapMarkerAlt } from 'react-icons/fa'
 const Job = ({job}) => {
     const {company, position, city, link, category, remote} = job
 
+    const [companies] = company
+    console.log(companies.name)
+    
     let iconRemote
     if(remote){
         iconRemote = <JobIcon category="REMOTE" />
@@ -17,7 +20,7 @@ const Job = ({job}) => {
             </div>
             <div className="card__header">
                 <h2 className="card__header--title"><a href={link} target="_blank" rel="noreferrer">{position}</a></h2>
-                <div className="card__header--sub">{company}</div>
+                <div className="card__header--sub">{companies.name}</div>
                 <span className="job__city"><FaMapMarkerAlt /> {city.replace("_", " ")}</span>
             </div>
             <div className="card__body">
