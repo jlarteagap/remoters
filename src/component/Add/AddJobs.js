@@ -1,7 +1,11 @@
-import React, { Fragment, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { ADD_JOB } from '../../Graphql/Mutation'
+import { AuthContext } from '../../context/auth'
+import Companies from './Companies'
 import './Forms.css'
+
+
 const initialState = {
   position: '',
   link: '',
@@ -13,6 +17,10 @@ const initialState = {
 const AddJobs = () => {
   const [jobs, setJobs] = useState(initialState)
   const [isRemote, setRemote] = useState(false)
+  const { user } = useContext(AuthContext)
+
+
+
   const [addJob, { loading, error }] = useMutation(ADD_JOB)
 
   const updateState = (e) => {
@@ -29,6 +37,7 @@ const AddJobs = () => {
     <div className="card">
       <h3>Agregar un nuevo trabajo</h3>
       <form>
+        <Companies user={user.email} />
         <div className="form__group">
           <label>Cargo disponible</label>
           <input

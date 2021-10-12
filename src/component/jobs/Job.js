@@ -7,7 +7,6 @@ const Job = ({job}) => {
     const {company, position, city, link, category, remote} = job
 
     const [companies] = company
-    console.log(companies.name)
     
     let iconRemote
     if(remote){
