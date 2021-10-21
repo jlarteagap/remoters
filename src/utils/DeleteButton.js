@@ -7,7 +7,7 @@ import Swal from "sweetalert2"
 
 const DeleteButton = ({companyId}) => {
 
-    const [deleteCompany, {error, loading, data}] = useMutation(DELETE_COMPANY)
+    const [deleteCompany] = useMutation(DELETE_COMPANY)
 
     const handleButton = e => {
         e.preventDefault()

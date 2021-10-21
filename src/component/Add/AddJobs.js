@@ -3,6 +3,8 @@ import { useMutation } from '@apollo/client'
 import { ADD_JOB } from '../../Graphql/Mutation'
 import { AuthContext } from '../../context/auth'
 import Companies from './Companies'
+
+import Swal from "sweetalert2"
 import './Forms.css'
 
 
@@ -17,11 +19,14 @@ const initialState = {
 const AddJobs = () => {
   const [jobs, setJobs] = useState(initialState)
   const [isRemote, setRemote] = useState(false)
+  const [company, setCompany] = useState('')
   const { user } = useContext(AuthContext)
 
+  const clearState = () => {
+    setCompany({ ...initialState });
+  };
 
-
-  const [addJob, { loading, error }] = useMutation(ADD_JOB)
+  const [newJob] = useMutation(ADD_JOB)
 
   const updateState = (e) => {
     setJobs({
@@ -33,11 +38,55 @@ const AddJobs = () => {
   const changeHandler = () => {
     setRemote(!isRemote)
   }
+
+
+  const Addingjobs = (e) => {
+    e.preventDefault()
+
+    let companyData
+    if(company){
+      company.map(comp => {
+        companyData = comp
+      })
+    }
+
+    newJob({
+      variables: {
+        input: {
+          position: jobs.position,
+          link: jobs.link,
+          category: jobs.category,
+          city: jobs.city,
+          remote: isRemote,
+          company: {
+            name: companyData.name,
+            logo: companyData.logo,
+          },
+          username: {
+            email: user.email
+          }
+        }
+      }
+    }).then(
+      clearState()
+    ).then(
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Un nuevo empleo se ha publicado',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    )
+  }
   return (
     <div className="card">
       <h3>Agregar un nuevo trabajo</h3>
-      <form>
-        <Companies user={user.email} />
+      <form onSubmit={e => Addingjobs(e)}>
+        <Companies 
+          user={user.email} 
+          onChange={value => setCompany(value)}
+        />
         <div className="form__group">
           <label>Cargo disponible</label>
           <input
