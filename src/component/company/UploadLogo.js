@@ -6,7 +6,6 @@ const storageRef = storage.ref()
 
   const UploadLogo = ({logoUrl}) => {
   const [file, setFile] = useState()
-  const [previewUrl, setPreviewUrl] = useState()
   const filePickerRef = useRef()
   const [url, setUrl] = useState('')
   const [progess, setProgress] = useState(0)
@@ -47,10 +46,8 @@ const storageRef = storage.ref()
 
     const deleteImage = (e) => {
       const desertRef = storageRef.child(`/companies/${file.name}`)
-      desertRef.delete().then(() =>{
-        console.log(previewUrl)
-        setPreviewUrl("")
-      }).catch((error)=>{
+      desertRef.delete()
+      .catch((error)=>{
         console.log(error)
       })
     }
