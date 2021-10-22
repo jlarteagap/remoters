@@ -44,6 +44,20 @@ import storage from '../../firebase'
         }
 
     }
+
+    const deleteImage = (e) => {
+      const desertRef = storageRef.child(`/companies/${file.name}`)
+      desertRef.delete().then(() =>{
+        console.log(previewUrl)
+        setPreviewUrl("")
+      }).catch((error)=>{
+        console.log(error)
+      })
+    }
+
+    const pickedImage = () => {
+        filePickerRef.current.click()
+    }
     return(
         <div className="center__logo">
             <input

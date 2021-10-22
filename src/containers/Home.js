@@ -6,7 +6,7 @@ const Home = () => (
     <Fragment> 
         <Helmet>
             <meta charSet="utf-8" />
-            <title>Trabajos en Bolivia en tecnología | cruits</title>
+            <title>Trabajos en Bolivia en tecnología | nempleos</title>
             <meta name="description" content="Encuentra las mejores ofertas laborales en tecnología en Bolivia"/>
             <meta name="author" content="Jorge Luis Arteaga" />
             <meta name="copyright" content="Jorge Luis Arteaga" />

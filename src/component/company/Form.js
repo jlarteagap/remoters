@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { CREATE_COMPANY } from '../../Graphql/Mutation'
-// import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../../context/auth'
 
 import UploadLogo from './UploadLogo'

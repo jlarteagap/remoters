@@ -1,17 +1,25 @@
 import { gql } from "@apollo/client";
 
 export const ADD_JOB = gql`
-mutation addjob ($input: JobInput){
-    addJob(input: $input){
-        position
-        category
-        city
-        link
-        email
-        remote
-        startDate
+mutation newJob($input: JobInput){
+  newJob(input: $input){
+    id
+    position
+    category
+    city
+    country
+    link
+    remote
+    company{
+      name
+      logo
     }
-  }`
+    createdAt
+    username{
+      email
+    }
+  }
+}`
 
 export const CREATE_USER_MUTATION = gql`
     mutation register($input: RegisterInput){

@@ -10,7 +10,6 @@ const Company = ({company}) => {
     const { id, name, site, description, username, logo } = company
 
     let logoImage
-
     logo ? logoImage=logo : logoImage = DEFAULT_IMAGES
 
     return(

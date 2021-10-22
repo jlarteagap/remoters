@@ -29,12 +29,14 @@ const CompaniesList = () => {
         <Fragment>
             <div className="content">
                 {data.allCompanies.map(company => {
+                    
                     return(
                         <Company
-                            key = {company.id}
-                            company = {company}
+                        key = {company.id}
+                        company = {company}
                         />
-                    )
+                        )
+                        
                 })}
                 <Paginator
                     actual = {page.actual}
