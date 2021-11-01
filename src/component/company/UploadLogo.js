@@ -4,10 +4,9 @@ import './companies.css'
 import storage from '../../firebase'
   const storageRef = storage.ref()
 
-  const UploadLogo = ({logoUrl}) => {
+  const UploadLogo = ({logoUpdate, logo}) => {
   const [file, setFile] = useState()
   const filePickerRef = useRef()
-  const [url, setUrl] = useState('')
   const [progess, setProgress] = useState(0)
 
     const uploadLogo = (e) => {
@@ -35,8 +34,7 @@ import storage from '../../firebase'
                 .child(pickedFile.name)
                 .getDownloadURL()
                 .then(url => {
-                  setUrl(url)
-                  logoUrl(url)
+                  logoUpdate(url)
                 })
               }
             )
@@ -65,8 +63,8 @@ import storage from '../../firebase'
                 onChange={uploadLogo}
             />
             <div>
-                {url && <img src={url} alt="Logo previo" />}
-                {!url && (
+                {logo && <img src={logo} alt="Logo previo" />}
+                {!logo && (
                     <div className="upload__logo">
                         <button
                             className="btn btn-green"
@@ -78,7 +76,7 @@ import storage from '../../firebase'
                 )}
             </div>
 
-            {url && (
+            {logo && (
                 <div>
                     <button
                         className="btn" 

@@ -59,7 +59,10 @@ const Form = () => {
             <h3>Registro de empresas</h3>
             <form className="form" onSubmit={e => formCompany(e)}>
                 <div className="form__group">
-                   <UploadLogo logoUrl = {logoUpdate}  />
+                   <UploadLogo 
+                        logoUpdate = {logoUpdate} 
+                        logo = {company.logo}
+                    />
                 </div>
                 <div className="form__group">
                     <label>Nombre de la empresa</label>
