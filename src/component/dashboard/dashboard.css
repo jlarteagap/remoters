@@ -47,3 +47,9 @@
 .dashboard__last__jobs--companies{
     font-size: .85rem;
 }
+.dashboard__companies{
+    grid-column: span 6;
+}
+.dashboard__companies--form{
+    grid-column: span 3;
+}

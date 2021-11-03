@@ -31,7 +31,7 @@ const App = () => {
                 <AuthRoute exact path="/registro" restricted component={RegisterView} />
                 <AuthRoute exact path="/login" restricted component={LoginView} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                <PrivateRoute exact path="/agregar" component={NewJob} />
+                <PrivateRoute exact path="/dashboard/agregar" component={NewJob} />
                 <PrivateRoute exact path="/dashboard/empresas" component={Companies} />
                 <AuthRoute exact path="/:category" component={CategoriesList} />
               </Switch>

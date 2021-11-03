@@ -26,7 +26,6 @@ const Categories = (props) => {
     if(loading) return <Loading />
     if(error) return `Error: ${error.message}`
     return(
-        <Fragment>
             <div className="content">
                 {data.getJobs.map(job => {
                     return(
@@ -44,9 +43,6 @@ const Categories = (props) => {
                     nextPage = {nextPage}
                 />
             </div>
-
-            <Sidebar reset = {resetState} />
-        </Fragment>
     )
 }
 export default withRouter(Categories)

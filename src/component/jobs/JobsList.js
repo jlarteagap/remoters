@@ -4,7 +4,6 @@ import Job from './Job'
 import { useQuery } from "@apollo/client"
 import { GET_JOBS } from '../../Graphql/Query'
 
-import Sidebar from '../sidebar/Sidebar'
 import Paginator from '../utils/Paginator'
 import Loading from '../utils/Loading'
 
@@ -42,7 +41,7 @@ const JobsList = () => {
                     nextPage = {nextPage}
                 />
             </div>
-            <Sidebar reset = {resetState} />
+            
         </Fragment>
     )
 }
