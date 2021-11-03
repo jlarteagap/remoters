@@ -14,10 +14,8 @@ import NewJob from './containers/NewJob';
 
 import './assets/css/stl.css'
 import CategoriesList from './containers/CategoriesList';
-// import Dashboard from './component/dashboard/Dashboard';
-// import Profile from './component/profile/Profile';
-
 import Companies from './containers/Companies';
+import Dashboard from './containers/Dashboard';
 
 const App = () => {
   const pagination = usePagination()
@@ -32,6 +30,7 @@ const App = () => {
                 <AuthRoute exact path="/" component={Home} />
                 <AuthRoute exact path="/registro" restricted component={RegisterView} />
                 <AuthRoute exact path="/login" restricted component={LoginView} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <PrivateRoute exact path="/agregar" component={NewJob} />
                 <PrivateRoute exact path="/dashboard/empresas" component={Companies} />
                 <AuthRoute exact path="/:category" component={CategoriesList} />

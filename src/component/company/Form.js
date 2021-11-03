@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { CREATE_COMPANY } from '../../Graphql/Mutation'
-// import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../../context/auth'
 
 import UploadLogo from './UploadLogo'
@@ -60,7 +59,10 @@ const Form = () => {
             <h3>Registro de empresas</h3>
             <form className="form" onSubmit={e => formCompany(e)}>
                 <div className="form__group">
-                   <UploadLogo logoUrl = {logoUpdate}  />
+                   <UploadLogo 
+                        logoUpdate = {logoUpdate} 
+                        logo = {company.logo}
+                    />
                 </div>
                 <div className="form__group">
                     <label>Nombre de la empresa</label>

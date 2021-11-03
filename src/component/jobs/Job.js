@@ -6,8 +6,10 @@ import { FaMapMarkerAlt } from 'react-icons/fa'
 const Job = ({job}) => {
     const {company, position, city, link, category, remote} = job
 
-    const [companies] = company
-    console.log(companies.name)
+    let [companies] = company
+    
+    let logoImage
+    companies.logo ? logoImage=companies.logo : logoImage = DEFAULT_IMAGES
     
     let iconRemote
     if(remote){
@@ -16,7 +18,7 @@ const Job = ({job}) => {
     return(
         <div className="card card--job">
             <div className="card__img">
-                <img src={DEFAULT_IMAGES} alt="DEFAUL IMAGES" />
+                <img src={logoImage} alt={companies.name} />
             </div>
             <div className="card__header">
                 <h2 className="card__header--title"><a href={link} target="_blank" rel="noreferrer">{position}</a></h2>
