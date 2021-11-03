@@ -4,7 +4,7 @@ import {FaBriefcase, FaBuilding } from 'react-icons/fa'
 
 export const  Menu = () => {
     return(
-        <div className="card menu__dashboard">
+        <div className="menu__dashboard">
             <Link 
                 to="/dashboard/agregar"
                 className=""

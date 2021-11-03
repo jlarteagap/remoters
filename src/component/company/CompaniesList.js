@@ -26,8 +26,7 @@ const CompaniesList = () => {
     if(error) return `Error: ${error.message}`
 
     return(
-        <Fragment>
-            <div className="content">
+            <div className="dashboard__companies__list">
                 {data.allCompanies.map(company => {
                     
                     return(
@@ -46,7 +45,6 @@ const CompaniesList = () => {
                     nextPage = {nextPage}
                 />
             </div>
-        </Fragment>
     )
 }
 

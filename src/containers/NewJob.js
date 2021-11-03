@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { Helmet } from "react-helmet"
 import AddJobs from '../component/Add/AddJobs'
+import { Menu } from '../component/dashboard/Menu'
 
 
 const NewJob = () => (
@@ -19,7 +20,12 @@ const NewJob = () => (
         <meta property="og:url" content="" />
         <meta property="og:image" content="" />
     </Helmet>
-    <AddJobs />
+    <div className="home">
+        <Menu />
+        <div className="home__jobs">
+            <AddJobs />
+        </div>
+    </div>
 </Fragment>
 )
 

@@ -14,13 +14,13 @@ const Header = ({title}) => {
                 <Link to="/" onClick={resetState}><h1>{title}</h1></Link>
                     <div className="header__right">
                         {user ? 
-                                <Link to="/profile" className="header__right--profile">
+                                <Link to="/dashboard" className="header__right--profile">
                                     <FaUserAstronaut className="header__right--icon" /> {user.name}
                                 </Link>
                             : ''
                         }
                     <Link
-                        to="/agregar"
+                        to="/dashboard/agregar"
                         className="btn mr-1"
                         ><FaPlus className="header__right--plus"/>AGREGAR
                     </Link>

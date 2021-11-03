@@ -86,7 +86,17 @@ a{
     box-sizing: border-box;
     padding: 2rem 1rem;
 }
-
+.home{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 1rem;
+}
+.home__jobs{
+    grid-column: span 9;
+}
+.home__sidebar{
+    grid-column: span 3;
+}
 /* ERROR  */
 .error{
     border-radius: .5rem;
