@@ -27,6 +27,7 @@ a{
 .main{
     background: #f9f9f9;
     box-sizing: border-box;
+    padding: 1rem 0;
 }
 /* Botones */
 .btn{
@@ -77,9 +78,6 @@ a{
 
 /* Container  */
 .container{
-    display: grid;
-    grid-template-columns: 1fr 25%;
-    grid-gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }

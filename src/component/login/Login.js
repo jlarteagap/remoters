@@ -33,7 +33,7 @@ const Login = () => {
             }
         }).then(async({data})=> {
             context.login(data.login)
-            history.push('/dashboard/empresas')
+            history.push('/dashboard')
         }).catch((err) => {
             setErrors({
                 message: err.message
