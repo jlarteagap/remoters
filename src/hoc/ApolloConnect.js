@@ -1,6 +1,8 @@
 import { ApolloClient, InMemoryCache, createHttpLink, from} from "@apollo/client";
 import { onError} from '@apollo/client/link/error'
 import { setContext } from '@apollo/client/link/context';
+require('dotenv').config()
+
 
 const errorLink = onError(({graphqlErrors, networkError}) => {
     if(graphqlErrors){
@@ -11,7 +13,7 @@ const errorLink = onError(({graphqlErrors, networkError}) => {
 })
 
 const httpLink = createHttpLink({
-    uri: 'http://localhost:4000/graphql',
+    uri: process.env.SERVER_DB || 'http://localhost:4000/graphql',
     fetchOptions: {
         credentials: 'include'
     }
