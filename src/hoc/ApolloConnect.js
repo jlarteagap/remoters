@@ -13,7 +13,7 @@ const errorLink = onError(({graphqlErrors, networkError}) => {
 })
 
 const httpLink = createHttpLink({
-    uri: process.env.SERVER_DB || 'http://localhost:4000/graphql',
+    uri: process.env.SERVER_DB,
     fetchOptions: {
         credentials: 'include'
     }
