@@ -6,45 +6,44 @@ import Error from '../utils/Error'
 import { AuthContext } from '../../context/auth'
 
 const Register = () => {
+  const [errors, setErrors] = useState({ message: '' })
+  const history = useHistory()
+  const context = useContext(AuthContext)
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+    confirmPassword: ''
+  })
 
-    const [errors, setErrors] = useState({message: ''})
-    const history = useHistory()
-    const context = useContext(AuthContext)
-    const [user, setUser] = useState({
-        email: '',
-        password: '',
-        confirmPassword: ''
+  const [register] = useMutation(CREATE_USER_MUTATION)
+
+  const updateState = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
     })
+  }
 
-    const [register ] = useMutation(CREATE_USER_MUTATION)
-
-    const updateState = (e) => {
-        setUser({
-            ...user,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const addUser = async (e) => {
-        e.preventDefault()
-        register({
-            variables: {
-                input : {
-                    email: user.email,
-                    password: user.password,
-                    confirmPassword: user.confirmPassword
-                }
-            }
-        }).then(async({data})=> {
-            context.login(data.register)
-            history.push('/dashboard')
-        }).catch((err) => {
-            setErrors({
-                message: err.message
-            })
-        })   
-    }
-    return (
+  const addUser = async (e) => {
+    e.preventDefault()
+    register({
+      variables: {
+        input: {
+          email: user.email,
+          password: user.password,
+          confirmPassword: user.confirmPassword
+        }
+      }
+    }).then(async ({ data }) => {
+      context.login(data.register)
+      history.push('/dashboard')
+    }).catch((err) => {
+      setErrors({
+        message: err.message
+      })
+    })
+  }
+  return (
         <Fragment>
             <div className="login__titles">
                 <h3>Registro</h3>
@@ -86,7 +85,7 @@ const Register = () => {
                 </form>
             </div>
         </Fragment>
-    )
+  )
 }
 
 export default Register

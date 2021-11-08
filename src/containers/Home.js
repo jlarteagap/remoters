@@ -1,14 +1,13 @@
-import React, { Fragment, useContext} from 'react'
+import React, { Fragment, useContext } from 'react'
 import { Helmet } from 'react-helmet'
 import JobsList from '../component/jobs/JobsList'
 import Sidebar from '../component/sidebar/Sidebar'
 import AppContext from '../context/AppContext'
 
-
 const Home = () => {
-    const { resetState } = useContext(AppContext)
-    return(
-        <Fragment> 
+  const { resetState } = useContext(AppContext)
+  return (
+        <Fragment>
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Trabajos en Bolivia en tecnología | nempleos</title>
@@ -32,6 +31,7 @@ const Home = () => {
                 </div>
             </div>
         </Fragment>
-    )}
+  )
+}
 
 export default Home

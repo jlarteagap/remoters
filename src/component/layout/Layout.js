@@ -1,15 +1,17 @@
-import React from 'react'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
+import PropTypes from 'prop-types'
 
-
-const Layout = (props) => (
+const Layout = ({ children }) => (
         <Fragment>
             <Header title="nEmpleos..." />
-                {props.children}
+                {children}
             <Footer />
         </Fragment>
 )
 
+Layout.propTypes = {
+  children: PropTypes.node
+}
 export default Layout

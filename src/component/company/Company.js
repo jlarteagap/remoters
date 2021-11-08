@@ -4,15 +4,16 @@ import DeleteButton from '../../utils/DeleteButton'
 
 import { AuthContext } from '../../context/auth'
 import EditButton from '../../utils/Editbutton'
+import PropTypes from 'prop-types'
 
-const Company = ({company}) => {
-    const { user } = useContext(AuthContext)
-    const { id, name, site, description, username, logo } = company
+const Company = ({ company }) => {
+  const { user } = useContext(AuthContext)
+  const { id, name, site, description, username, logo } = company
 
-    let logoImage
-    logo ? logoImage=logo : logoImage = DEFAULT_IMAGES
+  let logoImage
+  logo ? logoImage = logo : logoImage = DEFAULT_IMAGES
 
-    return(
+  return (
         <div className="card card--job">
             <div className="card__img">
                 <img src={logoImage} alt="DEFAUL IMAGES" />
@@ -24,7 +25,7 @@ const Company = ({company}) => {
             </div>
 
             <div>
-                {user && user.email === username &&(
+                {user && user.email === username && (
                     <div className="button--inline">
                         <EditButton companyId={id} />
                         <DeleteButton companyId={id}/>
@@ -32,7 +33,10 @@ const Company = ({company}) => {
                 )}
             </div>
         </div>
-    )
+  )
 }
 
+Company.propTypes = {
+  company: PropTypes.array
+}
 export default Company

@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
 
 export const GET_JOBS = gql`
     query getJobs($category: String, $limit:Int, $offset:Int){
@@ -20,7 +20,7 @@ export const GET_JOBS = gql`
           }
       }
     }
-`;
+`
 
 export const GET_COMPANIES = gql`
   query allCompanies($username: String, $limit:Int, $offset:Int){
