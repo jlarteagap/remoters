@@ -4,9 +4,8 @@ import { ADD_JOB } from '../../Graphql/Mutation'
 import { AuthContext } from '../../context/auth'
 import Companies from './Companies'
 
-import Swal from "sweetalert2"
+import Swal from 'sweetalert2'
 import './Forms.css'
-
 
 const initialState = {
   position: '',
@@ -23,15 +22,15 @@ const AddJobs = () => {
   const { user } = useContext(AuthContext)
 
   const clearState = () => {
-    setCompany({ ...initialState });
-  };
+    setCompany({ ...initialState })
+  }
 
   const [newJob] = useMutation(ADD_JOB)
 
   const updateState = (e) => {
     setJobs({
       ...jobs,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     })
   }
 
@@ -39,12 +38,12 @@ const AddJobs = () => {
     setRemote(!isRemote)
   }
 
-
   const Addingjobs = (e) => {
     e.preventDefault()
 
     let companyData
-    if(company){
+    if (company) {
+      // eslint-disable-next-line array-callback-return
       company.map(comp => {
         companyData = comp
       })
@@ -60,7 +59,7 @@ const AddJobs = () => {
           remote: isRemote,
           company: {
             name: companyData.name,
-            logo: companyData.logo,
+            logo: companyData.logo
           },
           username: {
             email: user.email
@@ -83,8 +82,8 @@ const AddJobs = () => {
     <div className="card">
       <h3>Agregar un nuevo trabajo</h3>
       <form onSubmit={e => Addingjobs(e)}>
-        <Companies 
-          user={user.email} 
+        <Companies
+          user={user.email}
           onChange={value => setCompany(value)}
         />
         <div className="form__group">

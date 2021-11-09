@@ -1,37 +1,40 @@
-import { ApolloClient, InMemoryCache, createHttpLink, from} from "@apollo/client";
-import { onError} from '@apollo/client/link/error'
-import { setContext } from '@apollo/client/link/context';
+import { ApolloClient, InMemoryCache, createHttpLink, from } from '@apollo/client'
+import { onError } from '@apollo/client/link/error'
+import { setContext } from '@apollo/client/link/context'
+require('dotenv').config()
 
-const errorLink = onError(({graphqlErrors, networkError}) => {
-    if(graphqlErrors){
-        graphqlErrors.map(({message, location, path}) => {
-            return console.log(`GraphQL error ${message}`)
-        })
-    }
+const SERVER = process.env.SERVER
+console.log(SERVER)
+const errorLink = onError(({ graphqlErrors, networkError }) => {
+  if (graphqlErrors) {
+    graphqlErrors.map(({ message, location, path }) => {
+      return console.log(`GraphQL error ${message}`)
+    })
+  }
 })
 
 const httpLink = createHttpLink({
-    uri: 'http://localhost:4000/graphql',
-    fetchOptions: {
-        credentials: 'include'
-    }
+  uri: 'https://server-tembiapo.herokuapp.com/graphql',
+  fetchOptions: {
+    credentials: 'include'
+  }
 })
-  
-const authLink = setContext((_, { headers })=> {
-    const token = localStorage.getItem('token')
 
-    return {
-        headers: {
-            ...headers, 
-            authorization: token ? `Bearer ${token}`: ""
-        }
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('token')
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : ''
     }
+  }
 })
 
 export const client = new ApolloClient({
-    link: from([authLink, errorLink, httpLink]),
-    cache: new InMemoryCache({
-        addTypename: false
-    }
-    ),
-  });
+  link: from([authLink, errorLink, httpLink]),
+  cache: new InMemoryCache({
+    addTypename: false
+  }
+  )
+})

@@ -2,20 +2,21 @@ import React from 'react'
 import JobIcon from './JobIcon'
 import DEFAULT_IMAGES from '../../assets/img/default.jpeg'
 import { FaMapMarkerAlt } from 'react-icons/fa'
+import PropTypes from 'prop-types'
 
-const Job = ({job}) => {
-    const {company, position, city, link, category, remote} = job
+const Job = ({ job }) => {
+  const { company, position, city, link, category, remote } = job
 
-    let [companies] = company
-    
-    let logoImage
-    companies.logo ? logoImage=companies.logo : logoImage = DEFAULT_IMAGES
-    
-    let iconRemote
-    if(remote){
-        iconRemote = <JobIcon category="REMOTE" />
-    }
-    return(
+  const [companies] = company
+
+  let logoImage
+  companies.logo ? logoImage = companies.logo : logoImage = DEFAULT_IMAGES
+
+  let iconRemote
+  if (remote) {
+    iconRemote = <JobIcon category="REMOTE" />
+  }
+  return (
         <div className="card card--job">
             <div className="card__img">
                 <img src={logoImage} alt={companies.name} />
@@ -23,7 +24,7 @@ const Job = ({job}) => {
             <div className="card__header">
                 <h2 className="card__header--title"><a href={link} target="_blank" rel="noreferrer">{position}</a></h2>
                 <div className="card__header--sub">{companies.name}</div>
-                <span className="job__city"><FaMapMarkerAlt /> {city.replace("_", " ")}</span>
+                <span className="job__city"><FaMapMarkerAlt /> {city.replace('_', ' ')}</span>
             </div>
             <div className="card__body">
                 <div className="job__info">
@@ -38,7 +39,9 @@ const Job = ({job}) => {
                 </div>
             </div>
         </div>
-    )
+  )
 }
-
+Job.propTypes = {
+  job: PropTypes.array
+}
 export default Job

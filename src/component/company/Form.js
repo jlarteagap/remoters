@@ -6,61 +6,60 @@ import { AuthContext } from '../../context/auth'
 import UploadLogo from './UploadLogo'
 
 const initialState = {
-    name: '',
-    site: '',
-    description: '',
-    logo: ''
+  name: '',
+  site: '',
+  description: '',
+  logo: ''
 }
 const Form = () => {
-    const [company, setCompany] = useState(initialState)
-    const { user } = useContext(AuthContext)
-    // const history = useHistory()
+  const [company, setCompany] = useState(initialState)
+  const { user } = useContext(AuthContext)
+  // const history = useHistory()
 
-    const [createCompany, {error}] = useMutation(CREATE_COMPANY)
-    const clearState = () => {
-        setCompany({ ...initialState });
-      };
+  const [createCompany, { error }] = useMutation(CREATE_COMPANY)
+  const clearState = () => {
+    setCompany({ ...initialState })
+  }
 
-    const updateState = (e) => {
-        setCompany({
-            ...company, 
-            [e.target.name]: e.target.value
-        })
+  const updateState = (e) => {
+    setCompany({
+      ...company,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const logoUpdate = (url) => {
+    setCompany({
+      ...company,
+      logo: url
+    })
+  }
+  const formCompany = (e) => {
+    e.preventDefault()
+
+    if (error) {
+      console.log(error)
     }
-
-    const logoUpdate = (url) => {
-        setCompany({
-            ...company,
-            logo: url
-        })
-    }
-    const formCompany = (e) => {
-        e.preventDefault()
-
-        if (error) {
-            console.log(error)
+    createCompany({
+      variables: {
+        input: {
+          name: company.name,
+          site: company.site,
+          description: company.description,
+          logo: company.logo,
+          username: user.email
         }
-        createCompany({
-            variables: {
-                input: {
-                    name: company.name,
-                    site: company.site,
-                    description: company.description,
-                    logo: company.logo,
-                    username: user.email
-                }
-            }
-        }).then(clearState)
+      }
+    }).then(clearState)
+  }
 
-    }
-
-    return(
+  return (
         <div className="card">
             <h3>Registro de empresas</h3>
             <form className="form" onSubmit={e => formCompany(e)}>
                 <div className="form__group">
-                   <UploadLogo 
-                        logoUpdate = {logoUpdate} 
+                   <UploadLogo
+                        logoUpdate = {logoUpdate}
                         logo = {company.logo}
                     />
                 </div>
@@ -69,7 +68,7 @@ const Form = () => {
                     <input
                         onChange={updateState}
                         name="name"
-                        type="text" 
+                        type="text"
                         placeholder="Nombre de la empresa"
                         value={company.name}
                         required />
@@ -79,7 +78,7 @@ const Form = () => {
                     <input
                         onChange={updateState}
                         name="site"
-                        type="text" 
+                        type="text"
                         placeholder="Nombre de la empresa"
                         value={company.site}
                         required />
@@ -96,7 +95,7 @@ const Form = () => {
                 <button className="btn">Agregar empresa</button>
             </form>
         </div>
-    )
+  )
 }
 
 export default Form

@@ -1,47 +1,47 @@
 import React, { Fragment, useState, useContext } from 'react'
-import { Link, useHistory } from "react-router-dom"
-import { useMutation } from "@apollo/client"
+import { Link, useHistory } from 'react-router-dom'
+import { useMutation } from '@apollo/client'
 import { LOGIN_USER } from '../../Graphql/Mutation'
 import Error from '../utils/Error'
 import { AuthContext } from '../../context/auth'
 
 const Login = () => {
-    const [errors, setErrors] = useState({message: ''})
-    const history = useHistory()
-    const context = useContext(AuthContext)
+  const [errors, setErrors] = useState({ message: '' })
+  const history = useHistory()
+  const context = useContext(AuthContext)
 
-    const[user, setUser] = useState({
-        email: '',
-        password: ''
+  const [user, setUser] = useState({
+    email: '',
+    password: ''
+  })
+
+  const updateState = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
     })
-    
-    const updateState = (e) => {
-        setUser({
-            ...user,
-            [e.target.name]: e.target.value
-        })
-    }
-    const[login] = useMutation( LOGIN_USER )
-    
-    const loginUser = (e) => {
-        e.preventDefault()
+  }
+  const [login] = useMutation(LOGIN_USER)
 
-        login({
-            variables: {
-                email: user.email,
-                password: user.password
-            }
-        }).then(async({data})=> {
-            context.login(data.login)
-            history.push('/dashboard')
-        }).catch((err) => {
-            setErrors({
-                message: err.message
-            })
-        })
-    }
+  const loginUser = (e) => {
+    e.preventDefault()
 
-    return (
+    login({
+      variables: {
+        email: user.email,
+        password: user.password
+      }
+    }).then(async ({ data }) => {
+      context.login(data.login)
+      history.push('/dashboard')
+    }).catch((err) => {
+      setErrors({
+        message: err.message
+      })
+    })
+  }
+
+  return (
         <Fragment>
             <div className="login__titles">
                 <h3>Iniciar Session</h3>
@@ -74,7 +74,7 @@ const Login = () => {
             </div>
 
         </Fragment>
-    )
+  )
 }
 
 export default Login
