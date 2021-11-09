@@ -11,13 +11,7 @@ import AppContext from '../../context/AppContext'
 
 const JobsList = () => {
   const { nextPage, prevPage, page } = useContext(AppContext)
-  const { loading, error, data } = useQuery(GET_JOBS, {
-    pollInterval: 3000,
-    variables: {
-      limit: page.limit,
-      offset: page.offset
-    }
-  })
+  const { loading, error, data } = useQuery(GET_JOBS)
 
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
