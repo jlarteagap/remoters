@@ -1,10 +1,7 @@
 import { ApolloClient, InMemoryCache, createHttpLink, from } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
 import { setContext } from '@apollo/client/link/context'
-require('dotenv').config()
 
-const SERVER = process.env.SERVER
-console.log(SERVER)
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
     graphqlErrors.map(({ message, location, path }) => {
