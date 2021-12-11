@@ -4,11 +4,11 @@ import Footer from '../footer/Footer'
 import PropTypes from 'prop-types'
 
 const Layout = ({ children }) => (
-        <Fragment>
-            <Header title="nEmpleos..." />
-                {children}
-            <Footer />
-        </Fragment>
+  <Fragment>
+    <Header title="nEmpleos..." />
+    {children}
+    <Footer />
+  </Fragment>
 )
 
 Layout.propTypes = {

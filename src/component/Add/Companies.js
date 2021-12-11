@@ -14,29 +14,24 @@ const Companies = ({ user, onChange }) => {
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
 
-  const updateState = (e) => {
+  const updateState = e => {
     onChange(data.allCompanies.filter(filter => filter.name === e.target.value))
   }
 
   return (
-        <div className="form__control">
-                <label>Empresa</label>
-                <select onChange={e => updateState(e)}>
-                    <option>---</option>
-                    {data.allCompanies.map(company => {
-                      return (
-                            <option
-                                key={company.id}
-                                name="name"
-                                value={company.name}>
-                                    {company.name}
-
-                            </option>
-                      )
-                    }
-                    )}
-                </select>
-            </div>
+    <div className="form__control">
+      <label>Empresa</label>
+      <select onChange={e => updateState(e)}>
+        <option>---</option>
+        {data.allCompanies.map(company => {
+          return (
+            <option key={company.id} name="name" value={company.name}>
+              {company.name}
+            </option>
+          )
+        })}
+      </select>
+    </div>
   )
 }
 Companies.propTypes = {

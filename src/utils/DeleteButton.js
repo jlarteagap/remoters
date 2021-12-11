@@ -20,25 +20,21 @@ const DeleteButton = ({ companyId }) => {
       confirmButtonColor: '#EF476F',
       cancelButtonColor: '#F7B267',
       confirmButtonText: 'Si, eliminar!'
-    }).then((result) => {
+    }).then(result => {
       if (result.isConfirmed) {
         deleteCompany({
           variables: {
             companyId: companyId
           }
         })
-        Swal.fire(
-          'Eliminado!',
-          'Se eliminó correctamentamente.',
-          'success'
-        )
+        Swal.fire('Eliminado!', 'Se eliminó correctamentamente.', 'success')
       }
     })
   }
   return (
-        <div className="btn" onClick={(e => handleButton(e))}>
-            <FaTrashAlt />
-        </div>
+    <div className="btn" onClick={e => handleButton(e)}>
+      <FaTrashAlt />
+    </div>
   )
 }
 

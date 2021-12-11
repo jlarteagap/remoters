@@ -13,7 +13,6 @@ const initialState = {
   category: '',
   city: '',
   remote: false
-
 }
 const AddJobs = () => {
   const [jobs, setJobs] = useState(initialState)
@@ -27,7 +26,7 @@ const AddJobs = () => {
 
   const [newJob] = useMutation(ADD_JOB)
 
-  const updateState = (e) => {
+  const updateState = e => {
     setJobs({
       ...jobs,
       [e.target.name]: e.target.value
@@ -38,7 +37,7 @@ const AddJobs = () => {
     setRemote(!isRemote)
   }
 
-  const Addingjobs = (e) => {
+  const Addingjobs = e => {
     e.preventDefault()
 
     let companyData
@@ -66,26 +65,23 @@ const AddJobs = () => {
           }
         }
       }
-    }).then(
-      clearState()
-    ).then(
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Un nuevo empleo se ha publicado',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    )
+    })
+      .then(clearState())
+      .then(
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Un nuevo empleo se ha publicado',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      )
   }
   return (
     <div className="card">
       <h3>Agregar un nuevo trabajo</h3>
       <form onSubmit={e => Addingjobs(e)}>
-        <Companies
-          user={user.email}
-          onChange={value => setCompany(value)}
-        />
+        <Companies user={user.email} onChange={value => setCompany(value)} />
         <div className="form__group">
           <label>Cargo disponible</label>
           <input

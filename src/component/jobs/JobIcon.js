@@ -4,13 +4,14 @@ import PropTypes from 'prop-types'
 
 const JobIcon = ({ category }) => {
   return (
-        <div className="job__icons">
-            <span className={'job__icon ' + category}
-                style={{ backgroundImage: `url(${icons})` }}>
-                <i></i>
-            </span>
-
-        </div>
+    <div className="job__icons">
+      <span
+        className={'job__icon ' + category}
+        style={{ backgroundImage: `url(${icons})` }}
+      >
+        <i></i>
+      </span>
+    </div>
   )
 }
 

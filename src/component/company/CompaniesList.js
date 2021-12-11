@@ -25,23 +25,18 @@ const CompaniesList = () => {
   if (error) return `Error: ${error.message}`
 
   return (
-            <div className="dashboard__companies__list">
-                {data.allCompanies.map(company => {
-                  return (
-                        <Company
-                        key = {company.id}
-                        company = {company}
-                        />
-                  )
-                })}
-                <Paginator
-                    actual = {page.actual}
-                    total = {data.totalJobs}
-                    limit = {page.limit}
-                    prevPage = {prevPage}
-                    nextPage = {nextPage}
-                />
-            </div>
+    <div className="dashboard__companies__list">
+      {data.allCompanies.map(company => {
+        return <Company key={company.id} company={company} />
+      })}
+      <Paginator
+        actual={page.actual}
+        total={data.totalJobs}
+        limit={page.limit}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
+    </div>
   )
 }
 

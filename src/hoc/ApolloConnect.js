@@ -1,4 +1,9 @@
-import { ApolloClient, InMemoryCache, createHttpLink, from } from '@apollo/client'
+import {
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+  from
+} from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
 import { setContext } from '@apollo/client/link/context'
 
@@ -33,6 +38,5 @@ export const client = new ApolloClient({
   link: from([authLink, errorLink, httpLink]),
   cache: new InMemoryCache({
     addTypename: false
-  }
-  )
+  })
 })

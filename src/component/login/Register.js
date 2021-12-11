@@ -17,14 +17,14 @@ const Register = () => {
 
   const [register] = useMutation(CREATE_USER_MUTATION)
 
-  const updateState = (e) => {
+  const updateState = e => {
     setUser({
       ...user,
       [e.target.name]: e.target.value
     })
   }
 
-  const addUser = async (e) => {
+  const addUser = async e => {
     e.preventDefault()
     register({
       variables: {
@@ -34,76 +34,78 @@ const Register = () => {
           confirmPassword: user.confirmPassword
         }
       }
-    }).then(async ({ data }) => {
-      context.login(data.register)
-      history.push('/dashboard')
-    }).catch((err) => {
-      setErrors({
-        message: err.message
-      })
     })
+      .then(async ({ data }) => {
+        context.login(data.register)
+        history.push('/dashboard')
+      })
+      .catch(err => {
+        setErrors({
+          message: err.message
+        })
+      })
   }
   return (
-        <Fragment>
-            <div className="login__titles">
-                <h3>Registro</h3>
-                <p>Para publicar un anuncio de trabajo, necesitamos que te registres primero.</p>
+    <Fragment>
+      <div className="login__titles">
+        <h3>Registro</h3>
+        <p>
+          Para publicar un anuncio de trabajo, necesitamos que te registres
+          primero.
+        </p>
+      </div>
+      <div className="card card--login">
+        <form onSubmit={e => addUser(e)}>
+          <div className="field">
+            <label className="label">Correo electronico</label>
+            <div className="control">
+              <input
+                onChange={updateState}
+                type="email"
+                name="email"
+                className="input"
+                placeholder="Correo electrónico"
+                required
+              />
             </div>
-            <div className="card card--login">
-                <form onSubmit={e => addUser(e)}>
-                    <div className="field">
-                      <label className="label">
-                        Correo electronico
-                      </label>
-                      <div className="control">
-                        <input
-                            onChange={updateState}
-                            type="email"
-                            name="email"
-                            className="input"
-                            placeholder="Correo electrónico"
-                            required />
+          </div>
 
-                      </div>
-                    </div>
-
-                    <div className="field">
-                      <label className="label">
-                        Contraseña
-                      </label>
-                        <div className="control">
-                        <input
-                            onChange={updateState}
-                            type="password"
-                            name="password"
-                            className="input"
-                            required
-                            placeholder="Contraseña" />
-                        </div>
-                    </div>
-                    <div className="field">
-                    <label className="label">
-                        Repetir Contraseña
-                      </label>
-                        <div className="control">
-                          <input
-                            onChange={updateState}
-                            type="password"
-                            name="confirmPassword"
-                            required
-                            className="input"
-                            placeholder="Contraseña" />
-                        </div>
-                    </div>
-                    <div className="control">
-                        <button
-                            className="button btn">Registrarme</button>
-                    </div>
-                    { errors.message ? <Error message={errors.message} /> : ''}
-                    <small className="center">Ya estas registrado? <Link to="/registro">Ingresa por aquí</Link></small>
-                </form>
+          <div className="field">
+            <label className="label">Contraseña</label>
+            <div className="control">
+              <input
+                onChange={updateState}
+                type="password"
+                name="password"
+                className="input"
+                required
+                placeholder="Contraseña"
+              />
             </div>
-        </Fragment>
+          </div>
+          <div className="field">
+            <label className="label">Repetir Contraseña</label>
+            <div className="control">
+              <input
+                onChange={updateState}
+                type="password"
+                name="confirmPassword"
+                required
+                className="input"
+                placeholder="Contraseña"
+              />
+            </div>
+          </div>
+          <div className="control">
+            <button className="button btn">Registrarme</button>
+          </div>
+          {errors.message ? <Error message={errors.message} /> : ''}
+          <small className="center">
+            Ya estas registrado? <Link to="/registro">Ingresa por aquí</Link>
+          </small>
+        </form>
+      </div>
+    </Fragment>
   )
 }
 

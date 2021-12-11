@@ -9,7 +9,7 @@ export const AuthRoute = ({ component: Component, ...rest }) => {
 
   const render = props => {
     if (user && rest.restricted) {
-      return <Redirect to='/dashboard' />
+      return <Redirect to="/dashboard" />
     }
     return <Component {...props} />
   }
@@ -26,7 +26,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
   const { user } = useContext(AuthContext)
   const render = props => {
     if (!user) {
-      return <Redirect to='/login' />
+      return <Redirect to="/login" />
     }
     return <Component {...props} />
   }

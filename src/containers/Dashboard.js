@@ -7,12 +7,12 @@ import { LastJobs } from '../component/dashboard/LastJobs'
 
 const Dashboard = () => {
   return (
-        <div className="dashboard">
-            <Menu />
-            <CounterJobs />
-            <CounterCompanies />
-            <LastJobs />
-        </div>
+    <div className="dashboard">
+      <Menu />
+      <CounterJobs />
+      <CounterCompanies />
+      <LastJobs />
+    </div>
   )
 }
 

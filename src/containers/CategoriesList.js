@@ -5,19 +5,19 @@ import PropTypes from 'prop-types'
 
 const CategoriesList = ({ nextPage, prevPage, page, reset }) => {
   return (
-        <div className="home">
-                <div className="home__jobs">
-                    <Categories
-                        nextPage={nextPage}
-                        prevPage={prevPage}
-                        page={page}
-                        reset={reset}
-                    />
-                </div>
-                <div className="home__sidebar">
-                    <Sidebar reset = {reset} />
-                </div>
-            </div>
+    <div className="home">
+      <div className="home__jobs">
+        <Categories
+          nextPage={nextPage}
+          prevPage={prevPage}
+          page={page}
+          reset={reset}
+        />
+      </div>
+      <div className="home__sidebar">
+        <Sidebar reset={reset} />
+      </div>
+    </div>
   )
 }
 

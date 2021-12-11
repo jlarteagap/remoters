@@ -16,27 +16,21 @@ const JobsList = () => {
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
   return (
-        <Fragment>
-            <div className="content">
-                {data.getJobs.map(job => {
-                  return (
-                            <Job
-                                key={job.id}
-                                job={job}
-                            />
-                  )
-                })}
+    <Fragment>
+      <div className="content">
+        {data.getJobs.map(job => {
+          return <Job key={job.id} job={job} />
+        })}
 
-                <Paginator
-                    actual = {page.actual}
-                    total = {data.totalJobs}
-                    limit = {page.limit}
-                    prevPage = {prevPage}
-                    nextPage = {nextPage}
-                />
-            </div>
-
-        </Fragment>
+        <Paginator
+          actual={page.actual}
+          total={data.totalJobs}
+          limit={page.limit}
+          prevPage={prevPage}
+          nextPage={nextPage}
+        />
+      </div>
+    </Fragment>
   )
 }
 

@@ -21,20 +21,20 @@ const Form = () => {
     setCompany({ ...initialState })
   }
 
-  const updateState = (e) => {
+  const updateState = e => {
     setCompany({
       ...company,
       [e.target.name]: e.target.value
     })
   }
 
-  const logoUpdate = (url) => {
+  const logoUpdate = url => {
     setCompany({
       ...company,
       logo: url
     })
   }
-  const formCompany = (e) => {
+  const formCompany = e => {
     e.preventDefault()
 
     if (error) {
@@ -54,47 +54,47 @@ const Form = () => {
   }
 
   return (
-        <div className="card">
-            <h3>Registro de empresas</h3>
-            <form className="form" onSubmit={e => formCompany(e)}>
-                <div className="form__group">
-                   <UploadLogo
-                        logoUpdate = {logoUpdate}
-                        logo = {company.logo}
-                    />
-                </div>
-                <div className="form__group">
-                    <label>Nombre de la empresa</label>
-                    <input
-                        onChange={updateState}
-                        name="name"
-                        type="text"
-                        placeholder="Nombre de la empresa"
-                        value={company.name}
-                        required />
-                </div>
-                <div className="form__group">
-                    <label>Página Web</label>
-                    <input
-                        onChange={updateState}
-                        name="site"
-                        type="text"
-                        placeholder="Nombre de la empresa"
-                        value={company.site}
-                        required />
-                </div>
-                <div className="form__group">
-                    <label>Descripción de la empresa</label>
-                    <textarea
-                        onChange={updateState}
-                        name="description"
-                        type="text"
-                        value={company.description}
-                        placeholder="Nombre de la empresa" />
-                </div>
-                <button className="btn">Agregar empresa</button>
-            </form>
+    <div className="card">
+      <h3>Registro de empresas</h3>
+      <form className="form" onSubmit={e => formCompany(e)}>
+        <div className="form__group">
+          <UploadLogo logoUpdate={logoUpdate} logo={company.logo} />
         </div>
+        <div className="form__group">
+          <label>Nombre de la empresa</label>
+          <input
+            onChange={updateState}
+            name="name"
+            type="text"
+            placeholder="Nombre de la empresa"
+            value={company.name}
+            required
+          />
+        </div>
+        <div className="form__group">
+          <label>Página Web</label>
+          <input
+            onChange={updateState}
+            name="site"
+            type="text"
+            placeholder="Nombre de la empresa"
+            value={company.site}
+            required
+          />
+        </div>
+        <div className="form__group">
+          <label>Descripción de la empresa</label>
+          <textarea
+            onChange={updateState}
+            name="description"
+            type="text"
+            value={company.description}
+            placeholder="Nombre de la empresa"
+          />
+        </div>
+        <button className="btn">Agregar empresa</button>
+      </form>
+    </div>
   )
 }
 

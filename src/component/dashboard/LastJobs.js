@@ -14,21 +14,22 @@ export const LastJobs = () => {
   if (error) return `Error: ${error.message}`
 
   return (
-        <div className="dashboard__jobs">
-            <h2>Ultimos trabajos publicados</h2>
-            <div className="dashboard__last__jobs">
-                {data.getJobs.map(job => {
-                  const [companies] = job.company
-                  return (
-                        <div className="card" key={job.id}>
-                            <h3 className="dashboard__last__jobs--title">{job.position}</h3>
-                            <p className="dashboard__last__jobs--companies"><strong>Empresas: </strong>{companies.name}</p>
-                        </div>
-                  )
-                })
-
-                }
+    <div className="dashboard__jobs">
+      <h2>Ultimos trabajos publicados</h2>
+      <div className="dashboard__last__jobs">
+        {data.getJobs.map(job => {
+          const [companies] = job.company
+          return (
+            <div className="card" key={job.id}>
+              <h3 className="dashboard__last__jobs--title">{job.position}</h3>
+              <p className="dashboard__last__jobs--companies">
+                <strong>Empresas: </strong>
+                {companies.name}
+              </p>
             </div>
-        </div>
+          )
+        })}
+      </div>
+    </div>
   )
 }
