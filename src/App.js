@@ -10,9 +10,7 @@ import RegisterView from './containers/RegisterView'
 import LoginView from './containers/LoginView'
 
 import NewJob from './containers/NewJob'
-// import CategoriesList from "./container/CategoriesList"
 
-import './assets/css/stl.css'
 import CategoriesList from './containers/CategoriesList'
 import Companies from './containers/Companies'
 import Dashboard from './containers/Dashboard'

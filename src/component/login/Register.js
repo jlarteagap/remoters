@@ -51,34 +51,53 @@ const Register = () => {
             </div>
             <div className="card card--login">
                 <form onSubmit={e => addUser(e)}>
-                    <div className="form__group">
+                    <div className="field">
+                      <label className="label">
+                        Correo electronico
+                      </label>
+                      <div className="control">
                         <input
                             onChange={updateState}
                             type="email"
                             name="email"
+                            className="input"
                             placeholder="Correo electrónico"
                             required />
+
+                      </div>
                     </div>
-                    <div className="form__group">
+
+                    <div className="field">
+                      <label className="label">
+                        Contraseña
+                      </label>
+                        <div className="control">
                         <input
                             onChange={updateState}
                             type="password"
                             name="password"
+                            className="input"
                             required
                             placeholder="Contraseña" />
+                        </div>
                     </div>
-                    <div className="form__group">
-                        <input
+                    <div className="field">
+                    <label className="label">
+                        Repetir Contraseña
+                      </label>
+                        <div className="control">
+                          <input
                             onChange={updateState}
                             type="password"
                             name="confirmPassword"
                             required
+                            className="input"
                             placeholder="Contraseña" />
+                        </div>
                     </div>
-                    <div className="center">
+                    <div className="control">
                         <button
-                            // disabled={ validateForm() }
-                            className="btn">Registrarme</button>
+                            className="button btn">Registrarme</button>
                     </div>
                     { errors.message ? <Error message={errors.message} /> : ''}
                     <small className="center">Ya estas registrado? <Link to="/registro">Ingresa por aquí</Link></small>
