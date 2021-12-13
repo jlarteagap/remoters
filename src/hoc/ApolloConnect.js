@@ -16,8 +16,8 @@ const errorLink = onError(({ graphqlErrors, networkError }) => {
 })
 
 const httpLink = createHttpLink({
-  // uri: 'https://server-tembiapo.herokuapp.com/graphql',
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://server-tembiapo.herokuapp.com/graphql',
+  // uri: 'http://localhost:4000/graphql',
   fetchOptions: {
     credentials: 'include'
   }
