@@ -20,6 +20,8 @@ prettier.config.js
 .env.test.local
 .env.production.local
 
+/src/hoc/ApolloConnect.js
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
