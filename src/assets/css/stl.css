@@ -144,6 +144,15 @@ a{
             max-width: 36px;
             padding: .25rem;
         }
+
+    .home__jobs{
+        grid-column: span 12;
+        order: 1;
+    }
+    .home__sidebar{
+        grid-column: span 12;
+        order: 0;
+    }
 }
 
 /* Forms  */
