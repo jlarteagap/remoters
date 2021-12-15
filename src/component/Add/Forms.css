@@ -6,13 +6,3 @@
 .remote input{
     display: none;
 }
-.remote-btn{
-    text-align: center;
-    width: 100%;
-    border: solid 1px var(--Blue) !important;
-}
-    .false{
-        color: var(--Dark) !important;
-        
-        background: #f9f9f9 !important;
-    }

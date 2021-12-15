@@ -68,7 +68,7 @@ const UploadLogo = ({ logoUpdate, logo }) => {
         {!logo && (
           <div className="upload__logo">
             <button
-              className="btn btn-green"
+              className="button is-success"
               type="button"
               onClick={pickedImage}
             >

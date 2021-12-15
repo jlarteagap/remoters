@@ -19,18 +19,20 @@ const Companies = ({ user, onChange }) => {
   }
 
   return (
-    <div className="form__control">
-      <label>Empresa</label>
-      <select onChange={e => updateState(e)}>
-        <option>---</option>
-        {data.allCompanies.map(company => {
-          return (
-            <option key={company.id} name="name" value={company.name}>
-              {company.name}
-            </option>
-          )
-        })}
-      </select>
+    <div className="field">
+      <label className="label">Empresa</label>
+      <div className="select is-fullwidth">
+        <select onChange={e => updateState(e)}>
+          <option>---</option>
+          {data.allCompanies.map(company => {
+            return (
+              <option key={company.id} name="name" value={company.name}>
+                {company.name}
+              </option>
+            )
+          })}
+        </select>
+      </div>
     </div>
   )
 }

@@ -16,7 +16,7 @@ export const CounterCompanies = () => {
   if (error) return `Error: ${error.message}`
 
   return (
-    <div className="card card__counter card__counter--comapnies">
+    <div className="card card__counter card__counter--comapnies p-5">
       <div className="card__counter--num">{data.allCompanies.length}</div>
       <div className="card__counter--desc">Empresas registradas</div>
     </div>

@@ -43,34 +43,6 @@ a{
         color:  var(--Dark);
         background: var(--Yellow);
     }
-    .btn-blue{
-        color: white;
-        background: var(--Blue);
-    }
-    .btn-green{
-        color: white;
-        background: var(--Green);
-    }
-    .btn-orange{
-        color: white;
-        background: var(--Orange);
-    }
-    .btn-outline-red{
-        background: none;
-        border: 1px solid var(--Red);
-        color: var(--Red);
-        font-weight: 600;
-    }
-    .btn-disabled{
-        background: none;
-        border: 1px solid var(--Dark);
-        color: var(--Dark);
-        cursor: not-allowed;
-        opacity: .5;
-    }
-        .btn-disabled:hover{
-            background: none;
-        }
 
 /* Container  */
 .container{
@@ -108,9 +80,6 @@ a{
 .paginator{
     display: flex;
     justify-content: space-between;
-}
-.displayNone{
-    display: none;
 }
 
 @media screen and (max-width: 720px) {
@@ -153,36 +122,6 @@ a{
         grid-column: span 12;
         order: 0;
     }
-}
-
-/* Forms  */
-.form{
-    width: 80%;
-    margin: 0 auto;
-}
-.form__group{
-    position: relative;
-    margin-bottom: 1rem;
-    overflow: hidden;
-}
-
-input, select, textarea{
-    border: 1px solid var(--Dark);
-    border-radius: .25rem;
-    box-sizing: border-box;
-    display: block;
-    padding: .85rem 1.8rem;
-    transition: all .5s;
-    width: 100%;
-}
-input:focus, input:active{
-    padding-left: .5rem;
-    border: 1px solid var(--Green);
-}
-
-.button--inline{
-    display: flex;
-    justify-content: space-around;
 }
 
 /* Login Box  */

@@ -115,5 +115,11 @@
     .icons-info{
         display: none;
     }
-
+    .card__header--title{
+        font-size: 1.25rem !important;
+        margin: 0 !important;
+    }
+    .job__city{
+        margin: 0;
+    }
 }

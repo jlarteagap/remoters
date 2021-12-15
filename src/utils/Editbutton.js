@@ -3,11 +3,9 @@ import { FaPencilAlt } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 
 const EditButton = ({ companyId }) => {
-  const handleButton = e => {
-    console.log(companyId)
-  }
+  const handleButton = e => {}
   return (
-    <div className="btn btn-orange" onClick={e => handleButton()}>
+    <div className="button is-warning" onClick={e => handleButton()}>
       <FaPencilAlt />
     </div>
   )
