@@ -15,10 +15,3 @@
     background-position: center center;
     color: white;
 }
-
-
-@media screen and (max-width: 720px){
-    .sidebar > .card{
-        margin: 0;
-    }
-}

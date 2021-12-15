@@ -1,48 +1,39 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import {
-  FaPlus,
-  FaUserAstronaut,
-  FaDoorOpen,
-  FaSignOutAlt
-} from 'react-icons/fa'
+import React, { useContext, useState } from 'react'
 import AppContext from '../../context/AppContext'
-import { AuthContext } from '../../context/auth'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+
 // import CSS
-import './Header.css'
+import ButtonsHeader from './ButtonsHeader'
+import MenuHeader from './MenuHeader'
 
 const Header = ({ title }) => {
-  const { user, logout } = useContext(AuthContext)
+  const [isActive, setisActive] = useState(false)
   const { resetState } = useContext(AppContext)
   return (
-    <div className="header">
-      <Link to="/" onClick={resetState}>
-        <h1>{title}</h1>
-      </Link>
-      <div className="header__right">
-        {user ? (
-          <Link to="/dashboard" className="header__right--profile">
-            <FaUserAstronaut className="header__right--icon" /> {user.name}
-          </Link>
-        ) : (
-          ''
-        )}
-        <Link to="/dashboard/agregar" className="btn mr-1">
-          <FaPlus className="header__right--plus" />
-          AGREGAR
+    <nav className="navbar container is-align-items-center">
+      <div className="navbar-brand">
+        <Link className="navbar-item" to="/" onClick={resetState}>
+          <h1 className="title">{title}</h1>
         </Link>
-        {user ? (
-          <div className="header--log" onClick={logout} as={Link}>
-            <FaSignOutAlt /> Salir
-          </div>
-        ) : (
-          <Link className="header--log" to="/login">
-            <FaDoorOpen /> Entrar
-          </Link>
-        )}
+        <a
+          onClick={() => {
+            setisActive(!isActive)
+          }}
+          role="button"
+          className={`navbar-burger burger ${isActive ? 'is-active' : ''}`}
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
-    </div>
+      <MenuHeader isActive={isActive} />
+      <ButtonsHeader />
+    </nav>
   )
 }
 

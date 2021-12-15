@@ -17,7 +17,7 @@ const Job = ({ job }) => {
     iconRemote = <JobIcon category="REMOTE" />
   }
   return (
-    <div className="card card--job">
+    <div className="card card--job p-3 mb-5">
       <div className="card__img">
         <img src={logoImage} alt={companies.name} />
       </div>
@@ -39,11 +39,11 @@ const Job = ({ job }) => {
             <JobIcon category={category} />
           </div>
           <div className="job__button-position">
-            <a className="job__button job__button-shareButton" href="#link">
+            <a className="button job__button-shareButton" href="#link">
               Compartir
             </a>
             <a
-              className="job__button"
+              className="button is-small is-success is-light"
               href={link}
               target="_blank"
               rel="noreferrer"
@@ -57,6 +57,6 @@ const Job = ({ job }) => {
   )
 }
 Job.propTypes = {
-  job: PropTypes.array
+  job: PropTypes.object
 }
 export default Job

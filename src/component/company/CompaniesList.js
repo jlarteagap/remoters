@@ -25,7 +25,7 @@ const CompaniesList = () => {
   if (error) return `Error: ${error.message}`
 
   return (
-    <div className="dashboard__companies__list">
+    <div className="dashboard__companies__list mb-5 p-1">
       {data.allCompanies.map(company => {
         return <Company key={company.id} company={company} />
       })}

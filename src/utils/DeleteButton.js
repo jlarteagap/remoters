@@ -32,7 +32,7 @@ const DeleteButton = ({ companyId }) => {
     })
   }
   return (
-    <div className="btn" onClick={e => handleButton(e)}>
+    <div className="button is-danger" onClick={e => handleButton(e)}>
       <FaTrashAlt />
     </div>
   )

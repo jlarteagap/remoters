@@ -15,15 +15,15 @@ export const LastJobs = () => {
 
   return (
     <div className="dashboard__jobs">
-      <h2>Ultimos trabajos publicados</h2>
+      <h2 className="title is-4">Ultimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
         {data.getJobs.map(job => {
           const [companies] = job.company
           return (
-            <div className="card" key={job.id}>
+            <div className="card p-5 mb-2" key={job.id}>
               <h3 className="dashboard__last__jobs--title">{job.position}</h3>
               <p className="dashboard__last__jobs--companies">
-                <strong>Empresas: </strong>
+                <strong>Empresa: </strong>
                 {companies.name}
               </p>
             </div>

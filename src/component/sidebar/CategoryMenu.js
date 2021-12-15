@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 const CategoryMenu = ({ reset }) => {
   return (
-    <div className="categories card">
+    <div className="categories box">
       <Link to="/SOFTWARE_DEVELOP" className="categories-link" onClick={reset}>
         <JobIcon category="SOFTWARE_DEVELOP" />
         Software Develop

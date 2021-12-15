@@ -16,7 +16,7 @@ export const CounterJobs = () => {
   if (error) return `Error: ${error.message}`
 
   return (
-    <div className="card card__counter">
+    <div className="card card__counter p-5">
       <div className="card__counter--num">{data.getJobs.length}</div>
       <div className="card__counter--desc">Últimos trabajos publicados</div>
     </div>

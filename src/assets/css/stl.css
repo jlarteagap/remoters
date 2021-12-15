@@ -31,50 +31,18 @@ a{
 }
 /* Botones */
 .btn{
-    align-items: center;
     background: var(--Red);
     border-radius: .25rem;
+    border: none;
     color: white;
-    cursor: pointer;
-    display: flex;
     font-weight: 500;
-    justify-content: center;
     padding: .5rem 1rem;
     transition: all .3s;
-    border: none;
 }
     .btn:hover{
         color:  var(--Dark);
         background: var(--Yellow);
     }
-    .btn-blue{
-        color: white;
-        background: var(--Blue);
-    }
-    .btn-green{
-        color: white;
-        background: var(--Green);
-    }
-    .btn-orange{
-        color: white;
-        background: var(--Orange);
-    }
-    .btn-outline-red{
-        background: none;
-        border: 1px solid var(--Red);
-        color: var(--Red);
-        font-weight: 600;
-    }
-    .btn-disabled{
-        background: none;
-        border: 1px solid var(--Dark);
-        color: var(--Dark);
-        cursor: not-allowed;
-        opacity: .5;
-    }
-        .btn-disabled:hover{
-            background: none;
-        }
 
 /* Container  */
 .container{
@@ -113,9 +81,6 @@ a{
     display: flex;
     justify-content: space-between;
 }
-.displayNone{
-    display: none;
-}
 
 @media screen and (max-width: 720px) {
     .container{
@@ -128,47 +93,42 @@ a{
         padding: 1rem 1rem 0;
         order: 0;
     }
+    .buttons__movil{
+        position: fixed;
+        right: 0;
+        width: 36px;
+        bottom: 20%;
+    }
+        .button__movil .login{
+            margin: 0;
+        }
+        .buttons__movil svg{
+            margin: 0 !important;
+        }
+        .buttons__movil .txt{
+            display: none;
+        }
+        .buttons__movil .button{
+            margin: 0 !important;
+            max-width: 36px;
+            padding: .25rem;
+        }
+
+    .home__jobs{
+        grid-column: span 12;
+        order: 1;
+    }
+    .home__sidebar{
+        grid-column: span 12;
+        order: 0;
+    }
 }
 
-.card{
-    background: #fff;
-    border: 1px solid #f9f9f9;
-    border-radius: .5rem;
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
-    margin-bottom: 1rem;
-    padding: 1rem 1.5rem;
-}
-
-.mr-1{
-    margin-right: .5rem;
-}
-
-/* Forms  */
-.form{
-    width: 80%;
-    margin: 0 auto;
-}
-.form__group{
-    position: relative;
-    margin-bottom: 1rem;
-    overflow: hidden;
-}
-
-input, select, textarea{
-    border: 1px solid var(--Dark);
-    border-radius: .25rem;
-    box-sizing: border-box;
-    display: block;
-    padding: .85rem 1.8rem;
-    transition: all .5s;
+/* Login Box  */
+.login__content{
+    height: 100vh;
     width: 100%;
 }
-input:focus, input:active{
-    padding-left: .5rem;
-    border: 1px solid var(--Green);
-}
-
-.button--inline{
-    display: flex;
-    justify-content: space-around;
+.login__box {
+    height: 100vh;
 }
