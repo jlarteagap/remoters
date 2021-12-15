@@ -24,6 +24,7 @@ const Categories = props => {
   })
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
+  console.log(data.getJobs.length)
   return (
     <div className="content">
       {data.getJobs.map(job => {
@@ -32,7 +33,7 @@ const Categories = props => {
 
       <Paginator
         actual={page.actual}
-        total={data.totalJobs}
+        total={data.getJobs.length}
         limit={page.limit}
         prevPage={prevPage}
         nextPage={nextPage}

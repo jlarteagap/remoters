@@ -14,7 +14,7 @@ const Company = ({ company }) => {
   logo ? (logoImage = logo) : (logoImage = DEFAULT_IMAGES)
 
   return (
-    <div className="card card--job">
+    <div className="card card--job mb-3 p-3">
       <div className="card__img">
         <img src={logoImage} alt="DEFAUL IMAGES" />
       </div>
@@ -30,7 +30,7 @@ const Company = ({ company }) => {
 
       <div>
         {user && user.email === username && (
-          <div className="button--inline">
+          <div className="is-flex is-justify-content-space-around">
             <EditButton companyId={id} />
             <DeleteButton companyId={id} />
           </div>

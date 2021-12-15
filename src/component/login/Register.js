@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { CREATE_USER_MUTATION } from '../../Graphql/Mutation'
 import { useMutation } from '@apollo/client'
@@ -46,66 +46,68 @@ const Register = () => {
       })
   }
   return (
-    <Fragment>
-      <div className="login__titles">
-        <h3>Registro</h3>
-        <p>
-          Para publicar un anuncio de trabajo, necesitamos que te registres
-          primero.
-        </p>
-      </div>
-      <div className="card card--login">
-        <form onSubmit={e => addUser(e)}>
-          <div className="field">
-            <label className="label">Correo electronico</label>
-            <div className="control">
-              <input
-                onChange={updateState}
-                type="email"
-                name="email"
-                className="input"
-                placeholder="Correo electrónico"
-                required
-              />
+    <div className="column login__box is-flex is-justify-content-center is-align-items-center">
+      <div className="box">
+        <div className="login__titles is-medium">
+          <h3 className="title">Registro</h3>
+          <p className="subtitle is-6">
+            Para publicar un anuncio de trabajo, necesitamos que te registres
+            primero.
+          </p>
+        </div>
+        <div className="mt-5">
+          <form onSubmit={e => addUser(e)}>
+            <div className="field">
+              <label className="label">Correo electronico</label>
+              <div className="control">
+                <input
+                  onChange={updateState}
+                  type="email"
+                  name="email"
+                  className="input"
+                  placeholder="Correo electrónico"
+                  required
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label className="label">Contraseña</label>
-            <div className="control">
-              <input
-                onChange={updateState}
-                type="password"
-                name="password"
-                className="input"
-                required
-                placeholder="Contraseña"
-              />
+            <div className="field">
+              <label className="label">Contraseña</label>
+              <div className="control">
+                <input
+                  onChange={updateState}
+                  type="password"
+                  name="password"
+                  className="input"
+                  required
+                  placeholder="Contraseña"
+                />
+              </div>
             </div>
-          </div>
-          <div className="field">
-            <label className="label">Repetir Contraseña</label>
-            <div className="control">
-              <input
-                onChange={updateState}
-                type="password"
-                name="confirmPassword"
-                required
-                className="input"
-                placeholder="Contraseña"
-              />
+            <div className="field">
+              <label className="label">Repetir Contraseña</label>
+              <div className="control">
+                <input
+                  onChange={updateState}
+                  type="password"
+                  name="confirmPassword"
+                  required
+                  className="input"
+                  placeholder="Contraseña"
+                />
+              </div>
             </div>
-          </div>
-          <div className="control">
-            <button className="button btn">Registrarme</button>
-          </div>
-          {errors.message ? <Error message={errors.message} /> : ''}
-          <small className="center">
-            Ya estas registrado? <Link to="/registro">Ingresa por aquí</Link>
-          </small>
-        </form>
+            <div className="control">
+              <button className="button btn">Registrarme</button>
+            </div>
+            {errors.message ? <Error message={errors.message} /> : ''}
+            <small className="center">
+              Ya estas registrado? <Link to="/registro">Ingresa por aquí</Link>
+            </small>
+          </form>
+        </div>
       </div>
-    </Fragment>
+    </div>
   )
 }
 

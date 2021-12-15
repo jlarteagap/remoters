@@ -54,15 +54,16 @@ const Form = () => {
   }
 
   return (
-    <div className="card">
-      <h3>Registro de empresas</h3>
+    <div className="box">
+      <h3 className="title is-5">Registro de empresas</h3>
       <form className="form" onSubmit={e => formCompany(e)}>
-        <div className="form__group">
+        <div className="field">
           <UploadLogo logoUpdate={logoUpdate} logo={company.logo} />
         </div>
-        <div className="form__group">
-          <label>Nombre de la empresa</label>
+        <div className="field">
+          <label className="label">Nombre de la empresa</label>
           <input
+            className="input"
             onChange={updateState}
             name="name"
             type="text"
@@ -71,9 +72,10 @@ const Form = () => {
             required
           />
         </div>
-        <div className="form__group">
-          <label>Página Web</label>
+        <div className="field">
+          <label className="label">Página Web</label>
           <input
+            className="input"
             onChange={updateState}
             name="site"
             type="text"
@@ -82,9 +84,10 @@ const Form = () => {
             required
           />
         </div>
-        <div className="form__group">
-          <label>Descripción de la empresa</label>
+        <div className="field">
+          <label className="label">Descripción de la empresa</label>
           <textarea
+            className="input"
             onChange={updateState}
             name="description"
             type="text"
@@ -92,7 +95,7 @@ const Form = () => {
             placeholder="Nombre de la empresa"
           />
         </div>
-        <button className="btn">Agregar empresa</button>
+        <button className="button btn">Agregar empresa</button>
       </form>
     </div>
   )

@@ -78,13 +78,14 @@ const AddJobs = () => {
       )
   }
   return (
-    <div className="card">
-      <h3>Agregar un nuevo trabajo</h3>
+    <div className="box p-5">
+      <h3 className="title is-4">Agregar un nuevo trabajo</h3>
       <form onSubmit={e => Addingjobs(e)}>
         <Companies user={user.email} onChange={value => setCompany(value)} />
-        <div className="form__group">
-          <label>Cargo disponible</label>
+        <div className="field">
+          <label className="label">Cargo disponible</label>
           <input
+            className="input"
             onChange={updateState}
             name="position"
             placeholder="Ej: Frontend Developer..."
@@ -92,9 +93,10 @@ const AddJobs = () => {
             required
           />
         </div>
-        <div className="form__group">
-          <label>Enlace para postular</label>
+        <div className="field">
+          <label className="label">Enlace para postular</label>
           <input
+            className="input"
             onChange={updateState}
             name="link"
             placeholder="Enlace donde se postulará el interesado."
@@ -102,32 +104,36 @@ const AddJobs = () => {
             required
           />
         </div>
-        <div className="form__group">
-          <label>Categoria</label>
-          <select name="category" onChange={updateState}>
-            <option value="">Elegir...</option>
-            <option value="SOFTWARE_DEVELOP">Software Develop</option>
-            <option value="SOCIAL_MEDIA">Social Media</option>
-            <option value="DESIGNER">Diseño</option>
-            <option value="SALES">Comercial</option>
-          </select>
+        <div className="field">
+          <label className="label">Categoria</label>
+          <div className="select is-fullwidth">
+            <select name="category" onChange={updateState}>
+              <option value="">Elegir...</option>
+              <option value="SOFTWARE_DEVELOP">Software Develop</option>
+              <option value="SOCIAL_MEDIA">Social Media</option>
+              <option value="DESIGNER">Diseño</option>
+              <option value="SALES">Comercial</option>
+            </select>
+          </div>
         </div>
-        <div className="form__group">
-          <label>Ciudad</label>
-          <select name="city" onChange={updateState}>
-            <option value="">Elegir...</option>
-            <option value="SANTA_CRUZ">Santa Cruz</option>
-            <option value="LA_PAZ">La Paz</option>
-            <option value="COCHABAMBA">Cochabamba</option>
-            <option value="TARIJA">Tarija</option>
-            <option value="ORURO">Oruro</option>
-            <option value="POTOSI">Potosi</option>
-            <option value="CHUQUISACA">Chuquisaca</option>
-            <option value="BENI">Beni</option>
-            <option value="PANDO">Pando</option>
-          </select>
+        <div className="field">
+          <label className="label">Ciudad</label>
+          <div className="select is-fullwidth">
+            <select name="city" onChange={updateState}>
+              <option value="">Elegir...</option>
+              <option value="SANTA_CRUZ">Santa Cruz</option>
+              <option value="LA_PAZ">La Paz</option>
+              <option value="COCHABAMBA">Cochabamba</option>
+              <option value="TARIJA">Tarija</option>
+              <option value="ORURO">Oruro</option>
+              <option value="POTOSI">Potosi</option>
+              <option value="CHUQUISACA">Chuquisaca</option>
+              <option value="BENI">Beni</option>
+              <option value="PANDO">Pando</option>
+            </select>
+          </div>
         </div>
-        <div className="form__group">
+        <div className="field">
           <label className="remote">
             <span className="">Trabajo Remoto?</span>
             <input
@@ -139,7 +145,9 @@ const AddJobs = () => {
             />
             <span
               className={
-                isRemote ? 'btn remote-btn btn-blue' : 'btn remote-btn false'
+                isRemote
+                  ? 'button is-primary is-outlined is-fullwidth'
+                  : 'button is-danger is-outlined is-fullwidth'
               }
             >
               {isRemote ? 'SI' : 'NO'}
@@ -147,7 +155,7 @@ const AddJobs = () => {
           </label>
         </div>
 
-        <button type="submit" className="btn">
+        <button type="submit" className="button btn">
           {' '}
           Enviar publicación
         </button>
