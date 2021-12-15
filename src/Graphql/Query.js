@@ -19,6 +19,7 @@ export const GET_JOBS = gql`
         email
       }
     }
+    totalJobs
   }
 `
 
