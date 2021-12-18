@@ -65,7 +65,11 @@ export const CREATE_COMPANY = gql`
     }
   }
 `
-
+export const DELETE_JOB = gql`
+  mutation deleteJobs($jobId: ID) {
+    deleteJobs(jobId: $jobId)
+  }
+`
 export const DELETE_COMPANY = gql`
   mutation deleteCompany($companyId: ID) {
     deleteCompany(companyId: $companyId)
