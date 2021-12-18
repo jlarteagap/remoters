@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_JOBS } from '../../Graphql/Query'
 import Loading from '../utils/Loading'
-
+import DeleteButton from '../../utils/DeleteButton'
 export const LastJobs = () => {
   const { loading, error, data } = useQuery(GET_JOBS, {
     variables: {
@@ -26,6 +26,7 @@ export const LastJobs = () => {
                 <strong>Empresa: </strong>
                 {companies.name}
               </p>
+              <DeleteButton jobId={job.id} />
             </div>
           )
         })}
