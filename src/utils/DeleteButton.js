@@ -1,19 +1,21 @@
 import { useMutation } from '@apollo/client'
 import React from 'react'
 import { FaTrashAlt } from 'react-icons/fa'
-import { DELETE_COMPANY } from '../Graphql/Mutation'
+import { DELETE_COMPANY, DELETE_JOB } from '../Graphql/Mutation'
 
 import Swal from 'sweetalert2'
 import PropTypes from 'prop-types'
 
-const DeleteButton = ({ companyId }) => {
-  const [deleteCompany] = useMutation(DELETE_COMPANY)
+const DeleteButton = ({ companyId, jobId }) => {
+  const mutation = companyId ? DELETE_COMPANY : DELETE_JOB
+  const [companyOrJob] = useMutation(mutation)
+  const textAction = companyId ? 'Empresa' : 'Oferta Laboral'
 
   const handleButton = e => {
     e.preventDefault()
 
     Swal.fire({
-      title: 'Seguro que quieres eliminar esta empresa?',
+      title: `Seguro que quieres eliminar esta ${textAction}?`,
       text: 'Una vez eliminado, no podrás recuperarlo',
       icon: 'warning',
       showCancelButton: true,
@@ -22,9 +24,10 @@ const DeleteButton = ({ companyId }) => {
       confirmButtonText: 'Si, eliminar!'
     }).then(result => {
       if (result.isConfirmed) {
-        deleteCompany({
+        companyOrJob({
           variables: {
-            companyId: companyId
+            companyId,
+            jobId
           }
         })
         Swal.fire('Eliminado!', 'Se eliminó correctamentamente.', 'success')
@@ -39,7 +42,8 @@ const DeleteButton = ({ companyId }) => {
 }
 
 DeleteButton.propTypes = {
-  companyId: PropTypes.string.isRequired
+  companyId: PropTypes.string,
+  jobId: PropTypes.string
 }
 
 export default DeleteButton
