@@ -3,8 +3,10 @@ import { useQuery } from '@apollo/client'
 import { GET_JOBS } from '../../Graphql/Query'
 import Loading from '../utils/Loading'
 import DeleteButton from '../../utils/DeleteButton'
+
 export const LastJobs = () => {
   const { loading, error, data } = useQuery(GET_JOBS, {
+    pollInterval: 1100,
     variables: {
       limit: 5
     }
