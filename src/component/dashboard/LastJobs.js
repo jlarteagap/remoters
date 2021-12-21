@@ -17,17 +17,22 @@ export const LastJobs = () => {
 
   return (
     <div className="dashboard__jobs">
-      <h2 className="title is-4">Ultimos trabajos publicados</h2>
+      <h2 className="title is-4">Últimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
         {data.getJobs.map(job => {
           const [companies] = job.company
           return (
-            <div className="card p-5 mb-2" key={job.id}>
-              <h3 className="dashboard__last__jobs--title">{job.position}</h3>
-              <p className="dashboard__last__jobs--companies">
-                <strong>Empresa: </strong>
-                {companies.name}
-              </p>
+            <div
+              className="card p-5 mb-2 is-flex is-justify-content-space-between"
+              key={job.id}
+            >
+              <div>
+                <h3 className="title is-4 m-0 is-small">{job.position}</h3>
+                <p className="pt-0">
+                  <strong>Empresa: </strong>
+                  {companies.name}
+                </p>
+              </div>
               <DeleteButton jobId={job.id} />
             </div>
           )
