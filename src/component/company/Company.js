@@ -12,7 +12,7 @@ const Company = ({ company }) => {
 
   let logoImage
   logo ? (logoImage = logo) : (logoImage = DEFAULT_IMAGES)
-
+  console.log(company.length)
   return (
     <div className="card card--job mb-3 p-3">
       <div className="card__img">
