@@ -26,12 +26,21 @@ const CompaniesList = () => {
 
   return (
     <div className="dashboard__companies__list mb-5 p-1">
+      {data.allCompanies.length < 1 ? (
+        <article className="message is-success">
+          <div className="message-body">
+            <h2 className="title is-4">Debe agregar empresa primero </h2>
+          </div>
+        </article>
+      ) : (
+        ''
+      )}
       {data.allCompanies.map(company => {
         return <Company key={company.id} company={company} />
       })}
       <Paginator
         actual={page.actual}
-        total={data.totalJobs}
+        total={data.allCompanies.length}
         limit={page.limit}
         prevPage={prevPage}
         nextPage={nextPage}
