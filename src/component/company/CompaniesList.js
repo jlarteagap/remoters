@@ -29,7 +29,7 @@ const CompaniesList = () => {
       {data.allCompanies.length < 1 ? (
         <article className="message is-success">
           <div className="message-body">
-            <h2 className="title is-4">Debe gregar empresa primero </h2>
+            <h2 className="title is-4">Debe agregar empresa primero </h2>
           </div>
         </article>
       ) : (
