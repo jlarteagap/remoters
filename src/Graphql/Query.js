@@ -6,8 +6,6 @@ export const GET_JOBS = gql`
       id
       position
       category
-      city
-      country
       link
       remote
       company {

@@ -11,7 +11,6 @@ const initialState = {
   position: '',
   link: '',
   category: '',
-  city: '',
   remote: false
 }
 const AddJobs = () => {
@@ -54,7 +53,6 @@ const AddJobs = () => {
           position: jobs.position,
           link: jobs.link,
           category: jobs.category,
-          city: jobs.city,
           remote: isRemote,
           company: {
             name: companyData.name,
@@ -113,23 +111,6 @@ const AddJobs = () => {
               <option value="SOCIAL_MEDIA">Social Media</option>
               <option value="DESIGNER">Diseño</option>
               <option value="SALES">Comercial</option>
-            </select>
-          </div>
-        </div>
-        <div className="field">
-          <label className="label">Ciudad</label>
-          <div className="select is-fullwidth">
-            <select name="city" onChange={updateState}>
-              <option value="">Elegir...</option>
-              <option value="SANTA_CRUZ">Santa Cruz</option>
-              <option value="LA_PAZ">La Paz</option>
-              <option value="COCHABAMBA">Cochabamba</option>
-              <option value="TARIJA">Tarija</option>
-              <option value="ORURO">Oruro</option>
-              <option value="POTOSI">Potosi</option>
-              <option value="CHUQUISACA">Chuquisaca</option>
-              <option value="BENI">Beni</option>
-              <option value="PANDO">Pando</option>
             </select>
           </div>
         </div>
