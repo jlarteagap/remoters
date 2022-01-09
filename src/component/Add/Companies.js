@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Companies = ({ user, onChange }) => {
   const { loading, error, data } = useQuery(GET_COMPANIES, {
+    pollInterval: 3000,
     variables: {
       username: user
     }
