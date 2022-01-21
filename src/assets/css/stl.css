@@ -22,8 +22,10 @@ a{
     text-shadow: 1px 1px var(--LigthGreen);
 }
     a:hover{
-        color: var(--Dark);
-        }
+        color: var(--Blue);
+    }
+
+  
 .main{
     background: #f9f9f9;
     box-sizing: border-box;
@@ -132,3 +134,24 @@ a{
 .login__box {
     height: 100vh;
 }
+
+.menu__it{
+    background: none !important;
+    color: var(--Dark) !important;
+}
+.effect__hover::after{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: var(--Red);
+    height: 1px;
+    transition: all .5s;
+}
+.effect__hover:hover:after{
+    width: 100%;
+  }

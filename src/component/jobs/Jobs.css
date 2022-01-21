@@ -17,12 +17,13 @@
 .card__header--title{
     margin: 0;
     font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+    position: relative;
 }
 .card__header--title a{
-    color: var(--Gray);
+    color: var(--Dark) !important;
 }
 .card__header--title a:hover{
-    color: var(--Green);
+    color: var(--Blue) !important;
 }
 .job__city{
     display: block;
@@ -122,4 +123,13 @@
     .job__city{
         margin: 0;
     }
+}
+
+.outline--button{
+    color: var(--Blue) !important;
+    border-color: var(--Blue) !important;
+}
+.outline--button:hover{
+    color: white !important;
+    background-color: var(--Blue) !important;
 }

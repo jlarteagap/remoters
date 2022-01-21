@@ -39,7 +39,7 @@ const Job = ({ job }) => {
               Compartir
             </a>
             <a
-              className="button is-success is-outlined"
+              className="button is-success is-outlined outline--button"
               href={link}
               target="_blank"
               rel="noreferrer"

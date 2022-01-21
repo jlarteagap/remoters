@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import './assets/css/stl.css'
 import 'bulma/css/bulma.min.css'
+import './assets/css/stl.css'
 
 import { ApolloProvider } from '@apollo/client'
 

@@ -7,18 +7,18 @@ const MenuHeader = ({ isActive }) => {
   const { user } = useContext(AuthContext)
   return (
     <div className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
-      {user ? (
-        <div className="navbar-start">
-          <Link to="/" className="navbar-item menu__it">
-            Home
-          </Link>
-          <Link to="/dashboard" className="navbar-item menu__it">
+      <div className="navbar-start">
+        <Link to="/" className="navbar-item effect__hover menu__it">
+          Inicio
+        </Link>
+        {user ? (
+          <Link to="/dashboard" className="navbar-item effect__hover menu__it">
             Panel
           </Link>
-        </div>
-      ) : (
-        ''
-      )}
+        ) : (
+          ''
+        )}
+      </div>
     </div>
   )
 }
