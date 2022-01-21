@@ -4,6 +4,7 @@ import { ADD_JOB } from '../../Graphql/Mutation'
 import { AuthContext } from '../../context/auth'
 import Companies from './Companies'
 
+import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import './Forms.css'
 
@@ -19,6 +20,8 @@ const AddJobs = () => {
   const [isRemote, setRemote] = useState(false)
   const [company, setCompany] = useState('')
   const { user } = useContext(AuthContext)
+
+  const history = useHistory()
 
   const clearState = () => {
     setCompany({ ...initialState })
@@ -75,6 +78,11 @@ const AddJobs = () => {
           showConfirmButton: false,
           timer: 1500
         })
+      )
+      .then(
+        setTimeout(() => {
+          history.push('/dashboard')
+        }, 4000)
       )
   }
   return (

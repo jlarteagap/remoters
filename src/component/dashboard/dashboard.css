@@ -28,7 +28,7 @@
 }
 .menu__dashboard a{
     align-items: center;
-    color: var(--Blue);
+    color: var(--Red);
     display: flex;
     font-weight: 500;
     padding-bottom: 1rem;

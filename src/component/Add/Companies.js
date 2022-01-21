@@ -14,7 +14,6 @@ const Companies = ({ user, onChange }) => {
 
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
-  console.log(data.allCompanies.length)
   const updateState = e => {
     onChange(data.allCompanies.filter(filter => filter.name === e.target.value))
   }

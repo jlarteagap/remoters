@@ -11,7 +11,7 @@ const Header = ({ title }) => {
   const [isActive, setisActive] = useState(false)
   const { resetState } = useContext(AppContext)
   return (
-    <nav className="navbar container is-align-items-center">
+    <nav className="navbar container is-align-items-center nabvar__menu">
       <div className="navbar-brand">
         <Link className="navbar-item" to="/" onClick={resetState}>
           <h1 className="title">{title}</h1>
