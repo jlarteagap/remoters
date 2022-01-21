@@ -12,6 +12,7 @@ const initialState = {
   position: '',
   link: '',
   category: '',
+  city: '',
   remote: false
 }
 const AddJobs = () => {
@@ -56,6 +57,7 @@ const AddJobs = () => {
           position: jobs.position,
           link: jobs.link,
           category: jobs.category,
+          city: jobs.city,
           remote: isRemote,
           company: {
             name: companyData.name,
@@ -115,10 +117,38 @@ const AddJobs = () => {
           <div className="select is-fullwidth">
             <select name="category" onChange={updateState}>
               <option value="">Elegir...</option>
-              <option value="SOFTWARE_DEVELOP">Software Develop</option>
-              <option value="SOCIAL_MEDIA">Social Media</option>
-              <option value="DESIGNER">Diseño</option>
-              <option value="SALES">Comercial</option>
+              <option value="web_developers">Web Development</option>
+              <option value="software_developer">Software Developers</option>
+              <option value="project_managers">Project Management</option>
+              <option value="social_managers">Social Media</option>
+              <option value="comercial">
+                Business Management &amp; Ventas
+              </option>
+              <option value="soporte">Soporte</option>
+              <option value="designers">Diseño web y gráfico</option>
+              <option value="devops">DevOps</option>
+              <option value="seo">SEO - Search Engine Optimization</option>
+              <option value="copywriting">Copywriting</option>
+              <option value="seguridad">Cyber Security</option>
+              <option value="qa">Quality Assurance</option>
+              <option value="reclutadores">RRHH & Reclutamiento</option>
+            </select>
+          </div>
+        </div>
+        <div className="field">
+          <label className="label">Ciudad</label>
+          <div className="select is-fullwidth">
+            <select name="city" onChange={updateState}>
+              <option value="">Elegir...</option>
+              <option value="SANTA_CRUZ">Santa Cruz</option>
+              <option value="LA_PAZ">La Paz</option>
+              <option value="COCHABAMBA">Cochabamba</option>
+              <option value="TARIJA">Tarija</option>
+              <option value="ORURO">Oruro</option>
+              <option value="POTOSI">Potosi</option>
+              <option value="CHUQUISACA">Chuquisaca</option>
+              <option value="BENI">Beni</option>
+              <option value="PANDO">Pando</option>
             </select>
           </div>
         </div>

@@ -1,11 +1,12 @@
 import React from 'react'
 import JobIcon from './JobIcon'
 import DEFAULT_IMAGES from '../../assets/img/default.jpeg'
+import { FaMapMarkerAlt } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 
 const Job = ({ job }) => {
-  const { company, position, link, category, remote } = job
-
+  const { company, position, link, city, country, category, remote } = job
+  console.log(city)
   const [companies] = company
 
   let logoImage
@@ -27,6 +28,9 @@ const Job = ({ job }) => {
           </a>
         </h2>
         <div className="card__header--sub">{companies.name}</div>
+        <span className="job__city">
+          <FaMapMarkerAlt /> {city.replace('_', ' ')} - {country}
+        </span>
       </div>
       <div className="card__body">
         <div className="job__info">
