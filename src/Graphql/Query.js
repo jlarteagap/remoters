@@ -16,6 +16,8 @@ export const GET_JOBS = gql`
       username {
         email
       }
+      type
+      salary
     }
     totalJobs
   }

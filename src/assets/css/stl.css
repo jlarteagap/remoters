@@ -16,7 +16,7 @@ body{
     padding: 0;
 }
 a{
-    color: var(--Blue);
+    color: var(--Dark);
     text-decoration: none;
     transition: all 0.3s;
     text-shadow: 1px 1px var(--LigthGreen);
@@ -34,7 +34,7 @@ a{
     background: var(--Red);
     border-radius: .25rem;
     border: none;
-    color: white;
+    color: white !important;
     font-weight: 500;
     padding: .5rem 1rem;
     transition: all .3s;

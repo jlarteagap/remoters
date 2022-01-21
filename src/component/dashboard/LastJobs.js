@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client'
 import { GET_JOBS } from '../../Graphql/Query'
 import Loading from '../utils/Loading'
 import DeleteButton from '../../utils/DeleteButton'
+import EditButton from '../../utils/Editbutton'
 export const LastJobs = () => {
   const { loading, error, data } = useQuery(GET_JOBS, {
     pollInterval: 1100,
@@ -32,7 +33,12 @@ export const LastJobs = () => {
                   {companies.name}
                 </p>
               </div>
-              <DeleteButton jobId={job.id} />
+              <div className="is-flex">
+                <div className="mr-3">
+                  <EditButton companyId={companies.id} />
+                </div>
+                <DeleteButton jobId={job.id} />
+              </div>
             </div>
           )
         })}
