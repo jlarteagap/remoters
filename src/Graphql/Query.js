@@ -25,6 +25,30 @@ export const GET_JOBS = gql`
   }
 `
 
+export const GET_JOB = gql`
+  query getJob($id: ID) {
+    getJob(ID: $id) {
+      id
+      position
+      category
+      link
+      city
+      country
+      remote
+      company {
+        name
+        logo
+      }
+      createdAt
+      username {
+        email
+      }
+      type
+      salary
+    }
+  }
+`
+
 export const GET_COMPANIES = gql`
   query allCompanies($username: String, $limit: Int, $offset: Int) {
     allCompanies(username: $username, limit: $limit, offset: $offset) {

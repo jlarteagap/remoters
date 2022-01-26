@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 
 const Job = ({ job }) => {
   const { company, position, link, city, country, category, remote } = job
-  console.log(city)
   const [companies] = company
 
   let logoImage

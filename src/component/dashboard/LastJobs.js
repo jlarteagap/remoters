@@ -20,7 +20,6 @@ export const LastJobs = () => {
       <h2 className="title is-4">Últimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
         {data.getJobs.map(job => {
-          console.log(job)
           const [companies] = job.company
           return (
             <div
