@@ -20,6 +20,7 @@ export const LastJobs = () => {
       <h2 className="title is-4">Últimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
         {data.getJobs.map(job => {
+          console.log(job)
           const [companies] = job.company
           return (
             <div
@@ -35,9 +36,9 @@ export const LastJobs = () => {
               </div>
               <div className="is-flex">
                 <div className="mr-3">
-                  <EditButton companyId={companies.id} />
+                  <EditButton job={job.id} />
                 </div>
-                <DeleteButton jobId={job.id} />
+                <DeleteButton jobID={job.id} />
               </div>
             </div>
           )

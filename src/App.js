@@ -10,7 +10,7 @@ import RegisterView from './containers/RegisterView'
 import LoginView from './containers/LoginView'
 
 import NewJob from './containers/NewJob'
-
+import EditJobsContainer from './containers/EditJobsContainer'
 import CategoriesList from './containers/CategoriesList'
 import Companies from './containers/Companies'
 import Dashboard from './containers/Dashboard'
@@ -43,6 +43,11 @@ const App = () => {
                     exact
                     path="/dashboard/agregar"
                     component={NewJob}
+                  />
+                  <PrivateRoute
+                    exact
+                    path="/dashboard/job/edit/:id"
+                    component={EditJobsContainer}
                   />
                   <PrivateRoute
                     exact

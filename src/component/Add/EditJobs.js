@@ -15,7 +15,7 @@ const initialState = {
   city: '',
   remote: false
 }
-const AddJobs = () => {
+const EditJob = () => {
   const [jobs, setJobs] = useState(initialState)
   const [isRemote, setRemote] = useState(false)
   const [company, setCompany] = useState('')
@@ -86,7 +86,7 @@ const AddJobs = () => {
   }
   return (
     <div className="box p-5">
-      <h3 className="title is-4">Agregar un nuevo trabajo</h3>
+      <h3 className="title is-4">Editar publicación</h3>
       <form onSubmit={e => Addingjobs(e)}>
         <div className="field">
           <div className="control">
@@ -219,4 +219,4 @@ const AddJobs = () => {
   )
 }
 
-export default AddJobs
+export default EditJob
