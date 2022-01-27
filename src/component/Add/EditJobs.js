@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { ADD_JOB } from '../../Graphql/Mutation'
@@ -8,24 +9,14 @@ import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import './Forms.css'
 
-const initialState = {
-  position: '',
-  link: '',
-  category: '',
-  city: '',
-  remote: false
-}
-const EditJob = () => {
-  const [jobs, setJobs] = useState(initialState)
-  const [isRemote, setRemote] = useState(false)
+const EditJob = ({ job }) => {
+  const [jobs, setJobs] = useState(job)
+  const [isRemote, setRemote] = useState(job.remote)
   const [company, setCompany] = useState('')
+
   const { user } = useContext(AuthContext)
 
   const history = useHistory()
-
-  const clearState = () => {
-    setCompany({ ...initialState })
-  }
 
   const [newJob] = useMutation(ADD_JOB)
 
@@ -68,21 +59,19 @@ const EditJob = () => {
           }
         }
       }
-    })
-      .then(clearState())
-      .then(
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Un nuevo empleo se ha publicado',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(
-          setTimeout(() => {
-            history.push('/dashboard')
-          }, 4000)
-        )
+    }).then(
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Un nuevo empleo se ha publicado',
+        showConfirmButton: false,
+        timer: 1500
+      }).then(
+        setTimeout(() => {
+          history.push('/dashboard')
+        }, 4000)
       )
+    )
   }
   return (
     <div className="box p-5">
@@ -96,12 +85,16 @@ const EditJob = () => {
               onChange={updateState}
               name="position"
               placeholder="Ej: Frontend Developer..."
-              value={jobs.name}
+              defaultValue={jobs.position}
               required
             />
           </div>
         </div>
-        <Companies user={user.email} onChange={value => setCompany(value)} />
+        <Companies
+          user={user.email}
+          onChange={value => setCompany(value)}
+          companieJob={jobs.company}
+        />
         <div className="control">
           <div className="field">
             <label className="label">Enlace para postular</label>
@@ -110,7 +103,7 @@ const EditJob = () => {
               onChange={updateState}
               name="link"
               placeholder="Enlace donde se postulará el interesado."
-              value={jobs.name}
+              defaultValue={jobs.link}
               required
             />
           </div>
@@ -118,7 +111,11 @@ const EditJob = () => {
         <div className="field">
           <label className="label">Categoria</label>
           <div className="select is-fullwidth">
-            <select name="category" onChange={updateState}>
+            <select
+              name="category"
+              onChange={updateState}
+              defaultValue={jobs.category}
+            >
               <option value="">Elegir...</option>
               <option value="web_developers">Web Development</option>
               <option value="software_developer">Software Developers</option>
@@ -142,7 +139,11 @@ const EditJob = () => {
           <div className="control is-expanded">
             <label className="label">Tipo de contrato</label>
             <div className="select is-fullwidth">
-              <select name="type" onChange={updateState}>
+              <select
+                name="type"
+                onChange={updateState}
+                defaultValue={jobs.type}
+              >
                 <option value="Tiempo_Completo">Tiempo completo</option>
                 <option value="Medio_tiempo">Medio completo</option>
                 <option value="Medio_tiempo">Medio completo</option>
@@ -155,7 +156,12 @@ const EditJob = () => {
           <div className="control is-expanded">
             <div className="control">
               <label className="label">Salario</label>
-              <input type="text" className="input" name="salary"></input>
+              <input
+                type="text"
+                className="input"
+                name="salary"
+                defaultValue={jobs.salary}
+              ></input>
             </div>
           </div>
         </div>
@@ -171,7 +177,11 @@ const EditJob = () => {
           <div className="control is-expanded">
             <label className="label">Ciudad</label>
             <div className="select is-fullwidth">
-              <select name="city" onChange={updateState}>
+              <select
+                name="city"
+                onChange={updateState}
+                defaultValue={jobs.city}
+              >
                 <option value="">Elegir...</option>
                 <option value="SANTA_CRUZ">Santa Cruz</option>
                 <option value="LA_PAZ">La Paz</option>

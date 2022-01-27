@@ -1,25 +1,24 @@
 /* eslint-disable react/prop-types */
-// import { useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import React, { Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import { withRouter } from 'react-router-dom/'
 import EditJob from '../component/Add/EditJobs'
 import { Menu } from '../component/dashboard/Menu'
-// import Loading from '../component/utils/Loading'
+import Loading from '../component/utils/Loading'
 
-// import { GET_JOB } from '../Graphql/Query'
+import { GET_JOB } from '../Graphql/Query'
 
 const EditJobsContainer = props => {
   const { id } = props.match.params
-  // const { loading, error, data } = useQuery(GET_JOB, {
-  //   variables: {
-  //     id
-  //   }
-  // })
-  // if (loading) return <Loading />
-  // if (error) return `Error: ${error.message}`
+  const { loading, error, data, refetch } = useQuery(GET_JOB, {
+    variables: {
+      id
+    }
+  })
+  if (loading) return <Loading />
+  if (error) return `Error: ${error.message}`
 
-  console.log(id)
   return (
     <Fragment>
       <Helmet>
@@ -42,7 +41,7 @@ const EditJobsContainer = props => {
       <div className="home">
         <Menu />
         <div className="home__jobs">
-          <EditJob />
+          <EditJob job={data.getJob} refetch={refetch} />
         </div>
       </div>
     </Fragment>

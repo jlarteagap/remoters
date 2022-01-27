@@ -3,11 +3,11 @@ import { FaPencilAlt } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-const EditButton = ({ jobID }) => {
+const EditButton = ({ job }) => {
   const handleButton = e => {}
   return (
     <div className="button is-warning" onClick={e => handleButton()}>
-      <Link to={`/dashboard/job/edit/${jobID}`}>
+      <Link to={`/dashboard/job/edit/${job}`}>
         <FaPencilAlt />
       </Link>
     </div>
@@ -15,7 +15,7 @@ const EditButton = ({ jobID }) => {
 }
 
 EditButton.propTypes = {
-  jobID: PropTypes.string
+  job: PropTypes.string
 }
 
 export default EditButton
