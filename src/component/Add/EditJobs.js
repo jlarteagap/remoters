@@ -1,25 +1,22 @@
-/* eslint-disable react/prop-types */
 import React, { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
-import { ADD_JOB } from '../../Graphql/Mutation'
+import { UPDATE_JOB } from '../../Graphql/Mutation'
 import { AuthContext } from '../../context/auth'
 import Companies from './Companies'
-
+import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import './Forms.css'
 
-const EditJob = ({ job }) => {
+const EditJob = ({ job, refetch }) => {
   const [jobs, setJobs] = useState(job)
   const [isRemote, setRemote] = useState(job.remote)
-  const [company, setCompany] = useState('')
+  const [company, setCompany] = useState(job.company)
 
   const { user } = useContext(AuthContext)
 
+  const [updateJob] = useMutation(UPDATE_JOB)
   const history = useHistory()
-
-  const [newJob] = useMutation(ADD_JOB)
-
   const updateState = e => {
     setJobs({
       ...jobs,
@@ -42,34 +39,34 @@ const EditJob = ({ job }) => {
       })
     }
 
-    newJob({
+    updateJob({
       variables: {
         input: {
+          id: jobs.id,
           position: jobs.position,
           link: jobs.link,
           category: jobs.category,
           city: jobs.city,
+          country: jobs.country,
           remote: isRemote,
           company: {
-            name: companyData.name,
-            logo: companyData.logo
+            name: companyData.name
           },
-          username: {
-            email: user.email
-          }
+          type: jobs.type,
+          salary: jobs.salary
         }
       }
     }).then(
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Un nuevo empleo se ha publicado',
+        title: 'Publicación actualizada correctamente.',
         showConfirmButton: false,
         timer: 1500
       }).then(
-        setTimeout(() => {
+        refetch().then(() => {
           history.push('/dashboard')
-        }, 4000)
+        })
       )
     )
   }
@@ -147,7 +144,7 @@ const EditJob = ({ job }) => {
                 <option value="Tiempo_Completo">Tiempo completo</option>
                 <option value="Medio_tiempo">Medio completo</option>
                 <option value="Medio_tiempo">Medio completo</option>
-                <option value="Freelance">Freelance</option>
+                <option value="Freelancer">Freelance</option>
                 <option value="Consultoria">Consultoria</option>
               </select>
             </div>
@@ -169,7 +166,11 @@ const EditJob = ({ job }) => {
           <div className="control is-expanded">
             <label className="label">País</label>
             <div className="select is-fullwidth">
-              <select name="country" onChange={updateState}>
+              <select
+                name="country"
+                onChange={updateState}
+                defaultValue={jobs.country}
+              >
                 <option value="Bolivia">Bolivia</option>
               </select>
             </div>
@@ -229,4 +230,8 @@ const EditJob = ({ job }) => {
   )
 }
 
+EditJob.propTypes = {
+  job: PropTypes.object,
+  refetch: PropTypes.func
+}
 export default EditJob
