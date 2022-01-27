@@ -50,6 +50,7 @@ const EditJob = ({ job, refetch }) => {
           country: jobs.country,
           remote: isRemote,
           company: {
+            ...companyData,
             name: companyData.name
           },
           type: jobs.type,

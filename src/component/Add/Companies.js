@@ -14,7 +14,6 @@ const Companies = ({ user, onChange, companieJob }) => {
   })
 
   const defaultValue = companieJob ? companieJob[0].name : ''
-  console.log(defaultValue)
 
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`

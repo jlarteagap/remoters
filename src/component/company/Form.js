@@ -9,7 +9,8 @@ const initialState = {
   name: '',
   site: '',
   description: '',
-  logo: ''
+  logo: '',
+  phone: ''
 }
 const Form = () => {
   const [company, setCompany] = useState(initialState)
