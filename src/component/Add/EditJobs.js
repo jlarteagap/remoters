@@ -8,10 +8,10 @@ import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import './Forms.css'
 
-const EditJob = ({ job, refetch }) => {
-  const [jobs, setJobs] = useState(job)
-  const [isRemote, setRemote] = useState(job.remote)
-  const [company, setCompany] = useState(job.company)
+const EditJob = ({ data, refetch }) => {
+  const [jobs, setJobs] = useState(data)
+  const [isRemote, setRemote] = useState(data.remote)
+  const [company, setCompany] = useState(data.company)
 
   const { user } = useContext(AuthContext)
 
@@ -232,7 +232,7 @@ const EditJob = ({ job, refetch }) => {
 }
 
 EditJob.propTypes = {
-  job: PropTypes.object,
+  data: PropTypes.object,
   refetch: PropTypes.func
 }
 export default EditJob

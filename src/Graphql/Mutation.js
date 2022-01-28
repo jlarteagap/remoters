@@ -92,6 +92,21 @@ export const DELETE_COMPANY = gql`
     deleteCompany(companyId: $companyId)
   }
 `
+export const UPDATE_COMPANY = gql`
+  mutation UpdateCompany($input: CompanyInput) {
+    updateCompany(input: $input) {
+      id
+      name
+      site
+      description
+      logo
+      createdAt
+      username
+      phone
+      activity
+    }
+  }
+`
 
 export const UPLOAD_IMAGE = gql`
   mutation singleUpload($file: Upload!) {

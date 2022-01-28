@@ -31,7 +31,7 @@ const Company = ({ company }) => {
       <div>
         {user && user.email === username && (
           <div className="is-flex is-justify-content-space-around">
-            <EditButton companyId={id} />
+            <EditButton companyID={id} />
             <DeleteButton companyId={id} />
           </div>
         )}

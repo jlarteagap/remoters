@@ -1,26 +1,17 @@
 import React, { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
-import { CREATE_COMPANY } from '../../Graphql/Mutation'
+import { UPDATE_COMPANY } from '../../Graphql/Mutation'
 import { AuthContext } from '../../context/auth'
-
+import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 import UploadLogo from './UploadLogo'
 
-const initialState = {
-  name: '',
-  site: '',
-  description: '',
-  logo: '',
-  phone: ''
-}
-const Form = () => {
-  const [company, setCompany] = useState(initialState)
+const EditCompany = ({ data, refetch }) => {
+  const [company, setCompany] = useState(data)
   const { user } = useContext(AuthContext)
-  // const history = useHistory()
+  const history = useHistory()
 
-  const [createCompany, { error }] = useMutation(CREATE_COMPANY)
-  const clearState = () => {
-    setCompany({ ...initialState })
-  }
+  const [createCompany] = useMutation(UPDATE_COMPANY)
 
   const updateState = e => {
     setCompany({
@@ -38,12 +29,10 @@ const Form = () => {
   const formCompany = e => {
     e.preventDefault()
 
-    if (error) {
-      console.log(error)
-    }
     createCompany({
       variables: {
         input: {
+          id: company.id,
           name: company.name,
           site: company.site,
           description: company.description,
@@ -53,7 +42,11 @@ const Form = () => {
           phone: company.phone
         }
       }
-    }).then(clearState)
+    }).then(
+      refetch().then(() => {
+        history.push('/dashboard/empresas')
+      })
+    )
   }
 
   return (
@@ -66,12 +59,12 @@ const Form = () => {
         <div className="field">
           <label className="label">Nombre de la empresa</label>
           <input
+            defaultValue={company.name}
             className="input"
             onChange={updateState}
             name="name"
             type="text"
             placeholder="Nombre de la empresa"
-            value={company.name}
             required
           />
         </div>
@@ -83,6 +76,7 @@ const Form = () => {
             name="site"
             type="text"
             placeholder="Nombre de la empresa"
+            defaultValue={company.site}
             value={company.site}
             required
           />
@@ -94,6 +88,7 @@ const Form = () => {
             onChange={updateState}
             name="phone"
             type="text"
+            defaultValue={company.phone}
             value={company.phone}
             placeholder="Teléfono"
           />
@@ -105,6 +100,7 @@ const Form = () => {
             onChange={updateState}
             name="activity"
             type="text"
+            defaultValue={company.activity}
             value={company.activity}
             placeholder="Defina en una palabra su actividad empresarial"
           />
@@ -116,14 +112,19 @@ const Form = () => {
             onChange={updateState}
             name="description"
             type="text"
+            defaultValue={company.description}
             value={company.description}
             placeholder="Nombre de la empresa"
           />
         </div>
-        <button className="button btn">Agregar empresa</button>
+        <button className="button btn">Actualizar empresa</button>
       </form>
     </div>
   )
 }
 
-export default Form
+EditCompany.propTypes = {
+  data: PropTypes.object,
+  refetch: PropTypes.func
+}
+export default EditCompany

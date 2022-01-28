@@ -58,6 +58,24 @@ export const GET_COMPANIES = gql`
       description
       logo
       createdAt
+      activity
+      phone
+      username
+    }
+  }
+`
+
+export const GET_COMPANY = gql`
+  query getCompany($id: ID) {
+    getCompany(ID: $id) {
+      id
+      name
+      site
+      description
+      logo
+      createdAt
+      activity
+      phone
       username
     }
   }

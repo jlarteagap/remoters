@@ -8,7 +8,7 @@
     height: 8rem;
 }
     .card__img img{
-        object-fit: cover;
+        object-fit: contain;
         border-radius: .5rem;
         width: 100%;
         height: 100%;

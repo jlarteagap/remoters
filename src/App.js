@@ -11,6 +11,7 @@ import LoginView from './containers/LoginView'
 
 import NewJob from './containers/NewJob'
 import EditJobsContainer from './containers/EditJobsContainer'
+import EditCompanies from './containers/EditCompanies'
 import CategoriesList from './containers/CategoriesList'
 import Companies from './containers/Companies'
 import Dashboard from './containers/Dashboard'
@@ -53,6 +54,11 @@ const App = () => {
                     exact
                     path="/dashboard/empresas"
                     component={Companies}
+                  />
+                  <PrivateRoute
+                    exact
+                    path="/dashboard/empresas/edit/:id"
+                    component={EditCompanies}
                   />
                   <AuthRoute
                     exact
