@@ -2,7 +2,6 @@ import { useMutation } from '@apollo/client'
 import React from 'react'
 import { FaTrashAlt } from 'react-icons/fa'
 import { DELETE_COMPANY, DELETE_JOB } from '../Graphql/Mutation'
-
 import Swal from 'sweetalert2'
 import PropTypes from 'prop-types'
 

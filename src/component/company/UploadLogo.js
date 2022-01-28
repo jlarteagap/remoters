@@ -10,6 +10,7 @@ const UploadLogo = ({ logoUpdate, logo }) => {
   const filePickerRef = useRef()
   const [progess, setProgress] = useState(0)
 
+  console.log(progess)
   const uploadLogo = e => {
     let pickedFile
 

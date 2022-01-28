@@ -36,7 +36,7 @@ const Paginator = ({ actual, total, limit, prevPage, nextPage }) => {
 }
 Paginator.propTypes = {
   actual: PropTypes.number,
-  total: PropTypes.string,
+  total: PropTypes.number,
   limit: PropTypes.number,
   prevPage: PropTypes.func,
   nextPage: PropTypes.func
