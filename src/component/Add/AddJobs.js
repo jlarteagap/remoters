@@ -123,7 +123,7 @@ const AddJobs = () => {
               <option value="web_developers">Web Development</option>
               <option value="software_developer">Software Developers</option>
               <option value="project_managers">Project Management</option>
-              <option value="social_managers">Social Media</option>
+              <option value="social_media_managers">Social Media</option>
               <option value="comercial">
                 Business Management &amp; Ventas
               </option>
