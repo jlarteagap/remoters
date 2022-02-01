@@ -1,34 +1,22 @@
 import React, { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
-import { ADD_JOB } from '../../Graphql/Mutation'
+import { UPDATE_JOB } from '../../Graphql/Mutation'
 import { AuthContext } from '../../context/auth'
 import Companies from './Companies'
-
+import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import './Forms.css'
 
-const initialState = {
-  position: '',
-  link: '',
-  category: '',
-  city: '',
-  remote: false
-}
-const AddJobs = () => {
-  const [jobs, setJobs] = useState(initialState)
-  const [isRemote, setRemote] = useState(false)
-  const [company, setCompany] = useState('')
+const EditJob = ({ data, refetch }) => {
+  const [jobs, setJobs] = useState(data)
+  const [isRemote, setRemote] = useState(data.remote)
+  const [company, setCompany] = useState(data.company)
+
   const { user } = useContext(AuthContext)
 
+  const [updateJob] = useMutation(UPDATE_JOB)
   const history = useHistory()
-
-  const clearState = () => {
-    setCompany({ ...initialState })
-  }
-
-  const [newJob] = useMutation(ADD_JOB)
-
   const updateState = e => {
     setJobs({
       ...jobs,
@@ -51,42 +39,41 @@ const AddJobs = () => {
       })
     }
 
-    newJob({
+    updateJob({
       variables: {
         input: {
+          id: jobs.id,
           position: jobs.position,
           link: jobs.link,
           category: jobs.category,
           city: jobs.city,
+          country: jobs.country,
           remote: isRemote,
           company: {
-            name: companyData.name,
-            logo: companyData.logo
+            ...companyData,
+            name: companyData.name
           },
-          username: {
-            email: user.email
-          }
+          type: jobs.type,
+          salary: jobs.salary
         }
       }
-    })
-      .then(clearState())
-      .then(
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Un nuevo empleo se ha publicado',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(
-          setTimeout(() => {
-            history.push('/dashboard')
-          }, 4000)
-        )
+    }).then(
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Publicación actualizada correctamente.',
+        showConfirmButton: false,
+        timer: 1500
+      }).then(
+        refetch().then(() => {
+          history.push('/dashboard')
+        })
       )
+    )
   }
   return (
     <div className="box p-5">
-      <h3 className="title is-4">Agregar un nuevo trabajo</h3>
+      <h3 className="title is-4">Editar publicación</h3>
       <form onSubmit={e => Addingjobs(e)}>
         <div className="field">
           <div className="control">
@@ -96,12 +83,16 @@ const AddJobs = () => {
               onChange={updateState}
               name="position"
               placeholder="Ej: Frontend Developer..."
-              value={jobs.name}
+              defaultValue={jobs.position}
               required
             />
           </div>
         </div>
-        <Companies user={user.email} onChange={value => setCompany(value)} />
+        <Companies
+          user={user.email}
+          onChange={value => setCompany(value)}
+          companieJob={jobs.company}
+        />
         <div className="control">
           <div className="field">
             <label className="label">Enlace para postular</label>
@@ -110,7 +101,7 @@ const AddJobs = () => {
               onChange={updateState}
               name="link"
               placeholder="Enlace donde se postulará el interesado."
-              value={jobs.name}
+              defaultValue={jobs.link}
               required
             />
           </div>
@@ -118,12 +109,16 @@ const AddJobs = () => {
         <div className="field">
           <label className="label">Categoria</label>
           <div className="select is-fullwidth">
-            <select name="category" onChange={updateState}>
+            <select
+              name="category"
+              onChange={updateState}
+              defaultValue={jobs.category}
+            >
               <option value="">Elegir...</option>
               <option value="web_developers">Web Development</option>
               <option value="software_developer">Software Developers</option>
               <option value="project_managers">Project Management</option>
-              <option value="social_media_managers">Social Media</option>
+              <option value="social_managers">Social Media</option>
               <option value="comercial">
                 Business Management &amp; Ventas
               </option>
@@ -142,11 +137,15 @@ const AddJobs = () => {
           <div className="control is-expanded">
             <label className="label">Tipo de contrato</label>
             <div className="select is-fullwidth">
-              <select name="type" onChange={updateState}>
+              <select
+                name="type"
+                onChange={updateState}
+                defaultValue={jobs.type}
+              >
                 <option value="Tiempo_Completo">Tiempo completo</option>
                 <option value="Medio_tiempo">Medio completo</option>
                 <option value="Medio_tiempo">Medio completo</option>
-                <option value="Freelance">Freelance</option>
+                <option value="Freelancer">Freelance</option>
                 <option value="Consultoria">Consultoria</option>
               </select>
             </div>
@@ -155,7 +154,12 @@ const AddJobs = () => {
           <div className="control is-expanded">
             <div className="control">
               <label className="label">Salario</label>
-              <input type="text" className="input" name="salary"></input>
+              <input
+                type="text"
+                className="input"
+                name="salary"
+                defaultValue={jobs.salary}
+              ></input>
             </div>
           </div>
         </div>
@@ -163,7 +167,11 @@ const AddJobs = () => {
           <div className="control is-expanded">
             <label className="label">País</label>
             <div className="select is-fullwidth">
-              <select name="country" onChange={updateState}>
+              <select
+                name="country"
+                onChange={updateState}
+                defaultValue={jobs.country}
+              >
                 <option value="Bolivia">Bolivia</option>
               </select>
             </div>
@@ -171,7 +179,11 @@ const AddJobs = () => {
           <div className="control is-expanded">
             <label className="label">Ciudad</label>
             <div className="select is-fullwidth">
-              <select name="city" onChange={updateState}>
+              <select
+                name="city"
+                onChange={updateState}
+                defaultValue={jobs.city}
+              >
                 <option value="">Elegir...</option>
                 <option value="SANTA_CRUZ">Santa Cruz</option>
                 <option value="LA_PAZ">La Paz</option>
@@ -219,4 +231,8 @@ const AddJobs = () => {
   )
 }
 
-export default AddJobs
+EditJob.propTypes = {
+  data: PropTypes.object,
+  refetch: PropTypes.func
+}
+export default EditJob

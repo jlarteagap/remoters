@@ -5,8 +5,7 @@ import { FaMapMarkerAlt } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 
 const Job = ({ job }) => {
-  const { company, position, city, link, category, remote } = job
-
+  const { company, position, link, city, country, category, remote } = job
   const [companies] = company
 
   let logoImage
@@ -29,7 +28,7 @@ const Job = ({ job }) => {
         </h2>
         <div className="card__header--sub">{companies.name}</div>
         <span className="job__city">
-          <FaMapMarkerAlt /> {city.replace('_', ' ')}
+          <FaMapMarkerAlt /> {city.replace('_', ' ')} - {country}
         </span>
       </div>
       <div className="card__body">
@@ -43,7 +42,7 @@ const Job = ({ job }) => {
               Compartir
             </a>
             <a
-              className="button is-small is-success is-light"
+              className="button is-success is-outlined outline--button"
               href={link}
               target="_blank"
               rel="noreferrer"

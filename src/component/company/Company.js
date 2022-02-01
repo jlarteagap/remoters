@@ -12,7 +12,7 @@ const Company = ({ company }) => {
 
   let logoImage
   logo ? (logoImage = logo) : (logoImage = DEFAULT_IMAGES)
-  console.log(company.length)
+
   return (
     <div className="card card--job mb-3 p-3">
       <div className="card__img">
@@ -31,7 +31,7 @@ const Company = ({ company }) => {
       <div>
         {user && user.email === username && (
           <div className="is-flex is-justify-content-space-around">
-            <EditButton companyId={id} />
+            <EditButton companyID={id} />
             <DeleteButton companyId={id} />
           </div>
         )}
@@ -41,6 +41,6 @@ const Company = ({ company }) => {
 }
 
 Company.propTypes = {
-  company: PropTypes.array
+  company: PropTypes.object
 }
 export default Company

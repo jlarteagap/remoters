@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_JOBS } from '../../Graphql/Query'
 import Loading from '../utils/Loading'
 import DeleteButton from '../../utils/DeleteButton'
+import EditButton from '../../utils/Editbutton'
+import { AuthContext } from '../../context/auth'
 
 export const LastJobs = () => {
+  const { user } = useContext(AuthContext)
   const { loading, error, data } = useQuery(GET_JOBS, {
     pollInterval: 1100,
     variables: {
-      limit: 5
+      username: user.email
     }
   })
 
@@ -33,7 +36,12 @@ export const LastJobs = () => {
                   {companies.name}
                 </p>
               </div>
-              <DeleteButton jobId={job.id} />
+              <div className="is-flex">
+                <div className="mr-3">
+                  <EditButton job={job.id} />
+                </div>
+                <DeleteButton jobID={job.id} />
+              </div>
             </div>
           )
         })}

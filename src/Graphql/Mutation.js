@@ -6,8 +6,6 @@ export const ADD_JOB = gql`
       id
       position
       category
-      city
-      country
       link
       remote
       company {
@@ -65,6 +63,25 @@ export const CREATE_COMPANY = gql`
     }
   }
 `
+export const UPDATE_JOB = gql`
+  mutation UpdateJob($input: JobInput) {
+    updateJob(input: $input) {
+      id
+      position
+      category
+      link
+      city
+      country
+      remote
+      company {
+        name
+      }
+      type
+      salary
+    }
+  }
+`
+
 export const DELETE_JOB = gql`
   mutation deleteJobs($jobId: ID) {
     deleteJobs(jobId: $jobId)
@@ -73,6 +90,21 @@ export const DELETE_JOB = gql`
 export const DELETE_COMPANY = gql`
   mutation deleteCompany($companyId: ID) {
     deleteCompany(companyId: $companyId)
+  }
+`
+export const UPDATE_COMPANY = gql`
+  mutation UpdateCompany($input: CompanyInput) {
+    updateCompany(input: $input) {
+      id
+      name
+      site
+      description
+      logo
+      createdAt
+      username
+      phone
+      activity
+    }
   }
 `
 

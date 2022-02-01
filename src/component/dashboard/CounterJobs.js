@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 
 export const CounterJobs = () => {
   const { user } = useContext(AuthContext)
+
   const { loading, error, data } = useQuery(GET_JOBS, {
     variables: {
       username: user.email

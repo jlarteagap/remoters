@@ -10,6 +10,7 @@ const UploadLogo = ({ logoUpdate, logo }) => {
   const filePickerRef = useRef()
   const [progess, setProgress] = useState(0)
 
+  console.log(progess)
   const uploadLogo = e => {
     let pickedFile
 
@@ -46,9 +47,13 @@ const UploadLogo = ({ logoUpdate, logo }) => {
 
   const deleteImage = () => {
     const desertRef = storageRef.child(`/companies/${file.name}`)
-    desertRef.delete().catch(error => {
-      console.log(error)
-    })
+
+    desertRef
+      .delete()
+      .then(logoUpdate(''))
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   const pickedImage = () => {

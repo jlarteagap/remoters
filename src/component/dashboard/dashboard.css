@@ -28,7 +28,6 @@
 }
 .menu__dashboard a{
     align-items: center;
-    color: var(--Blue);
     display: flex;
     font-weight: 500;
     padding-bottom: 1rem;
