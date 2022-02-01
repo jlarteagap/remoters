@@ -70,13 +70,21 @@
     display: flex;
 }
 .job__icon{
-    background-size: 125px 25px;
+    background-size: 325px 25px;
 }
-    .SOFTWARE_DEVELOP {background-position: 0 0;}
+    .software_developer {background-position: 0 0;}
     .REMOTE { background-position: -25px 0;}
-    .SOCIAL_MEDIA {background-position: -75px 0;}
-    .DESIGNER{background-position: -50px 0;}
-    .SALES{background-position: -100px 0;}
+    .social_media_managers {background-position: -75px 0;}
+    .designers{background-position: -50px 0;}
+    .comercial{background-position: -100px 0;}
+    .seo{background-position: -125px 0;}
+    .soporte{background-position: -150px 0;}
+    .qa{background-position: -175px 0;}
+    .copywriting{background-position: -200px 0;}
+    .seguridad{background-position: -225px 0;}
+    .reclutadores{background-position: -250px 0;}
+    .project_managers{background-position: -275px 0;}
+    .web_developers{background-position: -300px 0;}
     
     .job__icon i{
         background-size: 25px 25px;
