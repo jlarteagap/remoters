@@ -13,7 +13,10 @@ const initialState = {
   link: '',
   category: '',
   city: '',
-  remote: false
+  remote: false,
+  country: '',
+  type: '',
+  salary: ''
 }
 const AddJobs = () => {
   const [jobs, setJobs] = useState(initialState)
@@ -59,6 +62,9 @@ const AddJobs = () => {
           category: jobs.category,
           city: jobs.city,
           remote: isRemote,
+          country: jobs.country,
+          salary: jobs.salary,
+          type: jobs.type,
           company: {
             name: companyData.name,
             logo: companyData.logo
@@ -77,11 +83,7 @@ const AddJobs = () => {
           title: 'Un nuevo empleo se ha publicado',
           showConfirmButton: false,
           timer: 1500
-        }).then(
-          setTimeout(() => {
-            history.push('/dashboard')
-          }, 4000)
-        )
+        }).then(history.push('/dashboard'))
       )
   }
   return (
@@ -96,7 +98,7 @@ const AddJobs = () => {
               onChange={updateState}
               name="position"
               placeholder="Ej: Frontend Developer..."
-              value={jobs.name}
+              value={jobs.position}
               required
             />
           </div>
@@ -110,7 +112,7 @@ const AddJobs = () => {
               onChange={updateState}
               name="link"
               placeholder="Enlace donde se postulará el interesado."
-              value={jobs.name}
+              value={jobs.link}
               required
             />
           </div>
@@ -143,6 +145,7 @@ const AddJobs = () => {
             <label className="label">Tipo de contrato</label>
             <div className="select is-fullwidth">
               <select name="type" onChange={updateState}>
+                <option value="">Elegir...</option>
                 <option value="Tiempo_Completo">Tiempo completo</option>
                 <option value="Medio_tiempo">Medio completo</option>
                 <option value="Medio_tiempo">Medio completo</option>
@@ -155,7 +158,13 @@ const AddJobs = () => {
           <div className="control is-expanded">
             <div className="control">
               <label className="label">Salario</label>
-              <input type="text" className="input" name="salary"></input>
+              <input
+                type="text"
+                className="input"
+                name="salary"
+                onChange={updateState}
+                value={jobs.salary}
+              />
             </div>
           </div>
         </div>
@@ -163,7 +172,12 @@ const AddJobs = () => {
           <div className="control is-expanded">
             <label className="label">País</label>
             <div className="select is-fullwidth">
-              <select name="country" onChange={updateState}>
+              <select
+                name="country"
+                onChange={updateState}
+                value={jobs.country}
+              >
+                <option value="">Elegir...</option>
                 <option value="Bolivia">Bolivia</option>
               </select>
             </div>

@@ -13,16 +13,20 @@
         width: 100%;
         height: 100%;
     }
-
-.card__header--title{
+.card__body{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.card__body--title{
     margin: 0;
     font-size: calc(16px + 6 * ((100vw - 320px) / 680));
     position: relative;
 }
-.card__header--title a{
+.card__body--title a{
     color: var(--Dark) !important;
 }
-.card__header--title a:hover{
+.card__body--title a:hover{
     color: var(--Blue) !important;
 }
 .job__city{
@@ -97,7 +101,9 @@
         display: flex;
         flex-direction: row;
     }
-
+.icon--remote{
+    width: 100% !important;
+}
 .job__button-position{
     display: flex;
     justify-content: flex-end;
@@ -124,7 +130,7 @@
     .icons-info{
         display: none;
     }
-    .card__header--title{
+    .card__body--title{
         font-size: 1.25rem !important;
         margin: 0 !important;
     }
