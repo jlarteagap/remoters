@@ -1,7 +1,12 @@
 import React from 'react'
 import JobIcon from './JobIcon'
 import DEFAULT_IMAGES from '../../assets/img/default.jpeg'
-import { FaMapMarkerAlt, FaMoneyBillAlt, FaNetworkWired } from 'react-icons/fa'
+import {
+  FaMapMarkerAlt,
+  FaMoneyBillAlt,
+  FaNetworkWired,
+  FaRegBuilding
+} from 'react-icons/fa'
 import PropTypes from 'prop-types'
 
 const Job = ({ job }) => {
@@ -41,11 +46,18 @@ const Job = ({ job }) => {
             {position}
           </a>
         </h2>
-        <div className="card__body--sub">{companies.name}</div>
-        <span className="is-flex">
-          <FaNetworkWired /> {type} - <FaMoneyBillAlt /> {salary}
-        </span>
-        <span className="job__city">
+        <div className="card__body--sub is-flex is-align-items-center">
+          <FaRegBuilding className="mr-3" />
+          {companies.name}
+        </div>
+        <div className="is-flex is-align-items-center is-size-7">
+          <FaNetworkWired className="mr-3" />{' '}
+          {type ? type.replace('_', ' ') : ''}
+        </div>
+        <div className="is-flex is-align-items-center is-size-7">
+          <FaMoneyBillAlt className="mr-3" /> {salary}
+        </div>
+        <span className="job__city is-size-7">
           <FaMapMarkerAlt /> {city.replace('_', ' ')} - {country}
         </span>
       </div>
