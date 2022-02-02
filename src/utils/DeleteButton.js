@@ -6,7 +6,8 @@ import Swal from 'sweetalert2'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 
-const DeleteButton = ({ companyId, jobID }) => {
+const DeleteButton = ({ companyId, jobId }) => {
+  console.log(jobId)
   const mutation = companyId ? DELETE_COMPANY : DELETE_JOB
   const [companyOrJob] = useMutation(mutation)
   const textAction = companyId ? 'Empresa' : 'Oferta Laboral'
@@ -29,7 +30,7 @@ const DeleteButton = ({ companyId, jobID }) => {
           companyOrJob({
             variables: {
               companyId,
-              jobID
+              jobId
             }
           })
           Swal.fire('Eliminado!', 'Se eliminó correctamentamente.', 'success')
@@ -46,7 +47,7 @@ const DeleteButton = ({ companyId, jobID }) => {
 
 DeleteButton.propTypes = {
   companyId: PropTypes.string,
-  jobID: PropTypes.string
+  jobId: PropTypes.string
 }
 
 export default DeleteButton

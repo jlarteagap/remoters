@@ -40,7 +40,7 @@ export const LastJobs = () => {
                 <div className="mr-3">
                   <EditButton job={job.id} />
                 </div>
-                <DeleteButton jobID={job.id} />
+                <DeleteButton jobId={job.id} />
               </div>
             </div>
           )
