@@ -24,19 +24,21 @@ const DeleteButton = ({ companyId, jobId }) => {
       confirmButtonColor: '#EF476F',
       cancelButtonColor: '#F7B267',
       confirmButtonText: 'Si, eliminar!'
+    }).then(result => {
+      if (result.isConfirmed) {
+        companyOrJob({
+          variables: {
+            companyId,
+            jobId
+          }
+        })
+        Swal.fire(
+          'Eliminado!',
+          'Se eliminó correctamentamente.',
+          'success'
+        ).then(history.push('/dashboard'))
+      }
     })
-      .then(result => {
-        if (result.isConfirmed) {
-          companyOrJob({
-            variables: {
-              companyId,
-              jobId
-            }
-          })
-          Swal.fire('Eliminado!', 'Se eliminó correctamentamente.', 'success')
-        }
-      })
-      .then(history.push('/dashboard'))
   }
   return (
     <div className="button is-danger" onClick={e => handleButton(e)}>
