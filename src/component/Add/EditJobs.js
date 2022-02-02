@@ -142,6 +142,7 @@ const EditJob = ({ data, refetch }) => {
                 onChange={updateState}
                 defaultValue={jobs.type}
               >
+                <option value="">Elegir...</option>
                 <option value="Tiempo_Completo">Tiempo completo</option>
                 <option value="Medio_tiempo">Medio completo</option>
                 <option value="Medio_tiempo">Medio completo</option>
@@ -172,6 +173,7 @@ const EditJob = ({ data, refetch }) => {
                 onChange={updateState}
                 defaultValue={jobs.country}
               >
+                <option value="">Elegir...</option>
                 <option value="Bolivia">Bolivia</option>
               </select>
             </div>

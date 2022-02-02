@@ -1,11 +1,21 @@
 import React from 'react'
 import JobIcon from './JobIcon'
 import DEFAULT_IMAGES from '../../assets/img/default.jpeg'
-import { FaMapMarkerAlt } from 'react-icons/fa'
+import { FaMapMarkerAlt, FaMoneyBillAlt, FaNetworkWired } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 
 const Job = ({ job }) => {
-  const { company, position, link, city, country, category, remote } = job
+  const {
+    company,
+    position,
+    link,
+    city,
+    country,
+    category,
+    remote,
+    type,
+    salary
+  } = job
   const [companies] = company
 
   let logoImage
@@ -13,20 +23,28 @@ const Job = ({ job }) => {
 
   let iconRemote
   if (remote) {
-    iconRemote = <JobIcon category="REMOTE" />
+    iconRemote = (
+      <div className="icon icon--remote">
+        <JobIcon category="REMOTE" />
+        <span className="button is-small is-warning is-light">Home Office</span>
+      </div>
+    )
   }
   return (
     <div className="card card--job p-3 mb-5">
       <div className="card__img">
         <img src={logoImage} alt={companies.name} />
       </div>
-      <div className="card__header">
-        <h2 className="card__header--title">
+      <div className="card__body">
+        <h2 className="card__body--title m-0">
           <a href={link} target="_blank" rel="noreferrer">
             {position}
           </a>
         </h2>
-        <div className="card__header--sub">{companies.name}</div>
+        <div className="card__body--sub">{companies.name}</div>
+        <span className="is-flex">
+          <FaNetworkWired /> {type} - <FaMoneyBillAlt /> {salary}
+        </span>
         <span className="job__city">
           <FaMapMarkerAlt /> {city.replace('_', ' ')} - {country}
         </span>

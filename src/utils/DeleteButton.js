@@ -4,12 +4,15 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { DELETE_COMPANY, DELETE_JOB } from '../Graphql/Mutation'
 import Swal from 'sweetalert2'
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 
 const DeleteButton = ({ companyId, jobId }) => {
+  console.log(jobId)
   const mutation = companyId ? DELETE_COMPANY : DELETE_JOB
   const [companyOrJob] = useMutation(mutation)
   const textAction = companyId ? 'Empresa' : 'Oferta Laboral'
 
+  const history = useHistory()
   const handleButton = e => {
     e.preventDefault()
 
@@ -29,7 +32,11 @@ const DeleteButton = ({ companyId, jobId }) => {
             jobId
           }
         })
-        Swal.fire('Eliminado!', 'Se eliminó correctamentamente.', 'success')
+        Swal.fire(
+          'Eliminado!',
+          'Se eliminó correctamentamente.',
+          'success'
+        ).then(history.push('/dashboard'))
       }
     })
   }
