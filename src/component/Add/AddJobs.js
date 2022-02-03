@@ -147,8 +147,7 @@ const AddJobs = () => {
               <select name="type" onChange={updateState}>
                 <option value="">Elegir...</option>
                 <option value="Tiempo_Completo">Tiempo completo</option>
-                <option value="Medio_tiempo">Medio completo</option>
-                <option value="Medio_tiempo">Medio completo</option>
+                <option value="Medio_tiempo">Medio Tiempo</option>
                 <option value="Freelance">Freelance</option>
                 <option value="Consultoria">Consultoria</option>
               </select>

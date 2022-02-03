@@ -117,7 +117,7 @@ const Form = () => {
             name="description"
             type="text"
             value={company.description}
-            placeholder="Nombre de la empresa"
+            placeholder="Pequeño resumen de su empresa."
           />
         </div>
         <button className="button btn">Agregar empresa</button>

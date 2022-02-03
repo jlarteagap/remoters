@@ -114,7 +114,7 @@ const EditCompany = ({ data, refetch }) => {
             type="text"
             defaultValue={company.description}
             value={company.description}
-            placeholder="Nombre de la empresa"
+            placeholder="Pequeño resumen de su empresa."
           />
         </div>
         <button className="button btn">Actualizar empresa</button>
