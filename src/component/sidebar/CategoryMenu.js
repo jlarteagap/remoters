@@ -3,79 +3,65 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import JobIcon from '../jobs/JobIcon'
 
-const CategoryMenu = ({ reset }) => {
-  return (
-    <div className="categories box">
-      <Link
-        to="/web_developers"
-        className="categories-link mb-1"
-        onClick={reset}
-      >
-        <JobIcon category="web_developers" />
-        Web Development
-      </Link>
+const CategoryMenu = ({ reset, data }) => {
+  let companyName = data.category
+  // eslint-disable-next-line no-const-assign
+  switch (companyName) {
+    case 'seo':
+      companyName = 'SEO - Search Engine Optimization'
+      break
+    case 'software_developer':
+      companyName = 'Software Developer'
+      break
+    case 'project_managers':
+      companyName = 'Proyect Management'
+      break
+    case 'social_media_managers':
+      companyName = 'Social Media Managers'
+      break
+    case 'comercial':
+      companyName = 'Business Management & Ventas'
+      break
+    case 'designers':
+      companyName = 'Diseño web y gráfico'
+      break
+    case 'soporte':
+      companyName = 'Soporte'
+      break
+    case 'copywriting':
+      companyName = 'Copywriting'
+      break
+    case 'web_develop':
+      companyName = 'Web Developers'
+      break
+    case 'seguridad':
+      companyName = 'Cyber Security'
+      break
+    case 'qa':
+      companyName = 'Quality Assurance'
+      break
+    case 'reclutadores':
+      companyName = 'RRHH & Reclutamiento'
+      break
 
-      <Link
-        to="/software_developer"
-        className="categories-link mb-1"
-        onClick={reset}
-      >
-        <JobIcon category="software_developer" />
-        Software Developers
-      </Link>
-      <Link
-        to="/project_managers"
-        className="categories-link mb-1"
-        onClick={reset}
-      >
-        <JobIcon category="project_managers" />
-        Project Management
-      </Link>
-      <Link
-        to="/social_media_managers"
-        className="categories-link mb-1"
-        onClick={reset}
-      >
-        <JobIcon category="social_media_managers" />
-        Social Media
-      </Link>
-      <Link to="/comercial" className="categories-link mb-1" onClick={reset}>
-        <JobIcon category="comercial" />
-        Business Management &amp; Ventas
-      </Link>
-      <Link to="/soporte" className="categories-link mb-1" onClick={reset}>
-        <JobIcon category="soporte" />
-        Soporte
-      </Link>
-      <Link to="/designers" className="categories-link mb-1" onClick={reset}>
-        <JobIcon category="designers" />
-        Diseño web y gráfico
-      </Link>
-      <Link to="/seo" className="categories-link mb-1" onClick={reset}>
-        <JobIcon category="seo" />
-        SEO - Search Engine Optimization
-      </Link>
-      <Link to="/copywriting" className="categories-link mb-1" onClick={reset}>
-        <JobIcon category="copywriting" />
-        Copywriting
-      </Link>
-      <Link to="/seguridad" className="categories-link mb-1" onClick={reset}>
-        <JobIcon category="seguridad" />
-        Cyber Security
-      </Link>
-      <Link to="/qa" className="categories-link mb-1" onClick={reset}>
-        <JobIcon category="qa" />
-        Quality Assurance
-      </Link>
-      <Link to="/reclutadores" className="categories-link mb-1" onClick={reset}>
-        <JobIcon category="reclutadores" />
-        RRHH & Reclutamiento
-      </Link>
-    </div>
+    default:
+      console.log('error')
+  }
+
+  return (
+    <Link
+      to={`/${data.category}`}
+      className="categories-link mb-1"
+      onClick={reset}
+    >
+      <JobIcon category={data.category} />
+      {companyName}
+    </Link>
   )
 }
 
 CategoryMenu.propTypes = {
-  reset: PropTypes.func
+  reset: PropTypes.func,
+  data: PropTypes.object
 }
 export default CategoryMenu

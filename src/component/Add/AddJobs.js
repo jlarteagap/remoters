@@ -111,7 +111,7 @@ const AddJobs = () => {
               className="input"
               onChange={updateState}
               name="link"
-              placeholder="Enlace donde se postulará el interesado."
+              placeholder="http://..."
               value={jobs.link}
               required
             />

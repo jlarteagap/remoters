@@ -100,7 +100,7 @@ const EditJob = ({ data, refetch }) => {
               className="input"
               onChange={updateState}
               name="link"
-              placeholder="Enlace donde se postulará el interesado."
+              placeholder="http://...."
               defaultValue={jobs.link}
               required
             />
