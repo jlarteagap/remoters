@@ -43,7 +43,9 @@ const CategoryMenu = ({ reset, data }) => {
     case 'reclutadores':
       companyName = 'RRHH & Reclutamiento'
       break
-
+    case 'web_developers':
+      companyName = 'Web Developers'
+      break
     default:
       console.log('error')
   }

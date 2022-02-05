@@ -11,12 +11,24 @@ const Sidebar = props => {
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
 
+  const seen = new Set()
+
+  const dataFiltered = data.getJobs.filter(e => {
+    const duplicate = seen.has(e.category)
+    seen.add(e.category)
+    return !duplicate
+  })
+
   return (
     <div className="sidebar">
       <div className="categories box">
-        {data.getJobs.map(company => {
+        {dataFiltered.map(getCategory => {
           return (
-            <CategoryMenu key={company.id} reset={props.reset} data={company} />
+            <CategoryMenu
+              key={data.id}
+              reset={props.reset}
+              data={getCategory}
+            />
           )
         })}
       </div>
