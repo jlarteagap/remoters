@@ -95,26 +95,7 @@ a{
         padding: 1rem 1rem 0;
         order: 0;
     }
-    .buttons__movil{
-        position: fixed;
-        right: 0;
-        width: 36px;
-        bottom: 20%;
-    }
-        .button__movil .login{
-            margin: 0;
-        }
-        .buttons__movil svg{
-            margin: 0 !important;
-        }
-        .buttons__movil .txt{
-            display: none;
-        }
-        .buttons__movil .button{
-            margin: 0 !important;
-            max-width: 36px;
-            padding: .25rem;
-        }
+
 
     .home__jobs{
         grid-column: span 12;

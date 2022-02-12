@@ -6,32 +6,31 @@ import PropTypes from 'prop-types'
 // import CSS
 import ButtonsHeader from './ButtonsHeader'
 import MenuHeader from './MenuHeader'
+import BurgerMenu from './BurgerMenu'
 
 const Header = ({ title }) => {
   const [isActive, setisActive] = useState(false)
   const { resetState } = useContext(AppContext)
+
   return (
-    <nav className="navbar container is-align-items-center nabvar__menu">
+    <nav className="navbar container is-align-items-center nabvar__menu is-flex is-justify-content-space-between">
       <div className="navbar-brand">
-        <Link className="navbar-item" to="/" onClick={resetState}>
-          <h1 className="title">{title}</h1>
-        </Link>
-        <a
+        <BurgerMenu
+          isActive={isActive}
           onClick={() => {
             setisActive(!isActive)
           }}
-          role="button"
-          className={`navbar-burger burger ${isActive ? 'is-active' : ''}`}
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
+        />
+        <Link className="navbar-item" to="/" onClick={resetState}>
+          <h1 className="title">{title}</h1>
+        </Link>
       </div>
-      <MenuHeader isActive={isActive} />
+      <MenuHeader
+        isActive={isActive}
+        onClick={() => {
+          setisActive(!isActive)
+        }}
+      />
       <ButtonsHeader />
     </nav>
   )
