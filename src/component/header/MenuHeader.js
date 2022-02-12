@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/auth'
+import BurgerMenu from './BurgerMenu'
 import './header.css'
 // eslint-disable-next-line react/prop-types
-const MenuHeader = ({ isActive }) => {
+const MenuHeader = ({ onClick, isActive }) => {
   const { user } = useContext(AuthContext)
   return (
-    <div className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
+    <div className={`navbar-menu ${isActive ? 'is-active navbar--menu' : ''}`}>
+      <BurgerMenu isActive={isActive} onClick={onClick} />
       <div className="navbar-start">
         <Link to="/" className="navbar-item effect__hover menu__it">
           Inicio
