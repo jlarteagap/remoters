@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from 'react'
 import { Helmet } from 'react-helmet'
+import Hero from '../component/hero/Hero'
 import JobsList from '../component/jobs/JobsList'
 import Sidebar from '../component/sidebar/Sidebar'
 import AppContext from '../context/AppContext'
@@ -25,6 +26,7 @@ const Home = () => {
         <meta property="og:url" content="" />
         <meta property="og:image" content="" />
       </Helmet>
+      <Hero />
       <div className="home">
         <div className="home__jobs">
           <JobsList />

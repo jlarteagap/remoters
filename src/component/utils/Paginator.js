@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { FaAngleRight, FaAngleLeft } from 'react-icons/fa'
+// eslint-disable-next-line react/prop-types
 const Paginator = ({ actual, total, limit, prevPage, nextPage }) => {
   // eslint-disable-next-line no-unused-vars
   const [pages, setPages] = useState(Math.ceil(total / limit))
@@ -36,7 +37,6 @@ const Paginator = ({ actual, total, limit, prevPage, nextPage }) => {
 }
 Paginator.propTypes = {
   actual: PropTypes.number,
-  total: PropTypes.string,
   limit: PropTypes.number,
   prevPage: PropTypes.func,
   nextPage: PropTypes.func

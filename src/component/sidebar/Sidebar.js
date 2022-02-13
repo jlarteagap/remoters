@@ -25,7 +25,7 @@ const Sidebar = props => {
         {dataFiltered.map(getCategory => {
           return (
             <CategoryMenu
-              key={data.id}
+              key={getCategory.id}
               reset={props.reset}
               data={getCategory}
             />
