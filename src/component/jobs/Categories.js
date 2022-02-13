@@ -43,6 +43,6 @@ const Categories = props => {
 }
 
 Categories.propTypes = {
-  match: PropTypes.string
+  match: PropTypes.object
 }
 export default withRouter(Categories)
