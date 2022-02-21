@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import AppContext from '../../context/AppContext'
+import PropTypes from 'prop-types'
 import './hero.css'
 const Hero = () => {
   // eslint-disable-next-line no-unused-vars
   const { page } = useContext(AppContext)
-  console.log()
+
   return (
     <section
       className={`hero is-relative is-medium ${
@@ -28,5 +29,7 @@ const Hero = () => {
     </section>
   )
 }
-
+Hero.propTypes = {
+  page: PropTypes.string
+}
 export default Hero
