@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { LOGIN_USER } from '../../Graphql/Mutation'
-import Error from '../utils/Error'
+import Error from '../../utils/Error'
 import { AuthContext } from '../../context/auth'
 
 const Login = () => {

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_COMPANIES } from '../../Graphql/Query'
 import { AuthContext } from '../../context/auth'
-import { Spinner } from '../utils/spinner/Spinner'
+import { Spinner } from '../../utils/spinner/Spinner'
 
 export const CounterCompanies = () => {
   const { user } = useContext(AuthContext)

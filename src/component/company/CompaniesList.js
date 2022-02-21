@@ -5,8 +5,8 @@ import { GET_COMPANIES } from '../../Graphql/Query'
 import { AuthContext } from '../../context/auth'
 import Company from './Company'
 import AppContext from '../../context/AppContext'
-import Paginator from '../utils/Paginator'
-import Loading from '../utils/Loading'
+import Paginator from '../../utils/Paginator'
+import Loading from '../../utils/Loading'
 
 const CompaniesList = () => {
   const { user } = useContext(AuthContext)

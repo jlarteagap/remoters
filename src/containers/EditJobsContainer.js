@@ -4,7 +4,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom/'
 import EditJob from '../component/Add/EditJobs'
 import { Menu } from '../component/dashboard/Menu'
-import Loading from '../component/utils/Loading'
+import Loading from '../utils/Loading'
 
 import { GET_JOB } from '../Graphql/Query'
 

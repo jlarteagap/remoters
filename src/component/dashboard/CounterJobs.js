@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_JOBS } from '../../Graphql/Query'
-import { Spinner } from '../utils/spinner/Spinner'
+import { Spinner } from '../../utils/spinner/Spinner'
 import { AuthContext } from '../../context/auth'
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 

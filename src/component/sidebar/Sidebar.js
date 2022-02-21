@@ -4,7 +4,7 @@ import { GET_JOBS } from '../../Graphql/Query'
 import PropTypes from 'prop-types'
 import './sidebar.css'
 import { useQuery } from '@apollo/client'
-import Loading from '../utils/Loading'
+import Loading from '../../utils/Loading'
 const Sidebar = props => {
   const { loading, error, data } = useQuery(GET_JOBS)
 

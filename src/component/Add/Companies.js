@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_COMPANIES } from '../../Graphql/Query'
-import Loading from '../utils/Loading'
+import Loading from '../../utils/Loading'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 

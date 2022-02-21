@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_JOBS } from '../../Graphql/Query'
-import Loading from '../utils/Loading'
+import Loading from '../../utils/Loading'
 import DeleteButton from '../../utils/DeleteButton'
 import EditButton from '../../utils/Editbutton'
 import { AuthContext } from '../../context/auth'

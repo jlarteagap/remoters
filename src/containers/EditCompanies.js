@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom/'
 import EditCompany from '../component/company/EditCompany'
 import { Menu } from '../component/dashboard/Menu'
 
-import Loading from '../component/utils/Loading'
+import Loading from '../utils/Loading'
 import { GET_COMPANY } from '../Graphql/Query'
 
 const EditCompanies = props => {

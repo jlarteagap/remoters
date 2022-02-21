@@ -7,8 +7,8 @@ import PropTypes from 'prop-types'
 import './Jobs.css'
 
 import Job from './Job'
-import Paginator from '../utils/Paginator'
-import Loading from '../utils/Loading'
+import Paginator from '../../utils/Paginator'
+import Loading from '../../utils/Loading'
 import AppContext from '../../context/AppContext'
 
 const Categories = props => {

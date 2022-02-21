@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { CREATE_USER_MUTATION } from '../../Graphql/Mutation'
 import { useMutation } from '@apollo/client'
-import Error from '../utils/Error'
+import Error from '../../utils/Error'
 import { AuthContext } from '../../context/auth'
 
 const Register = () => {

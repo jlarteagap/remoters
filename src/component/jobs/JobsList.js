@@ -5,8 +5,8 @@ import NO_POST from '../../assets/img/posting.svg'
 import { useQuery } from '@apollo/client'
 import { GET_JOBS } from '../../Graphql/Query'
 
-import Paginator from '../utils/Paginator'
-import Loading from '../utils/Loading'
+import Paginator from '../../utils/Paginator'
+import Loading from '../../utils/Loading'
 
 import AppContext from '../../context/AppContext'
 
