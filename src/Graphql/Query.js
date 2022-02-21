@@ -30,6 +30,7 @@ export const GET_JOBS = gql`
       }
       type
       salary
+      money
     }
     totalJobs
   }
@@ -55,6 +56,7 @@ export const GET_JOB = gql`
       }
       type
       salary
+      money
     }
   }
 `

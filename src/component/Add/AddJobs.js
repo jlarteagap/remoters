@@ -16,7 +16,8 @@ const initialState = {
   remote: false,
   country: '',
   type: '',
-  salary: ''
+  salary: '',
+  money: 'Bs.'
 }
 const AddJobs = () => {
   const [jobs, setJobs] = useState(initialState)
@@ -64,6 +65,7 @@ const AddJobs = () => {
           remote: isRemote,
           country: jobs.country,
           salary: jobs.salary,
+          money: jobs.money,
           type: jobs.type,
           company: {
             name: companyData.name,
@@ -140,30 +142,49 @@ const AddJobs = () => {
             </select>
           </div>
         </div>
-        <div className="field is-grouped is-grouped-multiline">
-          <div className="control is-expanded">
-            <label className="label">Tipo de contrato</label>
-            <div className="select is-fullwidth">
-              <select name="type" onChange={updateState}>
-                <option value="">Elegir...</option>
-                <option value="Tiempo_Completo">Tiempo completo</option>
-                <option value="Medio_tiempo">Medio Tiempo</option>
-                <option value="Freelance">Freelance</option>
-                <option value="Consultoria">Consultoria</option>
-              </select>
+        <div className="columns">
+          <div className="column">
+            <div className="control is-expanded">
+              <label className="label">Tipo de contrato</label>
+              <div className="select is-fullwidth">
+                <select name="type" onChange={updateState}>
+                  <option value="">Elegir...</option>
+                  <option value="Tiempo_Completo">Tiempo completo</option>
+                  <option value="Medio_tiempo">Medio Tiempo</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Consultoria">Consultoria</option>
+                </select>
+              </div>
             </div>
           </div>
-
-          <div className="control is-expanded">
-            <div className="control">
+          {/* SALARIO  */}
+          <div className="column">
+            <div className="control is-expanded">
               <label className="label">Salario</label>
-              <input
-                type="text"
-                className="input"
-                name="salary"
-                onChange={updateState}
-                value={jobs.salary}
-              />
+
+              <div className="field has-addons">
+                <p className="control">
+                  <span className="select">
+                    <select
+                      className="is-info"
+                      name="money"
+                      onChange={updateState}
+                    >
+                      <option>Bs.</option>
+                      <option>$us.</option>
+                    </select>
+                  </span>
+                </p>
+                <div className="control is-expanded">
+                  <input
+                    type="text"
+                    className="input"
+                    name="salary"
+                    onChange={updateState}
+                    value={jobs.salary}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

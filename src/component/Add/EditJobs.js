@@ -54,7 +54,8 @@ const EditJob = ({ data, refetch }) => {
             name: companyData.name
           },
           type: jobs.type,
-          salary: jobs.salary
+          salary: jobs.salary,
+          money: jobs.money
         }
       }
     }).then(
@@ -133,34 +134,54 @@ const EditJob = ({ data, refetch }) => {
             </select>
           </div>
         </div>
-        <div className="field is-grouped is-grouped-multiline">
-          <div className="control is-expanded">
-            <label className="label">Tipo de contrato</label>
-            <div className="select is-fullwidth">
-              <select
-                name="type"
-                onChange={updateState}
-                defaultValue={jobs.type}
-              >
-                <option value="">Elegir...</option>
-                <option value="Tiempo_Completo">Tiempo completo</option>
-                <option value="Medio_tiempo">Medio completo</option>
-                <option value="Medio_tiempo">Medio completo</option>
-                <option value="Freelancer">Freelance</option>
-                <option value="Consultoria">Consultoria</option>
-              </select>
+        <div className="columns">
+          <div className="column">
+            <div className="control is-expanded">
+              <label className="label">Tipo de contrato</label>
+              <div className="select is-fullwidth">
+                <select
+                  name="type"
+                  onChange={updateState}
+                  defaultValue={jobs.type}
+                >
+                  <option value="">Elegir...</option>
+                  <option value="Tiempo_Completo">Tiempo completo</option>
+                  <option value="Medio_tiempo">Medio Tiempo</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Consultoria">Consultoria</option>
+                </select>
+              </div>
             </div>
           </div>
-
-          <div className="control is-expanded">
-            <div className="control">
+          {/* SALARIO  */}
+          <div className="column">
+            <div className="control is-expanded">
               <label className="label">Salario</label>
-              <input
-                type="text"
-                className="input"
-                name="salary"
-                defaultValue={jobs.salary}
-              ></input>
+
+              <div className="field has-addons">
+                <p className="control">
+                  <span className="select">
+                    <select
+                      className="is-info"
+                      name="money"
+                      onChange={updateState}
+                      defaultValue={jobs.money}
+                    >
+                      <option>Bs.</option>
+                      <option>$us.</option>
+                    </select>
+                  </span>
+                </p>
+                <div className="control is-expanded">
+                  <input
+                    type="text"
+                    className="input"
+                    name="salary"
+                    onChange={updateState}
+                    value={jobs.salary}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

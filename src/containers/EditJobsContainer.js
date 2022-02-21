@@ -2,7 +2,7 @@
 import { useQuery } from '@apollo/client'
 import React from 'react'
 import { withRouter } from 'react-router-dom/'
-import EditJob from '../component/Add/EditJobs'
+import EditJob from '../component/add/EditJobs'
 import { Menu } from '../component/dashboard/Menu'
 import Loading from '../utils/Loading'
 

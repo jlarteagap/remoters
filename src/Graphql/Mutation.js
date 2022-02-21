@@ -16,6 +16,9 @@ export const ADD_JOB = gql`
       username {
         email
       }
+      type
+      salary
+      money
     }
   }
 `
@@ -78,6 +81,7 @@ export const UPDATE_JOB = gql`
       }
       type
       salary
+      money
     }
   }
 `

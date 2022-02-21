@@ -19,7 +19,8 @@ const Job = ({ job }) => {
     category,
     remote,
     type,
-    salary
+    salary,
+    money
   } = job
   const [companies] = company
 
@@ -55,7 +56,7 @@ const Job = ({ job }) => {
           {type ? type.replace('_', ' ') : ''}
         </div>
         <div className="is-flex is-align-items-center is-size-7">
-          <FaMoneyBillAlt className="mr-3" /> {salary}
+          <FaMoneyBillAlt className="mr-3" /> {money} {salary}
         </div>
         <span className="job__city is-size-7">
           <FaMapMarkerAlt /> {city.replace('_', ' ')} - {country}
