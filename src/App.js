@@ -5,16 +5,18 @@ import AppContext from './context/AppContext'
 import { AuthRoute, PrivateRoute } from './utils/AuthRoute'
 import { usePagination } from './hooks/usePagination'
 import { AuthProvider } from './context/auth'
-import Home from './containers/Home'
-import RegisterView from './containers/RegisterView'
-import LoginView from './containers/LoginView'
 
-import NewJob from './containers/NewJob'
-import EditJobsContainer from './containers/EditJobsContainer'
-import EditCompanies from './containers/EditCompanies'
-import CategoriesList from './containers/CategoriesList'
-import Companies from './containers/Companies'
-import Dashboard from './containers/Dashboard'
+import {
+  Home,
+  RegisterView,
+  LoginView,
+  NewJob,
+  EditCompanies,
+  EditJobsContainer,
+  CategoriesList,
+  Companies,
+  Dashboard
+} from './containers'
 
 const App = () => {
   const pagination = usePagination()
