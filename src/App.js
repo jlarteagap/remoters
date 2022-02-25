@@ -20,6 +20,7 @@ import {
 
 const App = () => {
   const pagination = usePagination()
+  console.log(pagination)
   return (
     <AuthProvider>
       <AppContext.Provider value={pagination}>
