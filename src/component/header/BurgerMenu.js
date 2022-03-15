@@ -9,6 +9,7 @@ const BurgerMenu = ({ isActive, onClick }) => (
     aria-label="menu"
     aria-expanded="false"
     data-target="navbarBasicExample"
+    href="javascript:void(0)"
   >
     <span aria-hidden="true"></span>
     <span aria-hidden="true"></span>
