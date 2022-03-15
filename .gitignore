@@ -1,5 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+/src/hoc/ApolloConnect,js
+
 # dependencies
 /node_modules
 /.pnp
@@ -20,7 +22,6 @@ prettier.config.js
 .env.test.local
 .env.production.local
 
-/src/hoc
 
 npm-debug.log*
 yarn-debug.log*
