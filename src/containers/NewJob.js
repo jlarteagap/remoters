@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import { Menu } from '../component/dashboard/Menu'
+
 import AddJobs from '../component/add/AddJobs'
 
 const NewJob = () => (
   <Fragment>
     <Helmet>
       <meta charSet="utf-8" />
-      <title>Agrega un nuevo empleo | </title>
+      <title>Agrega un nuevo empleo</title>
       <meta
         name="description"
         content="Encuentra a los mejores profesionales en tecnología en Bolivia"
