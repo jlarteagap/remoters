@@ -15,8 +15,10 @@ const errorLink = onError(({ graphqlErrors, networkError }) => {
   }
 })
 
+// const server = process.env.REACT_APP_SERVER
+
 const httpLink = createHttpLink({
-  uri: 'https://server-tembiapo.herokuapp.com/graphql',
+  uri: process.env.REACT_APP_SERVER,
   fetchOptions: {
     credentials: 'include'
   }
