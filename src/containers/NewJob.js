@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Helmet } from 'react-helmet'
-import AddJobs from '../component/add/AddJobs'
 import { Menu } from '../component/dashboard/Menu'
+import AddJobs from '../component/add/AddJobs'
 
 const NewJob = () => (
   <Fragment>
