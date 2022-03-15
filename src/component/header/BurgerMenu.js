@@ -2,19 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const BurgerMenu = ({ isActive, onClick }) => (
-  <a
+  <div
     onClick={onClick}
     role="button"
     className={`navbar-burger burger ${isActive ? 'is-active' : ''}`}
     aria-label="menu"
     aria-expanded="false"
     data-target="navbarBasicExample"
-    href="javascript:void(0)"
   >
     <span aria-hidden="true"></span>
     <span aria-hidden="true"></span>
     <span aria-hidden="true"></span>
-  </a>
+  </div>
 )
 
 BurgerMenu.propTypes = {
