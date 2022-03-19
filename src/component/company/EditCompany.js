@@ -32,14 +32,14 @@ const EditCompany = ({ data, refetch }) => {
     createCompany({
       variables: {
         input: {
-          id: company.id,
-          name: company.name,
-          site: company.site,
-          description: company.description,
-          logo: company.logo,
-          username: user.email,
           activity: company.activity,
-          phone: company.phone
+          description: company.description,
+          id: company.id,
+          logo: company.logo,
+          name: company.name,
+          phone: company.phone,
+          site: company.site,
+          username: user.email
         }
       }
     }).then(

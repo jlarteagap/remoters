@@ -44,13 +44,13 @@ const Form = () => {
     createCompany({
       variables: {
         input: {
-          name: company.name,
-          site: company.site,
+          activity: company.activity,
           description: company.description,
           logo: company.logo,
-          username: user.email,
-          activity: company.activity,
-          phone: company.phone
+          name: company.name,
+          phone: company.phone,
+          site: company.site,
+          username: user.email
         }
       }
     }).then(clearState)
