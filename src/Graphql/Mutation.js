@@ -5,17 +5,17 @@ export const ADD_JOB = gql`
     newJob(input: $input) {
       id
       active
-      position
       category
-      link
-      remote
       company {
         name
         logo
       }
-      type
-      salary
+      link
       money
+      position
+      remote
+      salary
+      type
     }
   }
 `
@@ -24,13 +24,12 @@ export const CREATE_USER_MUTATION = gql`
   mutation register($input: RegisterInput) {
     register(input: $input) {
       id
-      name
-      lastname
       email
+      lastname
+      name
       password
       role
       token
-      createdAt
       updateAt
     }
   }
@@ -40,9 +39,9 @@ export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       id
-      name
-      lastname
       email
+      lastname
+      name
       password
       role
       token
@@ -53,11 +52,11 @@ export const LOGIN_USER = gql`
 export const CREATE_COMPANY = gql`
   mutation company($input: CompanyInput) {
     company(input: $input) {
+      description
       id
+      logo
       name
       site
-      description
-      logo
       username
     }
   }
@@ -66,19 +65,19 @@ export const UPDATE_JOB = gql`
   mutation UpdateJob($input: JobInput) {
     updateJob(input: $input) {
       id
-      position
+      active
       category
-      link
       city
-      country
-      remote
       company {
         name
       }
-      type
-      salary
+      country
+      link
       money
-      active
+      position
+      remote
+      salary
+      type
     }
   }
 `
@@ -97,15 +96,15 @@ export const UPDATE_COMPANY = gql`
   mutation UpdateCompany($input: CompanyInput) {
     updateCompany(input: $input) {
       id
-      name
-      site
+      activity
+      createdAt
       description
       logo
-      createdAt
+      name
+      phone
+      site
       updateAt
       username
-      phone
-      activity
     }
   }
 `
