@@ -55,7 +55,8 @@ const EditJob = ({ data, refetch }) => {
           },
           type: jobs.type,
           salary: jobs.salary,
-          money: jobs.money
+          money: jobs.money,
+          active: false
         }
       }
     }).then(

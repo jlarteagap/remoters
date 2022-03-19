@@ -4,6 +4,7 @@ export const ADD_JOB = gql`
   mutation newJob($input: JobInput) {
     newJob(input: $input) {
       id
+      active
       position
       category
       link
@@ -11,10 +12,6 @@ export const ADD_JOB = gql`
       company {
         name
         logo
-      }
-      createdAt
-      username {
-        email
       }
       type
       salary
@@ -34,6 +31,7 @@ export const CREATE_USER_MUTATION = gql`
       role
       token
       createdAt
+      updateAt
     }
   }
 `
@@ -48,7 +46,6 @@ export const LOGIN_USER = gql`
       password
       role
       token
-      createdAt
     }
   }
 `
@@ -61,7 +58,6 @@ export const CREATE_COMPANY = gql`
       site
       description
       logo
-      createdAt
       username
     }
   }
@@ -82,6 +78,7 @@ export const UPDATE_JOB = gql`
       type
       salary
       money
+      active
     }
   }
 `
@@ -105,6 +102,7 @@ export const UPDATE_COMPANY = gql`
       description
       logo
       createdAt
+      updateAt
       username
       phone
       activity

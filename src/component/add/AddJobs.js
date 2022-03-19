@@ -58,6 +58,7 @@ const AddJobs = () => {
     newJob({
       variables: {
         input: {
+          active: true,
           position: jobs.position,
           link: jobs.link,
           category: jobs.category,
