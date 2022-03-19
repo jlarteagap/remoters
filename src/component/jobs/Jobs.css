@@ -20,7 +20,7 @@
 }
 .card__body--title{
     margin: 0;
-    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680)) !important;
     position: relative;
 }
 .card__body--title a{
@@ -129,10 +129,6 @@
     }
     .icons-info{
         display: none;
-    }
-    .card__body--title{
-        font-size: 1.25rem !important;
-        margin: 0 !important;
     }
     .job__city{
         margin: 0;
