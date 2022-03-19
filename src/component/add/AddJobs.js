@@ -59,14 +59,14 @@ const AddJobs = () => {
       variables: {
         input: {
           active: true,
+          position: jobs.position,
+          link: jobs.link,
           category: jobs.category,
           city: jobs.city,
-          country: jobs.country,
-          link: jobs.link,
-          money: jobs.money,
-          position: jobs.position,
           remote: isRemote,
+          country: jobs.country,
           salary: jobs.salary,
+          money: jobs.money,
           type: jobs.type,
           company: {
             name: companyData.name,

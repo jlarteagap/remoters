@@ -43,20 +43,20 @@ const EditJob = ({ data, refetch }) => {
       variables: {
         input: {
           id: jobs.id,
-          active: false,
+          position: jobs.position,
+          link: jobs.link,
           category: jobs.category,
           city: jobs.city,
+          country: jobs.country,
+          remote: isRemote,
           company: {
             ...companyData,
             name: companyData.name
           },
-          country: jobs.country,
-          link: jobs.link,
-          money: jobs.money,
-          position: jobs.position,
-          remote: isRemote,
+          type: jobs.type,
           salary: jobs.salary,
-          type: jobs.type
+          money: jobs.money,
+          active: false
         }
       }
     }).then(

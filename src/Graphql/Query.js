@@ -14,23 +14,23 @@ export const GET_JOBS = gql`
       offset: $offset
     ) {
       id
+      position
       category
+      link
       city
+      country
+      remote
       company {
         name
         logo
       }
-      country
-      link
-      money
-      position
-      remote
-      salary
-      type
-      updateAt
+      createdAt
       username {
         email
       }
+      type
+      salary
+      money
     }
     totalJobs
   }
@@ -40,23 +40,23 @@ export const GET_JOB = gql`
   query getJob($id: ID) {
     getJob(ID: $id) {
       id
+      position
       category
+      link
       city
+      country
+      remote
       company {
         name
         logo
       }
-      country
-      link
-      money
-      position
-      remote
-      salary
-      type
-      updateAt
+      createdAt
       username {
         email
       }
+      type
+      salary
+      money
     }
   }
 `
@@ -65,13 +65,13 @@ export const GET_COMPANIES = gql`
   query allCompanies($username: String, $limit: Int, $offset: Int) {
     allCompanies(username: $username, limit: $limit, offset: $offset) {
       id
-      activity
-      createdAt
+      name
+      site
       description
       logo
-      name
+      createdAt
+      activity
       phone
-      site
       username
     }
   }
@@ -81,13 +81,13 @@ export const GET_COMPANY = gql`
   query getCompany($id: ID) {
     getCompany(ID: $id) {
       id
-      activity
-      createdAt
+      name
+      site
       description
       logo
-      name
+      createdAt
+      activity
       phone
-      site
       username
     }
   }
