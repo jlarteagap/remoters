@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client'
 import { ADD_JOB } from '../../Graphql/Mutation'
 import { AuthContext } from '../../context/auth'
 import Companies from './Companies'
-
+import Inputs from '../inputs/Inputs'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import './Forms.css'
@@ -95,36 +95,22 @@ const AddJobs = () => {
       <form onSubmit={e => Addingjobs(e)}>
         <div className="columns">
           <div className="column is-7">
-            <div className="field">
-              <div className="control">
-                <label className="label">Cargo disponible</label>
-                <input
-                  className="input"
-                  onChange={updateState}
-                  name="position"
-                  placeholder="Ej: Frontend Developer..."
-                  value={jobs.position}
-                  required
-                />
-              </div>
-            </div>
+            <Inputs
+              value={jobs.position}
+              name={'position'}
+              title={'Título de la publicación'}
+              updateState={updateState}
+            />
             <Companies
               user={user.email}
               onChange={value => setCompany(value)}
             />
-            <div className="control">
-              <div className="field">
-                <label className="label">Enlace para postular</label>
-                <input
-                  className="input"
-                  onChange={updateState}
-                  name="link"
-                  placeholder="http://..."
-                  value={jobs.link}
-                  required
-                />
-              </div>
-            </div>
+            <Inputs
+              value={jobs.link}
+              name={'link'}
+              title="Enlace para postular"
+              updateState={updateState}
+            />
             <div className="field">
               <div className="select is-fullwidth">
                 <select name="category" onChange={updateState}>
