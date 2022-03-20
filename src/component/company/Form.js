@@ -4,6 +4,7 @@ import { CREATE_COMPANY } from '../../Graphql/Mutation'
 import { AuthContext } from '../../context/auth'
 
 import UploadLogo from './UploadLogo'
+import Inputs from '../inputs/Inputs'
 
 const initialState = {
   name: '',
@@ -63,62 +64,43 @@ const Form = () => {
         <div className="field">
           <UploadLogo logoUpdate={logoUpdate} logo={company.logo} />
         </div>
-        <div className="field">
-          <label className="label">Nombre de la empresa</label>
-          <input
-            className="input"
-            onChange={updateState}
-            name="name"
-            type="text"
-            placeholder="Nombre de la empresa"
-            value={company.name}
-            required
-          />
-        </div>
-        <div className="field">
-          <label className="label">Página Web</label>
-          <input
-            className="input"
-            onChange={updateState}
-            name="site"
-            type="text"
-            placeholder="Nombre de la empresa"
-            value={company.site}
-            required
-          />
-        </div>
-        <div className="field">
-          <label className="label">Teléfono</label>
-          <input
-            className="input"
-            onChange={updateState}
-            name="phone"
-            type="text"
-            value={company.phone}
-            placeholder="Teléfono"
-          />
-        </div>
-        <div className="field">
-          <label className="label">Actividad empresarial</label>
-          <input
-            className="input"
-            onChange={updateState}
-            name="activity"
-            type="text"
-            value={company.activity}
-            placeholder="Defina en una palabra su actividad empresarial"
-          />
-        </div>
-        <div className="field">
-          <label className="label">Descripción de la empresa</label>
+        <Inputs
+          name={'name'}
+          title={'Nombre de la empresa'}
+          type={'text'}
+          value={company.name}
+          updateState={updateState}
+        />
+        <Inputs
+          name={'site'}
+          title={'Página Web'}
+          type={'text'}
+          value={company.site}
+          updateState={updateState}
+        />
+        <Inputs
+          name={'phone'}
+          title={'Teléfono'}
+          type={'text'}
+          value={company.phone}
+          updateState={updateState}
+        />
+        <Inputs
+          name={'activity'}
+          title={'Actividad empresarial'}
+          type={'text'}
+          value={company.activity}
+          updateState={updateState}
+        />
+        <div className="field form__style">
           <textarea
             className="textarea"
             onChange={updateState}
             name="description"
             type="text"
             value={company.description}
-            placeholder="Pequeño resumen de su empresa."
           />
+          <label className="label">Descripción de la empresa</label>
         </div>
         <button className="button btn">Agregar empresa</button>
       </form>

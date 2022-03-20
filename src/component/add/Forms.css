@@ -1,8 +1,0 @@
-.remote {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-}
-.remote input{
-    display: none;
-}

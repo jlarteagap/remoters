@@ -22,7 +22,7 @@ const Companies = ({ user, onChange, companieJob }) => {
   }
 
   return (
-    <div className="field">
+    <div className="field form__style">
       {data.allCompanies.length < 1 ? (
         <div className="message is-success">
           <div className="message-body">
@@ -35,9 +35,13 @@ const Companies = ({ user, onChange, companieJob }) => {
       ) : (
         ''
       )}
-      <label className="label">Empresa</label>
+
       <div className="select is-fullwidth">
-        <select onChange={e => updateState(e)} defaultValue={defaultValue}>
+        <select
+          className="form__style--select"
+          onChange={e => updateState(e)}
+          defaultValue={defaultValue}
+        >
           <option>---</option>
           {data.allCompanies.map(company => {
             return (
@@ -47,6 +51,7 @@ const Companies = ({ user, onChange, companieJob }) => {
             )
           })}
         </select>
+        <label className="label">Empresa</label>
       </div>
     </div>
   )

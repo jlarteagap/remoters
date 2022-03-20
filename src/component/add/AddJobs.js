@@ -6,7 +6,6 @@ import Companies from './Companies'
 import Inputs from '../inputs/Inputs'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import './Forms.css'
 
 const initialState = {
   position: '',
@@ -96,20 +95,22 @@ const AddJobs = () => {
         <div className="columns">
           <div className="column is-7">
             <Inputs
-              value={jobs.position}
               name={'position'}
               title={'Título de la publicación'}
+              type={'text'}
               updateState={updateState}
+              value={jobs.position}
             />
             <Companies
               user={user.email}
               onChange={value => setCompany(value)}
             />
             <Inputs
-              value={jobs.link}
               name={'link'}
               title="Enlace para postular"
+              type={'text'}
               updateState={updateState}
+              value={jobs.link}
             />
             <div className="field">
               <div className="select is-fullwidth">

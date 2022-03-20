@@ -6,7 +6,6 @@ import Companies from './Companies'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import './Forms.css'
 
 const EditJob = ({ data, refetch }) => {
   const [jobs, setJobs] = useState(data)

@@ -1,0 +1,45 @@
+.remote {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+.remote input{
+    display: none;
+}
+
+.form__style {
+        position: relative;
+        margin: 10px 2.5px 20px 2.5px;
+    }
+.form__style label {
+        color: var(--Blue);
+        position: absolute;
+        pointer-events: none;
+        left: 10px;
+        top: 10px;
+        transition: 0.2s;
+    }
+    
+    .form__style input:focus ~ label,
+    .form__style input:valid ~ label,
+    .form__style select:focus~label,
+    .form__style select:not([value=""]):valid~label,
+    .form__style textarea:focus ~ label,
+    .form__style textarea:not([value=""]):valid~label{
+        top: -10px;
+        font-weight: 700;
+        left: 15px;
+        font-size: small;
+        color: var(--Blue);
+        background-color:#fff;
+        padding:0 5px 0 5px;
+    }
+
+.input:focus, .select select:focus, .textarea:focus{
+    border-color: var(--Blue) !important;
+    box-shadow: 0 0 0 0.125em rgba(84, 228, 213, 0.25) !important;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after{
+    border-color: var(--Blue) !important;
+}
