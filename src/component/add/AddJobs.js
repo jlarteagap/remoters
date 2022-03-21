@@ -112,10 +112,12 @@ const AddJobs = () => {
               updateState={updateState}
               value={jobs.link}
             />
-            <div className="field">
+            <div className="field form__style">
               <div className="select is-fullwidth">
                 <select name="category" onChange={updateState}>
-                  <option value="">Categoria</option>
+                  <option value="" disabled>
+                    --
+                  </option>
                   <option value="web_developers">Web Development</option>
                   <option value="software_developer">
                     Software Developers
@@ -134,18 +136,22 @@ const AddJobs = () => {
                   <option value="qa">Quality Assurance</option>
                   <option value="reclutadores">RRHH & Reclutamiento</option>
                 </select>
+                <label className="label">Categoria</label>
               </div>
             </div>
             <div className="field">
-              <div className="control is-expanded">
+              <div className="control is-expanded form__style">
                 <div className="select is-fullwidth">
                   <select name="type" onChange={updateState}>
-                    <option value="">Tipo de contrato</option>
+                    <option value="" disabled>
+                      ---
+                    </option>
                     <option value="Tiempo_Completo">Tiempo completo</option>
                     <option value="Medio_tiempo">Medio Tiempo</option>
                     <option value="Freelance">Freelance</option>
                     <option value="Consultoria">Consultoria</option>
                   </select>
+                  <label className="label">Tipo de contrato</label>
                 </div>
               </div>
             </div>
@@ -153,21 +159,26 @@ const AddJobs = () => {
           <div className="column">
             <div className="field is-grouped is-grouped-multiline">
               <div className="control is-expanded">
-                <div className="select is-fullwidth">
+                <div className="select is-fullwidth form__style">
                   <select
                     name="country"
                     onChange={updateState}
                     value={jobs.country}
                   >
-                    <option value="">País</option>
+                    <option value="" disabled>
+                      --
+                    </option>
                     <option value="Bolivia">Bolivia</option>
                   </select>
+                  <label className="label">País</label>
                 </div>
               </div>
               <div className="control is-expanded">
-                <div className="select is-fullwidth">
+                <div className="select is-fullwidth form__style">
                   <select name="city" onChange={updateState}>
-                    <option value="">Ciudad</option>
+                    <option value="" disabled>
+                      --
+                    </option>
                     <option value="SANTA_CRUZ">Santa Cruz</option>
                     <option value="LA_PAZ">La Paz</option>
                     <option value="COCHABAMBA">Cochabamba</option>
@@ -178,15 +189,14 @@ const AddJobs = () => {
                     <option value="BENI">Beni</option>
                     <option value="PANDO">Pando</option>
                   </select>
+                  <label className="label">Ciudad</label>
                 </div>
               </div>
             </div>
             <div className="field">
               <div className="control is-expanded">
-                <label className="label">Salario</label>
-
                 <div className="field has-addons">
-                  <p className="control">
+                  <p className="control form__style">
                     <span className="select">
                       <select
                         className="is-info"
@@ -196,14 +206,15 @@ const AddJobs = () => {
                         <option>Bs.</option>
                         <option>$us.</option>
                       </select>
+                      <label className="label">Moneda</label>
                     </span>
                   </p>
                   <div className="control is-expanded">
-                    <input
-                      type="text"
-                      className="input"
-                      name="salary"
-                      onChange={updateState}
+                    <Inputs
+                      title={'Cantidad'}
+                      type={'text'}
+                      name={'salary'}
+                      updateState={updateState}
                       value={jobs.salary}
                     />
                   </div>

@@ -107,8 +107,7 @@ const EditJob = ({ data, refetch }) => {
             />
           </div>
         </div>
-        <div className="field">
-          <label className="label">Categoria</label>
+        <div className="field form__style">
           <div className="select is-fullwidth">
             <select
               name="category"
@@ -132,6 +131,7 @@ const EditJob = ({ data, refetch }) => {
               <option value="qa">Quality Assurance</option>
               <option value="reclutadores">RRHH & Reclutamiento</option>
             </select>
+            <label className="label">Categoria</label>
           </div>
         </div>
         <div className="columns">
