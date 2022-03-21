@@ -6,6 +6,7 @@ import Companies from './Companies'
 import Inputs from '../inputs/Inputs'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import { SwitchButton } from '../inputs/SwitchButton'
 
 const initialState = {
   position: '',
@@ -21,6 +22,8 @@ const initialState = {
 const AddJobs = () => {
   const [jobs, setJobs] = useState(initialState)
   const [isRemote, setRemote] = useState(false)
+  const [isPayment, setPayment] = useState(false)
+  const [isLocation, setLocaltion] = useState(false)
   const [company, setCompany] = useState('')
   const { user } = useContext(AuthContext)
 
@@ -41,6 +44,12 @@ const AddJobs = () => {
 
   const changeHandler = () => {
     setRemote(!isRemote)
+  }
+  const locationChange = () => {
+    setLocaltion(!isLocation)
+  }
+  const paymentChange = () => {
+    setPayment(!isPayment)
   }
 
   const Addingjobs = e => {
@@ -100,6 +109,7 @@ const AddJobs = () => {
               type={'text'}
               updateState={updateState}
               value={jobs.position}
+              required={true}
             />
             <Companies
               user={user.email}
@@ -111,6 +121,7 @@ const AddJobs = () => {
               type={'text'}
               updateState={updateState}
               value={jobs.link}
+              required={true}
             />
             <div className="field form__style">
               <div className="select is-fullwidth">
@@ -157,7 +168,21 @@ const AddJobs = () => {
             </div>
           </div>
           <div className="column">
-            <div className="field is-grouped is-grouped-multiline">
+            <SwitchButton
+              checked={isRemote}
+              onChange={changeHandler}
+              title={'Trabajo remoto'}
+            />
+            <SwitchButton
+              checked={isLocation}
+              onChange={locationChange}
+              title={'Quieres agregar una ciudad?'}
+            />
+            <div
+              className={`field is-grouped is-grouped-multiline ${
+                isLocation ? '' : 'is-hidden'
+              }`}
+            >
               <div className="control is-expanded">
                 <div className="select is-fullwidth form__style">
                   <select
@@ -193,7 +218,12 @@ const AddJobs = () => {
                 </div>
               </div>
             </div>
-            <div className="field">
+            <SwitchButton
+              checked={isPayment}
+              onChange={paymentChange}
+              title={'Quieres agregar rango salarial? '}
+            />
+            <div className={`field ${isPayment ? '' : 'is-hidden'}`}>
               <div className="control is-expanded">
                 <div className="field has-addons">
                   <p className="control form__style">
@@ -203,6 +233,9 @@ const AddJobs = () => {
                         name="money"
                         onChange={updateState}
                       >
+                        <option value="" disabled>
+                          --
+                        </option>
                         <option>Bs.</option>
                         <option>$us.</option>
                       </select>
@@ -219,29 +252,6 @@ const AddJobs = () => {
                     />
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="field">
-              <div className="control">
-                <label className="remote">
-                  <span className="">Home office?</span>
-                  <input
-                    className=""
-                    name="remote"
-                    type="checkbox"
-                    checked={isRemote}
-                    onChange={changeHandler}
-                  />
-                  <span
-                    className={
-                      isRemote
-                        ? 'button is-primary is-outlined is-fullwidth'
-                        : 'button is-danger is-outlined is-fullwidth'
-                    }
-                  >
-                    {isRemote ? 'SI' : 'NO'}
-                  </span>
-                </label>
               </div>
             </div>
           </div>

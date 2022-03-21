@@ -2,7 +2,7 @@
 import React from 'react'
 import './Form.css'
 
-const Inputs = ({ name, title, value, updateState, type }) => {
+const Inputs = ({ name, title, value, updateState, type, required }) => {
   return (
     <div className="field">
       <div className="control form__style">
@@ -11,8 +11,8 @@ const Inputs = ({ name, title, value, updateState, type }) => {
           value={value}
           name={name}
           onChange={e => updateState(e)}
-          required
           type={type}
+          required={required}
         />
         <label className="label">{title}</label>
       </div>
