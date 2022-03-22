@@ -55,10 +55,19 @@ const Job = ({ job }) => {
           <FaNetworkWired className="mr-3" />{' '}
           {type ? type.replace('_', ' ') : ''}
         </div>
-        <div className="is-flex is-align-items-center is-size-7">
+        <div
+          className={`is-flex is-align-items-center is-size-7 ${
+            salary ? '' : 'is-hidden'
+          }`}
+        >
           <FaMoneyBillAlt className="mr-3" /> {money} {salary}
         </div>
-        <span className="job__city is-size-7">
+        <span
+          className={`job__city is-size-7 ${
+            city && country ? '' : 'is-hidden'
+          }`}
+        >
+          {console.log(city)}
           <FaMapMarkerAlt /> {city.replace('_', ' ')} - {country}
         </span>
       </div>
