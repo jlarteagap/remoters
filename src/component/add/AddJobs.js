@@ -23,7 +23,7 @@ const AddJobs = () => {
   const [jobs, setJobs] = useState(initialState)
   const [isRemote, setRemote] = useState(false)
   const [isPayment, setPayment] = useState(false)
-  const [isLocation, setLocaltion] = useState(false)
+  const [isLocation, setLocation] = useState(false)
   const [company, setCompany] = useState('')
   const { user } = useContext(AuthContext)
 
@@ -46,7 +46,7 @@ const AddJobs = () => {
     setRemote(!isRemote)
   }
   const locationChange = () => {
-    setLocaltion(!isLocation)
+    setLocation(!isLocation)
   }
   const paymentChange = () => {
     setPayment(!isPayment)

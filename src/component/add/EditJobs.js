@@ -6,11 +6,15 @@ import Companies from './Companies'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import Inputs from '../inputs/Inputs'
+import { SwitchButton } from '../inputs/SwitchButton'
 
 const EditJob = ({ data, refetch }) => {
   const [jobs, setJobs] = useState(data)
   const [isRemote, setRemote] = useState(data.remote)
   const [company, setCompany] = useState(data.company)
+  const [isPayment, setPayment] = useState(false)
+  const [isLocation, setLocation] = useState(false)
 
   const { user } = useContext(AuthContext)
 
@@ -26,7 +30,12 @@ const EditJob = ({ data, refetch }) => {
   const changeHandler = () => {
     setRemote(!isRemote)
   }
-
+  const locationChange = () => {
+    setLocation(!isLocation)
+  }
+  const paymentChange = () => {
+    setPayment(!isPayment)
+  }
   const Addingjobs = e => {
     e.preventDefault()
 
@@ -76,177 +85,175 @@ const EditJob = ({ data, refetch }) => {
     <div className="box p-5">
       <h3 className="title is-4">Editar publicación</h3>
       <form onSubmit={e => Addingjobs(e)}>
-        <div className="field">
-          <div className="control">
-            <label className="label">Cargo disponible</label>
-            <input
-              className="input"
-              onChange={updateState}
-              name="position"
-              placeholder="Ej: Frontend Developer..."
-              defaultValue={jobs.position}
-              required
-            />
-          </div>
-        </div>
-        <Companies
-          user={user.email}
-          onChange={value => setCompany(value)}
-          companieJob={jobs.company}
-        />
-        <div className="control">
-          <div className="field">
-            <label className="label">Enlace para postular</label>
-            <input
-              className="input"
-              onChange={updateState}
-              name="link"
-              placeholder="http://...."
-              defaultValue={jobs.link}
-              required
-            />
-          </div>
-        </div>
-        <div className="field form__style">
-          <div className="select is-fullwidth">
-            <select
-              name="category"
-              onChange={updateState}
-              defaultValue={jobs.category}
-            >
-              <option value="">Elegir...</option>
-              <option value="web_developers">Web Development</option>
-              <option value="software_developer">Software Developers</option>
-              <option value="project_managers">Project Management</option>
-              <option value="social_managers">Social Media</option>
-              <option value="comercial">
-                Business Management &amp; Ventas
-              </option>
-              <option value="soporte">Soporte</option>
-              <option value="designers">Diseño web y gráfico</option>
-              <option value="devops">DevOps</option>
-              <option value="seo">SEO - Search Engine Optimization</option>
-              <option value="copywriting">Copywriting</option>
-              <option value="seguridad">Cyber Security</option>
-              <option value="qa">Quality Assurance</option>
-              <option value="reclutadores">RRHH & Reclutamiento</option>
-            </select>
-            <label className="label">Categoria</label>
-          </div>
-        </div>
         <div className="columns">
-          <div className="column">
-            <div className="control is-expanded">
-              <label className="label">Tipo de contrato</label>
+          <div className="column is-7">
+            <Inputs
+              name={'position'}
+              title={'Título de la publicación'}
+              type={'text'}
+              updateState={updateState}
+              defaultValue={jobs.position}
+              required={true}
+            />
+
+            <Companies
+              user={user.email}
+              onChange={value => setCompany(value)}
+              companieJob={jobs.company}
+            />
+
+            <Inputs
+              name={'link'}
+              title="Enlace para postular"
+              type={'text'}
+              updateState={updateState}
+              defaultValue={jobs.link}
+              required={true}
+            />
+            <div className="field form__style">
               <div className="select is-fullwidth">
                 <select
-                  name="type"
+                  name="category"
                   onChange={updateState}
-                  defaultValue={jobs.type}
+                  defaultValue={jobs.category}
                 >
                   <option value="">Elegir...</option>
-                  <option value="Tiempo_Completo">Tiempo completo</option>
-                  <option value="Medio_tiempo">Medio Tiempo</option>
-                  <option value="Freelance">Freelance</option>
-                  <option value="Consultoria">Consultoria</option>
+                  <option value="web_developers">Web Development</option>
+                  <option value="software_developer">
+                    Software Developers
+                  </option>
+                  <option value="project_managers">Project Management</option>
+                  <option value="social_managers">Social Media</option>
+                  <option value="comercial">
+                    Business Management &amp; Ventas
+                  </option>
+                  <option value="soporte">Soporte</option>
+                  <option value="designers">Diseño web y gráfico</option>
+                  <option value="devops">DevOps</option>
+                  <option value="seo">SEO - Search Engine Optimization</option>
+                  <option value="copywriting">Copywriting</option>
+                  <option value="seguridad">Cyber Security</option>
+                  <option value="qa">Quality Assurance</option>
+                  <option value="reclutadores">RRHH & Reclutamiento</option>
                 </select>
+                <label className="label">Categoria</label>
+              </div>
+            </div>
+            <div className="field">
+              <div className="control is-expanded form__style">
+                <div className="select is-fullwidth">
+                  <select name="type" onChange={updateState}>
+                    <option value="" disabled>
+                      ---
+                    </option>
+                    <option value="Tiempo_Completo">Tiempo completo</option>
+                    <option value="Medio_tiempo">Medio Tiempo</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Consultoria">Consultoria</option>
+                  </select>
+                  <label className="label">Tipo de contrato</label>
+                </div>
               </div>
             </div>
           </div>
+
           {/* SALARIO  */}
           <div className="column">
-            <div className="control is-expanded">
-              <label className="label">Salario</label>
+            <SwitchButton
+              checked={isRemote}
+              onChange={changeHandler}
+              title={'Trabajo remoto'}
+            />
+            <SwitchButton
+              checked={isLocation}
+              onChange={locationChange}
+              title={'Quieres agregar una ciudad?'}
+            />
 
-              <div className="field has-addons">
-                <p className="control">
-                  <span className="select">
-                    <select
-                      className="is-info"
-                      name="money"
-                      onChange={updateState}
-                      defaultValue={jobs.money}
-                    >
-                      <option>Bs.</option>
-                      <option>$us.</option>
-                    </select>
-                  </span>
-                </p>
-                <div className="control is-expanded">
-                  <input
-                    type="text"
-                    className="input"
-                    name="salary"
+            <div
+              className={`field is-grouped is-grouped-multiline ${
+                isLocation ? '' : 'is-hidden'
+              }`}
+            >
+              <div className="control is-expanded">
+                <div className="select is-fullwidth form__style">
+                  <select
+                    name="country"
                     onChange={updateState}
-                    value={jobs.salary}
-                  />
+                    defaultValue={jobs.country}
+                  >
+                    <option value="" disabled>
+                      --
+                    </option>
+                    <option value="Bolivia">Bolivia</option>
+                  </select>
+                  <label className="label">País</label>
+                </div>
+              </div>
+              <div className="control is-expanded">
+                <div className="select is-fullwidth form__style">
+                  <select
+                    name="city"
+                    onChange={updateState}
+                    defaultValue={jobs.city}
+                  >
+                    <option value="" disabled>
+                      --
+                    </option>
+                    <option value="SANTA_CRUZ">Santa Cruz</option>
+                    <option value="LA_PAZ">La Paz</option>
+                    <option value="COCHABAMBA">Cochabamba</option>
+                    <option value="TARIJA">Tarija</option>
+                    <option value="ORURO">Oruro</option>
+                    <option value="POTOSI">Potosi</option>
+                    <option value="CHUQUISACA">Chuquisaca</option>
+                    <option value="BENI">Beni</option>
+                    <option value="PANDO">Pando</option>
+                  </select>
+                  <label className="label">Ciudad</label>
+                </div>
+              </div>
+            </div>
+
+            <SwitchButton
+              checked={isPayment}
+              onChange={paymentChange}
+              title={'Quieres agregar rango salarial? '}
+            />
+            <div className={`field ${isPayment ? '' : 'is-hidden'}`}>
+              <div className="control is-expanded">
+                <div className="field has-addons">
+                  <p className="control form__style">
+                    <span className="select">
+                      <select
+                        className="is-info"
+                        name="money"
+                        onChange={updateState}
+                      >
+                        <option value="" disabled>
+                          --
+                        </option>
+                        <option>Bs.</option>
+                        <option>$us.</option>
+                      </select>
+                      <label className="label">Moneda</label>
+                    </span>
+                  </p>
+                  <div className="control is-expanded">
+                    <Inputs
+                      title={'Cantidad'}
+                      type={'text'}
+                      name={'salary'}
+                      updateState={updateState}
+                      defaultValue={jobs.salary}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="field is-grouped is-grouped-multiline">
-          <div className="control is-expanded">
-            <label className="label">País</label>
-            <div className="select is-fullwidth">
-              <select
-                name="country"
-                onChange={updateState}
-                defaultValue={jobs.country}
-              >
-                <option value="">Elegir...</option>
-                <option value="Bolivia">Bolivia</option>
-              </select>
-            </div>
-          </div>
-          <div className="control is-expanded">
-            <label className="label">Ciudad</label>
-            <div className="select is-fullwidth">
-              <select
-                name="city"
-                onChange={updateState}
-                defaultValue={jobs.city}
-              >
-                <option value="">Elegir...</option>
-                <option value="SANTA_CRUZ">Santa Cruz</option>
-                <option value="LA_PAZ">La Paz</option>
-                <option value="COCHABAMBA">Cochabamba</option>
-                <option value="TARIJA">Tarija</option>
-                <option value="ORURO">Oruro</option>
-                <option value="POTOSI">Potosi</option>
-                <option value="CHUQUISACA">Chuquisaca</option>
-                <option value="BENI">Beni</option>
-                <option value="PANDO">Pando</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div className="field">
-          <div className="control">
-            <label className="remote">
-              <span className="">Home office?</span>
-              <input
-                className=""
-                name="remote"
-                type="checkbox"
-                checked={isRemote}
-                onChange={changeHandler}
-              />
-              <span
-                className={
-                  isRemote
-                    ? 'button is-primary is-outlined is-fullwidth'
-                    : 'button is-danger is-outlined is-fullwidth'
-                }
-              >
-                {isRemote ? 'SI' : 'NO'}
-              </span>
-            </label>
-          </div>
-        </div>
-
         <button type="submit" className="button btn">
-          {' '}
           Enviar publicación
         </button>
       </form>
