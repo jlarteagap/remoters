@@ -13,8 +13,8 @@ const EditJob = ({ data, refetch }) => {
   const [jobs, setJobs] = useState(data)
   const [isRemote, setRemote] = useState(data.remote)
   const [company, setCompany] = useState(data.company)
-  const [isPayment, setPayment] = useState(false)
-  const [isLocation, setLocation] = useState(false)
+  const [isPayment, setPayment] = useState(jobs.money)
+  const [isLocation, setLocation] = useState(jobs.city)
 
   const { user } = useContext(AuthContext)
 
@@ -156,8 +156,6 @@ const EditJob = ({ data, refetch }) => {
               </div>
             </div>
           </div>
-
-          {/* SALARIO  */}
           <div className="column">
             <SwitchButton
               checked={isRemote}
@@ -220,6 +218,7 @@ const EditJob = ({ data, refetch }) => {
               onChange={paymentChange}
               title={'Quieres agregar rango salarial? '}
             />
+
             <div className={`field ${isPayment ? '' : 'is-hidden'}`}>
               <div className="control is-expanded">
                 <div className="field has-addons">
@@ -229,6 +228,7 @@ const EditJob = ({ data, refetch }) => {
                         className="is-info"
                         name="money"
                         onChange={updateState}
+                        defaultValue={jobs.money}
                       >
                         <option value="" disabled>
                           --
