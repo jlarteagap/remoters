@@ -16,12 +16,11 @@ export const AuthRoute = ({ component: Component, ...rest }) => {
   return <Route {...rest} render={render} />
 }
 
-AuthRoute.protoTypes = {
+AuthRoute.protTypes = {
   component: PropTypes.node,
   Component: PropTypes.elementType
 }
 
-// eslint-disable-next-line react/prop-types
 export const PrivateRoute = ({ component: Component, ...rest }) => {
   const { user } = useContext(AuthContext)
   const render = props => {
@@ -32,7 +31,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
   }
   return <Route {...rest} render={render} />
 }
-PrivateRoute.protoTypes = {
+PrivateRoute.protTypes = {
   component: PropTypes.elementType,
   Component: PropTypes.elementType
 }
