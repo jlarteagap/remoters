@@ -20,7 +20,7 @@ const Login = () => {
 
   const validate = Yup.object({
     email: Yup.string()
-      .email('El correo no válido')
+      .email('Correo no válido')
       .required('Necesitamos correo para ingresar'),
     password: Yup.string().required('Ingrese una contraseña')
   })
