@@ -69,6 +69,7 @@
     border:none;
     margin: 0;
     visibility: hidden;
+    display: none !important;
 }
 .job__icons{
     display: flex;
