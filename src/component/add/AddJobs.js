@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { ADD_JOB } from '../../Graphql/Mutation'
-import { AuthContext } from '../../context/auth'
-import Companies from './Companies'
+
 import Inputs from '../inputs/Inputs'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
@@ -24,14 +23,8 @@ const AddJobs = () => {
   const [isRemote, setRemote] = useState(false)
   const [isPayment, setPayment] = useState(false)
   const [isLocation, setLocation] = useState(false)
-  const [company, setCompany] = useState('')
-  const { user } = useContext(AuthContext)
 
   const history = useHistory()
-
-  const clearState = () => {
-    setCompany({ ...initialState })
-  }
 
   const [newJob] = useMutation(ADD_JOB)
 
@@ -55,14 +48,6 @@ const AddJobs = () => {
   const Addingjobs = e => {
     e.preventDefault()
 
-    let companyData
-    if (company) {
-      // eslint-disable-next-line array-callback-return
-      company.map(comp => {
-        companyData = comp
-      })
-    }
-
     newJob({
       variables: {
         input: {
@@ -76,26 +61,21 @@ const AddJobs = () => {
           remote: isRemote,
           salary: jobs.salary,
           type: jobs.type,
-          company: {
-            name: companyData.name,
-            logo: companyData.logo
-          },
+          companySimple: jobs.companySimple,
           username: {
-            email: user.email
+            email: 'free'
           }
         }
       }
-    })
-      .then(clearState())
-      .then(
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Un nuevo empleo se ha publicado',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(history.push('/dashboard'))
-      )
+    }).then(
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Un nuevo empleo se ha publicado',
+        showConfirmButton: false,
+        timer: 1500
+      }).then(history.push('/'))
+    )
   }
   return (
     <div className="box p-5">
@@ -111,9 +91,13 @@ const AddJobs = () => {
               value={jobs.position}
               required={true}
             />
-            <Companies
-              user={user.email}
-              onChange={value => setCompany(value)}
+            <Inputs
+              name={'companySimple'}
+              title="Empresa que representa"
+              type={'text'}
+              updateState={updateState}
+              value={jobs.companySimple}
+              required={true}
             />
             <Inputs
               name={'link'}

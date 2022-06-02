@@ -9,10 +9,7 @@ export const ADD_JOB = gql`
       category
       link
       remote
-      company {
-        name
-        logo
-      }
+      companySimple
       type
       salary
       money

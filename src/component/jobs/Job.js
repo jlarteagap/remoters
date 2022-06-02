@@ -11,7 +11,6 @@ import PropTypes from 'prop-types'
 
 const Job = ({ job }) => {
   const {
-    company,
     position,
     link,
     city,
@@ -20,12 +19,9 @@ const Job = ({ job }) => {
     remote,
     type,
     salary,
-    money
+    money,
+    companySimple
   } = job
-  const [companies] = company
-
-  let logoImage
-  companies.logo ? (logoImage = companies.logo) : (logoImage = DEFAULT_IMAGES)
 
   let iconRemote
   if (remote) {
@@ -39,7 +35,7 @@ const Job = ({ job }) => {
   return (
     <div className="card card--job p-3 mb-5">
       <div className="card__img">
-        <img src={logoImage} alt={companies.name} />
+        <img src={DEFAULT_IMAGES} />
       </div>
       <div className="card__body">
         <h2 className="card__body--title m-0">
@@ -47,11 +43,19 @@ const Job = ({ job }) => {
             {position}
           </a>
         </h2>
-        <div className="card__body--sub is-flex is-align-items-center">
+        <div
+          className={`card__body--sub is-flex is-align-items-center ${
+            companySimple || 'is-hidden'
+          }`}
+        >
           <FaRegBuilding className="mr-3" />
-          {companies.name}
+          {companySimple}
         </div>
-        <div className="is-flex is-align-items-center is-size-7">
+        <div
+          className={`is-flex is-align-items-center is-size-7 ${
+            type || 'is-hidden'
+          }`}
+        >
           <FaNetworkWired className="mr-3" />{' '}
           {type ? type.replace('_', ' ') : ''}
         </div>
@@ -67,7 +71,6 @@ const Job = ({ job }) => {
             city && country ? '' : 'is-hidden'
           }`}
         >
-          {console.log(city)}
           <FaMapMarkerAlt /> {city.replace('_', ' ')} - {country}
         </span>
       </div>

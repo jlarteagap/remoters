@@ -20,14 +20,8 @@ export const GET_JOBS = gql`
       city
       country
       remote
-      company {
-        name
-        logo
-      }
+      companySimple
       createdAt
-      username {
-        email
-      }
       type
       salary
       money
