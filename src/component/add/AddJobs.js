@@ -16,7 +16,8 @@ const initialState = {
   country: '',
   type: '',
   salary: '',
-  money: 'Bs.'
+  money: 'Bs.',
+  email: ''
 }
 const AddJobs = () => {
   const [jobs, setJobs] = useState(initialState)
@@ -63,7 +64,7 @@ const AddJobs = () => {
           type: jobs.type,
           companySimple: jobs.companySimple,
           username: {
-            email: 'free'
+            email: jobs.email
           }
         }
       }
@@ -79,7 +80,7 @@ const AddJobs = () => {
   }
   return (
     <div className="box p-5">
-      <h3 className="title is-4">Agregar un nuevo trabajo</h3>
+      <h3 className="title is-4">Publica una oferta laboral</h3>
       <form onSubmit={e => Addingjobs(e)}>
         <div className="columns">
           <div className="column is-7">
@@ -107,6 +108,7 @@ const AddJobs = () => {
               value={jobs.link}
               required={true}
             />
+
             <div className="field form__style">
               <div className="select is-fullwidth">
                 <select name="category" onChange={updateState}>
@@ -150,6 +152,15 @@ const AddJobs = () => {
                 </div>
               </div>
             </div>
+
+            <Inputs
+              name={'email'}
+              title="Correo electrónico"
+              type={'text'}
+              updateState={updateState}
+              value={jobs.email}
+              required={true}
+            />
           </div>
           <div className="column">
             <SwitchButton

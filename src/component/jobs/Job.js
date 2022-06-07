@@ -1,6 +1,6 @@
 import React from 'react'
 import JobIcon from './JobIcon'
-import DEFAULT_IMAGES from '../../assets/img/default.jpeg'
+
 import {
   FaMapMarkerAlt,
   FaMoneyBillAlt,
@@ -33,10 +33,7 @@ const Job = ({ job }) => {
     )
   }
   return (
-    <div className="card card--job p-3 mb-5">
-      <div className="card__img">
-        <img src={DEFAULT_IMAGES} />
-      </div>
+    <div className="card card--job p-5 mb-5">
       <div className="card__body">
         <h2 className="card__body--title m-0">
           <a href={link} target="_blank" rel="noreferrer">

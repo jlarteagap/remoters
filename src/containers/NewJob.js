@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import { Helmet } from 'react-helmet'
-import { Menu } from '../component/dashboard/Menu'
-
+import { FaBullhorn } from 'react-icons/fa'
 import AddJobs from '../component/add/AddJobs'
 
 const NewJob = () => (
@@ -24,9 +23,17 @@ const NewJob = () => (
       <meta property="og:image" content="" />
     </Helmet>
     <div className="home">
-      <Menu />
       <div className="home__jobs">
         <AddJobs />
+      </div>
+      <div className="home__sidebar">
+        <div className="box p-4 has-text-centered">
+          <div className="is-flex is-justify-content-center my-5">
+            <FaBullhorn size={42} />
+          </div>
+          El 10% de los ingresos por publicidad serán donados a albergues para
+          animales abandonados.
+        </div>
       </div>
     </div>
   </Fragment>
