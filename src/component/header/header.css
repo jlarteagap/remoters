@@ -18,6 +18,14 @@
 .navbar--menu .navbar-burger:hover, .navbar--menu .navbar-burger:active, .navbar--menu .navbar-burger:focus{
     background: rgba(255, 255, 255, .2);
 }
+
+.header__title{
+    color: var(--Blue) !important;
+    transition: all .3s;
+}
+.header__title:hover{
+    color: var(--Red) !important;
+}
 @media screen and (max-width: 720px){
     .navbar--menu{
         display: block;

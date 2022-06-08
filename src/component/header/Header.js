@@ -22,7 +22,7 @@ const Header = ({ title }) => {
           }}
         />
         <Link className="navbar-item" to="/" onClick={resetState}>
-          <h1 className="title">{title}</h1>
+          <h1 className="title header__title">{title}</h1>
         </Link>
       </div>
       <MenuHeader

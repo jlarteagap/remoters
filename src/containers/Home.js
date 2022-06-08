@@ -11,7 +11,7 @@ const Home = () => {
     <Fragment>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Trabajos en Bolivia en tecnología | nempleos</title>
+        <title>Trabajos en Bolivia en tecnología | Reclutop</title>
         <meta
           name="description"
           content="Encuentra las mejores ofertas laborales en tecnología en Bolivia"
