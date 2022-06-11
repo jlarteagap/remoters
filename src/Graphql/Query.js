@@ -21,7 +21,6 @@ export const GET_JOBS = gql`
       country
       remote
       companySimple
-      createdAt
       type
       salary
       money

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { ADD_JOB } from '../../Graphql/Mutation'
-
+import { GET_JOBS } from '../../Graphql/Query'
 import Inputs from '../inputs/Inputs'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
@@ -13,7 +13,7 @@ const initialState = {
   category: '',
   city: '',
   remote: false,
-  country: '',
+  country: 'Bolivia',
   type: '',
   salary: '',
   money: 'Bs.',
@@ -27,7 +27,29 @@ const AddJobs = () => {
 
   const history = useHistory()
 
-  const [newJob] = useMutation(ADD_JOB)
+  const [newJob] = useMutation(ADD_JOB, {
+    // update(cache, { data: { newJob } }) {
+    //   const { getJobs, totalJobs } = cache.readQuery({ query: GET_JOBS })
+
+    //   cache.writeQuery({
+    //     query: GET_JOBS,
+    //     data: { getJobs: [newJob, ...getJobs], totalJobs }
+    //   })
+    // },
+    refetchQueries: [
+      { query: GET_JOBS, variables: { awaitRefetchQueries: true } }
+    ],
+    onCompleted() {
+      Swal.fire({
+        icon: 'success',
+        title: 'Job created',
+        text: 'Your job has been created',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      history.push('/')
+    }
+  })
 
   const updateState = e => {
     setJobs({

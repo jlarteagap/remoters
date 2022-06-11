@@ -13,6 +13,8 @@ export const ADD_JOB = gql`
       type
       salary
       money
+      city
+      country
     }
   }
 `
