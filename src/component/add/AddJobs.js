@@ -28,22 +28,20 @@ const AddJobs = () => {
   const history = useHistory()
 
   const [newJob] = useMutation(ADD_JOB, {
-    // update(cache, { data: { newJob } }) {
-    //   const { getJobs, totalJobs } = cache.readQuery({ query: GET_JOBS })
+    update(cache, { data: { newJob } }) {
+      const { getJobs, totalJobs } = cache.readQuery({ query: GET_JOBS })
 
-    //   cache.writeQuery({
-    //     query: GET_JOBS,
-    //     data: { getJobs: [newJob, ...getJobs], totalJobs }
-    //   })
-    // },
-    refetchQueries: [
-      { query: GET_JOBS, variables: { awaitRefetchQueries: true } }
-    ],
+      cache.writeQuery({
+        query: GET_JOBS,
+        data: { getJobs: [newJob, ...getJobs], totalJobs }
+      })
+    },
+
     onCompleted() {
       Swal.fire({
         icon: 'success',
-        title: 'Job created',
-        text: 'Your job has been created',
+        title: 'Publicación exitosa',
+        text: 'Tu publicación ha sido creada con éxito',
         showConfirmButton: false,
         timer: 1500
       })
