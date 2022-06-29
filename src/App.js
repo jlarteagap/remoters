@@ -16,7 +16,7 @@ const App = () => {
       <AppContext.Provider value={pagination}>
         <Router>
           <Layout>
-            <main className="main">
+            <main className="main bg__main">
               <div className="container">
                 <Switch>
                   <AuthRoute exact path="/" component={Home} />
