@@ -5,13 +5,13 @@ const Footer = () => {
   return (
     <p className="footer">
       Desarrollado por{' '}
-      <a
+      {/* <a
         href="https://www.linkedin.com/in/jorge-luis-arteaga-perez/"
         target="_blank"
         rel="noopener noreferrer"
       >
         Jorge Arteaga
-      </a>
+      </a> */}
     </p>
   )
 }
