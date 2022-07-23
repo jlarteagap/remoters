@@ -5,7 +5,8 @@ import {
   FaMapMarkerAlt,
   FaMoneyBillAlt,
   FaNetworkWired,
-  FaRegBuilding
+  FaRegBuilding,
+  FaExternalLinkAlt
 } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 
@@ -36,8 +37,14 @@ const Job = ({ job }) => {
     <div className="card card--job p-5 mb-5">
       <div className="card__body">
         <h2 className="card__body--title m-0">
-          <a href={link} target="_blank" rel="noreferrer">
+          <a
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+            className="is-flex is-align-items-center"
+          >
             {position}
+            <FaExternalLinkAlt size={12} className="ml-4" />
           </a>
         </h2>
         <div
