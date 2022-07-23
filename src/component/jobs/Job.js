@@ -11,7 +11,6 @@ import PropTypes from 'prop-types'
 
 const Job = ({ job }) => {
   const {
-    company,
     position,
     link,
     city,
@@ -22,10 +21,6 @@ const Job = ({ job }) => {
     salary,
     money
   } = job
-  const [companies] = company
-
-  let logoImage
-  companies.logo ? (logoImage = companies.logo) : (logoImage = DEFAULT_IMAGES)
 
   let iconRemote
   if (remote) {
@@ -39,7 +34,7 @@ const Job = ({ job }) => {
   return (
     <div className="card card--job p-3 mb-5">
       <div className="card__img">
-        <img src={logoImage} alt={companies.name} />
+        <img src={DEFAULT_IMAGES} />
       </div>
       <div className="card__body">
         <h2 className="card__body--title m-0">
@@ -49,7 +44,6 @@ const Job = ({ job }) => {
         </h2>
         <div className="card__body--sub is-flex is-align-items-center">
           <FaRegBuilding className="mr-3" />
-          {companies.name}
         </div>
         <div className="is-flex is-align-items-center is-size-7">
           <FaNetworkWired className="mr-3" />{' '}
