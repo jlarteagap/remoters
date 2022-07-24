@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useMutation } from '@apollo/client'
 import { ADD_JOB } from '../../Graphql/Mutation'
 import { GET_JOBS } from '../../Graphql/Query'
@@ -6,6 +6,7 @@ import Inputs from '../inputs/Inputs'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { SwitchButton } from '../inputs/SwitchButton'
+import { AuthContext } from '../../context/auth'
 
 const initialState = {
   position: '',
@@ -24,6 +25,7 @@ const AddJobs = () => {
   const [isRemote, setRemote] = useState(false)
   const [isPayment, setPayment] = useState(false)
   const [isLocation, setLocation] = useState(false)
+  const { user } = useContext(AuthContext)
 
   const history = useHistory()
 
@@ -84,7 +86,7 @@ const AddJobs = () => {
           type: jobs.type,
           companySimple: jobs.companySimple,
           username: {
-            email: jobs.email
+            email: user.email
           }
         }
       }
@@ -95,7 +97,7 @@ const AddJobs = () => {
         title: 'Un nuevo empleo se ha publicado',
         showConfirmButton: false,
         timer: 1500
-      }).then(history.push('/'))
+      }).then(history.push('/dashboard'))
     )
   }
   return (
@@ -172,15 +174,6 @@ const AddJobs = () => {
                 </div>
               </div>
             </div>
-
-            <Inputs
-              name={'email'}
-              title="Correo electrónico"
-              type={'text'}
-              updateState={updateState}
-              value={jobs.email}
-              required={true}
-            />
           </div>
           <div className="column">
             <SwitchButton

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { FaBriefcase, FaBuilding, FaRegSun, FaHome } from 'react-icons/fa'
+import { FaBriefcase, FaRegSun, FaHome } from 'react-icons/fa'
 
 export const Menu = () => {
   return (
@@ -16,9 +16,6 @@ export const Menu = () => {
         </Link>
         <Link to="/dashboard/agregar" className="">
           <FaBriefcase /> Agregar trabajo
-        </Link>
-        <Link to="/dashboard/empresas" className="">
-          <FaBuilding /> Agregar empresa
         </Link>
       </div>
     </div>
