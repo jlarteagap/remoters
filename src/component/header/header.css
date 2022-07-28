@@ -27,6 +27,9 @@
     color: var(--Red) !important;
 }
 @media screen and (max-width: 720px){
+    .header__title{
+        font-size: 1.5rem !important;
+    }
     .navbar--menu{
         display: block;
         height: 100vh !important;
