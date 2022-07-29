@@ -22,3 +22,19 @@ export const InputFields = ({ label, ...props }) => {
     </div>
   )
 }
+
+export const CheckBoxField = ({ label, ...props }) => {
+  const [field] = useField(props)
+  console.log(field)
+  return (
+    <div className="is-flex is-align-items-center is-justify-content-space-between mb-2">
+      <div className="has-text-weight-semibold">{label}</div>
+      <div className="switch-button">
+        <input className="switch-button-checkbox" {...field} {...props}></input>
+        <label className="switch-button-label" htmlFor="">
+          <span className="switch-button-label-span">No</span>
+        </label>
+      </div>
+    </div>
+  )
+}

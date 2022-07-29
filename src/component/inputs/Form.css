@@ -45,7 +45,7 @@
 }
 
 .switch-button {
-    background-color: var(--Dark);
+    background-color: rgb(204, 204, 204);
     border-radius: 1rem;
     overflow: hidden;
     width: 80px;
