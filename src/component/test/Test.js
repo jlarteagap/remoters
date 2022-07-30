@@ -1,12 +1,17 @@
 import React from 'react'
 import { Form, Formik } from 'formik'
-import { InputFields, CheckBoxField } from '../../utils/form/Fields'
-
+import {
+  InputFields,
+  CheckBoxField,
+  SelectField
+} from '../../utils/form/Fields'
+const cities = ['Santa Cruz', 'Mendoza', 'Córdoba', 'Buenos Aires']
 export const Test = () => {
   return (
     <Formik
       initialValues={{
-        isRemote: false
+        isRemote: false,
+        color: ''
       }}
       onSubmit={values => {
         console.log(values)
@@ -25,9 +30,13 @@ export const Test = () => {
             name="isRemote"
             type="checkbox"
           />
-          <button type="submit" className="button btn mt-2">
-            Ingresar
-          </button>
+          <SelectField
+            label="Color"
+            name="color"
+            type="select"
+            cities={cities}
+          />
+          <button type="submit">Submit</button>
         </Form>
       )}
     </Formik>

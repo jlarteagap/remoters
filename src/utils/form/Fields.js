@@ -25,7 +25,7 @@ export const InputFields = ({ label, ...props }) => {
 
 export const CheckBoxField = ({ label, ...props }) => {
   const [field] = useField(props)
-  console.log(field)
+
   return (
     <div className="is-flex is-align-items-center is-justify-content-space-between mb-2">
       <div className="has-text-weight-semibold">{label}</div>
@@ -35,6 +35,41 @@ export const CheckBoxField = ({ label, ...props }) => {
           <span className="switch-button-label-span">No</span>
         </label>
       </div>
+    </div>
+  )
+}
+
+export const SelectField = ({ label, cities, ...props }) => {
+  const [field, meta] = useField(props)
+
+  return (
+    <div className="field">
+      <label className="label">{label}</label>
+      <div className="field form__style">
+        <div className="select is-fullwidth">
+          <select
+            {...field}
+            {...props}
+            className={`${meta.touched && meta.error && 'is-danger'}`}
+          >
+            <option value="" label="Select a color">
+              Select a color
+            </option>
+            {cities.map((city, index) => {
+              return (
+                <option value={city} label={city} key={index}>
+                  {city}
+                </option>
+              )
+            })}
+          </select>
+        </div>
+      </div>
+      <ErrorMessage
+        component="div"
+        name={field.name}
+        className="help is-danger"
+      />
     </div>
   )
 }
