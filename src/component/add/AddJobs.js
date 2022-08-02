@@ -51,7 +51,7 @@ const contracts = [
   { value: 'Freelance', text: 'Freelance' },
   { value: 'Consultoria', text: 'Consultoria' }
 ]
-export const Test = () => {
+const AddJobs = () => {
   const { user } = useContext(AuthContext)
   const [isLocation, setIsLocation] = React.useState(false)
   const [isPayment, setIsPayment] = React.useState(false)
@@ -212,3 +212,5 @@ export const Test = () => {
     </div>
   )
 }
+
+export default AddJobs
