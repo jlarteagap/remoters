@@ -13,12 +13,12 @@ export const InputFields = ({ label, ...props }) => {
           {...props}
         />
         <label className="label">{label}</label>
+        <ErrorMessage
+          component="div"
+          name={field.name}
+          className="help is-danger"
+        />
       </div>
-      <ErrorMessage
-        component="div"
-        name={field.name}
-        className="help is-danger"
-      />
     </div>
   )
 }
