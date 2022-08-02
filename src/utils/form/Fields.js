@@ -6,13 +6,13 @@ export const InputFields = ({ label, ...props }) => {
   const [field, meta] = useField(props)
   return (
     <div className="field">
-      <label className="label">{label}</label>
-      <div>
+      <div className="control form__style">
         <input
           className={`input ${meta.touched && meta.error && 'is-danger'}`}
           {...field}
           {...props}
         />
+        <label className="label">{label}</label>
       </div>
       <ErrorMessage
         component="div"
@@ -30,7 +30,7 @@ export const CheckBoxField = ({ label, ...props }) => {
     <div className="is-flex is-align-items-center is-justify-content-space-between mb-2">
       <div className="has-text-weight-semibold">{label}</div>
       <div className="switch-button">
-        <input className="switch-button-checkbox" {...field} {...props}></input>
+        <input className="switch-button-checkbox" {...field} {...props} />
         <label className="switch-button-label" htmlFor="">
           <span className="switch-button-label-span">No</span>
         </label>
@@ -39,32 +39,31 @@ export const CheckBoxField = ({ label, ...props }) => {
   )
 }
 
-export const SelectField = ({ label, cities, ...props }) => {
+export const SelectField = ({ label, options, ...props }) => {
   const [field, meta] = useField(props)
 
   return (
-    <div className="field">
-      <label className="label">{label}</label>
-      <div className="field form__style">
-        <div className="select is-fullwidth">
-          <select
-            {...field}
-            {...props}
-            className={`${meta.touched && meta.error && 'is-danger'}`}
-          >
-            <option value="" label="Select a color">
-              Select a color
-            </option>
-            {cities.map((city, index) => {
-              return (
-                <option value={city} label={city} key={index}>
-                  {city}
-                </option>
-              )
-            })}
-          </select>
-        </div>
+    <div className="field form__style">
+      <div className="select is-fullwidth">
+        <select
+          {...field}
+          {...props}
+          className={`${meta.touched && meta.error && 'is-danger'}`}
+        >
+          <option value="" label="--">
+            - -
+          </option>
+          {options.map((option, index) => {
+            return (
+              <option value={option.value} label={option.text} key={index}>
+                {option.text}
+              </option>
+            )
+          })}
+        </select>
+        <label className="label">{label}</label>
       </div>
+
       <ErrorMessage
         component="div"
         name={field.name}
