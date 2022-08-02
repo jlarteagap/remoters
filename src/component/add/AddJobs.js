@@ -1,276 +1,214 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
+import { Form, Formik } from 'formik'
+import * as Yup from 'yup'
 import { useMutation } from '@apollo/client'
 import { ADD_JOB } from '../../Graphql/Mutation'
-import { GET_JOBS } from '../../Graphql/Query'
-import Inputs from '../inputs/Inputs'
+
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { SwitchButton } from '../inputs/SwitchButton'
+import {
+  InputFields,
+  CheckBoxField,
+  SelectField
+} from '../../utils/form/Fields'
+
 import { AuthContext } from '../../context/auth'
 
-const initialState = {
-  position: '',
-  link: '',
-  category: '',
-  city: '',
-  remote: false,
-  country: 'Bolivia',
-  type: '',
-  salary: '',
-  money: 'Bs.',
-  email: ''
-}
-const AddJobs = () => {
-  const [jobs, setJobs] = useState(initialState)
-  const [isRemote, setRemote] = useState(false)
-  const [isPayment, setPayment] = useState(false)
-  const [isLocation, setLocation] = useState(false)
+const cities = [
+  { value: 'SANTA CRUZ', text: 'Santa Cruz' },
+  { value: 'LA PAZ', text: 'La Paz' },
+  { value: 'COCHABAMBA', text: 'Cochabamba' },
+  { value: 'TARIJA', text: 'Tarija' },
+  { value: 'ORURO', text: 'Oruro' },
+  { value: 'POTOSI', text: 'Potosi' },
+  { value: 'CHUQUISACA', text: 'Chuquisaca' },
+  { value: 'BENI', text: 'Beni' },
+  { value: 'PANDO', text: 'Pando' }
+]
+const countries = [{ value: 'Bolivia', text: 'Bolivia' }]
+const tipeMoney = [
+  { value: 'Bs', text: 'Bs' },
+  { value: '$us', text: '$us' }
+]
+const categories = [
+  { value: 'web_developers', text: 'Web Development' },
+  { value: 'software_developer', text: 'Software Developers' },
+  { value: 'social_media_managers', text: 'Social Media' },
+  { value: 'project_managers', text: 'Project Management' },
+  { value: 'comercial', text: 'Business Management &amp; Ventas' },
+  { value: 'soporte', text: 'Soporte' },
+  { value: 'designers', text: 'Diseño web y gráfico' },
+  { value: 'devops', text: 'DevOps' },
+  { value: 'seo', text: 'SEO - Search Engine Optimization' },
+  { value: 'copywriting', text: 'Copywriting' },
+  { value: 'seguridad', text: 'Cyber Security' },
+  { value: 'qa', text: 'Quality Assurance' },
+  { value: 'reclutadores', text: 'RRHH & Reclutamiento' }
+]
+const contracts = [
+  { value: 'Tiempo_Completo', text: 'Tiempo completo' },
+  { value: 'Medio_tiempo', text: 'Medio Tiempo' },
+  { value: 'Freelance', text: 'Freelance' },
+  { value: 'Consultoria', text: 'Consultoria' }
+]
+export const Test = () => {
   const { user } = useContext(AuthContext)
-
+  const [isLocation, setIsLocation] = React.useState(false)
+  const [isPayment, setIsPayment] = React.useState(false)
   const history = useHistory()
 
-  const [newJob] = useMutation(ADD_JOB, {
-    update(cache, { data: { newJob } }) {
-      const { getJobs, totalJobs } = cache.readQuery({ query: GET_JOBS })
+  const [newJob] = useMutation(ADD_JOB)
 
-      cache.writeQuery({
-        query: GET_JOBS,
-        data: { getJobs: [newJob, ...getJobs], totalJobs }
-      })
-    },
-
-    onCompleted() {
-      Swal.fire({
-        icon: 'success',
-        title: 'Publicación exitosa',
-        text: 'Tu publicación ha sido creada con éxito',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      history.push('/')
-    }
+  const validate = Yup.object({
+    position: Yup.string().required(
+      'Nombre o título de la posición es requerida'
+    ),
+    companySimple: Yup.string().required('Nombre de la empresa es requerida'),
+    link: Yup.string()
+      .url('Debe ser una URL válida')
+      .required('Necesitamos una URL válida'),
+    type: Yup.string().required('Tipo de contrato es requerido'),
+    category: Yup.string().required('Categoría es requerida')
   })
-
-  const updateState = e => {
-    setJobs({
-      ...jobs,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const changeHandler = () => {
-    setRemote(!isRemote)
-  }
-  const locationChange = () => {
-    setLocation(!isLocation)
-  }
-  const paymentChange = () => {
-    setPayment(!isPayment)
-  }
-
-  const Addingjobs = e => {
-    e.preventDefault()
-
-    newJob({
-      variables: {
-        input: {
-          active: true,
-          category: jobs.category,
-          city: jobs.city,
-          country: jobs.country,
-          link: jobs.link,
-          money: jobs.money,
-          position: jobs.position,
-          remote: isRemote,
-          salary: jobs.salary,
-          type: jobs.type,
-          companySimple: jobs.companySimple,
-          username: {
-            email: user.email
-          }
-        }
-      }
-    }).then(
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Un nuevo empleo se ha publicado',
-        showConfirmButton: false,
-        timer: 1500
-      }).then(history.push('/dashboard'))
-    )
-  }
   return (
     <div className="box p-5">
       <h3 className="title is-4">Publica una oferta laboral</h3>
-      <form onSubmit={e => Addingjobs(e)}>
-        <div className="columns">
-          <div className="column is-7">
-            <Inputs
-              name={'position'}
-              title={'Título de la publicación'}
-              type={'text'}
-              updateState={updateState}
-              value={jobs.position}
-              required={true}
-            />
-            <Inputs
-              name={'companySimple'}
-              title="Empresa que representa"
-              type={'text'}
-              updateState={updateState}
-              value={jobs.companySimple}
-              required={true}
-            />
-            <Inputs
-              name={'link'}
-              title="Enlace para postular"
-              type={'text'}
-              updateState={updateState}
-              value={jobs.link}
-              required={true}
-            />
+      <Formik
+        initialValues={{
+          position: '',
+          companySimple: '',
+          link: '',
+          category: '',
+          city: '',
+          remote: false,
+          country: 'Bolivia',
+          type: '',
+          salary: '',
+          money: 'Bs.'
+        }}
+        validationSchema={validate}
+        onSubmit={values => {
+          newJob({
+            variables: {
+              input: {
+                active: true,
+                category: values.category,
+                city: values.city,
+                country: values.country,
+                link: values.link,
+                money: values.money,
+                position: values.position,
+                remote: values.remote,
+                salary: values.salary,
+                type: values.type,
+                companySimple: values.companySimple,
+                username: {
+                  email: user.email
+                }
+              }
+            }
+          }).then(async () => {
+            // history.push('/')
+            await Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Un nuevo empleo se ha publicado',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(history.push('/dashboard'))
+          })
+        }}
+      >
+        {formik => (
+          <Form>
+            <div className="columns">
+              <div className="column is-7">
+                <InputFields
+                  label="Título de la publicación"
+                  type="text"
+                  name="position"
+                />
+                <InputFields
+                  label="Empresa que representa"
+                  type="text"
+                  name="companySimple"
+                />
+                <InputFields
+                  label="Enlace para postular"
+                  type="text"
+                  name="link"
+                />
 
-            <div className="field form__style">
-              <div className="select is-fullwidth">
-                <select name="category" onChange={updateState}>
-                  <option value="" disabled>
-                    --
-                  </option>
-                  <option value="web_developers">Web Development</option>
-                  <option value="software_developer">
-                    Software Developers
-                  </option>
-                  <option value="project_managers">Project Management</option>
-                  <option value="social_media_managers">Social Media</option>
-                  <option value="comercial">
-                    Business Management &amp; Ventas
-                  </option>
-                  <option value="soporte">Soporte</option>
-                  <option value="designers">Diseño web y gráfico</option>
-                  <option value="devops">DevOps</option>
-                  <option value="seo">SEO - Search Engine Optimization</option>
-                  <option value="copywriting">Copywriting</option>
-                  <option value="seguridad">Cyber Security</option>
-                  <option value="qa">Quality Assurance</option>
-                  <option value="reclutadores">RRHH & Reclutamiento</option>
-                </select>
-                <label className="label">Categoria</label>
+                <SelectField
+                  label="Categoria"
+                  name="category"
+                  type="select"
+                  options={categories}
+                />
+                <SelectField
+                  label="Tipo de contrato"
+                  name="type"
+                  type="select"
+                  options={contracts}
+                />
               </div>
-            </div>
-            <div className="field">
-              <div className="control is-expanded form__style">
-                <div className="select is-fullwidth">
-                  <select name="type" onChange={updateState}>
-                    <option value="" disabled>
-                      ---
-                    </option>
-                    <option value="Tiempo_Completo">Tiempo completo</option>
-                    <option value="Medio_tiempo">Medio Tiempo</option>
-                    <option value="Freelance">Freelance</option>
-                    <option value="Consultoria">Consultoria</option>
-                  </select>
-                  <label className="label">Tipo de contrato</label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="column">
-            <SwitchButton
-              checked={isRemote}
-              onChange={changeHandler}
-              title={'Trabajo remoto'}
-            />
-            <SwitchButton
-              checked={isLocation}
-              onChange={locationChange}
-              title={'Quieres agregar una ciudad?'}
-            />
-            <div
-              className={`field is-grouped is-grouped-multiline ${
-                isLocation ? '' : 'is-hidden'
-              }`}
-            >
-              <div className="control is-expanded">
-                <div className="select is-fullwidth form__style">
-                  <select
+              <div className="column">
+                <CheckBoxField
+                  label="Trabajo remoto?"
+                  name="remote"
+                  type="checkbox"
+                />
+                <CheckBoxField
+                  label="Quieres agregar una ciudad?"
+                  name="isLocation"
+                  type="checkbox"
+                  onClick={() => setIsLocation(!isLocation)}
+                  checked={isLocation}
+                />
+                <div
+                  className={`field is-grouped is-grouped-multiline ${
+                    isLocation ? '' : 'is-hidden'
+                  }`}
+                >
+                  <SelectField
+                    label="País"
                     name="country"
-                    onChange={updateState}
-                    value={jobs.country}
-                  >
-                    <option value="" disabled>
-                      --
-                    </option>
-                    <option value="Bolivia">Bolivia</option>
-                  </select>
-                  <label className="label">País</label>
+                    type="select"
+                    options={countries}
+                  />
+                  <SelectField
+                    label="Ciudad"
+                    name="city"
+                    type="select"
+                    options={cities}
+                  />
                 </div>
-              </div>
-              <div className="control is-expanded">
-                <div className="select is-fullwidth form__style">
-                  <select name="city" onChange={updateState}>
-                    <option value="" disabled>
-                      --
-                    </option>
-                    <option value="SANTA_CRUZ">Santa Cruz</option>
-                    <option value="LA_PAZ">La Paz</option>
-                    <option value="COCHABAMBA">Cochabamba</option>
-                    <option value="TARIJA">Tarija</option>
-                    <option value="ORURO">Oruro</option>
-                    <option value="POTOSI">Potosi</option>
-                    <option value="CHUQUISACA">Chuquisaca</option>
-                    <option value="BENI">Beni</option>
-                    <option value="PANDO">Pando</option>
-                  </select>
-                  <label className="label">Ciudad</label>
-                </div>
-              </div>
-            </div>
-            <SwitchButton
-              checked={isPayment}
-              onChange={paymentChange}
-              title={'Quieres agregar rango salarial? '}
-            />
-            <div className={`field ${isPayment ? '' : 'is-hidden'}`}>
-              <div className="control is-expanded">
-                <div className="field has-addons">
-                  <p className="control form__style">
-                    <span className="select">
-                      <select
-                        className="is-info"
-                        name="money"
-                        onChange={updateState}
-                      >
-                        <option value="" disabled>
-                          --
-                        </option>
-                        <option>Bs.</option>
-                        <option>$us.</option>
-                      </select>
-                      <label className="label">Moneda</label>
-                    </span>
-                  </p>
-                  <div className="control is-expanded">
-                    <Inputs
-                      title={'Cantidad'}
-                      type={'text'}
-                      name={'salary'}
-                      updateState={updateState}
-                      value={jobs.salary}
-                    />
-                  </div>
+                <CheckBoxField
+                  label="Quieres agregar rango salarial?"
+                  name="isPayment"
+                  type="checkbox"
+                  onClick={() => setIsPayment(!isPayment)}
+                  checked={isPayment}
+                />
+                <div
+                  className={`field has-addons ${isPayment ? '' : 'is-hidden'}`}
+                >
+                  <SelectField
+                    label="Moneda"
+                    name="type"
+                    type="select"
+                    options={tipeMoney}
+                  />
+                  <InputFields label="Cantidad" type="text" name="salary" />
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <button type="submit" className="button btn">
-          Enviar publicación
-        </button>
-      </form>
+            <button type="submit" className="button btn">
+              Enviar publicación
+            </button>
+          </Form>
+        )}
+      </Formik>
     </div>
   )
 }
-
-export default AddJobs
