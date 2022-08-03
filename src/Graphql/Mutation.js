@@ -68,9 +68,7 @@ export const UPDATE_JOB = gql`
       city
       country
       remote
-      company {
-        name
-      }
+      companySimple
       type
       salary
       money

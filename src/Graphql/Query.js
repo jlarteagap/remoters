@@ -38,6 +38,7 @@ export const GET_JOB = gql`
       link
       city
       country
+      companySimple
       remote
       company {
         name
