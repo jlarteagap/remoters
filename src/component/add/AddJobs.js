@@ -35,7 +35,7 @@ const categories = [
   { value: 'software_developer', text: 'Software Developers' },
   { value: 'social_media_managers', text: 'Social Media' },
   { value: 'project_managers', text: 'Project Management' },
-  { value: 'comercial', text: 'Business Management &amp; Ventas' },
+  { value: 'comercial', text: 'Business Management & Ventas' },
   { value: 'soporte', text: 'Soporte' },
   { value: 'designers', text: 'Diseño web y gráfico' },
   { value: 'devops', text: 'DevOps' },
