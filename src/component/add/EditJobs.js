@@ -82,6 +82,7 @@ const EditJob = ({ data, refetch }) => {
           companySimple: jobs.companySimple
         }}
         onSubmit={values => {
+          console.log(values)
           updateJob({
             variables: {
               input: {
