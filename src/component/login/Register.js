@@ -62,6 +62,7 @@ const Register = () => {
                 }
               })
                 .then(async ({ data }) => {
+                  console.log(data)
                   context.login(data.register)
                   history.push('/dashboard')
                 })
