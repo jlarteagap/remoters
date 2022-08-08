@@ -64,7 +64,7 @@ const Register = () => {
                 .then(async ({ data }) => {
                   console.log(data)
                   context.login(data.register)
-                  history.push('/dashboard')
+                  history.push('/dashboard/agregar')
                 })
                 .catch(err => {
                   setErrors({
