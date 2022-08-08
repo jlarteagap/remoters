@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { UPDATE_JOB } from '../../Graphql/Mutation'
+import { GET_JOBS } from '../../Graphql/Query'
 import { AuthContext } from '../../context/auth'
 import { Form, Formik } from 'formik'
 
@@ -60,7 +61,9 @@ const EditJob = ({ data, refetch }) => {
 
   const { user } = useContext(AuthContext)
 
-  const [updateJob] = useMutation(UPDATE_JOB)
+  const [updateJob] = useMutation(UPDATE_JOB, {
+    refetchQueries: [{ query: GET_JOBS }]
+  })
   const history = useHistory()
 
   return (
