@@ -24,6 +24,7 @@ export const GET_JOBS = gql`
       type
       salary
       money
+      slug
     }
     totalJobs
   }

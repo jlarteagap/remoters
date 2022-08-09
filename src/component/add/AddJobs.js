@@ -56,7 +56,7 @@ const AddJobs = () => {
   const [isLocation, setIsLocation] = React.useState(false)
   const [isPayment, setIsPayment] = React.useState(false)
   const history = useHistory()
-
+  const randomNumber = Math.floor(Math.random() * 500)
   const [newJob] = useMutation(ADD_JOB)
 
   const validate = Yup.object({
@@ -84,7 +84,8 @@ const AddJobs = () => {
           country: 'Bolivia',
           type: '',
           salary: '',
-          money: 'Bs.'
+          money: 'Bs.',
+          slug: ''
         }}
         validationSchema={validate}
         onSubmit={values => {
@@ -104,7 +105,11 @@ const AddJobs = () => {
                 companySimple: values.companySimple,
                 username: {
                   email: user.email
-                }
+                },
+                slug:
+                  values.position.replace(' ', '-').toLowerCase() +
+                  '-' +
+                  randomNumber
               }
             }
           }).then(async () => {
