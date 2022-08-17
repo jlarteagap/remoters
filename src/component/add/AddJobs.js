@@ -13,38 +13,13 @@ import {
 } from '../../utils/form/Fields'
 
 import { AuthContext } from '../../context/auth'
-
-const cities = [
-  { value: 'SANTA CRUZ', text: 'Santa Cruz' },
-  { value: 'LA PAZ', text: 'La Paz' },
-  { value: 'COCHABAMBA', text: 'Cochabamba' },
-  { value: 'TARIJA', text: 'Tarija' },
-  { value: 'ORURO', text: 'Oruro' },
-  { value: 'POTOSI', text: 'Potosi' },
-  { value: 'CHUQUISACA', text: 'Chuquisaca' },
-  { value: 'BENI', text: 'Beni' },
-  { value: 'PANDO', text: 'Pando' }
-]
-const countries = [{ value: 'Bolivia', text: 'Bolivia' }]
+import { Categories } from './categories/Categories'
+import { Ubications } from './ubications/Ubications'
 const tipeMoney = [
   { value: 'Bs', text: 'Bs' },
   { value: '$us', text: '$us' }
 ]
-const categories = [
-  { value: 'web_developers', text: 'Web Development' },
-  { value: 'software_developer', text: 'Software Developers' },
-  { value: 'social_media_managers', text: 'Social Media' },
-  { value: 'project_managers', text: 'Project Management' },
-  { value: 'comercial', text: 'Business Management & Ventas' },
-  { value: 'soporte', text: 'Soporte' },
-  { value: 'designers', text: 'Diseño web y gráfico' },
-  { value: 'devops', text: 'DevOps' },
-  { value: 'seo', text: 'SEO - Search Engine Optimization' },
-  { value: 'copywriting', text: 'Copywriting' },
-  { value: 'seguridad', text: 'Cyber Security' },
-  { value: 'qa', text: 'Quality Assurance' },
-  { value: 'reclutadores', text: 'RRHH & Reclutamiento' }
-]
+
 const contracts = [
   { value: 'Tiempo_Completo', text: 'Tiempo completo' },
   { value: 'Medio_tiempo', text: 'Medio Tiempo' },
@@ -143,13 +118,7 @@ const AddJobs = () => {
                   type="text"
                   name="link"
                 />
-
-                <SelectField
-                  label="Categoria"
-                  name="category"
-                  type="select"
-                  options={categories}
-                />
+                <Categories />
                 <SelectField
                   label="Tipo de contrato"
                   name="type"
@@ -170,24 +139,7 @@ const AddJobs = () => {
                   onClick={() => setIsLocation(!isLocation)}
                   checked={isLocation}
                 />
-                <div
-                  className={`field is-grouped is-grouped-multiline ${
-                    isLocation ? '' : 'is-hidden'
-                  }`}
-                >
-                  <SelectField
-                    label="País"
-                    name="country"
-                    type="select"
-                    options={countries}
-                  />
-                  <SelectField
-                    label="Ciudad"
-                    name="city"
-                    type="select"
-                    options={cities}
-                  />
-                </div>
+                <Ubications isLocation={isLocation} />
                 <CheckBoxField
                   label="Quieres agregar rango salarial?"
                   name="isPayment"

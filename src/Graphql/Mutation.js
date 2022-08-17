@@ -15,6 +15,9 @@ export const ADD_JOB = gql`
       money
       city
       country
+      ubication
+      slug
+      content
     }
   }
 `

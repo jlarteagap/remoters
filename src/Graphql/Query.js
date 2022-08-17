@@ -87,3 +87,15 @@ export const GET_COMPANY = gql`
     }
   }
 `
+export const GET_UBICATION = gql`
+  query allUbication {
+    allUbication {
+      name
+      cities {
+        name
+        value
+        slug
+      }
+    }
+  }
+`
