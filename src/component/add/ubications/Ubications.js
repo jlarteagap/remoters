@@ -28,12 +28,12 @@ export const Ubications = ({ isLocation }) => {
         isLocation ? '' : 'is-hidden'
       }`}
     >
-      {/* <SelectField
+      <SelectField
         label="País"
         name="country"
         type="select"
-        options={countries}
-      /> */}
+        options={data.allUbication}
+      />
 
       <SelectField
         label="Ciudad"
