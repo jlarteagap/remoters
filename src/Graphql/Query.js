@@ -91,11 +91,22 @@ export const GET_UBICATION = gql`
   query allUbication {
     allUbication {
       name
+      value
       cities {
         name
         value
         slug
       }
+    }
+  }
+`
+
+export const GET_CATEGORIES = gql`
+  query allCategories {
+    allCategories {
+      name
+      value
+      slug
     }
   }
 `
