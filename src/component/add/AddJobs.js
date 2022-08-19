@@ -50,7 +50,7 @@ const AddJobs = () => {
       <h3 className="title is-4">Publica una oferta laboral</h3>
       <Formik
         initialValues={{
-          position: '',
+          title: '',
           companySimple: '',
           link: '',
           category: '',
@@ -59,7 +59,7 @@ const AddJobs = () => {
           country: 'Bolivia',
           type: '',
           salary: '',
-          money: 'Bs.',
+          currency: 'Bs.',
           slug: ''
         }}
         validationSchema={validate}
@@ -69,26 +69,33 @@ const AddJobs = () => {
               input: {
                 active: true,
                 category: values.category,
-                city: values.city,
-                country: values.country,
                 link: values.link,
-                money: values.money,
-                position: values.position,
-                remote: values.remote,
-                salary: values.salary,
-                type: values.type,
-                companySimple: values.companySimple,
-                username: {
-                  email: user.email
-                },
                 slug:
                   values.position.replace(' ', '-').toLowerCase() +
                   '-' +
-                  randomNumber
+                  randomNumber,
+                company: {
+                  name: values.companySimple
+                },
+                ubication: {
+                  name: values.country,
+                  cities: {
+                    name: values.city
+                  }
+                },
+                content: {
+                  title: values.title,
+                  description: values.description,
+                  currency: values.currency,
+                  salary: values.salary
+                },
+                type: values.type,
+                username: {
+                  email: user.email
+                }
               }
             }
           }).then(async () => {
-            // history.push('/')
             await Swal.fire({
               position: 'center',
               icon: 'success',
@@ -152,7 +159,7 @@ const AddJobs = () => {
                 >
                   <SelectField
                     label="Moneda"
-                    name="type"
+                    name="currency"
                     type="select"
                     options={tipeMoney}
                   />
