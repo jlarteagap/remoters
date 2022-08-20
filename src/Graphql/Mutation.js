@@ -23,6 +23,7 @@ export const ADD_JOB = gql`
         description
         currency
         salary
+        contract
       }
       remote
       username {

@@ -25,6 +25,16 @@ export const GET_JOBS = gql`
       salary
       money
       slug
+      ubication
+      company {
+        name
+      }
+      ubication {
+        name
+        cities {
+          name
+        }
+      }
     }
     totalJobs
   }

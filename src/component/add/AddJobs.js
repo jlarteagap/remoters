@@ -35,9 +35,7 @@ const AddJobs = () => {
   const [newJob] = useMutation(ADD_JOB)
 
   const validate = Yup.object({
-    position: Yup.string().required(
-      'Nombre o título de la posición es requerida'
-    ),
+    title: Yup.string().required('Nombre o título de la posición es requerida'),
     companySimple: Yup.string().required('Nombre de la empresa es requerida'),
     link: Yup.string()
       .url('Debe ser una URL válida')
@@ -113,7 +111,7 @@ const AddJobs = () => {
                 <InputFields
                   label="Título de la publicación"
                   type="text"
-                  name="position"
+                  name="title"
                 />
                 <InputFields
                   label="Empresa que representa"
