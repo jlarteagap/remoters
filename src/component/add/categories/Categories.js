@@ -8,7 +8,6 @@ export const Categories = () => {
   if (loading) return <span>cargando...</span>
   if (error) return <span>error</span>
 
-  console.log(data)
   return (
     <SelectField
       label="Categoria"

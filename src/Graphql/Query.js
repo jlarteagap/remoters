@@ -13,28 +13,35 @@ export const GET_JOBS = gql`
       limit: $limit
       offset: $offset
     ) {
-      id
-      position
+      active
       category
-      link
-      city
-      country
-      remote
-      companySimple
-      type
-      salary
-      money
-      slug
-      ubication
       company {
         name
       }
+      link
+      remote
+      slug
       ubication {
         name
         cities {
           name
         }
       }
+      content {
+        currency
+        description
+        salary
+        tags
+        title
+        contract
+      }
+      city
+      companySimple
+      type
+      salary
+      position
+      money
+      country
     }
     totalJobs
   }

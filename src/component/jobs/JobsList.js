@@ -21,7 +21,7 @@ const JobsList = () => {
 
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
-
+  console.log(data)
   return (
     <Fragment>
       <div className="content">
@@ -37,8 +37,8 @@ const JobsList = () => {
         ) : (
           ''
         )}
-        {data.getJobs.map(job => {
-          return <Job key={job.id} job={job} />
+        {data.getJobs.map((job, index) => {
+          return <Job key={index} job={job} />
         })}
 
         <Paginator

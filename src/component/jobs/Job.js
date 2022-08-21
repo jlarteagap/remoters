@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React from 'react'
 import JobIcon from './JobIcon'
 
@@ -21,7 +22,10 @@ const Job = ({ job }) => {
     type,
     salary,
     money,
-    companySimple
+    companySimple,
+    company,
+    ubication,
+    content
   } = job
 
   let iconRemote
@@ -33,6 +37,14 @@ const Job = ({ job }) => {
       </div>
     )
   }
+
+  const titlePosition = content !== null && content.title
+  const companyJob = company !== null && company.name
+  const countryNew = ubication !== null && ubication.name
+  const currencyContent = content !== null && content.currency
+  const salaryContent = content !== null && content.salary
+  const contractContent = content !== null && content.contract
+
   return (
     <div className="card card--job p-5 mb-5">
       <div className="card__body">
@@ -43,39 +55,41 @@ const Job = ({ job }) => {
             rel="noreferrer"
             className="is-flex is-align-items-center"
           >
-            {position}
+            {position !== null ? position : titlePosition}
             <FaExternalLinkAlt size={12} className="ml-4" />
           </a>
         </h2>
-        <div
-          className={`card__body--sub is-flex is-align-items-center ${
-            companySimple || 'is-hidden'
-          }`}
-        >
+        <div className={`card__body--sub is-flex is-align-items-center`}>
           <FaRegBuilding className="mr-3" />
-          {companySimple}
+          {companySimple !== null ? companySimple : companyJob}
         </div>
         <div
           className={`is-flex is-align-items-center is-size-7 ${
-            type || 'is-hidden'
+            type || contractContent ? ' ' : 'is-hidden'
           }`}
         >
           <FaNetworkWired className="mr-3" />{' '}
-          {type ? type.replace('_', ' ') : ''}
+          {type !== null ? type.replace('_', ' ') : contractContent}
         </div>
         <div
           className={`is-flex is-align-items-center is-size-7 ${
-            salary ? '' : 'is-hidden'
+            salary || salaryContent ? '' : 'is-hidden'
           }`}
         >
-          <FaMoneyBillAlt className="mr-3" /> {money} {salary}
+          <FaMoneyBillAlt className="mr-3" />{' '}
+          {money !== null ? money : currencyContent}{' '}
+          {salary !== null ? salary : salaryContent}
         </div>
         <span
           className={`job__city is-size-7 ${
-            city && country ? '' : 'is-hidden'
+            city || countryNew ? '' : 'is-hidden'
           }`}
         >
-          <FaMapMarkerAlt /> {city.replace('_', ' ')} - {country}
+          <FaMapMarkerAlt />{' '}
+          {city !== null
+            ? city.replace('_', ' ')
+            : ubication.cities[0].name.toUpperCase().replace('_', ' ')}
+          {' - '} {country !== null ? country : countryNew}
         </span>
       </div>
       <div className="card__body">

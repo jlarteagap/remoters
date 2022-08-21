@@ -16,15 +16,15 @@ import { AuthContext } from '../../context/auth'
 import { Categories } from './categories/Categories'
 import { Ubications } from './ubications/Ubications'
 const tipeMoney = [
-  { value: 'Bs', text: 'Bs' },
-  { value: '$us', text: '$us' }
+  { value: 'Bs', name: 'Bs' },
+  { value: '$us', name: '$us' }
 ]
 
 const contracts = [
-  { value: 'Tiempo_Completo', text: 'Tiempo completo' },
-  { value: 'Medio_tiempo', text: 'Medio Tiempo' },
-  { value: 'Freelance', text: 'Freelance' },
-  { value: 'Consultoria', text: 'Consultoria' }
+  { value: 'Tiempo_Completo', name: 'Tiempo completo' },
+  { value: 'Medio_tiempo', name: 'Medio Tiempo' },
+  { value: 'Freelance', name: 'Freelance' },
+  { value: 'Consultoria', name: 'Consultoria' }
 ]
 const AddJobs = () => {
   const { user } = useContext(AuthContext)
