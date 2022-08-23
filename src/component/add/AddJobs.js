@@ -36,7 +36,7 @@ const AddJobs = () => {
 
   const validate = Yup.object({
     title: Yup.string().required('Nombre o título de la posición es requerida'),
-    companySimple: Yup.string().required('Nombre de la empresa es requerida'),
+    company: Yup.string().required('Nombre de la empresa es requerida'),
     link: Yup.string()
       .url('Debe ser una URL válida')
       .required('Necesitamos una URL válida'),
@@ -49,13 +49,13 @@ const AddJobs = () => {
       <Formik
         initialValues={{
           title: '',
-          companySimple: '',
+          company: '',
           link: '',
           category: '',
           city: '',
           remote: false,
           country: 'Bolivia',
-          type: '',
+          contracts: '',
           salary: '',
           currency: 'Bs.',
           slug: ''
@@ -69,11 +69,11 @@ const AddJobs = () => {
                 category: values.category,
                 link: values.link,
                 slug:
-                  values.position.replace(' ', '-').toLowerCase() +
+                  values.title.replace(' ', '-').toLowerCase() +
                   '-' +
                   randomNumber,
                 company: {
-                  name: values.companySimple
+                  name: values.company
                 },
                 ubication: {
                   name: values.country,
@@ -116,7 +116,7 @@ const AddJobs = () => {
                 <InputFields
                   label="Empresa que representa"
                   type="text"
-                  name="companySimple"
+                  name="company"
                 />
                 <InputFields
                   label="Enlace para postular"

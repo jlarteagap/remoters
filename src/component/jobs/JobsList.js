@@ -21,7 +21,7 @@ const JobsList = () => {
 
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
-  console.log(data)
+
   return (
     <Fragment>
       <div className="content">

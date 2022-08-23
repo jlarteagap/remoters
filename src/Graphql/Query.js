@@ -13,6 +13,7 @@ export const GET_JOBS = gql`
       limit: $limit
       offset: $offset
     ) {
+      id
       active
       category
       company {
@@ -51,24 +52,36 @@ export const GET_JOB = gql`
   query getJob($id: ID) {
     getJob(ID: $id) {
       id
-      position
+      active
       category
-      link
-      city
-      country
-      companySimple
-      remote
       company {
         name
-        logo
       }
-      createdAt
+      link
+      remote
       username {
         email
       }
-      type
-      salary
+      slug
+      ubication {
+        name
+      }
+      content {
+        currency
+        description
+        salary
+        title
+        contract
+      }
+      city
+      companySimple
+      country
       money
+      position
+      salary
+      type
+      updatedAt
+      deletedAt
     }
   }
 `
