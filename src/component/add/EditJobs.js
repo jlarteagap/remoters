@@ -14,45 +14,14 @@ import {
   SelectField,
   CheckBoxField
 } from '../../utils/form/Fields'
+import { tipeMoney, contracts } from './services/utils'
+import { Categories } from './categories/Categories'
+import { Ubications } from './ubications/Ubications'
+import { validate } from './services/validate'
+import { initialValuesEdit } from './services/initialValues'
 
-const categories = [
-  { value: 'web_developers', text: 'Web Development' },
-  { value: 'software_developer', text: 'Software Developers' },
-  { value: 'social_media_managers', text: 'Social Media' },
-  { value: 'project_managers', text: 'Project Management' },
-  { value: 'comercial', text: 'Business Management & Ventas' },
-  { value: 'soporte', text: 'Soporte' },
-  { value: 'designers', text: 'Diseño web y gráfico' },
-  { value: 'devops', text: 'DevOps' },
-  { value: 'seo', text: 'SEO - Search Engine Optimization' },
-  { value: 'copywriting', text: 'Copywriting' },
-  { value: 'seguridad', text: 'Cyber Security' },
-  { value: 'qa', text: 'Quality Assurance' },
-  { value: 'reclutadores', text: 'RRHH & Reclutamiento' }
-]
-const tipeMoney = [
-  { value: 'Bs.', text: 'Bs.' },
-  { value: '$us.', text: '$us.' }
-]
-const contracts = [
-  { value: 'Tiempo_completo', text: 'Tiempo completo' },
-  { value: 'Medio_tiempo', text: 'Medio Tiempo' },
-  { value: 'Freelance', text: 'Freelance' },
-  { value: 'Consultoria', text: 'Consultoria' }
-]
-const cities = [
-  { value: 'SANTA_CRUZ', text: 'Santa Cruz' },
-  { value: 'LA_PAZ', text: 'La Paz' },
-  { value: 'COCHABAMBA', text: 'Cochabamba' },
-  { value: 'TARIJA', text: 'Tarija' },
-  { value: 'ORURO', text: 'Oruro' },
-  { value: 'POTOSI', text: 'Potosi' },
-  { value: 'CHUQUISACA', text: 'Chuquisaca' },
-  { value: 'BENI', text: 'Beni' },
-  { value: 'PANDO', text: 'Pando' }
-]
-const countries = [{ value: 'Bolivia', text: 'Bolivia' }]
 const EditJob = ({ data, refetch }) => {
+  console.log(data)
   const [jobs] = useState(data)
   const [isRemote] = useState(data.remote)
 
@@ -70,20 +39,8 @@ const EditJob = ({ data, refetch }) => {
     <div className="box p-5">
       <h3 className="title is-4">Editar publicación</h3>
       <Formik
-        initialValues={{
-          id: jobs.id,
-          active: false,
-          category: jobs.category,
-          city: jobs.city,
-          country: jobs.country,
-          link: jobs.link,
-          money: jobs.money,
-          position: jobs.position,
-          remote: isRemote,
-          salary: jobs.salary,
-          type: jobs.type,
-          companySimple: jobs.companySimple
-        }}
+        initialValues={initialValuesEdit}
+        validationSchema={validate}
         onSubmit={values => {
           console.log(values)
           updateJob({
@@ -143,15 +100,10 @@ const EditJob = ({ data, refetch }) => {
                   name="link"
                   defaultValue={jobs.link}
                 />
-                <SelectField
-                  label="Categoria"
-                  name="category"
-                  type="select"
-                  options={categories}
-                />
+                <Categories />
                 <SelectField
                   label="Tipo de contrato"
-                  name="type"
+                  name="contract"
                   type="select"
                   options={contracts}
                 />
@@ -161,7 +113,7 @@ const EditJob = ({ data, refetch }) => {
                   label="Trabajo remoto?"
                   name="remote"
                   type="checkbox"
-                  checked={isRemote}
+                  checked
                 />
                 <CheckBoxField
                   label="Quieres agregar una ciudad?"
@@ -170,25 +122,7 @@ const EditJob = ({ data, refetch }) => {
                   onClick={() => setIsLocation(!isLocation)}
                   checked={isLocation}
                 />
-
-                <div
-                  className={`field is-grouped is-grouped-multiline ${
-                    isLocation ? '' : 'is-hidden'
-                  }`}
-                >
-                  <SelectField
-                    label="País"
-                    name="country"
-                    type="select"
-                    options={countries}
-                  />
-                  <SelectField
-                    label="Ciudad"
-                    name="city"
-                    type="select"
-                    options={cities}
-                  />
-                </div>
+                <Ubications isLocation={isLocation} />
 
                 <CheckBoxField
                   label="Quieres agregar rango salarial?"

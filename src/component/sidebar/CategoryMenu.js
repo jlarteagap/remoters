@@ -16,8 +16,8 @@ const CategoryMenu = ({ reset, data }) => {
     case 'project_managers':
       companyName = 'Proyect Management'
       break
-    case 'social_media_managers':
-      companyName = 'Social Media Managers'
+    case 'social_media':
+      companyName = 'Social Media'
       break
     case 'comercial':
       companyName = 'Business Management & Ventas'
