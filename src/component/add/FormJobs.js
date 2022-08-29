@@ -29,7 +29,7 @@ export const FormJobs = () => {
           <Categories />
           <SelectField
             label="Tipo de contrato"
-            name="type"
+            name="contract"
             type="select"
             options={contracts}
           />

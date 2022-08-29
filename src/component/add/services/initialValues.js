@@ -1,5 +1,5 @@
 export const initialValues = {
-  title: 'Hola',
+  title: '',
   company: '',
   link: '',
   category: '',
@@ -13,7 +13,6 @@ export const initialValues = {
 }
 
 export const initialValuesEdit = data => {
-  console.log(data)
   const { id, category, ubication, content, link, remote } = data
   console.log(id, category, ubication, content, link)
   const initialData = {
@@ -29,7 +28,7 @@ export const initialValuesEdit = data => {
     salary: content.salary,
     contract: content.contract,
     companySimple: data.companySimple,
-    company: data.company
+    company: data.company.name
   }
 
   return initialData

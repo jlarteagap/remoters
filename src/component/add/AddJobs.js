@@ -72,7 +72,7 @@ const AddJobs = () => {
         }}
       >
         {formik => (
-          <Form>
+          <Form onSubmit={console.log(formik.values)}>
             <FormJobs />
           </Form>
         )}
