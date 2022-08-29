@@ -14,7 +14,7 @@ export const initialValues = {
 
 export const initialValuesEdit = data => {
   const { id, category, ubication, content, link, remote } = data
-  console.log(id, category, ubication, content, link)
+
   const initialData = {
     id: id,
     active: true,
