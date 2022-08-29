@@ -21,7 +21,6 @@ import { validate } from './services/validate'
 import { initialValuesEdit } from './services/initialValues'
 
 const EditJob = ({ data, refetch }) => {
-  console.log(data)
   const [jobs] = useState(data)
   const [isRemote] = useState(data.remote)
 
@@ -39,7 +38,7 @@ const EditJob = ({ data, refetch }) => {
     <div className="box p-5">
       <h3 className="title is-4">Editar publicación</h3>
       <Formik
-        initialValues={initialValuesEdit}
+        initialValues={initialValuesEdit(data)}
         validationSchema={validate}
         onSubmit={values => {
           console.log(values)

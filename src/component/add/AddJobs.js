@@ -51,7 +51,8 @@ const AddJobs = () => {
                   title: values.title,
                   description: values.description,
                   currency: values.currency,
-                  salary: values.salary
+                  salary: values.salary,
+                  contract: values.contract
                 },
                 type: values.type,
                 username: {
