@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useMutation } from '@apollo/client'
 import { UPDATE_JOB } from '../../Graphql/Mutation'
 import { GET_JOBS } from '../../Graphql/Query'
@@ -14,9 +14,6 @@ import { validate } from './services/validate'
 import { initialValuesEdit } from './services/initialValues'
 
 const EditJob = ({ data, refetch }) => {
-  console.log(data)
-  const [jobs] = useState(data)
-
   const { user } = useContext(AuthContext)
 
   const [updateJob] = useMutation(UPDATE_JOB, {
@@ -28,25 +25,34 @@ const EditJob = ({ data, refetch }) => {
     <div className="box p-5">
       <h3 className="title is-4">Editar publicación</h3>
       <Formik
-        initialValues={initialValuesEdit}
+        initialValues={initialValuesEdit(data)}
         validationSchema={validate}
         onSubmit={values => {
-          console.log(values)
           updateJob({
             variables: {
               input: {
                 id: values.id,
-                active: false,
+                active: true,
                 category: values.category,
-                city: values.city,
-                country: values.country,
                 link: values.link,
-                money: values.money,
-                position: values.position,
                 remote: values.remote,
-                salary: values.salary,
+                company: {
+                  name: values.company
+                },
+                ubication: {
+                  name: values.country,
+                  cities: {
+                    name: values.city
+                  }
+                },
+                content: {
+                  title: values.title,
+                  description: values.description,
+                  currency: values.currency,
+                  salary: values.salary,
+                  contract: values.contract
+                },
                 type: values.type,
-                companySimple: values.companySimple,
                 username: {
                   email: user.email
                 }
@@ -69,7 +75,7 @@ const EditJob = ({ data, refetch }) => {
       >
         {formik => (
           <Form>
-            <FormJobs defaultValues={jobs} />
+            <FormJobs />
           </Form>
         )}
       </Formik>

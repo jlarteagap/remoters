@@ -12,23 +12,24 @@ export const initialValues = {
   slug: ''
 }
 
-export const initialValuesEdit = ({ jobs, isRemote }) => {
-  const { id, category, ubication, content, link } = jobs
-  console.log(id, category, ubication, content, link)
-  const data = {
+export const initialValuesEdit = data => {
+  const { id, category, ubication, content, link, remote } = data
+
+  const initialData = {
     id: id,
-    active: false,
+    active: true,
     category: category,
     city: ubication,
     country: ubication.name,
     link: link,
-    remote: isRemote,
+    remote: remote,
     money: content.currency,
     title: content.title,
     salary: content.salary,
     contract: content.contract,
-    companySimple: jobs.companySimple
+    companySimple: data.companySimple,
+    company: data.company.name
   }
 
-  return data
+  return initialData
 }

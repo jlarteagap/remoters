@@ -40,7 +40,7 @@ export const FormJobs = ({ defaultValues }) => {
           <Categories defaultValues={defaultValues.category} />
           <SelectField
             label="Tipo de contrato"
-            name="type"
+            name="contract"
             type="select"
             options={contracts}
             defaultValue={defaultValues ? defaultValues.content.contract : ''}
