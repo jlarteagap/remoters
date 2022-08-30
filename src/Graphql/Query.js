@@ -22,12 +22,6 @@ export const GET_JOBS = gql`
       link
       remote
       slug
-      ubication {
-        name
-        cities {
-          name
-        }
-      }
       content {
         currency
         description
@@ -35,6 +29,14 @@ export const GET_JOBS = gql`
         tags
         title
         contract
+      }
+      location {
+        country {
+          name
+        }
+        city {
+          name
+        }
       }
       city
       companySimple
@@ -63,15 +65,20 @@ export const GET_JOB = gql`
         email
       }
       slug
-      ubication {
-        name
-      }
       content {
         currency
         description
         salary
         title
         contract
+      }
+      location {
+        country {
+          name
+        }
+        city {
+          name
+        }
       }
       city
       companySimple

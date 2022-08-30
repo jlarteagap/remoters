@@ -7,7 +7,7 @@ import { useMutation } from '@apollo/client'
 
 import { ADD_JOB } from '../../Graphql/Mutation'
 import { initialValues } from './services/initialValues'
-import { validate } from './services/validate'
+// import { validate } from './services/validate'
 import { FormJobs } from './FormJobs'
 
 import { AuthContext } from '../../context/auth'
@@ -25,7 +25,11 @@ const AddJobs = () => {
       <h3 className="title is-4">Publica una oferta laboral</h3>
       <Formik
         initialValues={initialValues}
-        validationSchema={validate}
+        // validationSchema={validate}
+        // validationSchema={() => ({})}
+        // onSubmit={() => {
+        //   console.log('Click aca')
+        // }}
         onSubmit={values => {
           newJob({
             variables: {
@@ -41,9 +45,11 @@ const AddJobs = () => {
                 company: {
                   name: values.company
                 },
-                ubication: {
-                  name: values.country,
-                  cities: {
+                location: {
+                  country: {
+                    name: values.country
+                  },
+                  city: {
                     name: values.city
                   }
                 },
@@ -54,7 +60,6 @@ const AddJobs = () => {
                   salary: values.salary,
                   contract: values.contract
                 },
-                type: values.type,
                 username: {
                   email: user.email
                 }
