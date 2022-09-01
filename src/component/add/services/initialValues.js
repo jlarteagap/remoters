@@ -13,17 +13,17 @@ export const initialValues = {
 }
 
 export const initialValuesEdit = data => {
-  const { id, category, ubication, content, link, remote } = data
+  const { id, category, content, link, remote, location } = data
 
   const initialData = {
     id: id,
     active: true,
     category: category,
-    city: ubication,
-    country: ubication.name,
+    city: location.city.name,
+    country: location.country.name,
     link: link,
     remote: remote,
-    money: content.currency,
+    currency: content.currency,
     title: content.title,
     salary: content.salary,
     contract: content.contract,

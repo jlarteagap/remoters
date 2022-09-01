@@ -4,7 +4,7 @@ import { GET_CATEGORIES } from '../../../Graphql/Query'
 import { useQuery } from '@apollo/client'
 import PropTypes from 'prop-types'
 
-export const Categories = ({ defaultValues }) => {
+export const Categories = () => {
   const { data, loading, error } = useQuery(GET_CATEGORIES)
   if (loading) return <span>cargando...</span>
   if (error) return <span>error</span>
@@ -15,7 +15,6 @@ export const Categories = ({ defaultValues }) => {
       name="category"
       type="select"
       options={data.allCategories}
-      defaultValue={defaultValues || ''}
     />
   )
 }

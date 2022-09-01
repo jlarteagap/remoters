@@ -9,10 +9,7 @@ import { Ubications } from './ubications/Ubications'
 import { tipeMoney, contracts } from './utils/utils'
 import PropTypes from 'prop-types'
 
-export const FormJobs = ({ defaultValues }) => {
-  // eslint-disable-next-line prefer-const
-  let remoteStatus = defaultValues.remote
-  const [isRemote, setIsRemote] = React.useState(remoteStatus)
+export const FormJobs = () => {
   const [isLocation, setIsLocation] = React.useState(false)
   const [isPayment, setIsPayment] = React.useState(false)
   return (
@@ -23,27 +20,19 @@ export const FormJobs = ({ defaultValues }) => {
             label="Título de la publicación"
             type="text"
             name="title"
-            defaultValue={defaultValues ? defaultValues.content.title : ''}
           />
           <InputFields
             label="Empresa que representa"
             type="text"
             name="company"
-            defaultValue={defaultValues ? defaultValues.company.name : ''}
           />
-          <InputFields
-            label="Enlace para postular"
-            type="text"
-            name="link"
-            defaultValue={defaultValues ? defaultValues.link : ''}
-          />
-          <Categories defaultValues={defaultValues.category} />
+          <InputFields label="Enlace para postular" type="text" name="link" />
+          <Categories />
           <SelectField
             label="Tipo de contrato"
             name="contract"
             type="select"
             options={contracts}
-            defaultValue={defaultValues ? defaultValues.content.contract : ''}
           />
         </div>
         <div className="column">
@@ -51,8 +40,8 @@ export const FormJobs = ({ defaultValues }) => {
             label="Trabajo remoto?"
             name="remote"
             type="checkbox"
-            onClick={() => setIsRemote(!isRemote)}
-            checked={isRemote}
+            // onClick={() => setIsRemote(!isRemote)}
+            // checked={isRemote}
           />
           <CheckBoxField
             label="Quieres agregar una ciudad?"
@@ -61,10 +50,7 @@ export const FormJobs = ({ defaultValues }) => {
             onClick={() => setIsLocation(!isLocation)}
             checked={isLocation}
           />
-          <Ubications
-            isLocation={isLocation}
-            defaultValues={defaultValues.ubication}
-          />
+          <Ubications isLocation={isLocation} />
           <CheckBoxField
             label="Quieres agregar rango salarial?"
             name="isPayment"
@@ -78,14 +64,8 @@ export const FormJobs = ({ defaultValues }) => {
               name="currency"
               type="select"
               options={tipeMoney}
-              defaultValue={defaultValues ? defaultValues.content.currency : ''}
             />
-            <InputFields
-              label="Cantidad"
-              type="text"
-              name="salary"
-              defaultValue={defaultValues ? defaultValues.content.salary : ''}
-            />
+            <InputFields label="Cantidad" type="text" name="salary" />
           </div>
         </div>
       </div>

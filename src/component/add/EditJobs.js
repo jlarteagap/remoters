@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
-import { validate } from './services/validate'
+// import { validate } from './services/validate'
 import { initialValuesEdit } from './services/initialValues'
 
 const EditJob = ({ data, refetch }) => {
@@ -26,35 +26,35 @@ const EditJob = ({ data, refetch }) => {
       <h3 className="title is-4">Editar publicación</h3>
       <Formik
         initialValues={initialValuesEdit(data)}
-        validationSchema={validate}
+        // validationSchema={validate}
         onSubmit={values => {
           updateJob({
             variables: {
               input: {
                 id: values.id,
-                active: true,
+                active: values.active,
                 category: values.category,
-                link: values.link,
-                remote: values.remote,
                 company: {
                   name: values.company
                 },
-                ubication: {
-                  name: values.country,
-                  cities: {
-                    name: values.city
-                  }
-                },
-                content: {
-                  title: values.title,
-                  description: values.description,
-                  currency: values.currency,
-                  salary: values.salary,
-                  contract: values.contract
-                },
-                type: values.type,
+                link: values.link,
+                remote: values.remote,
                 username: {
                   email: user.email
+                },
+                content: {
+                  currency: values.currency,
+                  salary: values.salary,
+                  title: values.title,
+                  contract: values.contract
+                },
+                location: {
+                  country: {
+                    name: values.country
+                  },
+                  city: {
+                    name: values.city
+                  }
                 }
               }
             }

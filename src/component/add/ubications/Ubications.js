@@ -4,8 +4,7 @@ import { GET_UBICATION } from '../../../Graphql/Query'
 import { useQuery } from '@apollo/client'
 import PropTypes from 'prop-types'
 
-export const Ubications = ({ isLocation, defaultValues }) => {
-  console.log(defaultValues)
+export const Ubications = ({ isLocation }) => {
   const { data, loading, error } = useQuery(GET_UBICATION)
   if (loading) return <span>cargando...</span>
   if (error) return <span>error</span>
@@ -21,7 +20,6 @@ export const Ubications = ({ isLocation, defaultValues }) => {
         name="country"
         type="select"
         options={data.allUbication}
-        defaultValue={defaultValues.name}
       />
 
       <SelectField
