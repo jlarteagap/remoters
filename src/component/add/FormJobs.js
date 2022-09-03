@@ -2,7 +2,8 @@ import React from 'react'
 import {
   InputFields,
   CheckBoxField,
-  SelectField
+  SelectField,
+  TextareaField
 } from '../../utils/form/Fields'
 import { Categories } from './categories/Categories'
 import { Ubications } from './ubications/Ubications'
@@ -33,6 +34,11 @@ export const FormJobs = () => {
             name="contract"
             type="select"
             options={contracts}
+          />
+          <TextareaField
+            label="Agregar descripción"
+            name="description"
+            placeholder="Ingresar descripción"
           />
         </div>
         <div className="column">

@@ -46,7 +46,8 @@ const EditJob = ({ data, refetch }) => {
                   currency: values.currency,
                   salary: values.salary,
                   title: values.title,
-                  contract: values.contract
+                  contract: values.contract,
+                  description: values.description
                 },
                 location: {
                   country: {

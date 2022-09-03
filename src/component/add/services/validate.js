@@ -7,5 +7,8 @@ export const validate = Yup.object({
     .url('Debe ser una URL válida')
     .required('Necesitamos una URL válida'),
   type: Yup.string().required('Tipo de contrato es requerido'),
-  category: Yup.string().required('Categoría es requerida')
+  category: Yup.string().required('Categoría es requerida'),
+  description: Yup.string()
+    .required('Debe agregar una descripcion')
+    .min(30, 'Debe agregar minimo 30 caracteres')
 })

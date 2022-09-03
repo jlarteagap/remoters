@@ -26,10 +26,6 @@ const AddJobs = () => {
       <Formik
         initialValues={initialValues}
         // validationSchema={validate}
-        // validationSchema={() => ({})}
-        // onSubmit={() => {
-        //   console.log('Click aca')
-        // }}
         onSubmit={values => {
           newJob({
             variables: {

@@ -26,6 +26,7 @@ export const initialValuesEdit = data => {
     title: content.title,
     salary: content.salary,
     contract: content.contract,
+    description: content.description,
     company: data.company.name
   }
 

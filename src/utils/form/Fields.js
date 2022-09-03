@@ -72,3 +72,25 @@ export const SelectField = ({ label, options, ...props }) => {
     </div>
   )
 }
+
+export const TextareaField = ({ label, ...props }) => {
+  const [field, meta] = useField(props)
+  return (
+    <div className="field">
+      <div className="control form__style">
+        <textarea
+          className={`textarea ${meta.touched && meta.error && 'is-danger'}`}
+          placeholder="Agregar descripcion"
+          {...field}
+          {...props}
+        ></textarea>
+        <label className="label">{label}</label>
+        <ErrorMessage
+          component="div"
+          name={field.name}
+          className="help is-danger"
+        />
+      </div>
+    </div>
+  )
+}
