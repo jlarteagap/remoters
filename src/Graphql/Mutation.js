@@ -76,33 +76,34 @@ export const CREATE_COMPANY = gql`
 export const UPDATE_JOB = gql`
   mutation UpdateJob($input: JobInput) {
     updateJob(input: $input) {
-      id
       active
       category
-      # link
-      # slug
-      # company {
-      #   name
-      # }
-      # ubication {
-      #   name
-      #   cities {
-      #     name
-      #     value
-      #     slug
-      #   }
-      # }
-      # content {
-      #   title
-      #   description
-      #   currency
-      #   salary
-      #   contract
-      # }
-      # remote
-      # username {
-      #   email
-      # }
+      company {
+        name
+      }
+      companySimple
+      id
+      link
+      remote
+      username {
+        email
+      }
+      slug
+      content {
+        contract
+        currency
+        description
+        salary
+        title
+      }
+      location {
+        country {
+          name
+        }
+        city {
+          name
+        }
+      }
     }
   }
 `
