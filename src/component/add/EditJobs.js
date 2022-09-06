@@ -15,7 +15,7 @@ import { initialValuesEdit } from './services/initialValues'
 
 const EditJob = ({ data, refetch }) => {
   const { user } = useContext(AuthContext)
-
+  console.log(data)
   const [updateJob] = useMutation(UPDATE_JOB, {
     refetchQueries: [{ query: GET_JOBS }]
   })
@@ -76,7 +76,10 @@ const EditJob = ({ data, refetch }) => {
       >
         {formik => (
           <Form>
-            <FormJobs />
+            <FormJobs
+              location={data.location.city.name}
+              payment={data.content.salary}
+            />
           </Form>
         )}
       </Formik>

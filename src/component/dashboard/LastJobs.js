@@ -23,15 +23,26 @@ export const LastJobs = () => {
       <h2 className="title is-4">Últimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
         {data.getJobs.map(job => {
+          console.log(job)
           return (
             <div
               className="card p-5 mb-2 is-flex is-justify-content-space-between"
               key={job.id}
             >
               <div>
-                <h3 className="title is-4 m-0 is-small">{job.position}</h3>
+                {job.active ? (
+                  <div className="help is-primary is-light has-text-weight-bold">
+                    Activo
+                  </div>
+                ) : (
+                  <div className="help is-primary is-danger">Inactivo</div>
+                )}
+                <h3 className="title is-4 m-0 is-small">
+                  {job.position || job.content.title}
+                </h3>
                 <p className="pt-0">
                   <strong>Empresa: </strong>
+                  {job.company.name || job.companySimple}
                 </p>
               </div>
               <div className="is-flex">

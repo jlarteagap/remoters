@@ -15,7 +15,8 @@ const JobsList = () => {
   const { loading, error, data } = useQuery(GET_JOBS, {
     variables: {
       limit: page.limit,
-      offset: page.offset
+      offset: page.offset,
+      active: true
     }
   })
 

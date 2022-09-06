@@ -18,7 +18,6 @@ import {
   EditCompanies
 } from './containers'
 
-import { Test } from './component/test/Test'
 const App = () => {
   const pagination = usePagination()
 
@@ -32,7 +31,6 @@ const App = () => {
                 <Switch>
                   <AuthRoute exact path="/" component={Home} />
                   <AuthRoute exact path="/agregar" component={NewJob} />
-                  <AuthRoute exact path="/test" component={Test} />
 
                   <AuthRoute
                     exact

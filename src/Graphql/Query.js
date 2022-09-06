@@ -6,12 +6,14 @@ export const GET_JOBS = gql`
     $category: String
     $limit: Int
     $offset: Int
+    $active: Boolean
   ) {
     getJobs(
       username: $username
       category: $category
       limit: $limit
       offset: $offset
+      active: $active
     ) {
       id
       active

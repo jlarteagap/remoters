@@ -10,9 +10,9 @@ import { Ubications } from './ubications/Ubications'
 import { tipeMoney, contracts } from './utils/utils'
 import PropTypes from 'prop-types'
 
-export const FormJobs = () => {
-  const [isLocation, setIsLocation] = React.useState(false)
-  const [isPayment, setIsPayment] = React.useState(false)
+export const FormJobs = ({ location, payment }) => {
+  const [isLocation, setIsLocation] = React.useState(location || false)
+  const [isPayment, setIsPayment] = React.useState(payment || false)
   return (
     <>
       <div className="columns">
@@ -43,11 +43,14 @@ export const FormJobs = () => {
         </div>
         <div className="column">
           <CheckBoxField
+            label="Busqueda activa"
+            name="active"
+            type="checkbox"
+          />
+          <CheckBoxField
             label="Trabajo remoto?"
             name="remote"
             type="checkbox"
-            // onClick={() => setIsRemote(!isRemote)}
-            // checked={isRemote}
           />
           <CheckBoxField
             label="Quieres agregar una ciudad?"
@@ -83,5 +86,6 @@ export const FormJobs = () => {
 }
 
 FormJobs.propTypes = {
-  defaultValues: PropTypes.object
+  location: PropTypes.string,
+  payment: PropTypes.string
 }

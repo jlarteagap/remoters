@@ -9,14 +9,15 @@ export const initialValues = {
   contract: '',
   salary: '',
   currency: 'Bs.',
-  slug: ''
+  slug: '',
+  active: true
 }
 
 export const initialValuesEdit = data => {
-  const { id, category, content, link, remote, location } = data
+  const { id, category, content, link, remote, location, active } = data
   const initialData = {
     id: id,
-    active: true,
+    active: active,
     category: category,
     city: location.city.name,
     country: location.country.name,
