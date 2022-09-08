@@ -3,20 +3,23 @@ import React from 'react'
 import JobIcon from './JobIcon'
 
 import {
-  // FaMapMarkerAlt,
+  FaMapMarkerAlt,
   FaMoneyBillAlt,
   FaNetworkWired,
   FaRegBuilding,
   FaExternalLinkAlt
 } from 'react-icons/fa'
 import PropTypes from 'prop-types'
+import useUpdateActive from './hooks/useUpdateActive'
 
 const Job = ({ job }) => {
+  const { isActivePostJob } = useUpdateActive()
   const {
+    id,
     position,
     link,
-    // city,
-    // country,
+    city,
+    country,
     category,
     remote,
     type,
@@ -24,9 +27,12 @@ const Job = ({ job }) => {
     money,
     companySimple,
     company,
-    // ubication,
-    content
+    location,
+    content,
+    deletedAt
   } = job
+  // Check this for update active o desactive job post
+  isActivePostJob(id, deletedAt)
 
   let iconRemote
   if (remote) {
@@ -40,7 +46,7 @@ const Job = ({ job }) => {
 
   const titlePosition = content !== null && content.title
   const companyJob = company !== null && company.name
-  // const countryNew = ubication !== null && ubication.name
+  const countryNew = location !== null && location.country.name
   const currencyContent = content !== null && content.currency
   const salaryContent = content !== null && content.salary
   const contractContent = content !== null && content.contract
@@ -80,7 +86,7 @@ const Job = ({ job }) => {
           {money !== null ? money : currencyContent}{' '}
           {salary !== null ? salary : salaryContent}
         </div>
-        {/* <span
+        <div
           className={`job__city is-size-7 ${
             city || countryNew ? '' : 'is-hidden'
           }`}
@@ -88,9 +94,9 @@ const Job = ({ job }) => {
           <FaMapMarkerAlt />{' '}
           {city !== null
             ? city.replace('_', ' ')
-            : ubication.cities[0].name.toUpperCase().replace('_', ' ')}
+            : location.city.name.toUpperCase().replace('_', ' ')}
           {' - '} {country !== null ? country : countryNew}
-        </span> */}
+        </div>
       </div>
       <div className="card__body">
         <div className="job__info">

@@ -40,6 +40,8 @@ export const GET_JOBS = gql`
           name
         }
       }
+      createdAt
+      deletedAt
       city
       companySimple
       type
