@@ -56,7 +56,11 @@ const EditJob = ({ data, refetch }) => {
                   city: {
                     name: values.city
                   }
-                }
+                },
+                updateAt: new Date().toISOString(),
+                deletedAt: new Date(
+                  new Date().setDate(new Date().getDate() + 7)
+                ).toISOString()
               }
             }
           }).then(

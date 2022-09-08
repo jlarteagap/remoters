@@ -104,6 +104,8 @@ export const UPDATE_JOB = gql`
           name
         }
       }
+      updatedAt
+      deletedAt
     }
   }
 `
