@@ -17,6 +17,7 @@ import {
   Companies,
   EditCompanies
 } from './containers'
+import PostDetails from './containers/PostDetails'
 
 const App = () => {
   const pagination = usePagination()
@@ -30,7 +31,7 @@ const App = () => {
               <div className="container">
                 <Switch>
                   <AuthRoute exact path="/" component={Home} />
-                  <AuthRoute exact path="/agregar" component={NewJob} />
+                  <AuthRoute exact path="/post/:slug" component={PostDetails} />
 
                   <AuthRoute
                     exact
