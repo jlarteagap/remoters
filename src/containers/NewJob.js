@@ -26,15 +26,21 @@ const NewJob = () => (
       <div className="home__jobs">
         <AddJobs />
       </div>
-      <div className="home__sidebar">
-        <div className="box p-4 has-text-centered">
+      <aside className="home__sidebar">
+        <section className="box p-4 has-text-centered">
           <div className="is-flex is-justify-content-center my-5">
             <FaBullhorn size={42} />
           </div>
-          El 10% de los ingresos por publicidad serán donados a albergues para
-          animales abandonados.
-        </div>
-      </div>
+          La publicacion estará activa por 15 días en la página principal. Si
+          desea agregar mas dias, vuelva a activar la publicación por 7 días más
+        </section>
+        <section className="p-5">
+          <p className="is-size-7 has-text-centered">
+            El adminitrador se reserva el derecho de eliminar la publicación en
+            caso de no cumplir con las reglas.
+          </p>
+        </section>
+      </aside>
     </div>
   </Fragment>
 )

@@ -67,6 +67,9 @@ a{
 }
 .home__sidebar{
     grid-column: span 3;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 /* ERROR  */
 .error{
@@ -105,6 +108,7 @@ a{
     .home__sidebar{
         grid-column: span 12;
         order: 0;
+        position: relative;
     }
 }
 
