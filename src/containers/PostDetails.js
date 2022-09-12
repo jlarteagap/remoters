@@ -7,7 +7,7 @@ const PostDetails = () => (
   <Fragment>
     <Helmet>
       <meta charSet="utf-8" />
-      <title>Agrega un nuevo empleo</title>
+      <title>Reclutop</title>
       <meta
         name="description"
         content="Encuentra a los mejores profesionales en tecnología en Bolivia"

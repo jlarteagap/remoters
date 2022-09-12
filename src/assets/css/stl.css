@@ -43,9 +43,17 @@ a{
 }
     .btn:hover{
         color:  var(--Dark);
-        background: var(--Yellow);
+        background: var(--Blue);
     }
 
+.btn--blue{
+    background-color: var(--Blue);
+
+}
+.btn--blue:hover{
+    background: var(--Red);
+    color: var(--Yellow);
+}
 /* Container  */
 .container{
     max-width: 1200px;
