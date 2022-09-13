@@ -19,7 +19,8 @@ const Categories = props => {
     variables: {
       category,
       limit: page.limit,
-      offset: page.offset
+      offset: page.offset,
+      active: true
     }
   })
   if (loading) return <Loading />
