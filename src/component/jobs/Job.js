@@ -11,6 +11,7 @@ import {
 } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 import useUpdateActive from './hooks/useUpdateActive'
+import { Link } from 'react-router-dom'
 
 const Job = ({ job }) => {
   const { isActivePostJob } = useUpdateActive()
@@ -39,7 +40,9 @@ const Job = ({ job }) => {
     iconRemote = (
       <div className="icon icon--remote">
         <JobIcon category="REMOTE" />
-        <span className="button is-small is-warning is-light">Home Office</span>
+        <span className="button is-small is-warning is-light">
+          Trabajo Remoto
+        </span>
       </div>
     )
   }
@@ -55,15 +58,10 @@ const Job = ({ job }) => {
     <div className="card card--job p-5 mb-5">
       <div className="card__body">
         <h2 className="card__body--title m-0">
-          <a
-            href={link}
-            target="_blank"
-            rel="noreferrer"
-            className="is-flex is-align-items-center"
-          >
-            {position !== null ? position : titlePosition}
+          <Link className="is-flex is-align-items-center" to={`/post/${id}`}>
+            {position !== null ? position : titlePosition}{' '}
             <FaExternalLinkAlt size={12} className="ml-4" />
-          </a>
+          </Link>
         </h2>
         <div className={`card__body--sub is-flex is-align-items-center`}>
           <FaRegBuilding className="mr-3" />

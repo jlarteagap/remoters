@@ -15,7 +15,7 @@ import { initialValuesEdit } from './services/initialValues'
 
 const EditJob = ({ data, refetch }) => {
   const { user } = useContext(AuthContext)
-  console.log(data)
+
   const [updateJob] = useMutation(UPDATE_JOB, {
     refetchQueries: [{ query: GET_JOBS }]
   })

@@ -31,7 +31,7 @@ const App = () => {
               <div className="container">
                 <Switch>
                   <AuthRoute exact path="/" component={Home} />
-                  <AuthRoute exact path="/post/:slug" component={PostDetails} />
+                  <AuthRoute exact path="/post/:id" component={PostDetails} />
 
                   <AuthRoute
                     exact
