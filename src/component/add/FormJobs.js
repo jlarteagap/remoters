@@ -38,7 +38,7 @@ export const FormJobs = ({ location, payment }) => {
           <TextareaField
             label="Agregar descripción"
             name="description"
-            placeholder="Ingresar descripción"
+            placeholder="Agregar una descripción corta"
           />
         </div>
         <div className="column">

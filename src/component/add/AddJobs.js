@@ -7,7 +7,7 @@ import { useMutation } from '@apollo/client'
 
 import { ADD_JOB } from '../../Graphql/Mutation'
 import { initialValues } from './services/initialValues'
-// import { validate } from './services/validate'
+import { validate } from './services/validate'
 import { FormJobs } from './FormJobs'
 
 import { AuthContext } from '../../context/auth'
@@ -25,7 +25,9 @@ const AddJobs = () => {
       <h3 className="title is-4">Publica una oferta laboral</h3>
       <Formik
         initialValues={initialValues}
-        // validationSchema={validate}
+        validationSchema={validate}
+        validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={values => {
           newJob({
             variables: {
