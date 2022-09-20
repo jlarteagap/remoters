@@ -73,7 +73,9 @@ const Job = ({ job }) => {
           }`}
         >
           <FaNetworkWired className="mr-3" />{' '}
-          {type !== null ? type.replace('_', ' ') : contractContent}
+          {type !== null
+            ? type.replace('_', ' ')
+            : contractContent.replace('_', ' ')}
         </div>
         <div
           className={`is-flex is-align-items-center is-size-7 ${

@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
-// import { validate } from './services/validate'
+import { validate } from './services/validate'
 import { initialValuesEdit } from './services/initialValues'
 
 const EditJob = ({ data, refetch }) => {
@@ -26,7 +26,9 @@ const EditJob = ({ data, refetch }) => {
       <h3 className="title is-4">Editar publicación</h3>
       <Formik
         initialValues={initialValuesEdit(data)}
-        // validationSchema={validate}
+        validationSchema={validate}
+        validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={values => {
           updateJob({
             variables: {
