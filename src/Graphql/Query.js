@@ -97,6 +97,49 @@ export const GET_JOB = gql`
   }
 `
 
+export const GET_POST = gql`
+  query getPost($slug: String) {
+    getPost(slug: $slug) {
+      id
+      active
+      category
+      company {
+        name
+      }
+      link
+      remote
+      username {
+        email
+      }
+      slug
+      content {
+        currency
+        description
+        salary
+        title
+        contract
+      }
+      location {
+        country {
+          name
+        }
+        city {
+          name
+        }
+      }
+      city
+      companySimple
+      country
+      money
+      position
+      salary
+      type
+      updatedAt
+      deletedAt
+    }
+  }
+`
+
 export const GET_COMPANIES = gql`
   query allCompanies($username: String, $limit: Int, $offset: Int) {
     allCompanies(username: $username, limit: $limit, offset: $offset) {
