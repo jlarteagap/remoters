@@ -16,7 +16,7 @@ const AddJobs = () => {
   const { user } = useContext(AuthContext)
 
   const history = useHistory()
-  const randomNumber = Math.floor(Math.random() * 500)
+  const randomNumber = Math.floor(Math.random() * 1500)
 
   const [newJob] = useMutation(ADD_JOB)
 

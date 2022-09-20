@@ -30,7 +30,8 @@ const Job = ({ job }) => {
     company,
     location,
     content,
-    deletedAt
+    deletedAt,
+    slug
   } = job
   // Check this for update active o desactive job post
   isActivePostJob(id, deletedAt)
@@ -58,7 +59,7 @@ const Job = ({ job }) => {
     <div className="card card--job p-5 mb-5">
       <div className="card__body">
         <h2 className="card__body--title m-0">
-          <Link className="is-flex is-align-items-center" to={`/post/${id}`}>
+          <Link className="is-flex is-align-items-center" to={`/post/${slug}`}>
             {position !== null ? position : titlePosition}{' '}
             <FaExternalLinkAlt size={12} className="ml-4" />
           </Link>
