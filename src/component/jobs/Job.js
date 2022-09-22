@@ -14,7 +14,7 @@ import useUpdateActive from './hooks/useUpdateActive'
 import { Link } from 'react-router-dom'
 
 const Job = ({ job }) => {
-  const { isActivePostJob } = useUpdateActive()
+  const { IsActivePostJob } = useUpdateActive()
   const {
     id,
     position,
@@ -34,7 +34,7 @@ const Job = ({ job }) => {
     slug
   } = job
   // Check this for update active o desactive job post
-  isActivePostJob(id, deletedAt)
+  IsActivePostJob(id, deletedAt)
 
   let iconRemote
   if (remote) {
