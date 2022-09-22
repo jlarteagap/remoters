@@ -5,11 +5,10 @@ import { UPDATE_JOB } from '../../../Graphql/Mutation'
 
 const useUpdateActive = () => {
   const { user } = useContext(AuthContext)
+  const Today = new Date()
+  const [updateJob] = useMutation(UPDATE_JOB)
 
   const IsActivePostJob = (id, deleteAt) => {
-    const Today = new Date()
-    const [updateJob] = useMutation(UPDATE_JOB)
-
     useEffect(() => {
       if (deleteAt === Today) {
         updateJob({
@@ -24,7 +23,7 @@ const useUpdateActive = () => {
           }
         })
       }
-    }, [])
+    }, [id, deleteAt])
   }
   return { IsActivePostJob }
 }
