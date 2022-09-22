@@ -6,25 +6,49 @@ export const GET_JOBS = gql`
     $category: String
     $limit: Int
     $offset: Int
+    $active: Boolean
   ) {
     getJobs(
       username: $username
       category: $category
       limit: $limit
       offset: $offset
+      active: $active
     ) {
       id
-      position
+      active
       category
+      company {
+        name
+      }
       link
-      city
-      country
       remote
+      slug
+      content {
+        currency
+        description
+        salary
+        tags
+        title
+        contract
+      }
+      location {
+        country {
+          name
+        }
+        city {
+          name
+        }
+      }
+      createdAt
+      deletedAt
+      city
       companySimple
       type
       salary
+      position
       money
-      slug
+      country
     }
     totalJobs
   }
@@ -34,24 +58,84 @@ export const GET_JOB = gql`
   query getJob($id: ID) {
     getJob(ID: $id) {
       id
-      position
+      active
       category
-      link
-      city
-      country
-      companySimple
-      remote
       company {
         name
-        logo
       }
-      createdAt
+      link
+      remote
       username {
         email
       }
-      type
-      salary
+      slug
+      content {
+        currency
+        description
+        salary
+        title
+        contract
+      }
+      location {
+        country {
+          name
+        }
+        city {
+          name
+        }
+      }
+      city
+      companySimple
+      country
       money
+      position
+      salary
+      type
+      updatedAt
+      deletedAt
+    }
+  }
+`
+
+export const GET_POST = gql`
+  query getPost($slug: String) {
+    getPost(slug: $slug) {
+      id
+      active
+      category
+      company {
+        name
+      }
+      link
+      remote
+      username {
+        email
+      }
+      slug
+      content {
+        currency
+        description
+        salary
+        title
+        contract
+      }
+      location {
+        country {
+          name
+        }
+        city {
+          name
+        }
+      }
+      city
+      companySimple
+      country
+      money
+      position
+      salary
+      type
+      updatedAt
+      deletedAt
     }
   }
 `
@@ -84,6 +168,29 @@ export const GET_COMPANY = gql`
       activity
       phone
       username
+    }
+  }
+`
+export const GET_UBICATION = gql`
+  query allUbication {
+    allUbication {
+      name
+      value
+      cities {
+        name
+        value
+        slug
+      }
+    }
+  }
+`
+
+export const GET_CATEGORIES = gql`
+  query allCategories {
+    allCategories {
+      name
+      value
+      slug
     }
   }
 `

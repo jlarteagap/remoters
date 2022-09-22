@@ -3,18 +3,32 @@ import { gql } from '@apollo/client'
 export const ADD_JOB = gql`
   mutation newJob($input: JobInput) {
     newJob(input: $input) {
-      id
+      location {
+        country {
+          name
+        }
+        city {
+          name
+        }
+      }
       active
-      position
       category
-      link
+      company {
+        name
+      }
       remote
-      companySimple
-      type
-      salary
-      money
-      city
-      country
+      username {
+        email
+      }
+      slug
+      link
+      content {
+        currency
+        description
+        salary
+        title
+        contract
+      }
     }
   }
 `
@@ -62,18 +76,36 @@ export const CREATE_COMPANY = gql`
 export const UPDATE_JOB = gql`
   mutation UpdateJob($input: JobInput) {
     updateJob(input: $input) {
-      id
-      position
-      category
-      link
-      city
-      country
-      remote
-      companySimple
-      type
-      salary
-      money
       active
+      category
+      company {
+        name
+      }
+      companySimple
+      id
+      link
+      remote
+      username {
+        email
+      }
+      slug
+      content {
+        contract
+        currency
+        description
+        salary
+        title
+      }
+      location {
+        country {
+          name
+        }
+        city {
+          name
+        }
+      }
+      updatedAt
+      deletedAt
     }
   }
 `

@@ -15,7 +15,8 @@ const JobsList = () => {
   const { loading, error, data } = useQuery(GET_JOBS, {
     variables: {
       limit: page.limit,
-      offset: page.offset
+      offset: page.offset,
+      active: true
     }
   })
 
@@ -37,8 +38,8 @@ const JobsList = () => {
         ) : (
           ''
         )}
-        {data.getJobs.map(job => {
-          return <Job key={job.id} job={job} />
+        {data.getJobs.map((job, index) => {
+          return <Job key={index} job={job} />
         })}
 
         <Paginator

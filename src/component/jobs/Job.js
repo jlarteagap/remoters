@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React from 'react'
 import JobIcon from './JobIcon'
 
@@ -9,9 +10,13 @@ import {
   FaExternalLinkAlt
 } from 'react-icons/fa'
 import PropTypes from 'prop-types'
+import useUpdateActive from './hooks/useUpdateActive'
+import { Link } from 'react-router-dom'
 
 const Job = ({ job }) => {
+  const { isActivePostJob } = useUpdateActive()
   const {
+    id,
     position,
     link,
     city,
@@ -21,62 +26,78 @@ const Job = ({ job }) => {
     type,
     salary,
     money,
-    companySimple
+    companySimple,
+    company,
+    location,
+    content,
+    deletedAt,
+    slug
   } = job
+  // Check this for update active o desactive job post
+  isActivePostJob(id, deletedAt)
 
   let iconRemote
   if (remote) {
     iconRemote = (
       <div className="icon icon--remote">
         <JobIcon category="REMOTE" />
-        <span className="button is-small is-warning is-light">Home Office</span>
+        <span className="button is-small is-warning is-light">
+          Trabajo Remoto
+        </span>
       </div>
     )
   }
+
+  const titlePosition = content !== null && content.title
+  const companyJob = company !== null && company.name
+  const countryNew = location !== null && location.country.name
+  const currencyContent = content !== null && content.currency
+  const salaryContent = content !== null && content.salary
+  const contractContent = content !== null && content.contract
+
   return (
     <div className="card card--job p-5 mb-5">
       <div className="card__body">
         <h2 className="card__body--title m-0">
-          <a
-            href={link}
-            target="_blank"
-            rel="noreferrer"
-            className="is-flex is-align-items-center"
-          >
-            {position}
+          <Link className="is-flex is-align-items-center" to={`/post/${slug}`}>
+            {position !== null ? position : titlePosition}{' '}
             <FaExternalLinkAlt size={12} className="ml-4" />
-          </a>
+          </Link>
         </h2>
-        <div
-          className={`card__body--sub is-flex is-align-items-center ${
-            companySimple || 'is-hidden'
-          }`}
-        >
+        <div className={`card__body--sub is-flex is-align-items-center`}>
           <FaRegBuilding className="mr-3" />
-          {companySimple}
+          {companySimple !== null ? companySimple : companyJob}
         </div>
         <div
           className={`is-flex is-align-items-center is-size-7 ${
-            type || 'is-hidden'
+            type || contractContent ? ' ' : 'is-hidden'
           }`}
         >
           <FaNetworkWired className="mr-3" />{' '}
-          {type ? type.replace('_', ' ') : ''}
+          {type !== null
+            ? type.replace('_', ' ')
+            : contractContent.replace('_', ' ')}
         </div>
         <div
           className={`is-flex is-align-items-center is-size-7 ${
-            salary ? '' : 'is-hidden'
+            salary || salaryContent ? '' : 'is-hidden'
           }`}
         >
-          <FaMoneyBillAlt className="mr-3" /> {money} {salary}
+          <FaMoneyBillAlt className="mr-3" />{' '}
+          {money !== null ? money : currencyContent}{' '}
+          {salary !== null ? salary : salaryContent}
         </div>
-        <span
+        <div
           className={`job__city is-size-7 ${
-            city && country ? '' : 'is-hidden'
+            city || countryNew ? '' : 'is-hidden'
           }`}
         >
-          <FaMapMarkerAlt /> {city.replace('_', ' ')} - {country}
-        </span>
+          <FaMapMarkerAlt />{' '}
+          {city !== null
+            ? city.replace('_', ' ')
+            : location.city.name.toUpperCase().replace('_', ' ')}
+          {' - '} {country !== null ? country : countryNew}
+        </div>
       </div>
       <div className="card__body">
         <div className="job__info">

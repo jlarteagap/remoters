@@ -50,12 +50,12 @@ export const SelectField = ({ label, options, ...props }) => {
           {...props}
           className={`${meta.touched && meta.error && 'is-danger'}`}
         >
-          <option value="" label="--">
+          <option defaultValue=" " value=" " label="--">
             - -
           </option>
           {options.map((option, index) => {
             return (
-              <option value={option.value} label={option.text} key={index}>
+              <option value={option.value} label={option.name} key={index}>
                 {option.text}
               </option>
             )
@@ -69,6 +69,28 @@ export const SelectField = ({ label, options, ...props }) => {
         name={field.name}
         className="help is-danger"
       />
+    </div>
+  )
+}
+
+export const TextareaField = ({ label, ...props }) => {
+  const [field, meta] = useField(props)
+  return (
+    <div className="field">
+      <div className="control form__style">
+        <textarea
+          className={`textarea ${meta.touched && meta.error && 'is-danger'}`}
+          placeholder="Agregar descripcion"
+          {...field}
+          {...props}
+        ></textarea>
+        <label className="label">{label}</label>
+        <ErrorMessage
+          component="div"
+          name={field.name}
+          className="help is-danger"
+        />
+      </div>
     </div>
   )
 }
