@@ -23,7 +23,6 @@ export const LastJobs = () => {
       <h2 className="title is-4">Últimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
         {data.getJobs.map(job => {
-          console.log(job)
           return (
             <div
               className="card p-5 mb-2 is-flex is-justify-content-space-between"
