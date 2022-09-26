@@ -59,7 +59,7 @@ const Job = ({ job }) => {
     <div className="card card--job p-5 mb-5">
       <div className="card__body">
         <h2 className="card__body--title m-0">
-          {content.description === null ? (
+          {content ? (
             <Link
               className="is-flex is-align-items-center"
               to={`/post/${slug}`}
@@ -116,7 +116,7 @@ const Job = ({ job }) => {
             <a className="button job__button-shareButton" href="#link">
               Compartir
             </a>
-            {content.description === null ? (
+            {content ? (
               <Link className="button is-success" to={`/post/${slug}`}>
                 Aplicar
               </Link>
