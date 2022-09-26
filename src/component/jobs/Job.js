@@ -59,10 +59,17 @@ const Job = ({ job }) => {
     <div className="card card--job p-5 mb-5">
       <div className="card__body">
         <h2 className="card__body--title m-0">
-          <Link className="is-flex is-align-items-center" to={`/post/${slug}`}>
-            {position !== null ? position : titlePosition}{' '}
-            <FaExternalLinkAlt size={12} className="ml-4" />
-          </Link>
+          {content.description ? (
+            <Link
+              className="is-flex is-align-items-center"
+              to={`/post/${slug}`}
+            >
+              {position !== null ? position : titlePosition}{' '}
+              <FaExternalLinkAlt size={12} className="ml-4" />
+            </Link>
+          ) : (
+            <a href={link}>{position !== null ? position : titlePosition}</a>
+          )}
         </h2>
         <div className={`card__body--sub is-flex is-align-items-center`}>
           <FaRegBuilding className="mr-3" />
@@ -109,14 +116,20 @@ const Job = ({ job }) => {
             <a className="button job__button-shareButton" href="#link">
               Compartir
             </a>
-            <a
-              className="button is-success"
-              href={link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Aplicar
-            </a>
+            {content.description ? (
+              <Link className="button is-success" to={`/post/${slug}`}>
+                Aplicar
+              </Link>
+            ) : (
+              <a
+                className="button is-success"
+                href={link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Aplicar
+              </a>
+            )}
           </div>
         </div>
       </div>
