@@ -10,7 +10,7 @@ const useUpdateActive = () => {
 
   const IsActivePostJob = (id, deleteAt) => {
     useEffect(() => {
-      if (deleteAt === Today) {
+      if (deleteAt <= Today) {
         updateJob({
           variables: {
             input: {
