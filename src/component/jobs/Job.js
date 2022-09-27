@@ -118,7 +118,7 @@ const Job = ({ job }) => {
             </a>
             {content ? (
               <Link className="button is-success" to={`/post/${slug}`}>
-                Aplicar
+                Ver detalles
               </Link>
             ) : (
               <a
