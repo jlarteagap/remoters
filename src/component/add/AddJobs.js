@@ -37,7 +37,7 @@ const AddJobs = () => {
                 link: values.link,
                 remote: values.remote,
                 slug:
-                  values.title.replace(' ', '-').toLowerCase() +
+                  values.title.replaceAll(/ +/g, '-').toLowerCase() +
                   '-' +
                   randomNumber,
                 company: {
