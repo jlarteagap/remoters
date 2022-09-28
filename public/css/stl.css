@@ -149,3 +149,10 @@ a{
 .effect__hover:hover:after{
     width: 100%;
   }
+
+.footer{
+    box-sizing: border-box;
+    padding: .45rem;
+    font-size: .8rem;
+    text-align: right;
+}

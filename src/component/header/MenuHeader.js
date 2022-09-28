@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { AuthContext } from '../../context/auth'
 import BurgerMenu from './BurgerMenu'
-import './header.css'
+
 // eslint-disable-next-line react/prop-types
 const MenuHeader = ({ onClick, isActive }) => {
   const { user } = useContext(AuthContext)

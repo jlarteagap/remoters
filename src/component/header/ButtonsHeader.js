@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { FaPlus, FaDoorOpen, FaSignOutAlt } from 'react-icons/fa'
 import { AuthContext } from '../../context/auth'
 

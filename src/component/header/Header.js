@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react'
 import AppContext from '../../context/AppContext'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import PropTypes from 'prop-types'
 
 // import CSS
+import headerCSS from '../../../public/css/Header.module.css'
 import ButtonsHeader from './ButtonsHeader'
 import MenuHeader from './MenuHeader'
 import BurgerMenu from './BurgerMenu'
@@ -13,7 +14,9 @@ const Header = ({ title }) => {
   const { resetState } = useContext(AppContext)
 
   return (
-    <nav className="navbar container is-align-items-center nabvar__menu is-flex is-justify-content-space-between">
+    <nav
+      className={`${headerCSS.nabvar__menu} navbar container is-align-items-center is-flex is-justify-content-space-between`}
+    >
       <div className="navbar-brand">
         <BurgerMenu
           isActive={isActive}
