@@ -26,6 +26,10 @@
 .header__title:hover{
     color: var(--Red) !important;
 }
+.menu__it{
+    background: none !important;
+    color: var(--Dark) !important;
+}
 @media screen and (max-width: 720px){
     .header__title{
         font-size: 1.5rem !important;

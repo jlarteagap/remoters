@@ -129,10 +129,6 @@ a{
     height: 100vh;
 }
 
-.menu__it{
-    background: none !important;
-    color: var(--Dark) !important;
-}
 .effect__hover::after{
     position: absolute;
     bottom: 0;

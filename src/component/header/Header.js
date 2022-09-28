@@ -15,7 +15,7 @@ const Header = ({ title }) => {
 
   return (
     <nav
-      className={`${headerCSS.nabvar__menu} navbar container is-align-items-center is-flex is-justify-content-space-between`}
+      className={`navbar container is-align-items-center is-flex is-justify-content-space-between`}
     >
       <div className="navbar-brand">
         <BurgerMenu
@@ -24,8 +24,10 @@ const Header = ({ title }) => {
             setisActive(!isActive)
           }}
         />
-        <Link className="navbar-item" to="/" onClick={resetState}>
-          <h1 className="title header__title">{title}</h1>
+        <Link className="navbar-item" href="/" onClick={resetState}>
+          <a className="is-align-items-center is-flex is-justify-content-space-between">
+            <h1 className={`${headerCSS.header__title} title`}>{title}</h1>
+          </a>
         </Link>
       </div>
       <MenuHeader
