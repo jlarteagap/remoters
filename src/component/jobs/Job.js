@@ -34,7 +34,12 @@ const Job = ({ job }) => {
     slug
   } = job
   // Check this for update active o desactive job post
-  IsActivePostJob(id, deletedAt)
+  const todayDate = new Date()
+
+  if (deletedAt <= todayDate) {
+    IsActivePostJob(id)
+    console.log(IsActivePostJob)
+  }
 
   let iconRemote
   if (remote) {
