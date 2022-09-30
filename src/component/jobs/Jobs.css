@@ -29,15 +29,7 @@
 .card__body--title a:hover{
     color: var(--Blue) !important;
 }
-.job__city{
-    display: block;
-    font-size: .8rem;
-    margin-top: .5rem;
-    text-transform: lowercase;
-}
-    .job__city::first-letter, .job__city::first-line{
-        text-transform: capitalize;
-    }
+
 .job__info{
     align-items: flex-end;
     box-sizing: border-box;

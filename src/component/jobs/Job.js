@@ -26,6 +26,7 @@ const Job = ({ job }) => {
     deletedAt,
     slug
   } = job
+
   // Check this for update active o desactive job post
   const todayDate = new Date()
 
@@ -51,11 +52,11 @@ const Job = ({ job }) => {
         <h2 className="card__body--title m-0">
           <Link className="is-flex is-align-items-center" to={`/post/${slug}`}>
             {content.title}
-            <FaExternalLinkAlt size={12} className="ml-4" />
+            <FaExternalLinkAlt size={16} className="ml-4" />
           </Link>
         </h2>
         <div className={`card__body--sub is-flex is-align-items-center`}>
-          <FaRegBuilding className="mr-3" />
+          <FaRegBuilding size={16} className="mr-3" />
           {company.name}
         </div>
         <div
@@ -63,7 +64,7 @@ const Job = ({ job }) => {
             content.contract ? ' ' : 'is-hidden'
           }`}
         >
-          <FaNetworkWired className="mr-3" />{' '}
+          <FaNetworkWired size={16} className="mr-3" />{' '}
           {content.contract.replace('_', ' ')}
         </div>
         <div
@@ -71,15 +72,17 @@ const Job = ({ job }) => {
             content.salary ? '' : 'is-hidden'
           }`}
         >
-          <FaMoneyBillAlt className="mr-3" /> {content.currency}{' '}
+          <FaMoneyBillAlt size={16} className="mr-3" /> {content.currency}{' '}
           {content.salary}
         </div>
-        <div
-          className={`job__city is-size-7 ${location.name ? '' : 'is-hidden'}`}
-        >
-          <FaMapMarkerAlt />{' '}
-          {location.city.name.toUpperCase().replace('_', ' ')}
-          {' - '} {location.name}
+        <div className={`is-flex is-align-items-center is-size-7`}>
+          <FaMapMarkerAlt size={16} className="mr-3" /> {location.country.name}
+          {location.city.name && (
+            <span className="is-capitalized">
+              {` - ${location.city.name.replace('_', ' ')} `}
+            </span>
+          )}
+          {}
         </div>
       </div>
       <div className="card__body">

@@ -29,6 +29,7 @@ const AddJobs = () => {
         validateOnChange={false}
         validateOnBlur={false}
         onSubmit={values => {
+          console.log(values)
           newJob({
             variables: {
               input: {
