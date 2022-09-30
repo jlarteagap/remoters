@@ -17,16 +17,9 @@ const Job = ({ job }) => {
   const { IsActivePostJob } = useUpdateActive()
   const {
     id,
-    position,
     link,
-    city,
-    country,
     category,
     remote,
-    type,
-    salary,
-    money,
-    companySimple,
     company,
     location,
     content,
@@ -38,7 +31,6 @@ const Job = ({ job }) => {
 
   if (deletedAt <= todayDate) {
     IsActivePostJob(id)
-    console.log(IsActivePostJob)
   }
 
   let iconRemote
@@ -53,62 +45,41 @@ const Job = ({ job }) => {
     )
   }
 
-  const titlePosition = content !== null && content.title
-  const companyJob = company !== null && company.name
-  const countryNew = location !== null && location.country.name
-  const currencyContent = content !== null && content.currency
-  const salaryContent = content !== null && content.salary
-  const contractContent = content !== null && content.contract
-
   return (
     <div className="card card--job p-5 mb-5">
       <div className="card__body">
         <h2 className="card__body--title m-0">
-          {content ? (
-            <Link
-              className="is-flex is-align-items-center"
-              to={`/post/${slug}`}
-            >
-              {position !== null ? position : titlePosition}{' '}
-              <FaExternalLinkAlt size={12} className="ml-4" />
-            </Link>
-          ) : (
-            <a href={link}>{position !== null ? position : titlePosition}</a>
-          )}
+          <Link className="is-flex is-align-items-center" to={`/post/${slug}`}>
+            {content.title}
+            <FaExternalLinkAlt size={12} className="ml-4" />
+          </Link>
         </h2>
         <div className={`card__body--sub is-flex is-align-items-center`}>
           <FaRegBuilding className="mr-3" />
-          {companySimple !== null ? companySimple : companyJob}
+          {company.name}
         </div>
         <div
           className={`is-flex is-align-items-center is-size-7 ${
-            type || contractContent ? ' ' : 'is-hidden'
+            content.contract ? ' ' : 'is-hidden'
           }`}
         >
           <FaNetworkWired className="mr-3" />{' '}
-          {type !== null
-            ? type.replace('_', ' ')
-            : contractContent.replace('_', ' ')}
+          {content.contract.replace('_', ' ')}
         </div>
         <div
           className={`is-flex is-align-items-center is-size-7 ${
-            salary || salaryContent ? '' : 'is-hidden'
+            content.salary ? '' : 'is-hidden'
           }`}
         >
-          <FaMoneyBillAlt className="mr-3" />{' '}
-          {money !== null ? money : currencyContent}{' '}
-          {salary !== null ? salary : salaryContent}
+          <FaMoneyBillAlt className="mr-3" /> {content.currency}{' '}
+          {content.salary}
         </div>
         <div
-          className={`job__city is-size-7 ${
-            city || countryNew ? '' : 'is-hidden'
-          }`}
+          className={`job__city is-size-7 ${location.name ? '' : 'is-hidden'}`}
         >
           <FaMapMarkerAlt />{' '}
-          {city !== null
-            ? city.replace('_', ' ')
-            : location.city.name.toUpperCase().replace('_', ' ')}
-          {' - '} {country !== null ? country : countryNew}
+          {location.city.name.toUpperCase().replace('_', ' ')}
+          {' - '} {location.name}
         </div>
       </div>
       <div className="card__body">
