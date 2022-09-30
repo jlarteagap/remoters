@@ -12,7 +12,7 @@ const ButtonsHeader = () => {
         <span className="txt">PUBLICAR</span>
       </Link>
       {user ? (
-        <div className="button is-light ml-2 login" onClick={logout} as={Link}>
+        <div className="button is-light ml-2 login" onClick={logout}>
           <FaSignOutAlt className="mr-2" />
           <span className="txt">Salir</span>
         </div>
