@@ -79,7 +79,7 @@ const Job = ({ job }) => {
           <FaMapMarkerAlt size={16} className="mr-3" /> {location.country.name}
           {location.city.name && (
             <span className="is-capitalized">
-              {` - ${location.city.name.replace('_', ' ')} `}
+              {`${' - '} ${location.city.name.replace('_', ' ')} `}
             </span>
           )}
           {}
