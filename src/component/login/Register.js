@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react'
+
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 
-import { useHistory, Link } from 'react-router-dom'
 import { CREATE_USER_MUTATION } from '../../Graphql/Mutation'
 import { useMutation } from '@apollo/client'
 import Error from '../../utils/Error'
@@ -12,7 +14,7 @@ import { InputFields } from '../../utils/form/Fields'
 
 const Register = () => {
   const [errors, setErrors] = useState({ message: '' })
-  const history = useHistory()
+  const router = useRouter()
   const context = useContext(AuthContext)
 
   const [register] = useMutation(CREATE_USER_MUTATION)
@@ -64,7 +66,7 @@ const Register = () => {
                 .then(async ({ data }) => {
                   console.log(data)
                   context.login(data.register)
-                  history.push('/dashboard/agregar')
+                  router.push('/dashboard/agregar')
                 })
                 .catch(err => {
                   setErrors({
@@ -103,7 +105,7 @@ const Register = () => {
             )}
           </Formik>
           <small className="center pt-5">
-            Ya estas registrado? <Link to="/login">Ingresa por aquí</Link>
+            Ya estas registrado? <Link href="/login"><a>Ingresa por aquí</a></Link>
           </small>
         </div>
       </div>

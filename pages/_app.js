@@ -10,13 +10,16 @@ import 'bulma/css/bulma.min.css'
 import '../public/css/stl.css'
 import '../public/css/fonts.css'
 import AppContext from '../src/context/AppContext'
+import Layout from '../src/component/layout/Layout'
 
 function MyApp({ Component, pageProps }) {
   const pagination = usePagination()
 
   return <ApolloProvider client={client}>
     <AppContext.Provider value={pagination}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </AppContext.Provider>
   </ApolloProvider>
 }
