@@ -6,20 +6,21 @@ import { useRouter } from 'next/router'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 
-
 import { useMutation } from '@apollo/client'
-import { LOGIN_USER } from '../../../service/mutation'
+// import { LOGIN_USER } from '../../../service/mutation'
 import Error from '../../utils/Error'
 import { AuthContext } from '../../context/auth'
 
 import { InputFields } from '../../utils/form/Fields'
+
+import { LoginDocument } from '../../../service/graphql/graphql'
 
 const Login = () => {
   const [errors, setErrors] = useState({ message: '' })
   const router = useRouter()
   const context = useContext(AuthContext)
 
-  const [login] = useMutation(LOGIN_USER)
+  const [login] = useMutation(LoginDocument)
 
   const validate = Yup.object({
     email: Yup.string()
@@ -85,7 +86,10 @@ const Login = () => {
             )}
           </Formik>
           <small>
-            No estas registrado? <Link href="/registro"><a>Registrarse aquí</a></Link>
+            No estas registrado?{' '}
+            <Link href="/registro">
+              <a>Registrarse aquí</a>
+            </Link>
           </small>
         </div>
       </div>
