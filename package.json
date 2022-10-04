@@ -27,7 +27,8 @@
     "start": "next start",
     "build": "next build",
     "dev": "next dev",
-    "test": "next test"
+    "test": "next test",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +52,8 @@
     "node": "14.x"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.13.2",
+    "@graphql-codegen/client-preset": "1.0.2",
     "@types/node": "^18.7.23",
     "@types/react": "^18.0.21",
     "@typescript-eslint/eslint-plugin": "^5.38.1",

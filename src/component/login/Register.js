@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 
-import { CREATE_USER_MUTATION } from '../../Graphql/Mutation'
+import { CREATE_USER_MUTATION } from '../../../service/mutation'
 import { useMutation } from '@apollo/client'
 import Error from '../../utils/Error'
 import { AuthContext } from '../../context/auth'
