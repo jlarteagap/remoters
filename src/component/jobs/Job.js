@@ -28,9 +28,9 @@ const Job = ({ job }) => {
   } = job
 
   // Check this for update active o desactive job post
-  const todayDate = new Date()
+  const todayDate = new Date().toISOString()
 
-  if (deletedAt <= todayDate) {
+  if (todayDate >= deletedAt) {
     IsActivePostJob(id)
   }
 
