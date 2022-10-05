@@ -82,6 +82,7 @@
     .reclutadores{background-position: -250px 0;}
     .project_managers{background-position: -275px 0;}
     .web_developers{background-position: -300px 0;}
+    .app_developer {background-position: -125px 0;}
     
     .job__icon i{
         background-size: 25px 25px;
@@ -96,6 +97,9 @@
     }
 .icon--remote{
     width: 100% !important;
+}
+.icon__category{
+    text-transform: capitalize;
 }
 .job__button-position{
     display: flex;

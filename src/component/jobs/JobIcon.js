@@ -3,6 +3,7 @@ import icons from '../../assets/img/icons.png'
 import PropTypes from 'prop-types'
 
 const JobIcon = ({ category }) => {
+  console.log(category)
   return (
     <div className="job__icons">
       <span

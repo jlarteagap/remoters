@@ -89,9 +89,11 @@ const Job = ({ job }) => {
       </div>
       <div className="card__body">
         <div className="job__info">
-          <div className="icons-info">
+          <div className="icons-info is-align-items-center">
             {iconRemote}
-            <JobIcon category={category} />
+            <button className="button is-small is-primary is-light icon__category ml-1">
+              <JobIcon category={category} /> {category.replace('_', ' ')}
+            </button>
           </div>
           <span className="help">
             <ShowDateInJobs date={transformCreateAtDate} />

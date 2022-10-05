@@ -46,6 +46,9 @@ const CategoryMenu = ({ reset, data }) => {
     case 'web_developers':
       companyName = 'Web Developers'
       break
+    case 'app_developer':
+      companyName = 'App Developer'
+      break
     default:
       console.log('error')
   }
