@@ -194,3 +194,12 @@ export const GET_CATEGORIES = gql`
     }
   }
 `
+export const GET_CATEGORY = gql`
+  query getCategory($slug: String) {
+    getCategory(slug: $slug) {
+      name
+      value
+      slug
+    }
+  }
+`

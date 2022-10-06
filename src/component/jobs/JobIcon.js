@@ -1,9 +1,16 @@
 import React from 'react'
 import icons from '../../assets/img/icons.png'
 import PropTypes from 'prop-types'
+// import { GET_CATEGORY } from '../../Graphql/Query'
+// import { useQuery } from '@apollo/client'
 
 const JobIcon = ({ category }) => {
-  console.log(category)
+  // const { data } = useQuery(GET_CATEGORY, {
+  //   variables: {
+  //     slug: category
+  //   }
+  // })
+
   return (
     <div className="job__icons">
       <span
