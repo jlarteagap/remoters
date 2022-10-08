@@ -9,7 +9,6 @@ const useUpdateActive = () => {
   const [updateJob] = useMutation(UPDATE_JOB)
 
   const IsActivePostJob = id => {
-    console.log('paso hasta aca')
     updateJob({
       variables: {
         input: {
