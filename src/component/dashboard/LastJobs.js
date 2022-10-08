@@ -43,6 +43,10 @@ export const LastJobs = () => {
                   <strong>Empresa: </strong>
                   {job.company.name || job.companySimple}
                 </p>
+                <p className="pt-0 help">
+                  <strong>Publicado: </strong>
+                  {job.deletedAt}
+                </p>
               </div>
               <div className="is-flex">
                 <div className="mr-3">
