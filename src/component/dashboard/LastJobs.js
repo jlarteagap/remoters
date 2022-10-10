@@ -5,7 +5,9 @@ import Loading from '../../utils/Loading'
 import DeleteButton from '../../utils/DeleteButton'
 import EditButton from '../../utils/Editbutton'
 import { AuthContext } from '../../context/auth'
-
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import es from 'dayjs/locale/es'
 export const LastJobs = () => {
   const { user } = useContext(AuthContext)
   const { loading, error, data } = useQuery(GET_JOBS, {
@@ -17,12 +19,15 @@ export const LastJobs = () => {
 
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
-
+  dayjs.locale(es)
+  dayjs.extend(relativeTime)
   return (
     <div className="dashboard__jobs">
       <h2 className="title is-4">Últimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
         {data.getJobs.map(job => {
+          const createAtDate = new Date(job.createdAt * 1)
+
           return (
             <div
               className="card p-5 mb-2 is-flex is-justify-content-space-between"
@@ -45,7 +50,11 @@ export const LastJobs = () => {
                 </p>
                 <p className="pt-0 help">
                   <strong>Publicado: </strong>
-                  {job.deletedAt}
+                  {dayjs(createAtDate).toNow(true)}
+                </p>
+                <p className="help">
+                  <strong>Hasta:</strong>
+                  {dayjs(job.deletedAt).toNow(true)}
                 </p>
               </div>
               <div className="is-flex">
