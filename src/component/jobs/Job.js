@@ -58,7 +58,7 @@ const Job = ({ job }) => {
           </Link>
         </h2>
 
-        <div className={`card__body--sub is-flex is-align-items-center`}>
+        <div className={'card__body--sub is-flex is-align-items-center'}>
           <FaRegBuilding size={16} className="mr-3" />
           {company.name}
         </div>
@@ -78,7 +78,7 @@ const Job = ({ job }) => {
           <FaMoneyBillAlt size={16} className="mr-3" /> {content.currency}{' '}
           {content.salary}
         </div>
-        <div className={`is-flex is-align-items-center is-size-7`}>
+        <div className={'is-flex is-align-items-center is-size-7'}>
           <FaMapMarkerAlt size={16} className="mr-3" /> {location.country.name}
           {location.city.name && (
             <span className="is-capitalized">
@@ -102,11 +102,13 @@ const Job = ({ job }) => {
             <a className="button job__button-shareButton" href="#link">
               Compartir
             </a>
-            {content ? (
+            {content
+              ? (
               <Link className="button is-success" to={`/post/${slug}`}>
                 Ver detalles
               </Link>
-            ) : (
+                )
+              : (
               <a
                 className="button is-success"
                 href={link}
@@ -115,7 +117,7 @@ const Job = ({ job }) => {
               >
                 Aplicar
               </a>
-            )}
+                )}
           </div>
         </div>
       </div>

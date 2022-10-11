@@ -6,26 +6,30 @@ const Paginator = ({ actual, total, limit, prevPage, nextPage }) => {
   const [pages] = useState(Math.ceil(total / limit))
 
   const btnPrev =
-    actual !== 1 ? (
+    actual !== 1
+      ? (
       <button className="button is-danger is-outlined" onClick={prevPage}>
         <FaAngleLeft /> Anterior
       </button>
-    ) : (
+        )
+      : (
       <button className="button is-outlined" disabled onClick={prevPage}>
         <FaAngleLeft /> Anterior
       </button>
-    )
+        )
 
   const btnNext =
-    actual !== pages ? (
+    actual !== pages
+      ? (
       <button className="button is-danger is-outlined" onClick={nextPage}>
         Siguiente <FaAngleRight />
       </button>
-    ) : (
+        )
+      : (
       <button className="button is-outlined" disabled onClick={nextPage}>
         Siguiente <FaAngleRight />
       </button>
-    )
+        )
 
   return (
     <div className={`paginator ${total <= limit ? 'is-hidden' : ''} `}>

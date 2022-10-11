@@ -13,13 +13,15 @@ const MenuHeader = ({ onClick, isActive }) => {
         <Link to="/" className="navbar-item effect__hover menu__it">
           Inicio
         </Link>
-        {user ? (
+        {user
+          ? (
           <Link to="/dashboard" className="navbar-item effect__hover menu__it">
             Panel
           </Link>
-        ) : (
-          ''
-        )}
+            )
+          : (
+              ''
+            )}
       </div>
     </div>
   )

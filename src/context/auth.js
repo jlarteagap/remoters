@@ -20,7 +20,7 @@ const AuthContext = createContext({
   logout: () => {}
 })
 
-function authReducer(state, action) {
+function authReducer (state, action) {
   switch (action.type) {
     case 'LOGIN':
       return {
@@ -38,7 +38,7 @@ function authReducer(state, action) {
   }
 }
 
-function AuthProvider(props) {
+function AuthProvider (props) {
   const [state, dispatch] = useReducer(authReducer, initialState)
 
   const login = userData => {
