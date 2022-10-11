@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import 'bulma/css/bulma.min.css'
 import './assets/css/stl.css'
-import dotenv from 'dotenv/config'
 
 import { ApolloProvider } from '@apollo/client'
 

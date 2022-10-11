@@ -12,6 +12,7 @@ import {
 import PropTypes from 'prop-types'
 import useUpdateActive from './hooks/useUpdateActive'
 import { Link } from 'react-router-dom'
+import ShowDateInJobs from '../../utils/ShowDate'
 
 const Job = ({ job }) => {
   const { IsActivePostJob } = useUpdateActive()
@@ -24,12 +25,13 @@ const Job = ({ job }) => {
     location,
     content,
     deletedAt,
+    createdAt,
     slug
   } = job
 
+  const transformCreateAtDate = new Date(createdAt * 1)
   // Check this for update active o desactive job post
   const todayDate = new Date().toISOString()
-
   if (todayDate >= deletedAt) {
     IsActivePostJob(id)
   }
@@ -55,6 +57,7 @@ const Job = ({ job }) => {
             <FaExternalLinkAlt size={16} className="ml-4" />
           </Link>
         </h2>
+
         <div className={`card__body--sub is-flex is-align-items-center`}>
           <FaRegBuilding size={16} className="mr-3" />
           {company.name}
@@ -82,7 +85,6 @@ const Job = ({ job }) => {
               {`${' - '} ${location.city.name.replace('_', ' ')} `}
             </span>
           )}
-          {}
         </div>
       </div>
       <div className="card__body">
@@ -91,6 +93,9 @@ const Job = ({ job }) => {
             {iconRemote}
             <JobIcon category={category} />
           </div>
+          <span className="help">
+            <ShowDateInJobs date={transformCreateAtDate} />
+          </span>
           <div className="job__button-position">
             <a className="button job__button-shareButton" href="#link">
               Compartir

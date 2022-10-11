@@ -5,9 +5,7 @@ import Loading from '../../utils/Loading'
 import DeleteButton from '../../utils/DeleteButton'
 import EditButton from '../../utils/Editbutton'
 import { AuthContext } from '../../context/auth'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import es from 'dayjs/locale/es'
+import ShowDateInJobs from '../../utils/ShowDate'
 export const LastJobs = () => {
   const { user } = useContext(AuthContext)
   const { loading, error, data } = useQuery(GET_JOBS, {
@@ -19,14 +17,13 @@ export const LastJobs = () => {
 
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
-  dayjs.locale(es)
-  dayjs.extend(relativeTime)
+
   return (
     <div className="dashboard__jobs">
       <h2 className="title is-4">Últimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
         {data.getJobs.map(job => {
-          const createAtDate = new Date(job.createdAt * 1)
+          const transformCreateAtDate = new Date(job.createdAt * 1)
 
           return (
             <div
@@ -41,20 +38,14 @@ export const LastJobs = () => {
                 ) : (
                   <div className="help is-primary is-danger">Inactivo</div>
                 )}
-                <h3 className="title is-4 m-0 is-small">
-                  {job.position || job.content.title}
-                </h3>
+                <h3 className="title is-4 m-0 is-small">{job.content.title}</h3>
                 <p className="pt-0">
                   <strong>Empresa: </strong>
-                  {job.company.name || job.companySimple}
+                  {job.company.name}
                 </p>
                 <p className="pt-0 help">
                   <strong>Publicado: </strong>
-                  {dayjs(createAtDate).toNow(true)}
-                </p>
-                <p className="help">
-                  <strong>Hasta:</strong>
-                  {dayjs(job.deletedAt).toNow(true)}
+                  <ShowDateInJobs date={transformCreateAtDate} />
                 </p>
               </div>
               <div className="is-flex">
