@@ -7,7 +7,8 @@ import {
   FaMoneyBillAlt,
   FaNetworkWired,
   FaRegBuilding,
-  FaExternalLinkAlt
+  FaExternalLinkAlt,
+  FaClock
 } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 import useUpdateActive from './hooks/useUpdateActive'
@@ -57,7 +58,10 @@ const Job = ({ job }) => {
             <FaExternalLinkAlt size={16} className="ml-4" />
           </Link>
         </h2>
-
+        <div className="help is-flex is-align-items-center">
+            <FaClock size={16} className="mr-3" />
+            <ShowDateInJobs date={transformCreateAtDate} />
+          </div>
         <div className={'card__body--sub is-flex is-align-items-center'}>
           <FaRegBuilding size={16} className="mr-3" />
           {company.name}
@@ -95,9 +99,7 @@ const Job = ({ job }) => {
               <JobIcon category={category} /> {category.replace('_', ' ')}
             </button>
           </div>
-          <span className="help">
-            <ShowDateInJobs date={transformCreateAtDate} />
-          </span>
+
           <div className="job__button-position">
             <a className="button job__button-shareButton" href="#link">
               Compartir

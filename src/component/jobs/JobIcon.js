@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import icons from '../../assets/img/icons.png'
 import PropTypes from 'prop-types'
 
 const JobIcon = ({ category }) => {
-  const [getIcon] = useState(category)
-
   return (
     <div className="job__icons">
       <span
@@ -13,7 +11,7 @@ const JobIcon = ({ category }) => {
       >
         <i></i>
       </span>
-      {getIcon}
+
     </div>
   )
 }
