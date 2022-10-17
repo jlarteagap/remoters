@@ -11,7 +11,6 @@ const JobIcon = ({ category }) => {
       >
         <i></i>
       </span>
-
     </div>
   )
 }

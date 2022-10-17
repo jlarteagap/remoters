@@ -26,8 +26,7 @@ const JobsList = () => {
   return (
     <Fragment>
       <div className="content">
-        {data.getJobs.length < 1
-          ? (
+        {data.getJobs.length < 1 ? (
           <div className="is-flex is-justify-content-center is-align-items-center">
             <div>
               <h3>Oops! no hemos encontrado ninguna publicacion</h3>
@@ -36,10 +35,9 @@ const JobsList = () => {
               </center>
             </div>
           </div>
-            )
-          : (
-              ''
-            )}
+        ) : (
+          ''
+        )}
         {data.getJobs.map((job, index) => {
           return <Job key={index} job={job} />
         })}

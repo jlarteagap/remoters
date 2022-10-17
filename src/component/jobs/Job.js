@@ -13,6 +13,7 @@ import PropTypes from 'prop-types'
 import useUpdateActive from './hooks/useUpdateActive'
 import { Link } from 'react-router-dom'
 import ShowDateInJobs from '../../utils/ShowDate'
+import ShowCategoryName from '../../utils/ShowCategoryName'
 
 const Job = ({ job }) => {
   const { IsActivePostJob } = useUpdateActive()
@@ -57,9 +58,9 @@ const Job = ({ job }) => {
           </Link>
         </h2>
         <div className="help is-flex is-align-items-center">
-            <FaClock size={16} className="mr-3" />
-            <ShowDateInJobs date={transformCreateAtDate} />
-          </div>
+          <FaClock size={16} className="mr-3" />
+          <ShowDateInJobs date={transformCreateAtDate} />
+        </div>
         <div className={'card__body--sub is-flex is-align-items-center'}>
           <FaRegBuilding size={16} className="mr-3" />
           {company.name}
@@ -94,7 +95,8 @@ const Job = ({ job }) => {
           <div className="icons-info is-align-items-center">
             {iconRemote}
             <button className="button is-small is-primary is-light icon__category ml-1">
-              <JobIcon category={category} /> {category.replace('_', ' ')}
+              <JobIcon category={category} />{' '}
+              <ShowCategoryName category={category} />
             </button>
           </div>
 
@@ -102,13 +104,11 @@ const Job = ({ job }) => {
             <a className="button job__button-shareButton" href="#link">
               Compartir
             </a>
-            {content
-              ? (
+            {content ? (
               <Link className="button is-success" to={`/post/${slug}`}>
                 Ver detalles
               </Link>
-                )
-              : (
+            ) : (
               <a
                 className="button is-success"
                 href={link}
@@ -117,7 +117,7 @@ const Job = ({ job }) => {
               >
                 Aplicar
               </a>
-                )}
+            )}
           </div>
         </div>
       </div>

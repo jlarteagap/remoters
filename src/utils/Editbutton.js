@@ -7,11 +7,11 @@ const EditButton = ({ job, companyID }) => {
   const urls = companyID ? `empresas/edit/${companyID}` : `job/edit/${job}`
   const handleButton = e => {}
   return (
-      <Link to={`/dashboard/${urls}`}>
-        <div className="button is-warning" onClick={e => handleButton()}>
-            <FaPencilAlt />
-        </div>
-      </Link>
+    <Link to={`/dashboard/${urls}`}>
+      <div className="button is-warning" onClick={e => handleButton()}>
+        <FaPencilAlt />
+      </div>
+    </Link>
   )
 }
 

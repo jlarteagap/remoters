@@ -31,15 +31,13 @@ export const LastJobs = () => {
               key={job.id}
             >
               <div>
-                {job.active
-                  ? (
+                {job.active ? (
                   <div className="help is-primary is-light has-text-weight-bold">
                     Activo
                   </div>
-                    )
-                  : (
+                ) : (
                   <div className="help is-primary is-danger">Inactivo</div>
-                    )}
+                )}
                 <h3 className="title is-4 m-0 is-small">{job.content.title}</h3>
                 <p className="pt-0">
                   <strong>Empresa: </strong>

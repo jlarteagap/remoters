@@ -11,19 +11,17 @@ const ButtonsHeader = () => {
         <FaPlus className="mr-2" />
         <span className="txt">PUBLICAR</span>
       </Link>
-      {user
-        ? (
+      {user ? (
         <div className="button is-light ml-2 login" onClick={logout}>
           <FaSignOutAlt className="mr-2" />
           <span className="txt">Salir</span>
         </div>
-          )
-        : (
+      ) : (
         <Link className="button is-light ml-2 login" to="/login">
           <FaDoorOpen className="mr-2" />
           <span className="txt">Entrar</span>
         </Link>
-          )}
+      )}
     </div>
   )
 }
