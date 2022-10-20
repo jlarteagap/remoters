@@ -11,17 +11,20 @@ import '../public/css/stl.css'
 import '../public/css/fonts.css'
 import AppContext from '../src/context/AppContext'
 import Layout from '../src/component/layout/Layout'
+import { AuthProvider } from '../src/context/auth'
 
 function MyApp({ Component, pageProps }) {
   const pagination = usePagination()
 
   return (
     <ApolloProvider client={client}>
-      <AppContext.Provider value={pagination}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </AppContext.Provider>
+      <AuthProvider>
+        <AppContext.Provider value={pagination}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </AppContext.Provider>
+      </AuthProvider>
     </ApolloProvider>
   )
 }
