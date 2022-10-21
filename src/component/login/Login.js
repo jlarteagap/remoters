@@ -4,30 +4,18 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { Form, Formik } from 'formik'
-import * as Yup from 'yup'
-
 import { useMutation } from '@apollo/client'
-// import { LOGIN_USER } from '../../../service/mutation'
 import Error from '../../utils/Error'
 import { AuthContext } from '../../context/auth'
-
 import { InputFields } from '../../utils/form/Fields'
-
 import { LoginDocument } from '../../../service/graphql/graphql'
-
+import { validate } from './services/validate'
 const Login = () => {
   const [errors, setErrors] = useState({ message: '' })
   const router = useRouter()
   const context = useContext(AuthContext)
 
   const [login] = useMutation(LoginDocument)
-
-  const validate = Yup.object({
-    email: Yup.string()
-      .email('Correo no válido')
-      .required('Necesitamos correo para ingresar'),
-    password: Yup.string().required('Ingrese una contraseña')
-  })
 
   return (
     <div className="column login__box is-flex is-justify-content-center is-align-items-center">

@@ -3,7 +3,6 @@ import React, { useContext, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Form, Formik } from 'formik'
-import * as Yup from 'yup'
 
 import { CREATE_USER_MUTATION } from '../../../service/mutation'
 import { useMutation } from '@apollo/client'
@@ -11,6 +10,7 @@ import Error from '../../utils/Error'
 import { AuthContext } from '../../context/auth'
 
 import { InputFields } from '../../utils/form/Fields'
+import { validate } from './services/validate'
 
 const Register = () => {
   const [errors, setErrors] = useState({ message: '' })
@@ -18,22 +18,6 @@ const Register = () => {
   const context = useContext(AuthContext)
 
   const [register] = useMutation(CREATE_USER_MUTATION)
-
-  const validate = Yup.object({
-    email: Yup.string()
-      .email('Correo no válido')
-      .required('Necesitamos correo para ingresar'),
-    password: Yup.string()
-      .required('Ingrese una contraseña')
-      .min(
-        6,
-        'Su contraseña de es demasiada corta, ingrese mínimo 6 carácteres'
-      ),
-    confirmPassword: Yup.string().oneOf(
-      [Yup.ref('password'), null],
-      'Las contraseñas no coinciden'
-    )
-  })
 
   return (
     <div className="column login__box is-flex is-justify-content-center is-align-items-center">
@@ -105,7 +89,10 @@ const Register = () => {
             )}
           </Formik>
           <small className="center pt-5">
-            Ya estas registrado? <Link href="/login"><a>Ingresa por aquí</a></Link>
+            Ya estas registrado?{' '}
+            <Link href="/login">
+              <a>Ingresa por aquí</a>
+            </Link>
           </small>
         </div>
       </div>
