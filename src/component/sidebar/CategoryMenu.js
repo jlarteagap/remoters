@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import PropTypes from 'prop-types'
 import JobIcon from '../jobs/JobIcon'
 
@@ -52,12 +52,14 @@ const CategoryMenu = ({ reset, data }) => {
 
   return (
     <Link
-      to={`/${data.category}`}
+      href={`/${data.category}`}
       className="categories-link mb-1"
       onClick={reset}
     >
-      <JobIcon category={data.category} />
-      {companyName}
+      <a>
+        <JobIcon category={data.category} />
+        {companyName}
+      </a>
     </Link>
   )
 }

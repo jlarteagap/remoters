@@ -15,8 +15,6 @@ const errorLink = onError(({ graphqlErrors, networkError }) => {
   }
 })
 
-console.log(process.env.NEXT_PUBLIC_SERVER)
-
 const httpLink = createHttpLink({
   uri: process.env.NEXT_PUBLIC_SERVER,
   fetchOptions: {

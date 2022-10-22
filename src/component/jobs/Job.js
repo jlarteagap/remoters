@@ -9,9 +9,10 @@ import {
   FaRegBuilding,
   FaExternalLinkAlt
 } from 'react-icons/fa'
+import jobCSS from '../../../public/css/Job.module.css'
 import PropTypes from 'prop-types'
 import useUpdateActive from './hooks/useUpdateActive'
-import { Link } from 'react-router-dom'
+// import Link from 'next/link'
 
 const Job = ({ job }) => {
   const { IsActivePostJob } = useUpdateActive()
@@ -39,7 +40,7 @@ const Job = ({ job }) => {
   let iconRemote
   if (remote) {
     iconRemote = (
-      <div className="icon icon--remote">
+      <div className={`icon ${jobCSS.iconRemote}`}>
         <JobIcon category="REMOTE" />
         <span className="button is-small is-warning is-light">
           Trabajo Remoto
@@ -56,22 +57,21 @@ const Job = ({ job }) => {
   const contractContent = content !== null && content.contract
 
   return (
-    <div className="card card--job p-5 mb-5">
-      <div className="card__body">
-        <h2 className="card__body--title m-0">
+    <div className={`card ${jobCSS.cardJob} p-5 mb-5`}>
+      <div className={`${jobCSS.card__body}`}>
+        <h2 className={`${jobCSS.card__bodyTitle} m-0`}>
           {content ? (
-            <Link
-              className="is-flex is-align-items-center"
-              to={`/post/${slug}`}
-            >
-              {position !== null ? position : titlePosition}{' '}
-              <FaExternalLinkAlt size={12} className="ml-4" />
-            </Link>
+            <a className="is-flex is-align-items-center" href={`/post/${slug}`}>
+              <a>
+                {position !== null ? position : titlePosition}{' '}
+                <FaExternalLinkAlt size={12} className="ml-4" />
+              </a>
+            </a>
           ) : (
             <a href={link}>{position !== null ? position : titlePosition}</a>
           )}
         </h2>
-        <div className={`card__body--sub is-flex is-align-items-center`}>
+        <div className={`is-flex is-align-items-center`}>
           <FaRegBuilding className="mr-3" />
           {companySimple !== null ? companySimple : companyJob}
         </div>
@@ -95,7 +95,7 @@ const Job = ({ job }) => {
           {salary !== null ? salary : salaryContent}
         </div>
         <div
-          className={`job__city is-size-7 ${
+          className={`${jobCSS.job__city} is-size-7 ${
             city || countryNew ? '' : 'is-hidden'
           }`}
         >
@@ -106,20 +106,23 @@ const Job = ({ job }) => {
           {' - '} {country !== null ? country : countryNew}
         </div>
       </div>
-      <div className="card__body">
-        <div className="job__info">
-          <div className="icons-info">
+      <div className={`${jobCSS.card__body}`}>
+        <div className={`${jobCSS.job__info}`}>
+          <div className={`${jobCSS.iconsInfo}`}>
             {iconRemote}
-            <JobIcon category={category} />
+            <JobIcon category={`${category}`} />
           </div>
-          <div className="job__button-position">
-            <a className="button job__button-shareButton" href="#link">
+          <div className={`${jobCSS.job__buttonPosition}`}>
+            <a
+              className={`button ${jobCSS.job__buttonShareButton}`}
+              href="#link"
+            >
               Compartir
             </a>
             {content ? (
-              <Link className="button is-success" to={`/post/${slug}`}>
+              <a className="button is-success" to={`/post/${slug}`}>
                 Aplicar
-              </Link>
+              </a>
             ) : (
               <a
                 className="button is-success"

@@ -1,23 +1,23 @@
 import React from 'react'
-import './loading.css'
+import loadingCSS from '../../public/css/Loading.module.css'
 const Loading = () => (
-  <div className="loading">
-    <div className="loading-post">
-      <div className="loading-avatar"></div>
-      <div className="loading-line"></div>
-      <div className="loading-line"></div>
+  <div className={`${loadingCSS.loading}`}>
+    <div className={`${loadingCSS.loadingpost}`}>
+      <div className={`${loadingCSS.loadingavatar}`}></div>
+      <div className={`${loadingCSS.loadingline}`}></div>
+      <div className={`${loadingCSS.loadingline}`}></div>
     </div>
 
-    <div className="loading-post">
-      <div className="loading-avatar"></div>
-      <div className="loading-line"></div>
-      <div className="loading-line"></div>
+    <div className={`${loadingCSS.loadingpost}`}>
+      <div className={`${loadingCSS.loadingavatar}`}></div>
+      <div className={`${loadingCSS.loadingline}`}></div>
+      <div className={`${loadingCSS.loadingline}`}></div>
     </div>
 
-    <div className="loading-post">
-      <div className="loading-avatar"></div>
-      <div className="loading-line"></div>
-      <div className="loading-line"></div>
+    <div className={`${loadingCSS.loadingpost}`}>
+      <div className={`${loadingCSS.loadingavatar}`}></div>
+      <div className={`${loadingCSS.loadingline}`}></div>
+      <div className={`${loadingCSS.loadingline}`}></div>
     </div>
   </div>
 )
