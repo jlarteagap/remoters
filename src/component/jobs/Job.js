@@ -12,7 +12,7 @@ import {
 import jobCSS from '../../../public/css/Job.module.css'
 import PropTypes from 'prop-types'
 import useUpdateActive from './hooks/useUpdateActive'
-// import Link from 'next/link'
+import Link from 'next/link'
 
 const Job = ({ job }) => {
   const { IsActivePostJob } = useUpdateActive()
@@ -61,12 +61,15 @@ const Job = ({ job }) => {
       <div className={`${jobCSS.card__body}`}>
         <h2 className={`${jobCSS.card__bodyTitle} m-0`}>
           {content ? (
-            <a className="is-flex is-align-items-center" href={`/post/${slug}`}>
+            <Link
+              className="is-flex is-align-items-center"
+              href={`/post/${slug}`}
+            >
               <a>
                 {position !== null ? position : titlePosition}{' '}
                 <FaExternalLinkAlt size={12} className="ml-4" />
               </a>
-            </a>
+            </Link>
           ) : (
             <a href={link}>{position !== null ? position : titlePosition}</a>
           )}
@@ -119,20 +122,9 @@ const Job = ({ job }) => {
             >
               Compartir
             </a>
-            {content ? (
-              <a className="button is-success" to={`/post/${slug}`}>
-                Aplicar
-              </a>
-            ) : (
-              <a
-                className="button is-success"
-                href={link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Aplicar
-              </a>
-            )}
+            <Link href={`/post/${slug}`}>
+              <a className="button is-success">Aplicar</a>
+            </Link>
           </div>
         </div>
       </div>
