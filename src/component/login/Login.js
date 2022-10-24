@@ -32,7 +32,7 @@ const Login = () => {
               email: '',
               password: ''
             }}
-            validationSchema={validate}
+            // validationSchema={validate}
             onSubmit={values => {
               login({
                 variables: {

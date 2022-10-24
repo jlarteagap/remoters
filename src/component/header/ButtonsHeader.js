@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { FaPlus, FaDoorOpen, FaSignOutAlt } from 'react-icons/fa'
 import { AuthContext } from '../../context/auth'
 import headerCSS from '../../../public/css/Header.module.css'
+
 const ButtonsHeader = () => {
   const { user, logout } = useContext(AuthContext)
   return (
@@ -14,12 +15,12 @@ const ButtonsHeader = () => {
         </a>
       </Link>
       {user ? (
-        <div onClick={logout} as={Link}>
-          <a className={`button is-light ml-2`}>
+        <Link href="/">
+          <a className={`button is-light ml-2`} onClick={logout}>
             <FaSignOutAlt className="mr-2" />
             <span className={`${headerCSS.txt}`}>Salir</span>
           </a>
-        </div>
+        </Link>
       ) : (
         <Link href="/login">
           <a className={`button is-light ml-2`}>
