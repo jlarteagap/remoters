@@ -1,7 +1,7 @@
 .categories{
     display: block;
 }
-.categories-link{
+.categories_link{
     align-items: center;
     display: inline-flex;
     padding: .25rem 0;
@@ -9,7 +9,7 @@
     position: relative;
     transition: all .5s;
 }
-.categories-link::after{
+.categories_link::after{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -22,9 +22,9 @@
     height: 1px;
     transition: all .5s;
 }
-.categories-link:hover{
+.categories_link:hover{
     font-weight: 500;
 }
-.categories-link:hover:after{
+.categories_link:hover:after{
     width: 100%;
   }

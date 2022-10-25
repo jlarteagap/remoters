@@ -6,7 +6,9 @@ import PropTypes from 'prop-types'
 const Layout = ({ children }) => (
   <Fragment>
     <Header title="RECLUTOP" />
-    {children}
+    <main className="main">
+      <div className="container">{children}</div>
+    </main>
     <Footer />
   </Fragment>
 )

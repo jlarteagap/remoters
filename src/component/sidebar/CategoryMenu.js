@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import JobIcon from '../jobs/JobIcon'
+import sidebarCSS from '../../../public/css/Sidebar.module.css'
 
 const CategoryMenu = ({ reset, data }) => {
   let companyName = data.category
@@ -51,12 +52,8 @@ const CategoryMenu = ({ reset, data }) => {
   }
 
   return (
-    <Link
-      href={`/${data.category}`}
-      className="categories-link mb-1"
-      onClick={reset}
-    >
-      <a>
+    <Link href={`/${data.category}`} onClick={reset}>
+      <a className={`${sidebarCSS.categories_link} mb-1`}>
         <JobIcon category={data.category} />
         {companyName}
       </a>
