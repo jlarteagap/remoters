@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 import PropTypes from 'prop-types'
-import './hero.css'
+
 const Hero = () => {
   // eslint-disable-next-line no-unused-vars
   const { page } = useContext(AppContext)
@@ -22,7 +22,7 @@ const Hero = () => {
             Especializada en oportunidades y talento técnico remoto y local
           </p>
           <div className="is-flex is-justify-content-center pt-5">
-            <div className="icon-scroll"></div>
+            <div className="iconScroll"></div>
           </div>
         </div>
       </div>

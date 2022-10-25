@@ -166,3 +166,36 @@ a{
 .reclutadores{background-position: -250px 0;}
 .project_managers{background-position: -275px 0;}
 .web_developers{background-position: -300px 0;}
+
+.iconScroll{}
+.iconScroll:before{
+  position: absolute;
+  left: 50%}
+
+.iconScroll{
+    position: relative;
+  width: 40px;
+  height: 70px;
+  box-shadow: inset 0 0 0 1px rgb(0, 0, 0);
+  border-radius: 25px;
+}
+
+.iconScroll:before{
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #000;
+  margin-left: -4px;
+  top: 8px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-name: scroll}
+
+@keyframes scroll{
+  0%
+    {opacity: 1}
+  100%
+    {opacity: 0;
+    transform: translateY(46px)}}
