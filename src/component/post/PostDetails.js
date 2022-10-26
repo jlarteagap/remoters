@@ -3,20 +3,37 @@ import React from 'react'
 import { PostFooter } from './PostFooter'
 import { PostSidebar } from './PostSidebar'
 import { BsSearch } from 'react-icons/bs'
-export const PostDetails = ({ post }) => {
-  const { content, company, link } = post
+import { FaClock } from 'react-icons/fa'
+import ShowCategoryName from '../../utils/ShowCategoryName'
+import ShowDateInJobs from '../../utils/ShowDate'
+import JobIcon from '../../utils/JobIcon'
 
+export const PostDetails = ({ post }) => {
+  const { content, company, link, category, updatedAt } = post
+  console.log(post)
+  const transformCreateAtDate = new Date(updatedAt * 1)
   return (
     <div className="post__card card is-flex">
       <article className="card-content">
         <header className="post__headeris is-flex is-flex-direction-column ">
           <span className="is-size-5 is-size-7-mobile has-text-weight-light is-flex is-align-items-center">
             <BsSearch className="mr-4" />
-            {company.name} esta contratando un:
+            {company.name} esta en busca de un:
           </span>
           <h2 className="is-size-3 is-size-5-mobile has-text-weight-bold">
             {content.title}
           </h2>
+          <div className="post__details is-flex is-align-items-center">
+            <div className="help is-flex is-align-items-center mr-2">
+              <FaClock size={12} className="mr-1" />
+              Actualizado hace - <ShowDateInJobs date={transformCreateAtDate} />
+            </div>
+            <button className="button is-small is-primary is-light ml-1">
+              <JobIcon category={category} />
+              <ShowCategoryName category={category} />
+            </button>
+          </div>
+          <hr />
         </header>
         <section>{content.description}</section>
         <PostFooter link={link} />

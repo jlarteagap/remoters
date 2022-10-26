@@ -1,5 +1,5 @@
 import React from 'react'
-import icons from '../../assets/img/icons.png'
+import icons from '../assets/img/icons.png'
 import PropTypes from 'prop-types'
 
 const JobIcon = ({ category }) => {

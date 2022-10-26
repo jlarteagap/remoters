@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import JobIcon from '../jobs/JobIcon'
+import JobIcon from '../../utils/JobIcon'
 
 const CategoryMenu = ({ reset, data }) => {
   let companyName = data.category
