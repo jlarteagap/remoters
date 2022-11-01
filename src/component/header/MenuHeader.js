@@ -16,7 +16,7 @@ const MenuHeader = ({ onClick, isActive }) => {
           </a>
         </Link>
         {user ? (
-          <Link href="/dashboard">
+          <Link href="/panel">
             <a className={`navbar-item ${headerCSS.menu__it} effect__hover`}>
               Panel
             </a>
