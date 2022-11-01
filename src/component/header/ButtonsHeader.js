@@ -8,7 +8,7 @@ const ButtonsHeader = () => {
   const { user, logout } = useContext(AuthContext)
   return (
     <div className={`navbar-end ${headerCSS.buttons__movil}`}>
-      <Link href="/dashboard/agregar">
+      <Link href="/panel/nuevo/trabajo">
         <a className={`button btn`}>
           <FaPlus className="mr-2" />
           <span className={`${headerCSS.txt}`}>PUBLICAR</span>

@@ -5,11 +5,11 @@ import { useRouter } from 'next/router'
 
 import { Form, Formik } from 'formik'
 import { useMutation } from '@apollo/client'
-import Error from '../../utils/Error'
-import { AuthContext } from '../../context/auth'
-import { InputFields } from '../../utils/form/Fields'
-import { LoginDocument } from '../../../service/graphql/graphql'
-import { validate } from './services/validate'
+import { LoginDocument } from '@service/graphql/graphql'
+import { AuthContext } from '@context/auth'
+import { InputFields } from '@utils/form/Fields'
+import Error from '@utils/Error'
+
 const Login = () => {
   const [errors, setErrors] = useState({ message: '' })
   const router = useRouter()
@@ -42,7 +42,7 @@ const Login = () => {
               })
                 .then(async ({ data }) => {
                   context.login(data.login)
-                  router.push('/dashboard')
+                  router.push('/panel')
                 })
                 .catch(err => {
                   setErrors({

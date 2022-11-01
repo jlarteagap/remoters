@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*":["src/component/*"],
+      "@service/*":["service/*"],
+      "@context*": ["src/context/*"],
+      "@utils/*": ["src/utils/*"]
+    },
     "target": "es5",
     "lib": [
       "dom",
@@ -23,7 +30,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "service/graphql"  ],
+, "service/graphql", "src/component/add/ubications/Ubications.jsx"  ],
   "exclude": [
     "node_modules"
   ]

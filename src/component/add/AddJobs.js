@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { Form, Formik } from 'formik'
-import { useHistory } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import Swal from 'sweetalert2'
 
 import { useMutation } from '@apollo/client'
 
-import { ADD_JOB } from '../../Graphql/Mutation'
+import { NewJobDocument } from '@service/graphql/graphql'
 import { initialValues } from './services/initialValues'
 import { validate } from './services/validate'
 import { FormJobs } from './FormJobs'
@@ -14,11 +14,10 @@ import { AuthContext } from '../../context/auth'
 
 const AddJobs = () => {
   const { user } = useContext(AuthContext)
-
-  const history = useHistory()
+  const router = useRouter()
   const randomNumber = Math.floor(Math.random() * 1500)
 
-  const [newJob] = useMutation(ADD_JOB)
+  const [newJob] = useMutation(NewJobDocument)
 
   return (
     <div className="box p-5">
@@ -70,7 +69,7 @@ const AddJobs = () => {
               title: 'Un nuevo empleo se ha publicado',
               showConfirmButton: false,
               timer: 1500
-            }).then(history.push('/dashboard'))
+            }).then(router.push('/panel'))
           })
         }}
       >
