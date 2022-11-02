@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
 import { useQuery } from '@apollo/client'
-import { GET_JOBS } from '../../Graphql/Query'
-import Loading from '../../utils/Loading'
-import DeleteButton from '../../utils/DeleteButton'
-import EditButton from '../../utils/Editbutton'
-import { AuthContext } from '../../context/auth'
-
+import { GetJobsDocument } from '@service/graphql/graphql'
+import Loading from '@utils/Loading'
+import DeleteButton from '@utils/DeleteButton'
+import EditButton from '@utils/Editbutton'
+import { AuthContext } from '@context/auth'
+import Dashboard from '@public/css/Dashboard.module.css'
 export const LastJobs = () => {
   const { user } = useContext(AuthContext)
-  const { loading, error, data } = useQuery(GET_JOBS, {
+  const { loading, error, data } = useQuery(GetJobsDocument, {
     pollInterval: 1100,
     variables: {
       username: user.email
@@ -19,7 +19,7 @@ export const LastJobs = () => {
   if (error) return `Error: ${error.message}`
 
   return (
-    <div className="dashboard__jobs">
+    <div className={Dashboard.dashboard__jobs}>
       <h2 className="title is-4">Últimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
         {data.getJobs.map(job => {
@@ -36,12 +36,10 @@ export const LastJobs = () => {
                 ) : (
                   <div className="help is-primary is-danger">Inactivo</div>
                 )}
-                <h3 className="title is-4 m-0 is-small">
-                  {job.position || job.content.title}
-                </h3>
+                <h3 className="title is-4 m-0 is-small">{job.content.title}</h3>
                 <p className="pt-0">
                   <strong>Empresa: </strong>
-                  {job.company.name || job.companySimple}
+                  {job.companySimple}
                 </p>
               </div>
               <div className="is-flex">

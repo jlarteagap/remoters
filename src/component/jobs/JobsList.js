@@ -1,13 +1,13 @@
 import React, { Fragment, useContext } from 'react'
 import Job from './Job'
-import NO_POST from '../../assets/img/posting.svg'
+import NO_POST from '@public/image/posting.svg'
 import { useQuery } from '@apollo/client'
 
-import Paginator from '../../utils/Paginator'
-import Loading from '../../utils/Loading'
+import Paginator from '@utils/Paginator'
+import Loading from '@utils/Loading'
 
-import AppContext from '../../context/AppContext'
-import { GetJobsDocument } from '../../../service/graphql/graphql'
+import AppContext from '@context/AppContext'
+import { GetJobsDocument } from '@service/graphql/graphql'
 const JobsList = () => {
   const { nextPage, prevPage, page } = useContext(AppContext)
   const { loading, error, data } = useQuery(GetJobsDocument, {
