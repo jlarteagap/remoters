@@ -18,7 +18,7 @@ export const Menu = () => {
           Panel de control
         </a>
       </Link>
-      <Link href="/panel/agregar">
+      <Link href="/panel/nuevo/trabajo">
         <a>
           <FaBriefcase /> Agregar trabajo
         </a>

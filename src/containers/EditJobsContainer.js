@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { useQuery } from '@apollo/client'
 import React from 'react'
+import { useQuery } from '@apollo/client'
 import { withRouter } from 'react-router-dom/'
 import { Menu } from '../component/dashboard/Menu'
 import Loading from '../utils/Loading'
