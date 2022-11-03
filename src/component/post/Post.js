@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom/'
-import './post.css'
-import { useQuery } from '@apollo/client'
-import { GET_POST } from '../../Graphql/Query'
-import Loading from '../../utils/Loading'
-import { PostDetails } from './PostDetails'
 
-const Post = props => {
-  const { slug } = props.match.params
-  const { loading, error, data } = useQuery(GET_POST, {
+import { useQuery } from '@apollo/client'
+import { GetPostDocument } from '@service/graphql/graphql'
+import Loading from '@utils/Loading'
+import { PostDetails } from './PostDetails'
+import PostCSS from '@public/css/Post.module.css'
+
+const Post = ({ slug }) => {
+  const { loading, error, data } = useQuery(GetPostDocument, {
     variables: {
       slug
     }
@@ -18,13 +17,13 @@ const Post = props => {
   if (error) return `Error: ${error.message}`
 
   return (
-    <div className="container post">
+    <div className={`container ${PostCSS.post}`}>
       <PostDetails post={data.getPost} />
     </div>
   )
 }
 
-export default withRouter(Post)
+export default Post
 
 Post.propTypes = {
   props: PropTypes.object,

@@ -31,7 +31,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "service/graphql", "src/component/add/ubications/Ubications.jsx"  ],
+, "service/graphql", "src/component/add/ubications/Ubications.jsx", "service/graphql"  ],
   "exclude": [
     "node_modules"
   ]

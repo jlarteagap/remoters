@@ -1,0 +1,37 @@
+.post{
+    grid-column: span 12;
+}
+/* .post__body{
+    grid-template-columns: span 4;
+} */
+.post__card{
+    padding: 2rem 7rem !important;
+    box-sizing: border-box;
+}
+.post__sidebar_section{
+    display: block;
+    position: sticky;
+    top: 0;
+    background-color: var(--Orange);
+    width: 250px;
+    min-width: 250px;
+    border-radius: 5px;
+}
+
+.post__footer{
+    border-radius: .5rem;
+    border: 1px solid var(--Orange);
+    padding: 2rem;
+}
+
+@media screen and (max-width: 480px) {
+    .post__card{
+        padding: 1rem !important;
+    }
+    .post__sidebar{
+        display: none;
+    }
+    .post__footer{
+        padding: 1rem !important;
+    }
+}

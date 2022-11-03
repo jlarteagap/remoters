@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
+import PostCSS from '@public/css/Post.module.css'
 
 export const PostFooter = ({ link }) => {
   return (
-    <footer className="post__footer mt-6">
+    <footer className={`${PostCSS.post__footer} mt-6`}>
       <p className="mb-4 has-text-centered">
         Indica que encontraste el trabajo en Reclutop, esto nos ayuda a que más
         empresas publiquen aquí, ¡gracias!
