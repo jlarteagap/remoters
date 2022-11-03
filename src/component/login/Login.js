@@ -1,29 +1,21 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useContext } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+
 import { Form, Formik } from 'formik'
-import * as Yup from 'yup'
-
-import { useHistory, Link } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
-import { LOGIN_USER } from '../../Graphql/Mutation'
-import Error from '../../utils/Error'
-import { AuthContext } from '../../context/auth'
-
-import { InputFields } from '../../utils/form/Fields'
+import { LoginDocument } from '@service/graphql/graphql'
+import { AuthContext } from '@context/auth'
+import { InputFields } from '@utils/form/Fields'
+import Error from '@utils/Error'
 
 const Login = () => {
   const [errors, setErrors] = useState({ message: '' })
-  const history = useHistory()
+  const router = useRouter()
   const context = useContext(AuthContext)
 
-  const [login] = useMutation(LOGIN_USER)
-
-  const validate = Yup.object({
-    email: Yup.string()
-      .email('Correo no válido')
-      .required('Necesitamos correo para ingresar'),
-    password: Yup.string().required('Ingrese una contraseña')
-  })
+  const [login] = useMutation(LoginDocument)
 
   return (
     <div className="column login__box is-flex is-justify-content-center is-align-items-center">
@@ -40,7 +32,7 @@ const Login = () => {
               email: '',
               password: ''
             }}
-            validationSchema={validate}
+            // validationSchema={validate}
             onSubmit={values => {
               login({
                 variables: {
@@ -50,7 +42,7 @@ const Login = () => {
               })
                 .then(async ({ data }) => {
                   context.login(data.login)
-                  history.push('/dashboard')
+                  router.push('/panel')
                 })
                 .catch(err => {
                   setErrors({
@@ -82,7 +74,10 @@ const Login = () => {
             )}
           </Formik>
           <small>
-            No estas registrado? <Link to="/registro">Registrarse aquí</Link>
+            No estas registrado?{' '}
+            <Link href="/registro">
+              <a>Registrarse aquí</a>
+            </Link>
           </small>
         </div>
       </div>

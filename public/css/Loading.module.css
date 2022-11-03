@@ -6,11 +6,11 @@
     align-items: flex-start;
   }
   
-  .loading-post {
+  .loadingpost {
     width: 220px;
     height: 80px;
   }
-  .loading-post .loading-avatar {
+  .loadingpost .loadingavatar {
     float: left;
     width: 52px;
     height: 52px;
@@ -21,7 +21,7 @@
     background-size: 600px;
     animation: shine-avatar 1.6s infinite linear;
   }
-  .loading-post .loading-line {
+  .loadingpost .loadingline {
     float: left;
     width: 140px;
     height: 16px;
@@ -31,11 +31,11 @@
     background-size: 600px;
     animation: shine-lines 1.6s infinite linear;
   }
-  .loading-post .loading-avatar + .loading-line {
+  .loadingpost .loadingavatar + .loadingline {
     margin-top: 11px;
     width: 100px;
   }
-  .loading-post .loading-line ~ .loading-line {
+  .loadingpost .loadingline ~ .loadingline {
     background-color: #ddd;
   }
   

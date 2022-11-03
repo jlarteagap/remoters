@@ -1,14 +1,15 @@
 import React, { useContext } from 'react'
 import { useQuery } from '@apollo/client'
-import { GET_JOBS } from '../../Graphql/Query'
-import Loading from '../../utils/Loading'
-import DeleteButton from '../../utils/DeleteButton'
-import EditButton from '../../utils/Editbutton'
-import { AuthContext } from '../../context/auth'
+import { GetJobsDocument } from '@service/graphql/graphql'
+import Loading from '@utils/Loading'
+import DeleteButton from '@utils/DeleteButton'
+import EditButton from '@utils/Editbutton'
+import { AuthContext } from '@context/auth'
+import Dashboard from '@public/css/Dashboard.module.css'
 import ShowDateInJobs from '../../utils/ShowDate'
 export const LastJobs = () => {
   const { user } = useContext(AuthContext)
-  const { loading, error, data } = useQuery(GET_JOBS, {
+  const { loading, error, data } = useQuery(GetJobsDocument, {
     pollInterval: 1100,
     variables: {
       username: user.email
@@ -19,7 +20,7 @@ export const LastJobs = () => {
   if (error) return `Error: ${error.message}`
 
   return (
-    <div className="dashboard__jobs">
+    <div className={Dashboard.dashboard__jobs}>
       <h2 className="title is-4">Últimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
         {data.getJobs.map(job => {

@@ -1,4 +1,4 @@
-.card--job {
+.cardJob {
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: 1fr 25%;
@@ -18,15 +18,15 @@
     justify-content: space-around;
     flex-direction: column;
 }
-.card__body--title{
+.card__bodyTitle{
     margin: 0;
     font-size: calc(16px + 6 * ((100vw - 320px) / 680)) !important;
     position: relative;
 }
-.card__body--title a{
+.card__bodyTitle a{
     color: var(--Dark) !important;
 }
-.card__body--title a:hover{
+.card__bodyTitle a:hover{
     color: var(--Blue) !important;
 }
 
@@ -57,7 +57,7 @@
     background: #e8e8e8;
 }
 
-.job__button-shareButton{
+.job__buttonShareButton{
     border:none;
     margin: 0;
     visibility: hidden;
@@ -69,20 +69,7 @@
 .job__icon{
     background-size: 325px 25px;
 }
-    .software_developer {background-position: 0 0;}
-    .REMOTE { background-position: -25px 0;}
-    .social_media {background-position: -75px 0;}
-    .designers{background-position: -50px 0;}
-    .comercial{background-position: -100px 0;}
-    .seo{background-position: -125px 0;}
-    .soporte{background-position: -150px 0;}
-    .qa{background-position: -175px 0;}
-    .copywriting{background-position: -200px 0;}
-    .seguridad{background-position: -225px 0;}
-    .reclutadores{background-position: -250px 0;}
-    .project_managers{background-position: -275px 0;}
-    .web_developers{background-position: -300px 0;}
-    .app_developer {background-position: -125px 0;}
+
     
     .job__icon i{
         background-size: 25px 25px;
@@ -91,11 +78,11 @@
         height: 25px;
         cursor: pointer;
     }
-    .icons-info{
+    .iconsInfo{
         display: flex;
         flex-direction: row;
     }
-.icon--remote{
+.iconRemote{
     width: 100% !important;
 }
 .icon__category{

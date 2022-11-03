@@ -129,16 +129,10 @@ export const UPDATE_COMPANY = gql`
       description
       logo
       createdAt
-      updateAt
+      updatedAt
       username
       phone
       activity
     }
-  }
-`
-
-export const UPLOAD_IMAGE = gql`
-  mutation singleUpload($file: Upload!) {
-    singleUpload(file: $file)
   }
 `

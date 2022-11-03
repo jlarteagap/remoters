@@ -1,23 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { FaBriefcase, FaRegSun, FaHome } from 'react-icons/fa'
+import DashboardCSS from '@public/css/Dashboard.module.css'
 
 export const Menu = () => {
   return (
-    <div className="menu__dashboard">
-      <div className="box">
-        <Link to="/">
+    <aside className={DashboardCSS.menu__dashboard}>
+      <Link href="/">
+        <a>
           <FaHome />
           Inicio
-        </Link>
-        <Link to="/dashboard">
+        </a>
+      </Link>
+      <Link href="/panel">
+        <a>
           <FaRegSun />
           Panel de control
-        </Link>
-        <Link to="/dashboard/agregar" className="">
+        </a>
+      </Link>
+      <Link href="/panel/nuevo/trabajo">
+        <a>
           <FaBriefcase /> Agregar trabajo
-        </Link>
-      </div>
-    </div>
+        </a>
+      </Link>
+    </aside>
   )
 }

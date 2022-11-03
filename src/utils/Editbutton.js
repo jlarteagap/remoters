@@ -1,17 +1,19 @@
 import React from 'react'
 import { FaPencilAlt } from 'react-icons/fa'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 const EditButton = ({ job, companyID }) => {
-  const urls = companyID ? `empresas/edit/${companyID}` : `job/edit/${job}`
+  const urls = companyID ? `empresas/edit/${companyID}` : `editar/${job}`
   const handleButton = e => {}
   return (
-    <Link to={`/dashboard/${urls}`}>
-      <div className="button is-warning" onClick={e => handleButton()}>
-        <FaPencilAlt />
-      </div>
-    </Link>
+    <div className="button is-warning" onClick={e => handleButton()}>
+      <Link href={`/panel/${urls}`}>
+        <a>
+          <FaPencilAlt />
+        </a>
+      </Link>
+    </div>
   )
 }
 

@@ -1,13 +1,13 @@
 import React from 'react'
 import CategoryMenu from './CategoryMenu'
-import { GET_JOBS } from '../../Graphql/Query'
+import { GetJobsDocument } from '../../../service/graphql/graphql'
 import { useQuery } from '@apollo/client'
 import PropTypes from 'prop-types'
-import './sidebar.css'
+import sidebarCSS from '../../../public/css/Sidebar.module.css'
 import Loading from '../../utils/Loading'
 
 const Sidebar = props => {
-  const { loading, error, data } = useQuery(GET_JOBS, {
+  const { loading, error, data } = useQuery(GetJobsDocument, {
     variables: {
       active: true
     }
@@ -25,8 +25,8 @@ const Sidebar = props => {
   })
 
   return (
-    <div className="sidebar">
-      <div className="categories box">
+    <div className={`sidebar`}>
+      <div className={`${sidebarCSS.categories} box`}>
         {dataFiltered.map(getCategory => {
           return (
             <CategoryMenu

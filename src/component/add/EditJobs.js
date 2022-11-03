@@ -1,25 +1,27 @@
 import React, { useContext } from 'react'
 import { useMutation } from '@apollo/client'
-import { UPDATE_JOB } from '../../Graphql/Mutation'
-import { GET_JOBS } from '../../Graphql/Query'
+
+import { UpdateJobDocument, GetJobsDocument } from '@service/graphql/graphql'
 import { AuthContext } from '../../context/auth'
 import { Form, Formik } from 'formik'
 
 import { FormJobs } from './FormJobs'
-import PropTypes from 'prop-types'
-import { useHistory } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import Swal from 'sweetalert2'
+
+import PropTypes from 'prop-types'
 
 import { validate } from './services/validate'
 import { initialValuesEdit } from './services/initialValues'
 
 const EditJob = ({ data, refetch }) => {
+  console.log(data)
   const { user } = useContext(AuthContext)
 
-  const [updateJob] = useMutation(UPDATE_JOB, {
-    refetchQueries: [{ query: GET_JOBS }]
+  const [updateJob] = useMutation(UpdateJobDocument, {
+    refetchQueries: [{ query: GetJobsDocument }]
   })
-  const history = useHistory()
+  const router = useRouter()
 
   return (
     <div className="box p-5">
@@ -74,7 +76,7 @@ const EditJob = ({ data, refetch }) => {
               timer: 1500
             }).then(
               refetch().then(() => {
-                history.push('/dashboard')
+                router.push('/panel')
               })
             )
           )

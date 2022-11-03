@@ -1,17 +1,20 @@
 import { useMutation } from '@apollo/client'
 import React from 'react'
 import { FaTrashAlt } from 'react-icons/fa'
-import { DELETE_COMPANY, DELETE_JOB } from '../Graphql/Mutation'
+import {
+  DeleteJobsDocument,
+  DeleteCompanyDocument
+} from '@service/graphql/graphql'
 import Swal from 'sweetalert2'
 import PropTypes from 'prop-types'
-import { useHistory } from 'react-router-dom'
+import { useRouter } from 'next/router'
 
 const DeleteButton = ({ companyId, jobId }) => {
-  const mutation = companyId ? DELETE_COMPANY : DELETE_JOB
+  const mutation = companyId ? DeleteCompanyDocument : DeleteJobsDocument
   const [companyOrJob] = useMutation(mutation)
   const textAction = companyId ? 'Empresa' : 'Oferta Laboral'
 
-  const history = useHistory()
+  const router = useRouter()
   const handleButton = e => {
     e.preventDefault()
 
@@ -35,7 +38,7 @@ const DeleteButton = ({ companyId, jobId }) => {
           'Eliminado!',
           'Se eliminó correctamentamente.',
           'success'
-        ).then(history.push('/dashboard'))
+        ).then(router.push('/panel'))
       }
     })
   }

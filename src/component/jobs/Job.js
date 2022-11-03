@@ -9,9 +9,10 @@ import {
   FaRegBuilding,
   FaClock
 } from 'react-icons/fa'
+import jobCSS from '../../../public/css/Job.module.css'
 import PropTypes from 'prop-types'
 import useUpdateActive from './hooks/useUpdateActive'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import ShowDateInJobs from '../../utils/ShowDate'
 import ShowCategoryName from '../../utils/ShowCategoryName'
 
@@ -40,7 +41,7 @@ const Job = ({ job }) => {
   let iconRemote
   if (remote) {
     iconRemote = (
-      <div className="icon icon--remote">
+      <div className={`icon ${jobCSS.iconRemote}`}>
         <JobIcon category="REMOTE" />
         <span className="button is-small is-warning is-light">
           Trabajo Remoto
@@ -50,12 +51,19 @@ const Job = ({ job }) => {
   }
 
   return (
-    <div className="card card--job p-5 mb-5">
-      <div className="card__body">
-        <h2 className="card__body--title m-0">
-          <Link className="is-flex is-align-items-center" to={`/post/${slug}`}>
-            {content.title}
-          </Link>
+    <div className={`card ${jobCSS.cardJob} p-5 mb-5`}>
+      <div className={`${jobCSS.card__body}`}>
+        <h2 className={`${jobCSS.card__bodyTitle} m-0`}>
+          {content ? (
+            <Link
+              className="is-flex is-align-items-center"
+              href={`/post/${slug}`}
+            >
+              <a>{position !== null ? position : titlePosition} </a>
+            </Link>
+          ) : (
+            <a href={link}>{position !== null ? position : titlePosition}</a>
+          )}
         </h2>
         <div className="help is-flex is-align-items-center">
           <FaClock size={16} className="mr-3" />
@@ -90,34 +98,25 @@ const Job = ({ job }) => {
           )}
         </div>
       </div>
-      <div className="card__body">
-        <div className="job__info">
-          <div className="icons-info is-align-items-center">
+      <div className={`${jobCSS.card__body}`}>
+        <div className={`${jobCSS.job__info}`}>
+          <div className={`${jobCSS.iconsInfo}`}>
             {iconRemote}
             <button className="button is-small is-primary is-light icon__category ml-1">
-              <JobIcon category={category} />{' '}
+              <JobIcon category={`${category}`} />{' '}
               <ShowCategoryName category={category} />
             </button>
           </div>
-
-          <div className="job__button-position">
-            <a className="button job__button-shareButton" href="#link">
+          <div className={`${jobCSS.job__buttonPosition}`}>
+            <a
+              className={`button ${jobCSS.job__buttonShareButton}`}
+              href="#link"
+            >
               Compartir
             </a>
-            {content ? (
-              <Link className="button is-success" to={`/post/${slug}`}>
-                Ver detalles
-              </Link>
-            ) : (
-              <a
-                className="button is-success"
-                href={link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Aplicar
-              </a>
-            )}
+            <Link href={`/post/${slug}`}>
+              <a className="button is-success">Aplicar</a>
+            </Link>
           </div>
         </div>
       </div>
