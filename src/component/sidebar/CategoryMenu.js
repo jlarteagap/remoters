@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import JobIcon from '../jobs/JobIcon'
+import JobIcon from '@utils/JobIcon'
 import sidebarCSS from '@public/css/Sidebar.module.css'
 
 const CategoryMenu = ({ reset, data }) => {

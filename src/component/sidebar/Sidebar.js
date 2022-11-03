@@ -1,10 +1,10 @@
 import React from 'react'
 import CategoryMenu from './CategoryMenu'
-import { GetJobsDocument } from '../../../service/graphql/graphql'
+import { GetJobsDocument } from '@service/graphql/graphql'
 import { useQuery } from '@apollo/client'
 import PropTypes from 'prop-types'
-import sidebarCSS from '../../../public/css/Sidebar.module.css'
-import Loading from '../../utils/Loading'
+import sidebarCSS from '@public/css/Sidebar.module.css'
+import Loading from '@utils/Loading'
 
 const Sidebar = props => {
   const { loading, error, data } = useQuery(GetJobsDocument, {

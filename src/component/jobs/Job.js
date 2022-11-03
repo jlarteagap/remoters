@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React from 'react'
-import JobIcon from '../../utils/JobIcon'
+import JobIcon from '@utils/JobIcon'
 
 import {
   FaMapMarkerAlt,
@@ -9,18 +9,17 @@ import {
   FaRegBuilding,
   FaClock
 } from 'react-icons/fa'
-import jobCSS from '../../../public/css/Job.module.css'
+import jobCSS from '@public/css/Job.module.css'
 import PropTypes from 'prop-types'
 import useUpdateActive from './hooks/useUpdateActive'
 import Link from 'next/link'
-import ShowDateInJobs from '../../utils/ShowDate'
-import ShowCategoryName from '../../utils/ShowCategoryName'
+import ShowDateInJobs from '@utils/ShowDate'
+import ShowCategoryName from '@utils/ShowCategoryName'
 
 const Job = ({ job }) => {
   const { IsActivePostJob } = useUpdateActive()
   const {
     id,
-    link,
     category,
     remote,
     company,
@@ -54,16 +53,12 @@ const Job = ({ job }) => {
     <div className={`card ${jobCSS.cardJob} p-5 mb-5`}>
       <div className={`${jobCSS.card__body}`}>
         <h2 className={`${jobCSS.card__bodyTitle} m-0`}>
-          {content ? (
-            <Link
-              className="is-flex is-align-items-center"
-              href={`/post/${slug}`}
-            >
-              <a>{position !== null ? position : titlePosition} </a>
-            </Link>
-          ) : (
-            <a href={link}>{position !== null ? position : titlePosition}</a>
-          )}
+          <Link
+            className="is-flex is-align-items-center"
+            href={`/post/${slug}`}
+          >
+            <a>{content.title} </a>
+          </Link>
         </h2>
         <div className="help is-flex is-align-items-center">
           <FaClock size={16} className="mr-3" />

@@ -1,8 +1,9 @@
 import { useQuery } from '@apollo/client'
-import { GET_CATEGORY } from '../Graphql/Query'
+
+import { GetCategoryDocument } from '@service/graphql/graphql'
 
 const ShowCategoryName = ({ category }) => {
-  const { data, loading } = useQuery(GET_CATEGORY, {
+  const { data, loading } = useQuery(GetCategoryDocument, {
     variables: {
       slug: category
     }

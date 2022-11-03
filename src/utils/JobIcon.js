@@ -1,7 +1,7 @@
 import React from 'react'
 import icons from '../assets/img/icons.png'
 import PropTypes from 'prop-types'
-import jobCSS from '../../../public/css/Job.module.css'
+import jobCSS from '@public/css/Job.module.css'
 const JobIcon = ({ category }) => {
   return (
     <div className={`${jobCSS.job__icons}`}>
