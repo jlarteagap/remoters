@@ -1,20 +1,17 @@
 import React, { useContext } from 'react'
 import { useQuery } from '@apollo/client'
-import { withRouter } from 'react-router-dom'
-import { GET_JOBS } from '../../Graphql/Query'
+import { GetJobsDocument } from '@service/graphql/graphql'
 
 import PropTypes from 'prop-types'
-import './Jobs.css'
 
 import Job from './Job'
 import Paginator from '../../utils/Paginator'
 import Loading from '../../utils/Loading'
 import AppContext from '../../context/AppContext'
 
-const Categories = props => {
-  const category = props.match.params.category
+const Categories = ({ category }) => {
   const { nextPage, prevPage, page } = useContext(AppContext)
-  const { loading, error, data } = useQuery(GET_JOBS, {
+  const { loading, error, data } = useQuery(GetJobsDocument, {
     pollInterval: 5000,
     variables: {
       category,
@@ -46,4 +43,4 @@ const Categories = props => {
 Categories.propTypes = {
   match: PropTypes.object
 }
-export default withRouter(Categories)
+export default Categories
