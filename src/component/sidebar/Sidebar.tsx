@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import sidebarCSS from '@public/css/Sidebar.module.css'
 import Loading from '@utils/Loading'
 
-const Sidebar = props => {
+const Sidebar = (props): any => {
   const { loading, error, data } = useQuery(GetJobsDocument, {
     variables: {
       active: true
@@ -25,19 +25,21 @@ const Sidebar = props => {
   })
 
   return (
-    <div className={`sidebar`}>
-      <div className={`${sidebarCSS.categories} box`}>
-        {dataFiltered.map(getCategory => {
-          return (
-            <CategoryMenu
-              key={getCategory.id}
-              reset={props.reset}
-              data={getCategory}
-            />
-          )
-        })}
+    <React.Fragment>
+      <div className={`sidebar`}>
+        <div className={`${sidebarCSS.categories} box`}>
+          {dataFiltered.map(getCategory => {
+            return (
+              <CategoryMenu
+                key={getCategory.id}
+                reset={props.reset}
+                data={getCategory}
+              />
+            )
+          })}
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   )
 }
 

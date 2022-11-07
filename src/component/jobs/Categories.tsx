@@ -9,8 +9,8 @@ import Paginator from '../../utils/Paginator'
 import Loading from '../../utils/Loading'
 import AppContext from '../../context/AppContext'
 
-const Categories = ({ category }) => {
-  const { nextPage, prevPage, page } = useContext(AppContext)
+const Categories = ({ category }): any => {
+  const { nextPage, prevPage, page }: any = useContext(AppContext)
   const { loading, error, data } = useQuery(GetJobsDocument, {
     pollInterval: 5000,
     variables: {
@@ -31,7 +31,7 @@ const Categories = ({ category }) => {
 
       <Paginator
         actual={page.actual}
-        total={data.getJobs.length}
+        total={data.getJobs.length.toString()}
         limit={page.limit}
         prevPage={prevPage}
         nextPage={nextPage}

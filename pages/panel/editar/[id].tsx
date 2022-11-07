@@ -9,10 +9,10 @@ import { GetJobDocument } from '@service/graphql/graphql'
 
 const EditJob = () => {
   const router = useRouter()
-
+  const id: any = router.query.id
   const { loading, error, data, refetch } = useQuery(GetJobDocument, {
     variables: {
-      id: router.query.id
+      id
     }
   })
   if (loading) return <Loading />

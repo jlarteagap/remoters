@@ -7,7 +7,7 @@ import Loading from '@utils/Loading'
 import { PostDetails } from './PostDetails'
 import PostCSS from '@public/css/Post.module.css'
 
-const Post = ({ slug }) => {
+const Post = ({ slug }): any => {
   const { loading, error, data } = useQuery(GetPostDocument, {
     variables: {
       slug
