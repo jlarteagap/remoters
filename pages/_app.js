@@ -17,15 +17,15 @@ function MyApp({ Component, pageProps }) {
   const pagination = usePagination()
 
   return (
-    <ApolloProvider client={client}>
-      <AuthProvider>
+    <AuthProvider>
+      <ApolloProvider client={client}>
         <AppContext.Provider value={pagination}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
         </AppContext.Provider>
-      </AuthProvider>
-    </ApolloProvider>
+      </ApolloProvider>
+    </AuthProvider>
   )
 }
 

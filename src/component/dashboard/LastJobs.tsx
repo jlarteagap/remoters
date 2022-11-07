@@ -8,8 +8,9 @@ import { AuthContext } from '@context/auth'
 import Dashboard from '@public/css/Dashboard.module.css'
 import ShowDateInJobs from '@utils/ShowDate'
 
-export const LastJobs = (): any => {
+const LastJobs = (): any => {
   const { user } = useContext(AuthContext)
+
   const { loading, error, data } = useQuery(GetJobsDocument, {
     pollInterval: 1100,
     variables: {
@@ -64,3 +65,5 @@ export const LastJobs = (): any => {
     </div>
   )
 }
+
+export default LastJobs

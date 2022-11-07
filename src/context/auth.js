@@ -2,7 +2,9 @@ import React, { createContext, useReducer } from 'react'
 import jwtDecode from 'jwt-decode'
 
 const initialState = {
-  user: null
+  user: {
+    email: ''
+  }
 }
 
 if (typeof window !== 'undefined') {
@@ -17,7 +19,9 @@ if (typeof window !== 'undefined') {
 }
 
 const AuthContext = createContext({
-  user: null,
+  user: {
+    email: ''
+  },
   login: userData => {},
   logout: () => {}
 })
