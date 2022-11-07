@@ -6,8 +6,9 @@ import DeleteButton from '@utils/DeleteButton'
 import EditButton from '@utils/Editbutton'
 import { AuthContext } from '@context/auth'
 import Dashboard from '@public/css/Dashboard.module.css'
-import ShowDateInJobs from '../../utils/ShowDate'
-export const LastJobs = () => {
+import ShowDateInJobs from '@utils/ShowDate'
+
+export const LastJobs = (): any => {
   const { user } = useContext(AuthContext)
   const { loading, error, data } = useQuery(GetJobsDocument, {
     pollInterval: 1100,
@@ -24,7 +25,8 @@ export const LastJobs = () => {
       <h2 className="title is-4">Últimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
         {data.getJobs.map(job => {
-          const transformCreateAtDate = new Date(job.createdAt * 1)
+          const createdPost: any = job.createdAt
+          const transformCreateAtDate = new Date(createdPost * 1)
 
           return (
             <div
