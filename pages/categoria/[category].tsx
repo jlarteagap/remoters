@@ -9,7 +9,6 @@ const CategoriesList = () => {
   return (
     <div className="home">
       <div className="home__jobs">
-        {router.query.category}
         <Categories category={router.query.category} />
       </div>
       <div className="home__sidebar">
