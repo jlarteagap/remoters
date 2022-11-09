@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://reclutop.com
+
+# Sitemaps
+Sitemap: https://reclutop.com/sitemap.xml
