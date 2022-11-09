@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://reclutop.com
+Host: http://reclutop.com
 
 # Sitemaps
-Sitemap: https://reclutop.com/sitemap.xml
+Sitemap: http://reclutop.com/sitemap.xml
