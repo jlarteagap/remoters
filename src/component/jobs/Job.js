@@ -26,11 +26,11 @@ const Job = ({ job }) => {
     location,
     content,
     deletedAt,
-    updatedAt,
+    createdAt,
     slug
   } = job
 
-  const transformCreateAtDate = new Date(updatedAt * 1)
+  const transformCreateAtDate = new Date(createdAt * 1)
   // Check this for update active o desactive job post
   const todayDate = new Date().toISOString()
   if (todayDate >= deletedAt) {

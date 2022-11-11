@@ -12,7 +12,6 @@ const LastJobs = (): any => {
   const { user } = useContext(AuthContext)
 
   const { loading, error, data } = useQuery(GetJobsDocument, {
-    pollInterval: 1100,
     variables: {
       username: user.email
     }
