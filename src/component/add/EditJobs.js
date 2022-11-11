@@ -62,9 +62,9 @@ const EditJob = ({ data, refetch }) => {
                   }
                 },
                 updateAt: new Date().toISOString(),
-                deletedAt: new Date(
-                  new Date().setDate(new Date().getDate() + 7)
-                ).toISOString()
+                deletedAt: new Date()
+                  .toISOString()
+                  .setDate(new Date().getDate() + 7)
               }
             }
           }).then(
