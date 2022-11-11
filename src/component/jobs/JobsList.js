@@ -10,13 +10,8 @@ import AppContext from '@context/AppContext'
 import { GetJobsDocument } from '@service/graphql/graphql'
 const JobsList = () => {
   const { nextPage, prevPage, page } = useContext(AppContext)
-  const { loading, error, data } = useQuery(GetJobsDocument, {
-    variables: {
-      limit: page.limit,
-      offset: page.offset,
-      active: true
-    }
-  })
+  const { loading, error, data } = useQuery(GetJobsDocument)
+  console.log(data)
 
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
