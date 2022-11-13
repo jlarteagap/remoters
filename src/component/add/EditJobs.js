@@ -15,7 +15,6 @@ import { validate } from './services/validate'
 import { initialValuesEdit } from './services/initialValues'
 
 const EditJob = ({ data, refetch }) => {
-  console.log(data)
   const { user } = useContext(AuthContext)
 
   const [updateJob] = useMutation(UpdateJobDocument, {
@@ -62,9 +61,9 @@ const EditJob = ({ data, refetch }) => {
                   }
                 },
                 updateAt: new Date().toISOString(),
-                deletedAt: new Date()
-                  .toISOString()
-                  .setDate(new Date().getDate() + 7)
+                deletedAt: new Date(
+                  new Date().setDate(new Date().getDate() + 7)
+                ).toISOString()
               }
             }
           }).then(

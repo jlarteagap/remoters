@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
-import React from 'react'
+import React, { useEffect } from 'react'
 import JobIcon from '@utils/JobIcon'
 
 import {
@@ -26,16 +26,19 @@ const Job = ({ job }) => {
     location,
     content,
     deletedAt,
-    updatedAt,
-    slug
+    slug,
+    updatedAt
   } = job
 
   const transformCreateAtDate = new Date(updatedAt * 1)
   // Check this for update active o desactive job post
   const todayDate = new Date().toISOString()
-  if (todayDate >= deletedAt) {
-    IsActivePostJob(id)
-  }
+
+  useEffect(() => {
+    if (todayDate >= deletedAt) {
+      IsActivePostJob(id)
+    }
+  }, [])
 
   let iconRemote
   if (remote) {
