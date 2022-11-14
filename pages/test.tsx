@@ -1,8 +1,8 @@
 import React from 'react'
 import { gql } from '@apollo/client'
-import client from '@hoc/apollo-client'
+import client from '../src/hoc/apollo-client'
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const { data } = await client.query({
     query: gql`
       query getJobs {
