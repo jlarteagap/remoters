@@ -15,12 +15,10 @@ const ButtonsHeader = () => {
         </a>
       </Link>
       {user ? (
-        <Link href="/">
-          <a className={`button is-light ml-2`} onClick={logout}>
-            <FaSignOutAlt className="mr-2" />
-            <span className={`${headerCSS.txt}`}>Salir</span>
-          </a>
-        </Link>
+        <a className={`button is-light ml-2`} onClick={logout}>
+          <FaSignOutAlt className="mr-2" />
+          <span className={`${headerCSS.txt}`}>Salir</span>
+        </a>
       ) : (
         <Link href="/login">
           <a className={`button is-light ml-2`}>

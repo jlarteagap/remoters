@@ -6,7 +6,8 @@
       "@service/*":["service/*"],
       "@context*": ["src/context/*"],
       "@utils/*": ["src/utils/*"],
-      "@public/*": ["public/*"]
+      "@public/*": ["public/*"],
+      "@hoc/*": ["src/hoc/*"]
     },
     "target": "es5",
     "lib": [
