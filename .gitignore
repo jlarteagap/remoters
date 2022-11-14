@@ -12,6 +12,7 @@ prettier.config.js
 /coverage
 .eslintrc.js
 prettier.config.js
+.env
 # production
 /build
 
