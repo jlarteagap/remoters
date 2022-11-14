@@ -1,4 +1,4 @@
-import { getServerSideSitemap, ISitemapField } from 'next-sitemap'
+import { getServerSideSitemap } from 'next-sitemap'
 import { gql } from '@apollo/client'
 
 import client from '../../src/hoc/apollo-client'
@@ -15,7 +15,7 @@ export const getServerSideProps = async ctx => {
     `
   })
 
-  const fields: ISitemapField[] =
+  const fields =
     data &&
     data.getJobs.map(post => ({
       loc: `${siteUrl}/post/${post.slug}`,
