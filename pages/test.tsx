@@ -20,13 +20,13 @@ export const getServerSideProps = async () => {
   }
 }
 
-export default function TestPage({ data }) {
+export default async function TestPage({ data }) {
   return (
     <div>
       {data &&
-        data.getJobs.map(item => {
+        (await data.getJobs.map(item => {
           return <li key={item.slug}>{item.slug}</li>
-        })}
+        }))}
     </div>
   )
 }

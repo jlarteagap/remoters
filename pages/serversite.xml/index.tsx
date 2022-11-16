@@ -17,10 +17,10 @@ export const getServerSideProps = async ctx => {
 
   const fields =
     data &&
-    data.getJobs.map(post => ({
+    (await data.getJobs.map(post => ({
       loc: `${siteUrl}/post/${post.slug}`,
       lastmod: new Date().toISOString()
-    }))
+    })))
 
   return getServerSideSitemap(ctx, fields)
 }
