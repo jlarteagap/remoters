@@ -1,26 +1,22 @@
-import { getServerSideSitemap } from 'next-sitemap'
-import { gql } from '@apollo/client'
+import { GetServerSideProps } from 'next'
+import { getServerSideSitemap, ISitemapField } from 'next-sitemap'
 
-import client from '../../src/hoc/apollo-client'
-
-export const getServerSideProps = async ctx => {
-  const siteUrl = 'http://reclutop.com'
-  const { data } = await client.query({
-    query: gql`
-      query getJobs {
-        getJobs {
-          slug
-        }
-      }
-    `
+export const GetPost = async () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API
+  const data = await fetch(apiUrl, {
+    method: 'GET'
   })
+  const res = await data.json()
+  return res
+}
 
-  const fields =
-    data &&
-    (await data.getJobs.map(post => ({
-      loc: `${siteUrl}/post/${post.slug}`,
-      lastmod: new Date().toISOString()
-    })))
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const siteUrl = 'http://reclutop.com'
+  const data: any = await GetPost()
+  const fields: ISitemapField[] = data?.map((data: any) => ({
+    loc: `${siteUrl}/${data.slug}`,
+    lastmod: new Date().toISOString()
+  }))
 
   return getServerSideSitemap(ctx, fields)
 }
