@@ -2,9 +2,9 @@ import React from 'react'
 import LastJobs from '@components/dashboard/LastJobs'
 import { Menu } from '@components/dashboard/Menu'
 import DashboardCSS from '@public/css/Dashboard.module.css'
-
-import withAuth from '../../src/hoc/withAuth'
 import Seo from '@components/seo/seo'
+import withAuth from '@hoc/withAuth'
+
 const Dashboard = () => {
   return (
     <>

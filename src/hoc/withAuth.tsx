@@ -1,19 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AuthContext } from '@context/auth'
-import Login from '@components/login/Login'
+import { useRouter } from 'next/router'
 
 const withAuth = Component => {
   const Auth = props => {
+    const router = useRouter()
     const { user } = useContext(AuthContext)
-    if (!user) {
-      return <Login />
-    }
+    useEffect(() => {
+      if (user.email === '') return router.push('/login')
+    }, [])
 
     return <Component {...props} />
   }
-  if (Component.getInitialProps) {
-    Auth.getInitialProps = Component.getInitialProps
-  }
+
   return Auth
 }
 

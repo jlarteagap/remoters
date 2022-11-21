@@ -7,6 +7,7 @@ import Loading from '@utils/Loading'
 import { useQuery } from '@apollo/client'
 import { GetJobDocument } from '@service/graphql/graphql'
 import withAuth from '@hoc/withAuth'
+
 import Seo from '@components/seo/seo'
 const EditJob = () => {
   const router = useRouter()

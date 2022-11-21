@@ -6,6 +6,7 @@ import headerCSS from '../../../public/css/Header.module.css'
 
 const ButtonsHeader = () => {
   const { user, logout } = useContext(AuthContext)
+
   return (
     <div className={`navbar-end ${headerCSS.buttons__movil}`}>
       <Link href="/panel/nuevo/trabajo">
@@ -14,18 +15,18 @@ const ButtonsHeader = () => {
           <span className={`${headerCSS.txt}`}>PUBLICAR</span>
         </a>
       </Link>
-      {user ? (
+      {user.email === '' ? (
+        <Link href="/login">
+          <a className={`button is-light ml-2`}>
+            <span className={`${headerCSS.txt}`}>Entrar</span>
+            <FaDoorOpen className="mr-2" />
+          </a>
+        </Link>
+      ) : (
         <a className={`button is-light ml-2`} onClick={logout}>
           <FaSignOutAlt className="mr-2" />
           <span className={`${headerCSS.txt}`}>Salir</span>
         </a>
-      ) : (
-        <Link href="/login">
-          <a className={`button is-light ml-2`}>
-            <FaDoorOpen className="mr-2" />
-            <span className={`${headerCSS.txt}`}>Entrar</span>
-          </a>
-        </Link>
       )}
     </div>
   )
