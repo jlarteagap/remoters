@@ -4,12 +4,16 @@ import { Menu } from '@components/dashboard/Menu'
 import DashboardCSS from '@public/css/Dashboard.module.css'
 
 import withAuth from '../../src/hoc/withAuth'
+import Seo from '@components/seo/seo'
 const Dashboard = () => {
   return (
-    <div className={DashboardCSS.dashboard}>
-      <Menu />
-      <LastJobs />
-    </div>
+    <>
+      <Seo title="Panel de administracion" />
+      <div className={DashboardCSS.dashboard}>
+        <Menu />
+        <LastJobs />
+      </div>
+    </>
   )
 }
 

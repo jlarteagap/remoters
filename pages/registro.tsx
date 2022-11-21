@@ -1,11 +1,15 @@
+import Seo from '@components/seo/seo'
 import React from 'react'
 import Register from '../src/component/login/Register'
 
 const Registro = () => {
   return (
-    <main className="login__content">
-      <Register />
-    </main>
+    <>
+      <Seo title={'Registro'} />
+      <main className="login__content">
+        <Register />
+      </main>
+    </>
   )
 }
 

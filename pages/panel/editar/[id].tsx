@@ -7,6 +7,7 @@ import Loading from '@utils/Loading'
 import { useQuery } from '@apollo/client'
 import { GetJobDocument } from '@service/graphql/graphql'
 import withAuth from '@hoc/withAuth'
+import Seo from '@components/seo/seo'
 const EditJob = () => {
   const router = useRouter()
   const id: any = router.query.id
@@ -18,12 +19,15 @@ const EditJob = () => {
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
   return (
-    <div className="home">
-      <Menu />
-      <div className="home__jobs">
-        <EditJobs data={data.getJob} refetch={refetch} />
+    <>
+      <Seo title={`Editar ${data.getJob.content.title}`} />
+      <div className="home">
+        <Menu />
+        <div className="home__jobs">
+          <EditJobs data={data.getJob} refetch={refetch} />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
