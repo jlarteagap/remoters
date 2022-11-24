@@ -2,15 +2,17 @@ import React from 'react'
 import {
   InputFields,
   CheckBoxField,
-  SelectField,
-  TextareaField
+  SelectField
+  // TextareaField
 } from '../../utils/form/Fields'
+import Editor from '../editor/Editor'
+
 import { Categories } from './categories/Categories'
 import { Ubications } from './ubications/Ubications'
 import { tipeMoney, contracts } from './utils/utils'
 import PropTypes from 'prop-types'
 
-export const FormJobs = ({ location, payment }) => {
+export const FormJobs = ({ location, payment, getEditor }) => {
   const [isLocation, setIsLocation] = React.useState(location || false)
   const [isPayment, setIsPayment] = React.useState(payment || false)
   return (
@@ -35,11 +37,12 @@ export const FormJobs = ({ location, payment }) => {
             type="select"
             options={contracts}
           />
-          <TextareaField
+          <Editor getEditor={getEditor} />
+          {/* <TextareaField
             label="Agregar descripción"
             name="description"
             placeholder="Agregar una descripción corta"
-          />
+          /> */}
         </div>
         <div className="column">
           <CheckBoxField

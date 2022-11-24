@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
 import Swal from 'sweetalert2'
@@ -13,6 +13,7 @@ import { FormJobs } from './FormJobs'
 import { AuthContext } from '../../context/auth'
 
 const AddJobs = () => {
+  const [getEditor, setGetEditor] = useState(null)
   const { user } = useContext(AuthContext)
   const router = useRouter()
   const randomNumber = Math.floor(Math.random() * 1500)
@@ -28,7 +29,6 @@ const AddJobs = () => {
         validateOnChange={false}
         validateOnBlur={false}
         onSubmit={values => {
-          console.log(values)
           newJob({
             variables: {
               input: {
@@ -53,7 +53,7 @@ const AddJobs = () => {
                 },
                 content: {
                   title: values.title,
-                  description: values.description,
+                  description: getEditor,
                   currency: values.currency,
                   salary: values.salary,
                   contract: values.contract
@@ -76,7 +76,7 @@ const AddJobs = () => {
       >
         {formik => (
           <Form>
-            <FormJobs />
+            <FormJobs getEditor={setGetEditor} />
           </Form>
         )}
       </Formik>

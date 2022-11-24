@@ -2,7 +2,7 @@ import React, { Fragment, useContext } from 'react'
 import Job from './Job'
 import NO_POST from '@public/image/posting.svg'
 import { useQuery } from '@apollo/client'
-
+import { Image } from 'next/image'
 import Paginator from '@utils/Paginator'
 import Loading from '@utils/Loading'
 
@@ -29,7 +29,7 @@ const JobsList = () => {
             <div>
               <h3>Oops! no hemos encontrado ninguna publicacion</h3>
               <center>
-                <img src={NO_POST} alt="No hay post" width="350px" />
+                <Image src={NO_POST} alt="No hay post" width="350px" />
               </center>
             </div>
           </div>
