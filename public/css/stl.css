@@ -199,3 +199,14 @@ a{
   100%
     {opacity: 0;
     transform: translateY(46px)}}
+
+section ul, section ol, .ck-editor__main ol, .ck-editor__main ul{
+    padding-left: 1.5rem;
+}
+
+section ul li, section li, .ck-editor__main ul li, .ck-editor__main li{
+    list-style: disc;
+}
+section ol li, .ck-editor__main ol li{
+    list-style: decimal;
+}

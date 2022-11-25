@@ -18,6 +18,21 @@ function Editor({ getEditor, editDesc }) {
     return (
       <CKEditor
         editor={ClassicEditor}
+        config={{
+          toolbar: [
+            'paragraph',
+            'heading',
+            'bold',
+            'italic',
+            '|',
+            'numberedList',
+            'bulletedList',
+            '|',
+            'blockQuote',
+            'code',
+            'codeBlock'
+          ]
+        }}
         data={editDesc || '<p>Editar texto</p>'}
         onChange={(event, editor) => {
           // do something when editor's content changed
