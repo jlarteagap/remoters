@@ -40,7 +40,9 @@ export const PostDetails = ({ post }) => {
           </div>
           <hr />
         </header>
-        <section>{content.description}</section>
+        <section>
+          <div dangerouslySetInnerHTML={{ __html: content.description }}></div>
+        </section>
         <PostFooter link={link} />
       </article>
       <PostSidebar company={company} link={link} />

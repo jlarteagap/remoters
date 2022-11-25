@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
 
 import { UpdateJobDocument, GetJobsDocument } from '@service/graphql/graphql'
@@ -15,6 +15,8 @@ import { validate } from './services/validate'
 import { initialValuesEdit } from './services/initialValues'
 
 const EditJob = ({ data, refetch }) => {
+  const [editDesc] = useState(data.content.description)
+  const [getEditor, setGetEditor] = useState(null)
   const { user } = useContext(AuthContext)
 
   const [updateJob] = useMutation(UpdateJobDocument, {
@@ -50,7 +52,7 @@ const EditJob = ({ data, refetch }) => {
                   salary: values.salary,
                   title: values.title,
                   contract: values.contract,
-                  description: values.description
+                  description: getEditor
                 },
                 location: {
                   country: {
@@ -86,6 +88,8 @@ const EditJob = ({ data, refetch }) => {
             <FormJobs
               location={data.location.city.name}
               payment={data.content.salary}
+              editDesc={editDesc}
+              getEditor={setGetEditor}
             />
           </Form>
         )}

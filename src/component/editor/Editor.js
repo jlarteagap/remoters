@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-function Editor({ getEditor }) {
+function Editor({ getEditor, editDesc }) {
   const editorRef = useRef()
   const { CKEditor, ClassicEditor } = editorRef.current || {}
 
@@ -18,7 +18,7 @@ function Editor({ getEditor }) {
     return (
       <CKEditor
         editor={ClassicEditor}
-        data="<p>desde el editor CKEditor</p>"
+        data={editDesc || '<p>Editar texto</p>'}
         onChange={(event, editor) => {
           // do something when editor's content changed
           const data = editor.getData()

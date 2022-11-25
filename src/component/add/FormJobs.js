@@ -12,7 +12,7 @@ import { Ubications } from './ubications/Ubications'
 import { tipeMoney, contracts } from './utils/utils'
 import PropTypes from 'prop-types'
 
-export const FormJobs = ({ location, payment, getEditor }) => {
+export const FormJobs = ({ location, payment, getEditor, editDesc }) => {
   const [isLocation, setIsLocation] = React.useState(location || false)
   const [isPayment, setIsPayment] = React.useState(payment || false)
   return (
@@ -37,7 +37,7 @@ export const FormJobs = ({ location, payment, getEditor }) => {
             type="select"
             options={contracts}
           />
-          <Editor getEditor={getEditor} />
+          <Editor getEditor={getEditor} editDesc={editDesc} />
           {/* <TextareaField
             label="Agregar descripción"
             name="description"
