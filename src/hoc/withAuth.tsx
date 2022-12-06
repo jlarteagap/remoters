@@ -7,7 +7,11 @@ const withAuth = Component => {
     const router = useRouter()
     const { user } = useContext(AuthContext)
     useEffect(() => {
-      if (user.email === '') return router.push('/login')
+      const getUserData = async () => {
+        if (user.email === '') return router.push('/login')
+      }
+
+      getUserData()
     }, [])
 
     return <Component {...props} />
