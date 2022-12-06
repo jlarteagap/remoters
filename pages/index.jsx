@@ -2,7 +2,7 @@ import React from 'react'
 import Hero from '../src/component/hero/Hero'
 import JobsList from '../src/component/jobs/JobsList'
 import Sidebar from '../src/component/sidebar/Sidebar'
-import Seo from '@components/seo/Seo'
+import Seo from '@components/seo/seo'
 
 const Home = ({ title, description, web }) => {
   return (
