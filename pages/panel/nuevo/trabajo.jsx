@@ -1,9 +1,14 @@
 import React from 'react'
 import AddJobs from '@components/add/AddJobs.js'
-
+import Seo from '@components/seo/seo'
 import withAuth from '@hoc/withAuth'
 const trabajo = () => {
-  return <AddJobs />
+  return (
+    <>
+      <Seo title="Agregar nuevo trabajo" />
+      <AddJobs />
+    </>
+  )
 }
 
 export default withAuth(trabajo)
