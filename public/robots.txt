@@ -1,9 +1,6 @@
 # *
 User-agent: *
-Allow: /
-
-# Host
-Host: http://reclutop.com
-
-# Sitemaps
-Sitemap: http://reclutop.com/sitemap.xml
+Disallow: /dashboard/*
+Disallow: /panel/*
+Disallow: /login
+Disallow: /registro
