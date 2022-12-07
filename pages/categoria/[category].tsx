@@ -1,7 +1,6 @@
 import React from 'react'
 import Sidebar from '@components/sidebar/Sidebar'
 import Categories from '@components/jobs/Categories'
-
 import { useRouter } from 'next/router'
 
 const CategoriesList = () => {
