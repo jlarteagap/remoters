@@ -142,6 +142,7 @@
     .icon__category{
         background: transparent !important;
         margin: 0 !important;
+        padding-right: 0 !important;
     }
     .iconsInfo{
         margin-left: .5rem;
