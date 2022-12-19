@@ -45,7 +45,9 @@ const Job = ({ job }) => {
     iconRemote = (
       <div className={`icon ${jobCSS.iconRemote}`}>
         <JobIcon category="REMOTE" />
-        <span className="button is-small is-warning is-light">
+        <span
+          className={`${jobCSS.icon__text} button is-small is-warning is-light`}
+        >
           Trabajo Remoto
         </span>
       </div>
@@ -54,7 +56,9 @@ const Job = ({ job }) => {
 
   return (
     <div className={`card ${jobCSS.cardJob} p-5 mb-5`}>
-      <div className={`${jobCSS.card__body}`}>
+      <div
+        className={`${jobCSS.jobHeader} is-flex is-justify-content-space-between is-align-items-center`}
+      >
         <h2 className={`${jobCSS.card__bodyTitle} m-0`}>
           <Link
             className="is-flex is-align-items-center"
@@ -63,6 +67,20 @@ const Job = ({ job }) => {
             <a>{content.title} </a>
           </Link>
         </h2>
+
+        <div className={`${jobCSS.iconsInfo} is-align-items-center`}>
+          {iconRemote}
+          <button
+            className={`${jobCSS.icon__category} button is-small is-primary is-light ml-1`}
+          >
+            <JobIcon category={`${category}`} />
+            <span className={jobCSS.icon__text}>
+              <ShowCategoryName category={category} />
+            </span>
+          </button>
+        </div>
+      </div>
+      <div className={`${jobCSS.card__body}`}>
         <div className="help is-flex is-align-items-center">
           <FaClock size={16} className="mr-3" />
           <ShowDateInJobs date={transformCreateAtDate} />
@@ -98,13 +116,6 @@ const Job = ({ job }) => {
       </div>
       <div className={`${jobCSS.card__body}`}>
         <div className={`${jobCSS.job__info}`}>
-          <div className={`${jobCSS.iconsInfo}`}>
-            {iconRemote}
-            <button className="button is-small is-primary is-light icon__category ml-1">
-              <JobIcon category={`${category}`} />{' '}
-              <ShowCategoryName category={category} />
-            </button>
-          </div>
           <div className={`${jobCSS.job__buttonPosition}`}>
             <a
               className={`button ${jobCSS.job__buttonShareButton}`}

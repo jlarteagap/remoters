@@ -6,7 +6,7 @@ const JobIcon = ({ category }) => {
   return (
     <div className={`${jobCSS.job__icons}`}>
       <span
-        className={`${jobCSS.job__icon} ${category}`}
+        className={`${jobCSS.job__icon} ${category} `}
         style={{ backgroundImage: `url(${icons.src})` }}
       >
         <i></i>

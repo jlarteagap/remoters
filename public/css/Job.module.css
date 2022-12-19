@@ -29,7 +29,9 @@
 .card__bodyTitle a:hover{
     color: var(--Blue) !important;
 }
-
+.jobHeader{
+    grid-column: 1 / -1;
+}
 .job__info{
     align-items: flex-end;
     box-sizing: border-box;
@@ -130,5 +132,18 @@
     }
     .job__info{
         grid-gap: 1rem;
+    }
+    /* .jobHeader{
+        display: block !important;
+    } */
+    .icon__text{
+        display: none;
+    }
+    .icon__category{
+        background: transparent !important;
+        margin: 0 !important;
+    }
+    .iconsInfo{
+        margin-left: .5rem;
     }
 }
