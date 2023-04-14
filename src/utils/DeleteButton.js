@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 
-const DeleteButton = ({ companyId, jobId }) => {
+const DeleteButton = ({ companyId, jobId, path }) => {
   const mutation = companyId ? DeleteCompanyDocument : DeleteJobsDocument
   const [companyOrJob] = useMutation(mutation)
   const textAction = companyId ? 'Empresa' : 'Oferta Laboral'
@@ -38,7 +38,7 @@ const DeleteButton = ({ companyId, jobId }) => {
           'Eliminado!',
           'Se eliminó correctamentamente.',
           'success'
-        ).then(router.push('/panel'))
+        ).then(router.push(path))
       }
     })
   }
@@ -51,7 +51,8 @@ const DeleteButton = ({ companyId, jobId }) => {
 
 DeleteButton.propTypes = {
   companyId: PropTypes.string,
-  jobId: PropTypes.string
+  jobId: PropTypes.string,
+  path: PropTypes.string
 }
 
 export default DeleteButton

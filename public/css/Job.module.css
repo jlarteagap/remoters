@@ -1,7 +1,7 @@
 .cardJob {
     display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: 1fr 25%;
+    grid-template-columns: 80px 1fr 25%;
+    gap: 1rem;
 }
 .card__img{
     width: 8rem;

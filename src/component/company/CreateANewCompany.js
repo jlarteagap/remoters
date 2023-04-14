@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
-import { CREATE_COMPANY } from '../../Graphql/Mutation'
-import { AuthContext } from '../../context/auth'
+import { Form, Formik } from 'formik'
 
-import UploadLogo from './UploadLogo'
-import Inputs from '../inputs/Inputs'
+import { CompanyDocument } from '@service/graphql/graphql'
+import { AuthContext } from '../../context/auth'
+import Dashboard from '@public/css/Dashboard.module.css'
+// import UploadLogo from './UploadLogo'
+
+import { FormCompany } from './FormCompany'
 
 const initialState = {
   name: '',
@@ -13,29 +16,23 @@ const initialState = {
   logo: '',
   phone: ''
 }
-const Form = () => {
+const CreateANewCompany = () => {
   const [company, setCompany] = useState(initialState)
+  const [getEditor, setGetEditor] = useState(null)
   const { user } = useContext(AuthContext)
   // const history = useHistory()
 
-  const [createCompany, { error }] = useMutation(CREATE_COMPANY)
+  const [createCompany, { error }] = useMutation(CompanyDocument)
   const clearState = () => {
     setCompany({ ...initialState })
   }
 
-  const updateState = e => {
-    setCompany({
-      ...company,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const logoUpdate = url => {
-    setCompany({
-      ...company,
-      logo: url
-    })
-  }
+  // const logoUpdate = url => {
+  //   setCompany({
+  //     ...company,
+  //     logo: url
+  //   })
+  // }
   const formCompany = e => {
     e.preventDefault()
 
@@ -58,13 +55,13 @@ const Form = () => {
   }
 
   return (
-    <div className="box">
+    <div className={`${Dashboard.dashboard__companiesNewForm} box`}>
       <h3 className="title is-5">Registro de empresas</h3>
       <form className="form" onSubmit={e => formCompany(e)}>
-        <div className="field">
+        {/* <div className="field">
           <UploadLogo logoUpdate={logoUpdate} logo={company.logo} />
-        </div>
-        <Inputs
+        </div> */}
+        {/* <Inputs
           name={'name'}
           title={'Nombre de la empresa'}
           type={'text'}
@@ -91,21 +88,18 @@ const Form = () => {
           type={'text'}
           value={company.activity}
           updateState={updateState}
-        />
-        <div className="field form__style">
-          <textarea
-            className="textarea"
-            onChange={updateState}
-            name="description"
-            type="text"
-            value={company.description}
-          />
-          <label className="label">Descripción de la empresa</label>
-        </div>
-        <button className="button btn">Agregar empresa</button>
+        /> */}
+        <Formik>
+          {formik => (
+            <Form>
+              <FormCompany getEditor={setGetEditor} />
+            </Form>
+          )}
+        </Formik>
+
       </form>
     </div>
   )
 }
 
-export default Form
+export default CreateANewCompany

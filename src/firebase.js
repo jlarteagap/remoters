@@ -2,12 +2,13 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/storage'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCS2POoOZHj37w3v6r966F9nQTsRC86hrU',
-  authDomain: 'cruits-4eca3.firebaseapp.com',
-  projectId: 'cruits-4eca3',
-  storageBucket: 'cruits-4eca3.appspot.com',
-  messagingSenderId: '800191413900',
-  appId: '1:800191413900:web:62211f42bfdd78066085a9'
+  apiKey: 'AIzaSyAOYPLNCG0Kty99-Of3eZCUQ0_0ZPgv4Ug',
+  authDomain: 'reclutop-c2d49.firebaseapp.com',
+  projectId: 'reclutop-c2d49',
+  storageBucket: 'reclutop-c2d49.appspot.com',
+  messagingSenderId: '774199962081',
+  appId: '1:774199962081:web:c1fc60cec907e4923ccaa0',
+  measurementId: 'G-FQRDRJE3G4'
 }
 
 firebase.initializeApp(firebaseConfig)

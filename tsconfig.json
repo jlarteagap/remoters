@@ -7,7 +7,8 @@
       "@context/*": ["src/context/*"],
       "@utils/*": ["src/utils/*"],
       "@public/*": ["public/*"],
-      "@hoc/*": ["src/hoc/*"]
+      "@hoc/*": ["src/hoc/*"],
+      "react": [ "./node_modules/@types/react" ]
     },
     "target": "es5",
     "lib": [
@@ -33,7 +34,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "service/graphql", "src/component/add/ubications/Ubications.jsx", "service/graphql", "src/component/dashboard/LastJobs.jsx", "src/component/dashboard/LastJobs.jsx", "service/graphql"  ],
+, "service/graphql", "src/component/add/ubications/Ubications.jsx", "service/graphql", "src/component/dashboard/LastJobs.jsx", "src/component/dashboard/LastJobs.jsx", "service/graphql", "src/component/company/CompaniesList.jsx"  ],
   "exclude": [
     "node_modules"
   ]

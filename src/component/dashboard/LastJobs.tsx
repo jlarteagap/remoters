@@ -7,10 +7,11 @@ import EditButton from '@utils/Editbutton'
 import { AuthContext } from '@context/auth'
 import Dashboard from '@public/css/Dashboard.module.css'
 import ShowDateInJobs from '@utils/ShowDate'
-
+import { useRouter } from 'next/router'
 const LastJobs = (): any => {
   const { user } = useContext(AuthContext)
-
+  const router = useRouter()
+  const path = router.asPath
   const { loading, error, data } = useQuery(GetJobsDocument, {
     variables: {
       username: user.email
@@ -37,13 +38,15 @@ const LastJobs = (): any => {
                 key={job.id}
               >
                 <div>
-                  {job.active ? (
+                  {job.active
+                    ? (
                     <div className="help is-primary is-light has-text-weight-bold">
                       Activo
                     </div>
-                  ) : (
+                      )
+                    : (
                     <div className="help is-primary is-danger">Inactivo</div>
-                  )}
+                      )}
                   <h3 className="title is-4 m-0 is-small">
                     {job.content.title}
                   </h3>
@@ -64,7 +67,7 @@ const LastJobs = (): any => {
                   <div className="mr-3">
                     <EditButton job={job.id} />
                   </div>
-                  <DeleteButton jobId={job.id} />
+                  <DeleteButton jobId={job.id} path={path}/>
                 </div>
               </div>
             )

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef, useState } from 'react'
-import './companies.css'
+
 import PropTypes from 'prop-types'
 import storage from '../../firebase'
 const storageRef = storage.ref()
