@@ -7,13 +7,13 @@ import withAuth from '@hoc/withAuth'
 
 const Company = () => {
   return (
-        <>
-       <div className={DashboardCSS.dashboard}>
-            <Menu />
-            <CompaniesList />
-            <CreateANewCompany />
-       </div>
-        </>
+    <>
+      <div className={DashboardCSS.dashboard}>
+        <Menu />
+        <CompaniesList />
+        <CreateANewCompany />
+      </div>
+    </>
   )
 }
 

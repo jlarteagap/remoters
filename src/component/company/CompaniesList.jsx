@@ -27,17 +27,18 @@ const CompaniesList = () => {
 
   return (
     <div className={`${Dashboard.dashboard__companies} mb-5 p-1`}>
-      {data.allCompanies.length < 1
-        ? (
+      {data.allCompanies.length < 1 ? (
         <article className="message is-success">
           <div className="message-body is-flex is-align-items-center is-justify-content-center">
-            <h2 className="title is-4 m-0">Ninguna empresa ha sido registrada  </h2><FaArrowAltCircleRight className="ml-3" />
+            <h2 className="title is-4 m-0">
+              Ninguna empresa ha sido registrada{' '}
+            </h2>
+            <FaArrowAltCircleRight className="ml-3" />
           </div>
         </article>
-          )
-        : (
-            ''
-          )}
+      ) : (
+        ''
+      )}
       {data.allCompanies.map(company => {
         return <Company key={company.id} company={company} />
       })}

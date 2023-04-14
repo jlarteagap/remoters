@@ -76,7 +76,7 @@ const AddJobs = () => {
       >
         {formik => (
           <Form>
-            <FormJobs getEditor={setGetEditor} />
+            <FormJobs />
           </Form>
         )}
       </Formik>
