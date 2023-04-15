@@ -38,15 +38,13 @@ const LastJobs = (): any => {
                 key={job.id}
               >
                 <div>
-                  {job.active
-                    ? (
+                  {job.active ? (
                     <div className="help is-primary is-light has-text-weight-bold">
                       Activo
                     </div>
-                      )
-                    : (
+                  ) : (
                     <div className="help is-primary is-danger">Inactivo</div>
-                      )}
+                  )}
                   <h3 className="title is-4 m-0 is-small">
                     {job.content.title}
                   </h3>
@@ -67,7 +65,7 @@ const LastJobs = (): any => {
                   <div className="mr-3">
                     <EditButton job={job.id} />
                   </div>
-                  <DeleteButton jobId={job.id} path={path}/>
+                  <DeleteButton jobId={job.id} path={path} />
                 </div>
               </div>
             )

@@ -1,15 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef, useState } from 'react'
-
-import PropTypes from 'prop-types'
 import storage from '../../firebase'
+import PropTypes from 'prop-types'
 
 const storageRef = storage.ref()
 
-const UploadLogo = ({ logoUpdate, logo }) => {
-  const [file, setFile] = useState()
-  const filePickerRef = useRef()
-  const [progess, setProgress] = useState(0)
+const UploadLogo = ({ logo }) => {
+  // const [file, setFile] = useState()
+  // const filePickerRef = useRef()
+  // const [progess, setProgress] = useState(0)
 
   // const uploadLogo = e => {
   //   let pickedFile
@@ -56,33 +55,45 @@ const UploadLogo = ({ logoUpdate, logo }) => {
   //     })
   // }
 
-  const pickedImage = () => {
-    filePickerRef.current.click()
-  }
+  // const pickedImage = () => {
+  //   filePickerRef.current.click()
+  // }
+  // const webpImage = async data => {
+  //   return new Promise(resolve => {
+  //     const reader = new FileReader()
+  //     reader.readAsDataURL(data)
+  //     reader.onload = e => {
+  //       const image = new Image()
+  //       image.src = e.target.result
+  //       image.onload = () => {
+  //         const canvas = document.createElement('canvas')
+  //         canvas.width = 200
+  //         canvas.height = 'auto'
+  //         canvas.getContext('2d').drawImage(image, 0, 0)
+  //         canvas.toBlob(blob => {
+  //           const imageWebp = new File([blob], `imagetest.wepb`)
+  //           resolve(imageWebp)
+  //         })
+  //       }
+  //     }
+  //   })
+  // }
 
-  const transformImageToWebp = ({ target: { files } }) => {
-    const getImage = files[0]
-
-    const reader = new FileReader()
-    reader.readAsDataURL(getImage)
-    reader.onload = e => {
-      const image = new Image()
-      image.src = e.target.result
-      image.onload = () => {
-        const canvas = document.createElement('canvas')
-        canvas.width = 200
-        canvas.height = 'auto'
-        canvas.getContext('2d').drawImage(image, 0, 0)
-        canvas.toBlob(blob => {
-          const dataImage = new File([blob], `imagetest.wepb`)
-          console.log(dataImage)
-        })
-      }
-    }
-  }
+  // const transformImageToWebp = async ({ target: { files } }) => {
+  //   const getImage = files[0]
+  //   const imagenConverted = await webpImage(getImage)
+  //   console.log(imagenConverted)
+  // }
   return (
-    <div className="center__logo">
-      <input
+    <div
+    // style={{
+    //   display: 'flex',
+    //   alignItems: 'center',
+    //   flexDirection: 'column',
+    //   width: '100%'
+    // }}
+    >
+      {/* <input
         style={{ display: 'none' }}
         type="file"
         ref={filePickerRef}
@@ -91,9 +102,32 @@ const UploadLogo = ({ logoUpdate, logo }) => {
         onChange={transformImageToWebp}
       />
       <div>
-        {logo && <img src={logo} alt="Logo previo" />}
+        {logo && (
+          <img
+            src={logo}
+            alt="Logo previo"
+            // style={{
+            //   borderRadius: '5px',
+            //   height: '150px',
+            //   objectFit: 'cover',
+            //   width: '150px'
+            // }}
+          />
+        )}
         {!logo && (
-          <div className="upload__logo">
+          <div
+          // style={{
+          //   alignItems: 'center',
+          //   background: '#ddfff6',
+          //   borderRadius: '5px',
+          //   border: '1px dotted',
+          //   display: 'flex',
+          //   flexDirection: 'column',
+          //   height: '150px',
+          //   justifyContent: 'center',
+          //   width: '150px'
+          // }}
+          >
             <button
               className="button is-success"
               type="button"
@@ -116,14 +150,11 @@ const UploadLogo = ({ logoUpdate, logo }) => {
             Eliminar imagen
           </button>
         </div>
-      )}
+      )} */}
     </div>
   )
 }
 
 UploadLogo.propTypes = {
-  logoUpdate: PropTypes.func,
   logo: PropTypes.string
 }
-
-export default UploadLogo
