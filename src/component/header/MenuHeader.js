@@ -10,22 +10,22 @@ const MenuHeader = ({ onClick, isActive }) => {
     <div className={`navbar-menu ${isActive ? 'is-active navbar--menu' : ''}`}>
       <BurgerMenu isActive={isActive} onClick={onClick} />
       <div className="navbar-start">
-        <Link href="/">
-          <a className={`navbar-item ${headerCSS.menu__it} effect__hover`}>
-            Inicio
-          </a>
+        <Link
+          href="/"
+          className={`navbar-item ${headerCSS.menu__it} effect__hover`}
+        >
+          Inicio
         </Link>
-        {user.email !== ''
-          ? (
-          <Link href="/panel">
-            <a className={`navbar-item ${headerCSS.menu__it} effect__hover`}>
-              Panel
-            </a>
+        {user.email !== '' ? (
+          <Link
+            href="/panel"
+            className={`navbar-item ${headerCSS.menu__it} effect__hover`}
+          >
+            Panel
           </Link>
-            )
-          : (
-              ''
-            )}
+        ) : (
+          ''
+        )}
       </div>
     </div>
   )

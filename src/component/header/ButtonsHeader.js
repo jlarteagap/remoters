@@ -9,18 +9,14 @@ const ButtonsHeader = () => {
 
   return (
     <div className={`navbar-end ${headerCSS.buttons__movil}`}>
-      <Link href="/panel/nuevo/trabajo">
-        <a className={`button btn`}>
-          <FaPlus className="mr-2" />
-          <span className={`${headerCSS.txt}`}>PUBLICAR</span>
-        </a>
+      <Link href="/panel/nuevo/trabajo" className={`button btn`}>
+        <FaPlus className="mr-2" />
+        <span className={`${headerCSS.txt}`}>PUBLICAR</span>
       </Link>
       {user.email === '' ? (
-        <Link href="/login">
-          <a className={`button is-light ml-2`}>
-            <span className={`${headerCSS.txt}`}>Entrar</span>
-            <FaDoorOpen className="mr-2" />
-          </a>
+        <Link href="/login" className={`button is-light ml-2`}>
+          <span className={`${headerCSS.txt}`}>Entrar</span>
+          <FaDoorOpen className="mr-2" />
         </Link>
       ) : (
         <a className={`button is-light ml-2`} onClick={logout}>

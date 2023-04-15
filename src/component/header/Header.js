@@ -25,9 +25,9 @@ const Header = ({ title }) => {
           }}
         />
         <Link className="navbar-item" href="/" onClick={resetState}>
-          <a className="is-align-items-center is-flex is-justify-content-space-between">
+          <div className="is-align-items-center is-flex is-justify-content-space-between">
             <h1 className={`${headerCSS.header__title} title`}>{title}</h1>
-          </a>
+          </div>
         </Link>
       </div>
       <MenuHeader

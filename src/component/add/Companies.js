@@ -28,7 +28,7 @@ const Companies = ({ user, onChange, companieJob }) => {
           <div className="message-body">
             <h4 className="title is-6">
               Primero debe agregar una empresa.{' '}
-              <Link to="/dashboard/empresas">AQUI</Link>
+              <Link href="/dashboard/empresas">AQUI</Link>
             </h4>
           </div>
         </div>

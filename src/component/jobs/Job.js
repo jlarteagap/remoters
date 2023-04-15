@@ -63,8 +63,9 @@ const Job = ({ job }) => {
           <Link
             className="is-flex is-align-items-center"
             href={`/post/${slug}`}
+            legacyBehavior
           >
-            <a>{content.title} </a>
+            {content.title}
           </Link>
         </h2>
 
@@ -123,8 +124,8 @@ const Job = ({ job }) => {
             >
               Compartir
             </a>
-            <Link href={`/post/${slug}`}>
-              <a className="button is-success">Aplicar</a>
+            <Link href={`/post/${slug}`} className="button is-success">
+              Aplicar
             </Link>
           </div>
         </div>

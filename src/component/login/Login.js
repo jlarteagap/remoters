@@ -74,10 +74,7 @@ const Login = () => {
             )}
           </Formik>
           <small>
-            No estas registrado?{' '}
-            <Link href="/registro">
-              <a>Registrarse aquí</a>
-            </Link>
+            No estas registrado? <Link href="/registro">Registrarse aquí</Link>
           </small>
         </div>
       </div>

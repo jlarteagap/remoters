@@ -5,14 +5,12 @@ import { Form, Formik } from 'formik'
 import { CompanyDocument } from '@service/graphql/graphql'
 import { AuthContext } from '../../context/auth'
 import Dashboard from '@public/css/Dashboard.module.css'
-// import UploadLogo from './UploadLogo'
 import { initialValues } from './services/initialValues'
 import { validate } from './services/validate'
 import { FormCompany } from './FormCompany'
 
 const CreateANewCompany = () => {
   const { user } = useContext(AuthContext)
-
   const [createCompany] = useMutation(CompanyDocument)
 
   return (

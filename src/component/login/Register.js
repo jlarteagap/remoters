@@ -89,10 +89,7 @@ const Register = () => {
             )}
           </Formik>
           <small className="center pt-5">
-            Ya estas registrado?{' '}
-            <Link href="/login">
-              <a>Ingresa por aquí</a>
-            </Link>
+            Ya estas registrado? <Link href="/login">Ingresa por aquí</Link>
           </small>
         </div>
       </div>

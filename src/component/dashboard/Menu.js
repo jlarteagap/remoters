@@ -8,26 +8,18 @@ export const Menu = () => {
     <aside className={`${DashboardCSS.menu__dashboard}`}>
       <div className="box">
         <Link href="/">
-          <a>
-            <FaHome />
-            Inicio
-          </a>
+          <FaHome />
+          Inicio
         </Link>
         <Link href="/panel">
-          <a>
-            <FaRegSun />
-            Panel de administración
-          </a>
+          <FaRegSun />
+          Panel de administración
         </Link>
         <Link href="/panel/nuevo/trabajo">
-          <a>
-            <FaBriefcase /> Agregar trabajo
-          </a>
+          <FaBriefcase /> Agregar trabajo
         </Link>
         <Link href="/panel/company">
-          <a>
-            <FaBuilding /> Agregar empresa
-          </a>
+          <FaBuilding /> Agregar empresa
         </Link>
       </div>
     </aside>

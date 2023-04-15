@@ -1,9 +1,11 @@
 import React from 'react'
 import { InputFields, TextareaField } from '@utils/form/Fields'
+import UploadLogo from './UploadLogo'
 
 export const FormCompany = () => {
   return (
     <>
+      <UploadLogo />
       <InputFields label="Nombre de la empresa" type="text" name="name" />
       <InputFields label="Página web" type="text" name="site" />
       <InputFields label="Teléfono" type="text" name="phone" />

@@ -9,9 +9,7 @@ const EditButton = ({ job, companyID }) => {
   return (
     <div className="button is-warning" onClick={e => handleButton()}>
       <Link href={`/panel/${urls}`}>
-        <a>
-          <FaPencilAlt />
-        </a>
+        <FaPencilAlt />
       </Link>
     </div>
   )

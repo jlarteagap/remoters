@@ -55,11 +55,13 @@ const CategoryMenu = ({ reset, data }) => {
   }
 
   return (
-    <Link href={`/categoria/${data.category}`} onClick={reset}>
-      <a className={`${sidebarCSS.categories_link} mb-1`}>
-        <JobIcon category={data.category} />
-        {companyName}
-      </a>
+    <Link
+      href={`/categoria/${data.category}`}
+      onClick={reset}
+      className={`${sidebarCSS.categories_link} mb-1`}
+    >
+      <JobIcon category={data.category} />
+      {companyName}
     </Link>
   )
 }
