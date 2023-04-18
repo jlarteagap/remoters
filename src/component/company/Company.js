@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/auth'
 import EditButton from '../../utils/Editbutton'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 const Company = ({ company }) => {
   const { user } = useContext(AuthContext)
@@ -20,7 +21,7 @@ const Company = ({ company }) => {
   return (
     <div className={`card ${Job.cardJob} mb-3 p-3`}>
       <div className={Job.card__img}>
-        <img src={logoImage} alt="DEFAUL IMAGES" />
+        <Image src={logoImage} alt="DEFAUL IMAGES" />
       </div>
       <div className={Job.card__header}>
         <h2 className="card__header--title">{name}</h2>

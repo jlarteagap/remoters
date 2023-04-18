@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef, useState } from 'react'
-import storage from '../../firebase'
+import storage from '../../../service/firebase'
 import PropTypes from 'prop-types'
 
 const storageRef = storage.ref()
@@ -57,26 +57,6 @@ const UploadLogo = ({ logo }) => {
 
   // const pickedImage = () => {
   //   filePickerRef.current.click()
-  // }
-  // const webpImage = async data => {
-  //   return new Promise(resolve => {
-  //     const reader = new FileReader()
-  //     reader.readAsDataURL(data)
-  //     reader.onload = e => {
-  //       const image = new Image()
-  //       image.src = e.target.result
-  //       image.onload = () => {
-  //         const canvas = document.createElement('canvas')
-  //         canvas.width = 200
-  //         canvas.height = 'auto'
-  //         canvas.getContext('2d').drawImage(image, 0, 0)
-  //         canvas.toBlob(blob => {
-  //           const imageWebp = new File([blob], `imagetest.wepb`)
-  //           resolve(imageWebp)
-  //         })
-  //       }
-  //     }
-  //   })
   // }
 
   // const transformImageToWebp = async ({ target: { files } }) => {
