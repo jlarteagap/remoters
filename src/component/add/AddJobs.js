@@ -13,8 +13,9 @@ import { FormJobs } from './FormJobs'
 import { AuthContext } from '../../context/auth'
 
 const AddJobs = () => {
-  const [getEditor, setGetEditor] = useState(null)
+  const [getEditor] = useState(null)
   const { user } = useContext(AuthContext)
+
   const router = useRouter()
   const randomNumber = Math.floor(Math.random() * 1500)
 

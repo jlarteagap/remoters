@@ -55,7 +55,7 @@ export const SelectField = ({ label, options, ...props }) => {
           {...props}
           className={`${meta.touched && meta.error && 'is-danger'}`}
         >
-          <option defaultValue=" " value=" " label="--">
+          <option defaultValue="" value="" label="--">
             - -
           </option>
           {options.map((option, index) => {

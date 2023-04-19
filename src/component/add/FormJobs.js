@@ -3,18 +3,19 @@ import {
   InputFields,
   CheckBoxField,
   SelectField
-  // TextareaField
 } from '../../utils/form/Fields'
 import Editor from '../editor/Editor'
-
+import { CompaniesAddJobs } from './companies/CompaniesAddJobs'
 import { Categories } from './categories/Categories'
 import { Ubications } from './ubications/Ubications'
 import { tipeMoney, contracts } from './utils/utils'
+
 import PropTypes from 'prop-types'
 
 export const FormJobs = ({ location, payment, getEditor, editDesc }) => {
   const [isLocation, setIsLocation] = React.useState(location || false)
   const [isPayment, setIsPayment] = React.useState(payment || false)
+
   return (
     <>
       <div className="columns">
@@ -24,11 +25,7 @@ export const FormJobs = ({ location, payment, getEditor, editDesc }) => {
             type="text"
             name="title"
           />
-          <InputFields
-            label="Empresa que representa"
-            type="text"
-            name="company"
-          />
+          <CompaniesAddJobs />
           <InputFields label="Enlace para postular" type="text" name="link" />
           <Categories />
           <SelectField
@@ -38,11 +35,6 @@ export const FormJobs = ({ location, payment, getEditor, editDesc }) => {
             options={contracts}
           />
           <Editor getEditor={getEditor} editDesc={editDesc} />
-          {/* <TextareaField
-            label="Agregar descripción"
-            name="description"
-            placeholder="Agregar una descripción corta"
-          /> */}
         </div>
         <div className="column">
           <CheckBoxField

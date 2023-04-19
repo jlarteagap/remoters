@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-function Editor ({ getEditor, editDesc }) {
+function Editor({ getEditor, editDesc }) {
   const editorRef = useRef()
   const { CKEditor, ClassicEditor } = editorRef.current || {}
 
@@ -14,36 +14,33 @@ function Editor ({ getEditor, editDesc }) {
     setLoaded(true)
   }, [])
 
-  if (loaded) {
-    return (
-      <CKEditor
-        editor={ClassicEditor}
-        config={{
-          toolbar: [
-            'paragraph',
-            'heading',
-            'bold',
-            'italic',
-            '|',
-            'numberedList',
-            'bulletedList',
-            '|',
-            'blockQuote',
-            'code',
-            'codeBlock'
-          ]
-        }}
-        data={editDesc || ''}
-        onChange={(event, editor) => {
-          // do something when editor's content changed
-          const data = editor.getData()
-          getEditor(data)
-        }}
-      />
-    )
-  } else {
-    return <h2>Cargando</h2>
-  }
+  return loaded ? (
+    <CKEditor
+      editor={ClassicEditor}
+      config={{
+        toolbar: [
+          'paragraph',
+          'heading',
+          'bold',
+          'italic',
+          '|',
+          'numberedList',
+          'bulletedList',
+          '|',
+          'blockQuote',
+          'code',
+          'codeBlock'
+        ]
+      }}
+      data={editDesc || ''}
+      onChange={(event, editor) => {
+        const data = editor.getData()
+        getEditor(data)
+      }}
+    />
+  ) : (
+    <div>Cargando...</div>
+  )
 }
 
 export default Editor

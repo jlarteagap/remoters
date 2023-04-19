@@ -1,30 +1,33 @@
 import React, { useContext } from 'react'
-import DEFAULT_IMAGES from '@public/image/posting.svg'
+// import DEFAULT_IMAGES from '@public/image/posting.svg'
 import DeleteButton from '../../utils/DeleteButton'
 import Job from '@public/css/Job.module.css'
 import { AuthContext } from '../../context/auth'
 import EditButton from '../../utils/Editbutton'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
+// import Image from 'next/image'
 
 const Company = ({ company }) => {
   const { user } = useContext(AuthContext)
-  const { id, name, site, description, username, logo } = company
+  // ADD logo destructuring
+  const { id, name, site, description, username } = company
 
   const router = useRouter()
   const path = router.asPath
 
-  let logoImage
-  logo ? (logoImage = logo) : (logoImage = DEFAULT_IMAGES)
+  // let logoImage
+  // logo ? (logoImage = logo) : (logoImage = DEFAULT_IMAGES)
 
   return (
     <div className={`card ${Job.cardJob} mb-3 p-3`}>
-      <div className={Job.card__img}>
+      {/* <div className={Job.card__img}>
         <Image src={logoImage} alt="DEFAUL IMAGES" />
-      </div>
+      </div> */}
       <div className={Job.card__header}>
-        <h2 className="card__header--title">{name}</h2>
+        <h2 className="card__header--title is-size-5 has-text-weight-medium">
+          {name}
+        </h2>
         <div className="card__header--sub">
           <a href={site} target="_target">
             {site}
