@@ -9,6 +9,7 @@ export const SelectCompanies = () => {
   const { user } = useContext(AuthContext)
   const { push } = useRouter()
   const { data, loading } = useQuery(AllCompaniesDocument, {
+    pollInterval: 3000,
     variables: {
       username: user.email
     }

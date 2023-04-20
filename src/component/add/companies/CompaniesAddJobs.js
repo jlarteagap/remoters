@@ -5,7 +5,7 @@ import { AuthContext } from '@context/auth'
 import { SelectCompanies } from './SelectCompanies'
 export const CompaniesAddJobs = () => {
   const { user } = useContext(AuthContext)
-  console.log(user)
+
   return user.role === 'admin' ? (
     <InputFields label="Empresa" type="text" name="company" />
   ) : (

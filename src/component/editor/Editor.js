@@ -14,32 +14,36 @@ function Editor({ getEditor, editDesc }) {
     setLoaded(true)
   }, [])
 
-  return loaded ? (
-    <CKEditor
-      editor={ClassicEditor}
-      config={{
-        toolbar: [
-          'paragraph',
-          'heading',
-          'bold',
-          'italic',
-          '|',
-          'numberedList',
-          'bulletedList',
-          '|',
-          'blockQuote',
-          'code',
-          'codeBlock'
-        ]
-      }}
-      data={editDesc || ''}
-      onChange={(event, editor) => {
-        const data = editor.getData()
-        getEditor(data)
-      }}
-    />
-  ) : (
-    <div>Cargando...</div>
+  return (
+    <>
+      {loaded ? (
+        <CKEditor
+          editor={ClassicEditor}
+          config={{
+            toolbar: [
+              'paragraph',
+              'heading',
+              'bold',
+              'italic',
+              '|',
+              'numberedList',
+              'bulletedList',
+              '|',
+              'blockQuote',
+              'code',
+              'codeBlock'
+            ]
+          }}
+          data={editDesc || ''}
+          onChange={(event, editor) => {
+            const data = editor.getData()
+            getEditor(data)
+          }}
+        />
+      ) : (
+        <div>Cargando...</div>
+      )}
+    </>
   )
 }
 
