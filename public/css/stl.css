@@ -166,8 +166,9 @@ a{
 .reclutadores{background-position: -250px 0;}
 .project_managers{background-position: -275px 0;}
 .web_developers{background-position: -300px 0;}
+.app_developer{background-position: -325px 0;}
+.devops{background-position: -350px 0;}
 
-.iconScroll{}
 .iconScroll:before{
   position: absolute;
   left: 50%}

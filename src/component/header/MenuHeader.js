@@ -3,9 +3,11 @@ import Link from 'next/link'
 import { AuthContext } from '../../context/auth'
 import BurgerMenu from './BurgerMenu'
 import headerCSS from '../../../public/css/Header.module.css'
+import { Panel } from './Panel'
 // eslint-disable-next-line react/prop-types
 const MenuHeader = ({ onClick, isActive }) => {
   const { user } = useContext(AuthContext)
+  console.log(user)
   return (
     <div className={`navbar-menu ${isActive ? 'is-active navbar--menu' : ''}`}>
       <BurgerMenu isActive={isActive} onClick={onClick} />
@@ -16,16 +18,7 @@ const MenuHeader = ({ onClick, isActive }) => {
         >
           Inicio
         </Link>
-        {user.email !== '' ? (
-          <Link
-            href="/panel"
-            className={`navbar-item ${headerCSS.menu__it} effect__hover`}
-          >
-            Panel
-          </Link>
-        ) : (
-          ''
-        )}
+        {user.email !== '' && <Panel />}
       </div>
     </div>
   )

@@ -44,8 +44,8 @@ const CategoryMenu = ({ reset, data }) => {
     case 'reclutadores':
       companyName = 'RRHH & Reclutamiento'
       break
-    case 'web_developers':
-      companyName = 'Web Developers'
+    case 'devops':
+      companyName = 'Dev Ops'
       break
     case 'app_developer':
       companyName = 'App Developer'

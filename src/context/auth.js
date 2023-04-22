@@ -1,6 +1,5 @@
 import React, { createContext, useReducer } from 'react'
 import jwtDecode from 'jwt-decode'
-
 const initialState = {
   user: {
     email: ''
@@ -36,7 +35,9 @@ function authReducer(state, action) {
     case 'LOGOUT':
       return {
         ...state,
-        user: null
+        user: {
+          email: ''
+        }
       }
 
     default:

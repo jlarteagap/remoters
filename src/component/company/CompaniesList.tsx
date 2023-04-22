@@ -3,22 +3,17 @@ import { useQuery } from '@apollo/client'
 import { AllCompaniesDocument } from '@service/graphql/graphql'
 import { AuthContext } from '../../context/auth'
 import Company from './Company'
-import AppContext from '../../context/AppContext'
-import Paginator from '../../utils/Paginator'
 import Loading from '../../utils/Loading'
 import Dashboard from '@public/css/Dashboard.module.css'
 import { FaArrowAltCircleRight } from 'react-icons/fa'
 
-const CompaniesList = () => {
+const CompaniesList = (): any => {
   const { user } = useContext(AuthContext)
-  const { nextPage, prevPage, page } = useContext(AppContext)
 
   const { loading, error, data } = useQuery(AllCompaniesDocument, {
     pollInterval: 3000,
     variables: {
-      username: user.email,
-      limit: page.limit,
-      offset: page.offset
+      username: user.email
     }
   })
 
@@ -42,13 +37,6 @@ const CompaniesList = () => {
       {data.allCompanies.map(company => {
         return <Company key={company.id} company={company} />
       })}
-      <Paginator
-        actual={page.actual}
-        total={data.allCompanies.length}
-        limit={page.limit}
-        prevPage={prevPage}
-        nextPage={nextPage}
-      />
     </div>
   )
 }

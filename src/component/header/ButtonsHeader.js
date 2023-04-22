@@ -3,10 +3,16 @@ import Link from 'next/link'
 import { FaPlus, FaDoorOpen, FaSignOutAlt } from 'react-icons/fa'
 import { AuthContext } from '../../context/auth'
 import headerCSS from '../../../public/css/Header.module.css'
+import { useRouter } from 'next/router'
 
 const ButtonsHeader = () => {
   const { user, logout } = useContext(AuthContext)
+  const router = useRouter()
 
+  const logoutActions = () => {
+    logout()
+    router.push('/')
+  }
   return (
     <div className={`navbar-end ${headerCSS.buttons__movil}`}>
       <Link href="/panel/nuevo/trabajo" className={`button btn`}>
@@ -19,7 +25,7 @@ const ButtonsHeader = () => {
           <FaDoorOpen className="mr-2" />
         </Link>
       ) : (
-        <a className={`button is-light ml-2`} onClick={logout}>
+        <a className={`button is-light ml-2`} onClick={logoutActions}>
           <FaSignOutAlt className="mr-2" />
           <span className={`${headerCSS.txt}`}>Salir</span>
         </a>

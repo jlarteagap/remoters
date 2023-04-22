@@ -70,9 +70,8 @@
     display: flex;
 }
 .job__icon{
-    background-size: 325px 25px;
+    background-size: 375px 25px;
 }
-
     
     .job__icon i{
         background-size: 25px 25px;
