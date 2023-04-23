@@ -7,7 +7,6 @@ import { Panel } from './Panel'
 // eslint-disable-next-line react/prop-types
 const MenuHeader = ({ onClick, isActive }) => {
   const { user } = useContext(AuthContext)
-  console.log(user)
   return (
     <div className={`navbar-menu ${isActive ? 'is-active navbar--menu' : ''}`}>
       <BurgerMenu isActive={isActive} onClick={onClick} />

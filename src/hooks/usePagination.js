@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 export const usePagination = () => {
   const [page, setPage] = useState({
-    limit: 10,
+    limit: 5,
     offset: 0,
     actual: 1
   })

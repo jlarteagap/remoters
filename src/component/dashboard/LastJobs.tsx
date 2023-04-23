@@ -8,13 +8,19 @@ import { AuthContext } from '@context/auth'
 import Dashboard from '@public/css/Dashboard.module.css'
 import ShowDateInJobs from '@utils/ShowDate'
 import { useRouter } from 'next/router'
+import Paginator from '@utils/Paginator'
+import AppContext from '@context/AppContext'
+
 const LastJobs = (): any => {
+  const { nextPage, prevPage, page } = useContext(AppContext)
   const { user } = useContext(AuthContext)
   const router = useRouter()
   const path = router.asPath
   const { loading, error, data } = useQuery(GetJobsDocument, {
     variables: {
-      username: user.email
+      username: user.email,
+      limit: page.limit,
+      offset: page.offset
     }
   })
 
@@ -25,53 +31,58 @@ const LastJobs = (): any => {
     <div className={Dashboard.dashboard__jobs}>
       <h2 className="title is-4">Últimos trabajos publicados</h2>
       <div className="dashboard__last__jobs">
-        {data.getJobs
-          .map(job => {
-            const createdPost: any = job.createdAt
-            const updatedPost: any = job.updatedAt
-            const transformCreateAtDate = new Date(createdPost * 1)
-            const transformUpdateAtDate = new Date(updatedPost * 1)
+        {data.getJobs.map(job => {
+          const createdPost: any = job.createdAt
+          const updatedPost: any = job.updatedAt
+          const transformCreateAtDate = new Date(createdPost * 1)
+          const transformUpdateAtDate = new Date(updatedPost * 1)
 
-            return (
-              <div
-                className="card p-5 mb-2 is-flex is-justify-content-space-between"
-                key={job.id}
-              >
-                <div>
-                  {job.active ? (
-                    <div className="help is-primary is-light has-text-weight-bold">
-                      Activo
-                    </div>
-                  ) : (
-                    <div className="help is-primary is-danger">Inactivo</div>
-                  )}
-                  <h3 className="title is-4 m-0 is-small">
-                    {job.content.title}
-                  </h3>
-                  <p className="pt-0">
-                    <strong>Empresa: </strong>
-                    {job.company.name}
-                  </p>
-                  <p className="pt-0 help">
-                    <strong>Publicado: </strong>
-                    <ShowDateInJobs date={transformCreateAtDate} />
-                  </p>
-                  <p className="pt-0 help">
-                    <strong>Actualizado: </strong>
-                    <ShowDateInJobs date={transformUpdateAtDate} />
-                  </p>
-                </div>
-                <div className="is-flex">
-                  <div className="mr-3">
-                    <EditButton job={job.id} />
+          return (
+            <div
+              className="card p-5 mb-2 is-flex is-justify-content-space-between"
+              key={job.id}
+            >
+              <div>
+                {job.active ? (
+                  <div className="help is-primary is-light has-text-weight-bold">
+                    Activo
                   </div>
-                  <DeleteButton jobId={job.id} path={path} />
-                </div>
+                ) : (
+                  <div className="help is-primary is-danger">Inactivo</div>
+                )}
+                <h3 className="title is-4 m-0 is-small">{job.content.title}</h3>
+                <p className="pt-0">
+                  <strong>Empresa: </strong>
+                  {job.company.name}
+                </p>
+                <p className="pt-0 help">
+                  <strong>Publicado: </strong>
+                  <ShowDateInJobs date={transformCreateAtDate} />
+                </p>
+                <p className="pt-0 help">
+                  <strong>Actualizado: </strong>
+                  <ShowDateInJobs date={transformUpdateAtDate} />
+                </p>
               </div>
-            )
-          })
-          .reverse()}
+              <div className="is-flex">
+                <div className="mr-3">
+                  <EditButton job={job.id} />
+                </div>
+                <DeleteButton jobId={job.id} path={path} />
+              </div>
+            </div>
+          )
+        })}
       </div>
+      {data.getJobs.length >= 5 && (
+        <Paginator
+          actual={page.actual}
+          total={data.totalJobs}
+          limit={page.limit}
+          prevPage={prevPage}
+          nextPage={nextPage}
+        />
+      )}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { useContext } from 'react'
 import Job from './Job'
 import NO_POST from '@public/image/posting.svg'
 import { useQuery } from '@apollo/client'
@@ -22,9 +22,9 @@ const JobsList = () => {
   if (error) return `Error: ${error.message}`
 
   return (
-    <Fragment>
+    <>
       <div className="content">
-        {data.getJobs.length < 1 ? (
+        {data.getJobs.length < 1 && (
           <div className="is-flex is-justify-content-center is-align-items-center">
             <div>
               <h3>Oops! no hemos encontrado ninguna publicacion</h3>
@@ -33,22 +33,21 @@ const JobsList = () => {
               </center>
             </div>
           </div>
-        ) : (
-          ''
         )}
         {data.getJobs.map((job, index) => {
           return <Job key={index} job={job} />
         })}
-
-        <Paginator
-          actual={page.actual}
-          total={data.totalJobs}
-          limit={page.limit}
-          prevPage={prevPage}
-          nextPage={nextPage}
-        />
+        {data.getJobs.length > 10 && (
+          <Paginator
+            actual={page.actual}
+            total={data.totalJobs}
+            limit={page.limit}
+            prevPage={prevPage}
+            nextPage={nextPage}
+          />
+        )}
       </div>
-    </Fragment>
+    </>
   )
 }
 

@@ -25,10 +25,10 @@ const ButtonsHeader = () => {
           <FaDoorOpen className="mr-2" />
         </Link>
       ) : (
-        <a className={`button is-light ml-2`} onClick={logoutActions}>
+        <div className={`button is-light ml-2`} onClick={logoutActions}>
           <FaSignOutAlt className="mr-2" />
           <span className={`${headerCSS.txt}`}>Salir</span>
-        </a>
+        </div>
       )}
     </div>
   )
