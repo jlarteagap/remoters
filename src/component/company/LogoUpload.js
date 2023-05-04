@@ -1,13 +1,21 @@
 import React, { useRef, useState } from 'react'
 import storage from '@service/firebase'
-export const LogoUpload = () => {
+import { FaRegImage } from 'react-icons/fa'
+import { useMutation } from '@apollo/client'
+import { UpdateCompanyDocument } from '@service/graphql/graphql'
+
+export const LogoUpload = ({ company, id }) => {
   const [progress, setProgress] = useState(false)
   const fileRef = useRef()
+  const [createCompany] = useMutation(UpdateCompanyDocument)
 
+  const nameImage = company
+    .replaceAll(' ', '-')
+    .replaceAll('.', '-')
+    .toLowerCase()
   const clickImage = () => fileRef.current.click()
 
   const webpImageTransform = data => {
-    console.log(data)
     return new Promise(resolve => {
       const reader = new FileReader()
       reader.readAsDataURL(data)
@@ -20,7 +28,7 @@ export const LogoUpload = () => {
           canvas.height = image.height
           canvas.getContext('2d').drawImage(image, 0, 0)
           canvas.toBlob(blob => {
-            const imageWebp = new File([blob], `imagetest.wepb`)
+            const imageWebp = new File([blob], `${nameImage}.wepb`)
             resolve(imageWebp)
           })
         }
@@ -53,7 +61,11 @@ export const LogoUpload = () => {
           .getDownloadURL()
           .then(url => {
             setProgress(false)
-            console.log(url)
+            createCompany({
+              variables: {
+                input: { id, logo: url }
+              }
+            })
           })
       }
     )
@@ -66,7 +78,6 @@ export const LogoUpload = () => {
         flexDirection: 'column',
         width: '100%'
       }}
-      className="mb-5"
     >
       <input
         style={{ display: 'none' }}
@@ -75,28 +86,16 @@ export const LogoUpload = () => {
         accept=".jpg, .png, jpeg"
         onChange={uploadImageToFirebase}
       ></input>
+
       <div
-        style={{
-          alignItems: 'center',
-          background: '#ddfff6',
-          borderRadius: '5px',
-          border: '1px dotted',
-          display: 'flex',
-          flexDirection: 'column',
-          height: '150px',
-          justifyContent: 'center',
-          width: '150px',
-          cursor: 'pointer'
-        }}
         onClick={clickImage}
+        className="is-flex is-justify-content-center is-align-items-center"
       >
         {progress ? (
           progressBar
         ) : (
           <>
-            <button className="button is-success" type="button">
-              +
-            </button>
+            <FaRegImage className="mr-1" />
             Agregar logo
           </>
         )}

@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React, { useEffect } from 'react'
 import JobIcon from '@utils/JobIcon'
-
+import DEFAULT_IMAGES from '@public/image/posting.svg'
 import {
   FaMapMarkerAlt,
   FaMoneyBillAlt,
@@ -54,6 +54,8 @@ const Job = ({ job }) => {
     )
   }
 
+  let logoImage
+  company.logo ? (logoImage = company.logo) : (logoImage = DEFAULT_IMAGES.src)
   return (
     <div className={`card ${jobCSS.cardJob} p-5 mb-5`}>
       <div
@@ -80,6 +82,9 @@ const Job = ({ job }) => {
             </span>
           </button>
         </div>
+      </div>
+      <div className={Job.card__img}>
+        <img src={logoImage} alt={company.name} width={200} height={200} />
       </div>
       <div className={`${jobCSS.card__body}`}>
         <div className="help is-flex is-align-items-center">
