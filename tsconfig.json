@@ -33,8 +33,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "service/graphql", "src/component/add/ubications/Ubications.jsx", "service/graphql", "src/component/dashboard/LastJobs.jsx", "src/component/dashboard/LastJobs.jsx", "service/graphql", "src/component/company/CompaniesList.tsx"  ],
+    "**/*.tsx" ],
   "exclude": [
     "node_modules"
   ]

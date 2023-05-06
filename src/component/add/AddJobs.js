@@ -11,7 +11,6 @@ import { validate } from './services/validate'
 import { FormJobs } from './FormJobs'
 
 import { AuthContext } from '../../context/auth'
-import DashboardCSS from '@public/css/Dashboard.module.css'
 
 const AddJobs = () => {
   const [getEditor, setGetEditor] = useState(null)
@@ -23,7 +22,7 @@ const AddJobs = () => {
   const [newJob] = useMutation(NewJobDocument)
 
   return (
-    <div className={`box p-5 ${DashboardCSS.dashboard__jobs}`}>
+    <div className={`box p-5`}>
       <h3 className="title is-4">Publica una oferta laboral</h3>
       <Formik
         initialValues={initialValues}

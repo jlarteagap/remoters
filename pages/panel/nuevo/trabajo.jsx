@@ -10,7 +10,9 @@ const trabajo = () => {
       <Seo title="Agregar nuevo trabajo" />
       <div className={DashboardCSS.dashboard}>
         <Menu />
-        <AddJobs />
+        <div className="home__jobs">
+          <AddJobs />
+        </div>
       </div>
     </>
   )

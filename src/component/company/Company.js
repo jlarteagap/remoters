@@ -48,7 +48,7 @@ const Company = ({ company }) => {
         {user && user.email === username && (
           <div className="is-flex is-justify-content-space-around">
             <EditButton companyID={id} />
-            <DeleteButton companyId={id} path={path} />
+            <DeleteButton companyId={id} path={path} companyName={name} />
           </div>
         )}
       </div>

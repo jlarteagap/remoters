@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 const EditButton = ({ job, companyID }) => {
-  const urls = companyID ? `empresas/edit/${companyID}` : `editar/${job}`
+  const urls = companyID ? `company/editar/${companyID}` : `editar/${job}`
   const handleButton = e => {}
   return (
     <div className="button is-warning" onClick={e => handleButton()}>

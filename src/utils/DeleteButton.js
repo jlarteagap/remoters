@@ -5,11 +5,14 @@ import {
   DeleteJobsDocument,
   DeleteCompanyDocument
 } from '@service/graphql/graphql'
+
 import Swal from 'sweetalert2'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
+import storage from '@service/firebase'
 
-const DeleteButton = ({ companyId, jobId, path }) => {
+const DeleteButton = ({ companyId, jobId, path, companyName }) => {
+  const storageRef = storage.ref()
   const mutation = companyId ? DeleteCompanyDocument : DeleteJobsDocument
   const [companyOrJob] = useMutation(mutation)
   const textAction = companyId ? 'Empresa' : 'Oferta Laboral'
@@ -26,21 +29,33 @@ const DeleteButton = ({ companyId, jobId, path }) => {
       confirmButtonColor: '#EF476F',
       cancelButtonColor: '#F7B267',
       confirmButtonText: 'Si, eliminar!'
-    }).then(result => {
-      if (result.isConfirmed) {
-        companyOrJob({
-          variables: {
-            companyId,
-            jobId
-          }
-        })
-        Swal.fire(
-          'Eliminado!',
-          'Se eliminó correctamentamente.',
-          'success'
-        ).then(router.push(path))
-      }
     })
+      .then(result => {
+        if (result.isConfirmed) {
+          companyOrJob({
+            variables: {
+              companyId,
+              jobId
+            }
+          })
+          Swal.fire(
+            'Eliminado!',
+            'Se eliminó correctamentamente.',
+            'success'
+          ).then(router.push(path))
+        }
+      })
+      .then(() => {
+        if (companyId) {
+          const desertRef = storageRef.child(`/companies/${companyName}`)
+          desertRef
+            .delete()
+            .then(console.log('imagen eliminada correctamente...'))
+            .catch(error => {
+              console.log(error)
+            })
+        }
+      })
   }
   return (
     <div className="button is-danger" onClick={e => handleButton(e)}>
@@ -52,7 +67,8 @@ const DeleteButton = ({ companyId, jobId, path }) => {
 DeleteButton.propTypes = {
   companyId: PropTypes.string,
   jobId: PropTypes.string,
-  path: PropTypes.string
+  path: PropTypes.string,
+  companyName: PropTypes.string
 }
 
 export default DeleteButton

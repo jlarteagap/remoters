@@ -1,6 +1,6 @@
 {
   "name": "nempleos",
-  "version": "1.2.3",
+  "version": "1.0.4",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.7.4",

@@ -26,7 +26,7 @@ const CompaniesList = (): any => {
         <article className="message is-success">
           <div className="message-body is-flex is-align-items-center is-justify-content-center">
             <h2 className="title is-4 m-0">
-              Ninguna empresa ha sido registrada{' '}
+              Ninguna empresa ha sido registrada
             </h2>
             <FaArrowAltCircleRight className="ml-3" />
           </div>
