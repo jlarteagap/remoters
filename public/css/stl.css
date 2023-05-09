@@ -15,6 +15,7 @@ body{
     margin: 0;
     padding: 0;
 }
+
 a{
     color: var(--Dark);
     text-decoration: none;
@@ -168,31 +169,6 @@ a{
 .web_developers{background-position: -300px 0;}
 .app_developer{background-position: -325px 0;}
 .devops{background-position: -350px 0;}
-
-.iconScroll:before{
-  position: absolute;
-  left: 50%}
-
-.iconScroll{
-    position: relative;
-  width: 40px;
-  height: 70px;
-  box-shadow: inset 0 0 0 1px rgb(0, 0, 0);
-  border-radius: 25px;
-}
-
-.iconScroll:before{
-  content: '';
-  width: 8px;
-  height: 8px;
-  background: #000;
-  margin-left: -4px;
-  top: 8px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-name: scroll}
 
 @keyframes scroll{
   0%

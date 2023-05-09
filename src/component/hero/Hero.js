@@ -19,11 +19,8 @@ const Hero = () => {
             profesional en tecnología
           </p>
           <p className="subtitle mt-5">
-            Especializada en oportunidades y talento técnico remoto y local
+            Especializada en oportunidades y talento técnico
           </p>
-          <div className="is-flex is-justify-content-center pt-5">
-            <div className="iconScroll"></div>
-          </div>
         </div>
       </div>
     </section>
