@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React, { useEffect } from 'react'
-import JobIcon from '@utils/JobIcon'
 import DEFAULT_IMAGES from '@public/image/posting.svg'
 import {
   FaMapMarkerAlt,
@@ -14,8 +13,7 @@ import PropTypes from 'prop-types'
 import useUpdateActive from './hooks/useUpdateActive'
 import Link from 'next/link'
 import ShowDateInJobs from '@utils/ShowDate'
-import ShowCategoryName from '@utils/ShowCategoryName'
-
+import { CategoryIconMap } from '@utils/CategoryIconMap'
 const Job = ({ job }) => {
   const { IsActivePostJob } = useUpdateActive()
   const {
@@ -33,7 +31,7 @@ const Job = ({ job }) => {
   const transformCreateAtDate = new Date(updatedAt * 1)
   // Check this for update active o desactive job post
   const todayDate = new Date().toISOString()
-
+  const categoryName = CategoryIconMap[category] || 'error'
   useEffect(() => {
     if (todayDate >= deletedAt) {
       IsActivePostJob(id)
@@ -42,15 +40,13 @@ const Job = ({ job }) => {
 
   let iconRemote
   if (remote) {
+    const remoteIcon = CategoryIconMap.REMOTE || 'error'
     iconRemote = (
-      <div className={`icon ${jobCSS.iconRemote}`}>
-        <JobIcon category="REMOTE" />
-        <span
-          className={`${jobCSS.icon__text} button is-small is-warning is-light`}
-        >
-          Trabajo Remoto
-        </span>
-      </div>
+      <span
+        className={`${jobCSS.icon__text} button is-small is-warning is-light`}
+      >
+        {remoteIcon}
+      </span>
     )
   }
 
@@ -76,10 +72,7 @@ const Job = ({ job }) => {
           <button
             className={`${jobCSS.icon__category} button is-small is-primary is-light ml-1`}
           >
-            <JobIcon category={`${category}`} />
-            <span className={jobCSS.icon__text}>
-              <ShowCategoryName category={category} />
-            </span>
+            <span className={jobCSS.icon__text}>{categoryName}</span>
           </button>
         </div>
       </div>

@@ -4,14 +4,13 @@ import { PostFooter } from './PostFooter'
 import { PostSidebar } from './PostSidebar'
 import { BsSearch } from 'react-icons/bs'
 import { FaClock } from 'react-icons/fa'
-import ShowCategoryName from '../../utils/ShowCategoryName'
 import ShowDateInJobs from '../../utils/ShowDate'
-import JobIcon from '../../utils/JobIcon'
 import PostCSS from '@public/css/Post.module.css'
+import { CategoryIconMap } from '@utils/CategoryIconMap'
 
 export const PostDetails = ({ post }) => {
   const { content, company, link, category, updatedAt } = post
-  console.log(post)
+  const categoryName = CategoryIconMap[category] || 'error'
   const transformCreateAtDate = new Date(updatedAt * 1)
   return (
     <div className={`${PostCSS.post__card} card is-flex`}>
@@ -34,8 +33,7 @@ export const PostDetails = ({ post }) => {
               Actualizado hace - <ShowDateInJobs date={transformCreateAtDate} />
             </div>
             <button className="button is-small is-primary is-light ml-1">
-              <JobIcon category={category} />
-              <ShowCategoryName category={category} />
+              {categoryName}
             </button>
           </div>
           <hr />
