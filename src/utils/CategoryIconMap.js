@@ -12,6 +12,6 @@ export const CategoryIconMap = {
   social_media: '📣 Social Media',
   software_developer: '🎲 Software Developer',
   soporte: '📞 Soporte',
-  web_develop: '💻 Web Developers',
+  web_developers: '💻 Web Developers',
   REMOTE: '🏡 Trabajo Remoto'
 }

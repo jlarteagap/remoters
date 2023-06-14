@@ -4,6 +4,7 @@ import React, { createContext } from 'react'
 import { ApolloProvider } from '@apollo/client'
 import { client } from '../src/hoc/ApolloConnect'
 import { usePagination } from '../src/hooks/usePagination'
+import Script from 'next/script'
 
 import 'bulma/css/bulma.min.css'
 import '../public/css/stl.css'
@@ -46,22 +47,21 @@ function MyApp({ Component, pageProps }) {
             page: pagination.page
           }}
         >
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=G-MFRR780GVL`}
+          <Script
+            strategy="lazyOnload"
+            src={`https://www.googletagmanager.com/gtag/js?id=G-Y25HYFFS1F`}
           />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-MFRR780GVL', {
-              page_path: window.location.pathname,
-            });
-          `
-            }}
-          />
+
+          <Script strategy="lazyOnload">
+            {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y25HYFFS1F', {
+        page_path: window.location.pathname,
+        });
+    `}
+          </Script>
           <Layout>
             <Component {...pageProps} />
           </Layout>
