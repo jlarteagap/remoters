@@ -2,38 +2,39 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { FaAngleRight, FaAngleLeft } from 'react-icons/fa'
 
+const PreviousButton = ({ isNotFirstPage, prevPage }) => (
+  <button
+    className={`button ${isNotFirstPage ? "is-danger is-outlined" : "is-outlined"}`}
+    disabled={!isNotFirstPage}
+    onClick={prevPage}
+  >
+    <FaAngleLeft /> Anterior
+  </button>
+);
+
+const NextButton = ({ isNotLastPage, nextPage }) => (
+  <button
+    className={`button ${isNotLastPage ? "is-danger is-outlined" : "is-outlined"}`}
+    disabled={!isNotLastPage}
+    onClick={nextPage}
+  >
+    Siguiente <FaAngleRight />
+  </button>
+);
+
 const Paginator = ({ actual, total, limit, prevPage, nextPage }) => {
-  const [pages] = useState(Math.ceil(total / limit))
-
-  const btnPrev =
-    actual !== 1 ? (
-      <button className="button is-danger is-outlined" onClick={prevPage}>
-        <FaAngleLeft /> Anterior
-      </button>
-    ) : (
-      <button className="button is-outlined" disabled onClick={prevPage}>
-        <FaAngleLeft /> Anterior
-      </button>
-    )
-
-  const btnNext =
-    actual !== pages ? (
-      <button className="button is-danger is-outlined" onClick={nextPage}>
-        Siguiente <FaAngleRight />
-      </button>
-    ) : (
-      <button className="button is-outlined" disabled onClick={nextPage}>
-        Siguiente <FaAngleRight />
-      </button>
-    )
+  const totalPages = Math.ceil(total / limit);
+  const isNotFirstPage = actual !== 1;
+  const isNotLastPage = actual !== totalPages;
 
   return (
-    <div className={`paginator ${total <= limit ? 'is-hidden' : ''} `}>
-      {btnPrev}
-      {btnNext}
+    <div className={`paginator ${total <= limit ? "is-hidden" : ""}`}>
+      <PreviousButton isNotFirstPage={isNotFirstPage} prevPage={prevPage} />
+      <NextButton isNotLastPage={isNotLastPage} nextPage={nextPage} />
     </div>
-  )
-}
+  );
+};
+
 Paginator.propTypes = {
   actual: PropTypes.number,
   total: PropTypes.string,

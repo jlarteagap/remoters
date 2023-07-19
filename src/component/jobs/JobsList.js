@@ -20,7 +20,6 @@ const JobsList = () => {
 
   if (loading) return <Loading />
   if (error) return `Error: ${error.message}`
-
   return (
     <>
       <div className="content">
@@ -37,15 +36,15 @@ const JobsList = () => {
         {data.getJobs.map((job, index) => {
           return <Job key={index} job={job} />
         })}
-        {data.getJobs.length > 10 && (
-          <Paginator
-            actual={page.actual}
-            total={data.totalJobs}
-            limit={page.limit}
-            prevPage={prevPage}
-            nextPage={nextPage}
-          />
-        )}
+
+        <Paginator
+          actual={page.actual}
+          total={data.totalActiveJobs}
+          limit={page.limit}
+          prevPage={prevPage}
+          nextPage={nextPage}
+        />
+
       </div>
     </>
   )

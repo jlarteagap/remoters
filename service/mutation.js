@@ -81,7 +81,41 @@ export const UPDATE_JOB = gql`
       company {
         name
       }
-      companySimple
+      id
+      link
+      remote
+      username {
+        email
+      }
+      slug
+      content {
+        contract
+        currency
+        description
+        salary
+        title
+      }
+      location {
+        country {
+          name
+        }
+        city {
+          name
+        }
+      }
+      updatedAt
+      deletedAt
+    }
+  }
+`
+export const CHANGE_ACTIVE_JOBS = gql`
+  mutation ChangeActiveJobs($input: JobInput) {
+    changeActiveJobs(input: $input) {
+      active
+      category
+      company {
+        name
+      }
       id
       link
       remote
