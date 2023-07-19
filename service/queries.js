@@ -52,6 +52,7 @@ export const GET_JOBS = gql`
       country
     }
     totalJobs
+    totalActiveJobs
   }
 `
 

@@ -1,12 +1,12 @@
 import { useContext } from 'react'
 import { AuthContext } from '../../../context/auth'
 import { useMutation } from '@apollo/client'
-import { UpdateJobDocument } from '../../../../service/graphql/graphql'
+import { ChangeActiveJobsDocument } from '../../../../service/graphql/graphql'
 
 const useUpdateActive = () => {
   const { user } = useContext(AuthContext)
 
-  const [updateJob] = useMutation(UpdateJobDocument)
+  const [updateJob] = useMutation(ChangeActiveJobsDocument)
 
   const IsActivePostJob = id => {
     updateJob({
